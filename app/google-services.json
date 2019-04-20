@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "650837541213",
+    "firebase_url": "https://animalarium-android-6eb93.firebaseio.com",
+    "project_id": "animalarium-android-6eb93",
+    "storage_bucket": "animalarium-android-6eb93.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:650837541213:android:3c09da3fe64956a7",
+        "android_client_info": {
+          "package_name": "com.example.fede.animalarium"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "650837541213-ojetsdkv16l68di9672rn5v8hfs349ru.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.fede.animalarium",
+            "certificate_hash": "fdeb8bbf9e0458e789217bc2e9372ab75242ac31"
+          }
+        },
+        {
+          "client_id": "650837541213-jja9edb0mp2qq08vambmdepftt85mkcb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkkS_0etWp1b2j8M29gcekhhtg8CIcEc0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "650837541213-jja9edb0mp2qq08vambmdepftt85mkcb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

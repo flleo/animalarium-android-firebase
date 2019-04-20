@@ -1,0 +1,65 @@
+<resources>
+    <string name="app_name">Animalarium</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="animalarium">Animalarium</string>
+    <string name="animalarium_peluquerias">Animalarium - Peluquerias</string>
+    <string name="animalarium_peluqueria">Animalarium - Cita de Peluqueria</string>
+    <string name="peluqueria_canina">Peluqueria Canina</string>
+    <string name="action_settings">Settings</string>
+    <string name="contactos">Contactos</string>
+    <string name="calendario">Calendario</string>
+    <string name="dialog_seguro_eliminarTodos">¿Seguro que quiere eliminar todos los contactos?</string>
+    <string name="dialog_deseas_eliminarFoto">¿Deseas eliminar la foto?</string>
+    <string name="seguro">SEGURO</string>
+    <string name="cancel">MEJOR NO</string>
+    <string name="salir">Salir</string>
+    <string name="about">About</string>
+    <string name="descripcion">Aplicación para almacenar registros de una peluqueria canina</string>
+    <string name="distribucion">Aplicación realizada por, fedelleos@yahoo.es</string>
+    <string name="dialog_seguro_eliminar_contacto">¿Seguro que quiere eliminar el contacto?</string>
+    <string name="dialog_seguro_eliminar_cita">¿Seguro que quiere eliminar la cita?</string>
+    <string name="dialog_seguro_eliminar_reserva">¿Seguro que quiere eliminar la reserva?</string>
+    <string name="mascota">Mascota</string>
+    <string name="raza">Raza</string>
+    <string name="tama_o">Tamaño</string>
+    <string name="tel_fono1">Teléfono1</string>
+    <string name="tel_fono2">Teléfono2</string>
+    <string name="propietario">Propietario</string>
+    <string name="peluquerias">Peluquerias y Agenda</string>
+    <string name="peluquerias_perro">Sus peluquerias</string>
+    <string name="title_activity_peluquerias">Peluquerias</string>
+    <string name="title_activity_formulario__cita_peluqueria_">Formulario_CitaPeluqueria_Activity</string>
+    <string name="title_activity_peluquerias__perro_">Peluquerias_Perro_Activity</string>
+    <string name="contactos_activity">Animalarium - Contactos</string>
+    <string name="trabajo">Trabajo:</string>
+    <string name="totales">Totales</string>
+    <string name="animalarium_totales">Animalarium - Totales</string>
+    <string name="hotel">Hotel</string>
+    <string name="animalarium_hotel">Animalarium - Hotel</string>
+    <string name="fecha_inicio">Fecha de inicio</string>
+    <string name="fecha_fin">Fecha fin</string>
+    <string name="selecciona_fecha_inicio">inicio</string>
+    <string name="selecciona_fecha_fin">fin</string>
+    <string name="hotel_calcular">calcular</string>
+    <string name="hotel_contacto_activity">Animalarium - Hoteles Cliente</string>
+    <string name="formulario_hotel_activity">Animalarium - Formulario Hotel</string>
+    <string name="hotel_activity">Animalarium - Hotel</string>
+    <string name="formulario_activity">Animalarium - Formulario Cliente</string>
+    <string name="añadir">añadir</string>
+    <string name="actualizar">actualizar</string>
+    <string name="eliminar">eliminar</string>
+    <string name="pagado">Pagado</string>
+
+
+    <!--Pictures-->
+    <array name="profile_pics">
+        <item>@drawable/ic_launcher_background</item>
+        <item>@drawable/ic_launcher_background</item>
+        <item>@drawable/ic_launcher_background</item>
+        <item>@drawable/ic_launcher_background</item>
+    </array>
+
+    <!--Status-->
+
+</resources>

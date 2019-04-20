@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.fede.animalarium">
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission
+        android:name="android.permission.MANAGE_DOCUMENTS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.FLAG_GRANT_READ_URI_PERMISSION" />
+    <uses-permission android:name="android.permission.FLAG_GRANT_WRITE_URI_PERMISSION" />
+    <uses-permission android:name="com.google.android.apps.photos.permission.GOOGLE_PHOTOS" />
+
+    <application
+        android:allowBackup="true"
+        android:hardwareAccelerated="false"
+        android:icon="@drawable/image"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:roundIcon="@drawable/image"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".HotelContactoActivity"
+            android:label="@string/hotel_contacto_activity" ></activity>
+        <activity android:name=".FormularioHotelActivity"
+            android:label="@string/formulario_hotel_activity" />
+        <activity android:name=".HotelActivity"
+            android:label="@string/hotel_activity" />
+        <activity
+            android:name=".SplashScreenActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" />
+        <activity
+            android:name=".ContactosActivity"
+            android:label="@string/contactos_activity" />
+        <activity android:name=".FormularioActivity"
+            android:label="@string/formulario_activity" />
+        <activity android:name=".ListItemActivity" />
+        <activity android:name=".AboutActivity" />
+        <activity
+            android:name=".PeluqueriasActivity"
+            android:label="@string/animalarium_peluquerias" />
+        <activity
+            android:name=".PeluqueriasContactoActivity"
+            android:label="@string/peluquerias_perro" />
+        <activity
+            android:name=".FormularioCitaActivity"
+            android:label="@string/animalarium_peluqueria" />
+        <activity android:name=".ListCitaActivity" />
+        <activity
+            android:name=".TotalesActivity"
+            android:label="@string/animalarium_totales" />
+        <activity android:name=".ListHotelActivity" />
+    </application>
+
+</manifest>

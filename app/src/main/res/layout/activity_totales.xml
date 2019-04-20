@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPelu"
+    tools:context=".TotalesActivity"
+    tools:layout_editor_absoluteY="81dp">
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <CalendarView
+            android:id="@+id/calendarView_Peluquerias"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            tools:layout_editor_absoluteX="50dp"
+            tools:layout_editor_absoluteY="80dp">
+
+
+            <LinearLayout
+                android:layout_width="187dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                tools:layout_editor_absoluteX="50dp"
+                tools:layout_editor_absoluteY="80dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Peluquerias"
+                    android:textStyle="bold"/>
+
+                <LinearLayout
+                    android:layout_width="187dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    tools:layout_editor_absoluteX="50dp"
+                    tools:layout_editor_absoluteY="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Total día:" />
+
+                    <EditText
+                        android:id="@+id/total_dia"
+                        android:layout_width="87dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="42dp"
+                        android:ems="10"
+                        android:inputType="numberDecimal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    tools:layout_editor_absoluteX="0dp"
+                    tools:layout_editor_absoluteY="0dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Total semana:" />
+
+                    <EditText
+                        android:id="@+id/total_semana"
+                        android:layout_width="87dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="11dp"
+                        android:ems="10"
+                        android:inputType="numberDecimal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    tools:layout_editor_absoluteX="0dp"
+                    tools:layout_editor_absoluteY="0dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Total mes:" />
+
+                    <EditText
+                        android:id="@+id/total_mes"
+                        android:layout_width="87dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="34dp"
+                        android:ems="10"
+                        android:inputType="numberDecimal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Total año:" />
+
+                    <EditText
+                        android:id="@+id/total_año"
+                        android:layout_width="87dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="38dp"
+                        android:ems="10"
+                        android:inputType="numberDecimal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="parent" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="187dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hotel"
+                    android:textStyle="bold"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Total día:" />
+
+                    <EditText
+                        android:id="@+id/total_hotel_dia"
+                        android:layout_width="87dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="42dp"
+                        android:ems="10"
+                        android:inputType="numberDecimal" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    tools:layout_editor_absoluteX="117dp"
+                    tools:layout_editor_absoluteY="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Total semana:" />
+
+                    <EditText
+                        android:id="@+id/total_hotel_semana"
+                        android:layout_width="87dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="11dp"
+                        android:ems="10"
+                        android:inputType="numberDecimal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Total mes:" />
+
+                    <EditText
+                        android:id="@+id/totalhotel__mes"
+                        android:layout_width="87dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="34dp"
+                        android:ems="10"
+                        android:inputType="numberDecimal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Total año:" />
+
+                    <EditText
+                        android:id="@+id/total_hotel_año"
+                        android:layout_width="87dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="38dp"
+                        android:ems="10"
+                        android:inputType="numberDecimal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="parent" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>

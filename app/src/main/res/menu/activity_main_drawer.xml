@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_contactos"
+            android:icon="@drawable/perro"
+            android:title="@string/contactos" />
+        <item
+            android:id="@+id/nav_peluquerias"
+            android:icon="@drawable/peluqueria"
+            android:title="@string/peluquerias" />
+        <item
+            android:id="@+id/nav_hotel"
+            android:icon="@drawable/hotel"
+            android:title="@string/hotel" />
+        <item
+            android:id="@+id/nav_totales"
+            android:icon="@drawable/euro"
+            android:title="@string/totales" />
+
+
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+
+            <item
+                android:id="@+id/nav_about"
+                android:icon="@drawable/ic_menu_slideshow"
+                android:title="@string/about" />
+
+            <item
+                android:id="@+id/nav_salir"
+                android:icon="@drawable/ic_menu_send"
+                android:title="@string/salir" />
+        </menu>
+    </item>
+
+</menu>

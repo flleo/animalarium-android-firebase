@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPelu"
+    tools:context="com.example.fede.animalarium.FormularioActivity"
+    tools:layout_editor_absoluteY="81dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/linearLayout6"
+                android:layout_width="match_parent"
+                android:layout_height="549dp"
+                android:layout_margin="@dimen/nav_header_vertical_spacing"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:id="@+id/fotoypelus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/imageButtonFormulario"
+                        android:layout_width="100dp"
+                        android:layout_height="120dp"
+                        android:layout_marginStart="19dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="1"
+                        android:onClick="seleccionaImagen"
+                        android:scaleType="centerInside"
+                        app:layout_constraintBottom_toTopOf="@+id/mascotaTV"
+                        app:layout_constraintEnd_toEndOf="@+id/mascotaTV"
+                        app:layout_constraintEnd_toStartOf="@+id/button_peluquerias"
+                        app:layout_constraintStart_toEndOf="@+id/mascotaTV"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/image"
+                        tools:clickable="true" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/button_peluquerias"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginRight="55dp"
+                            android:layout_weight="1"
+                            android:background="#cea0e5"
+                            android:onClick="peluquerias"
+                            android:paddingHorizontal="5dp"
+                            android:text="citas pelu" />
+                        <Button
+                            android:id="@+id/button_hotel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginRight="55dp"
+                            android:layout_weight="1"
+                            android:background="@color/colorHotel"
+                            android:onClick="hotel"
+                            android:paddingHorizontal="5dp"
+                            android:text="hotel" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/mascotaL"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/mascotaTV"
+                        android:layout_width="112dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Mascota" />
+
+                    <EditText
+                        android:id="@+id/mascota"
+                        android:layout_width="275dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="24dp"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:inputType="textPersonName"
+                        android:selectAllOnFocus="true"
+                        android:singleLine="false"
+                        app:layout_constraintBottom_toTopOf="@+id/raza"
+                        app:layout_constraintEnd_toEndOf="parent" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/razaL"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/razaTV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Raza" />
+
+                    <EditText
+                        android:id="@+id/raza"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:inputType="textPersonName"
+                        app:layout_constraintBottom_toTopOf="@+id/tamaño"
+                        app:layout_constraintStart_toStartOf="@+id/mascota"
+                        app:layout_constraintTop_toBottomOf="@+id/mascotaTV"
+                        app:layout_constraintVertical_bias="0.0" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/tamañoL"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="5dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView11"
+                        android:layout_width="8dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Tamaño" />
+
+                    <Spinner
+                        android:id="@+id/spinner"
+                        android:entries="@array/tamaños"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/telefono1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="22dp"
+                        android:layout_weight="1"
+                        android:text="@string/tel_fono1"
+                        app:layout_constraintBottom_toTopOf="@+id/textView6"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <EditText
+                        android:id="@+id/telefon1"
+                        android:layout_width="160dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:inputType="phone"
+                        tools:layout_editor_absoluteX="144dp"
+                        tools:layout_editor_absoluteY="295dp" />
+
+                    <Button
+                        android:id="@+id/phone1"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@android:drawable/stat_sys_phone_call_forward"
+                        android:onClick="llamada1"
+                        tools:layout_editor_absoluteX="304dp"
+                        tools:layout_editor_absoluteY="251dp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/telefono2"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/telefono2TV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="22dp"
+                        android:layout_weight="1"
+                        android:text="@string/tel_fono2"
+                        app:layout_constraintBottom_toTopOf="@+id/textView6"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <EditText
+                        android:id="@+id/telefon2"
+                        android:layout_width="160dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:inputType="phone"
+                        tools:layout_editor_absoluteX="144dp"
+                        tools:layout_editor_absoluteY="295dp" />
+
+                    <Button
+                        android:id="@+id/phone2"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@android:drawable/stat_sys_phone_call_forward"
+                        android:onClick="llamada2"
+                        tools:layout_editor_absoluteX="304dp"
+                        tools:layout_editor_absoluteY="251dp" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/propietarioL"
+                    android:layout_width="wrap_content"
+                    android:layout_height="22dp"
+                    android:layout_weight="1"
+                    android:nextFocusUp="@id/telefon2"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/propietarioTV"
+                        android:layout_width="82dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Propietario" />
+
+                    <EditText
+                        android:id="@+id/propietario"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:inputType="textPersonName" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/botonesL"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="17dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="2"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/añadir"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@android:color/holo_green_light"
+                        android:onClick="añadir"
+                        android:paddingHorizontal="5dp"
+                        android:text="Añadir"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imageButtonFormulario" />
+
+                    <Button
+                        android:id="@+id/actualizar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_weight="1"
+                        android:background="@android:color/holo_orange_light"
+                        android:onClick="actualizar"
+                        android:paddingHorizontal="5dp"
+                        android:text="ACTUALIZAR"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imageButtonFormulario" />
+
+                    <Button
+                        android:id="@+id/button_eliminar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@android:color/holo_red_light"
+                        android:onClick="eliminarContacto"
+                        android:paddingHorizontal="5dp"
+                        android:text="Eliminar"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>

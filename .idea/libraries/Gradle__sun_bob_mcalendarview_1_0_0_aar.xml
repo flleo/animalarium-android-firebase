@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: sun.bob:mcalendarview:1.0.0@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/01781ef8c77fe0595c94bbded9ec1f08/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/01781ef8c77fe0595c94bbded9ec1f08/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/sun.bob/mcalendarview/1.0.0/a0930cc9d57d69fad81ed22ff65c078fce0b5e3f/mcalendarview-1.0.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
