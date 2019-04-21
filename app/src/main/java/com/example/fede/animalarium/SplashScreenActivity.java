@@ -45,9 +45,7 @@ public class SplashScreenActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         docSnippets = new DocSnippets(db, this);
-     /*   progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("...Actualizando datos...");*/
-        //Autentificamos usuarios para firebase
+
         FirebaseUser user = mAuth.getCurrentUser();
         if (user != null) {
             // do your stuff
@@ -60,8 +58,6 @@ public class SplashScreenActivity extends Activity {
         db.setFirestoreSettings(settings);
         //Recogemos contactos
         docSnippets.getContactos();
-        //progressDialog.show();
-        //
 
         // Set portrait orientation
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);

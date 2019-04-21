@@ -39,6 +39,7 @@ import com.google.firebase.storage.UploadTask;
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class FormularioActivity extends AppCompatActivity {
@@ -66,16 +67,16 @@ public class FormularioActivity extends AppCompatActivity {
     private static EditText mascota, raza, telefono1, telefono2, propietario;
     private Spinner tamaño;
     private static ImageButton foto;
-    Button añadir ;
+    Button añadir;
     private static final int PICK_IMAGE = 1;
-    private Uri selectedImageUri , oldSelectedImageUri,imageUri;
+    private Uri selectedImageUri, oldSelectedImageUri, imageUri;
     Context context;
     private static final int PERMISSION_REQUEST_CODE = 1;
-    private String num_llamar,viene="";
+    private String num_llamar, viene = "";
     int _id;
-    private String fotoS=null;
+    private String fotoS = null;
     DocSnippets docSnippets;
-
+    private List<Contacto> contactos;
 
 
     @Override
@@ -84,12 +85,11 @@ public class FormularioActivity extends AppCompatActivity {
         setContentView(R.layout.activity_formulario);
 
 
-
         //
         context = this;
         docSnippets = new DocSnippets(db, (FormularioActivity) context);
         //Inicializamos
-        Bitmap icon = BitmapFactory.decodeResource(context.getResources(),R.drawable.image);
+        Bitmap icon = BitmapFactory.decodeResource(context.getResources(), R.drawable.image);
         imageUri = getImageUri(icon);
 
         foto = (ImageButton) findViewById(R.id.imageButtonFormulario);
@@ -108,20 +108,26 @@ public class FormularioActivity extends AppCompatActivity {
 
 
         contacto = (Contacto) ComunicadorContacto.getObjeto();
-        try{
+        try {
             viene = getIntent().getExtras().getString("VIENE");
-            añadir.setEnabled(false);
-            oldSelectedImageUri = contacto.getFoto();
-            selectedImageUri = oldSelectedImageUri;
+            switch (viene) {
+                case "main_activity":
+                    añadir.setEnabled(false);
+                    oldSelectedImageUri = contacto.getFoto();
+                    selectedImageUri = oldSelectedImageUri;
+                    break;
+                default:
+                    añadir.setEnabled(false);
+                    oldSelectedImageUri = contacto.getFoto();
+                    selectedImageUri = oldSelectedImageUri;
+                    break;
+            }
 
 
-        } catch (NullPointerException e){
-            imageUri=oldSelectedImageUri;
+        } catch (NullPointerException e) {
+            imageUri = oldSelectedImageUri;
             añadir.setEnabled(true);
         }
-
-
-
 
 
         bindeaContactoView(contacto);
@@ -132,23 +138,23 @@ public class FormularioActivity extends AppCompatActivity {
             @Override
             public boolean onLongClick(View v) {
 
-                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                    builder.setMessage(R.string.dialog_deseas_eliminarFoto);
-                    builder.setPositiveButton(R.string.seguro, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                                    foto.setImageURI(imageUri);
-                                    selectedImageUri = imageUri;
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setMessage(R.string.dialog_deseas_eliminarFoto);
+                builder.setPositiveButton(R.string.seguro, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        foto.setImageURI(imageUri);
+                        selectedImageUri = imageUri;
 
 
-                        }
-                    });
-                    builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            // User cancelled the dialog
-                        }
-                    });
-                    builder.create();
-                    builder.show();
+                    }
+                });
+                builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // User cancelled the dialog
+                    }
+                });
+                builder.create();
+                builder.show();
 
 
                 return true;
@@ -162,7 +168,6 @@ public class FormularioActivity extends AppCompatActivity {
 
         openGallery();
     }
-
 
 
     private void openGallery() {
@@ -277,7 +282,7 @@ public class FormularioActivity extends AppCompatActivity {
 
         //ComunicadorContacto.setObjeto(contacto);
         Intent intent = new Intent(this, PeluqueriasContactoActivity.class);
-        intent.putExtra("VIENE",viene);
+        intent.putExtra("VIENE", viene);
         startActivity(intent);
 
 
@@ -471,11 +476,21 @@ public class FormularioActivity extends AppCompatActivity {
                     public void onSuccess(Void aVoid) {
 
                         Log.e("contacto_actualizado_ mascota:", contactoS.getMascota());
+                        actualizaComunicadorContacto();
 
                     }
 
                 });
 
+    }
+
+    private void actualizaComunicadorContacto() {
+        contactos = ComunicadorContacto.getObjects();
+        for (Contacto con:contactos) {
+            if(con.get_id().equalsIgnoreCase(contacto.get_id())){
+                con = contacto;
+            }
+        }
     }
 
     public void eliminarContacto(View view) {
@@ -558,7 +573,6 @@ public class FormularioActivity extends AppCompatActivity {
         }
         return null;
     }
-
 
 
     @Override
