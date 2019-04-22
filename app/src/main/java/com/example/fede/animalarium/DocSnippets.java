@@ -817,6 +817,29 @@ public class DocSnippets implements DocSnippetsInterface {
         // [END get_multiple]
     }
 
+    public void getFotos(){
+
+        // [START get_multiple_all]
+        db.collection("contactos")
+                .orderBy("mascota")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            if(splashScreenActivity!=null) {
+                                ContactosActivity.setContactos(task.getResult().getDocuments(),splashScreenActivity,"splash_screen",progressDialog);
+
+                            } else if (contactosActivity!=null){
+                                contactosActivity.setContactos(task.getResult().getDocuments(),contactosActivity,"contactos",progressDialog);
+                            }
+                        } else {
+                            Log.e(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+    }
+
 
     public void getContactos() {
 

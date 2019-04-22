@@ -56,9 +56,9 @@ public class SplashScreenActivity extends Activity {
                 .setTimestampsInSnapshotsEnabled(true)
                 .build();
         db.setFirestoreSettings(settings);
-        //Recogemos contactos
+        //Recogemos datos de Firestore
         docSnippets.getContactos();
-
+        //docSnippets.getFotos();
         // Set portrait orientation
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         // Hide title bar

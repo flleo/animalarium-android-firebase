@@ -115,9 +115,9 @@ public class FormularioCitaActivity extends AppCompatActivity {
         ArrayAdapter spinner_adapter1 = ArrayAdapter.createFromResource(this, R.array.trabajos, android.R.layout.simple_spinner_item);
         trabajo.setAdapter(spinner_adapter1);
         tarifa = (EditText) findViewById(R.id.tarifa);
-        añadir = (Button) findViewById(R.id.añadir);
-        actualizar = (Button) findViewById(R.id.actualizar);
-        eliminar = (Button) findViewById(R.id.button_eliminar);
+        añadir = (Button) findViewById(R.id.formulario_activity_añadir_button);
+        actualizar = (Button) findViewById(R.id.formulario_activity_actualizar_button);
+        eliminar = (Button) findViewById(R.id.formulario_activity_eliminar_button);
 
         contacto = (Contacto) ComunicadorContacto.getObjeto();
 

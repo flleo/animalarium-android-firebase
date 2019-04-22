@@ -67,7 +67,7 @@ public class FormularioActivity extends AppCompatActivity {
     private static EditText mascota, raza, telefono1, telefono2, propietario;
     private Spinner tamaño;
     private static ImageButton foto;
-    Button añadir;
+    Button añadir,actualizar,eliminar;
     private static final int PICK_IMAGE = 1;
     private Uri selectedImageUri, oldSelectedImageUri, imageUri;
     Context context;
@@ -91,7 +91,7 @@ public class FormularioActivity extends AppCompatActivity {
         //Inicializamos
         Bitmap icon = BitmapFactory.decodeResource(context.getResources(), R.drawable.image);
         imageUri = getImageUri(icon);
-
+        selectedImageUri = imageUri;
         foto = (ImageButton) findViewById(R.id.imageButtonFormulario);
         mascota = (EditText) findViewById(R.id.mascota);
         raza = (EditText) findViewById(R.id.raza);
@@ -104,7 +104,9 @@ public class FormularioActivity extends AppCompatActivity {
         /*ArrayAdapter spinner_adapter = ArrayAdapter.createFromResource(this, R.array.tamaños, android.R.layout.simple_spinner_item);
         spinner_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         tamaño.setAdapter(spinner_adapter);*/
-        añadir = (Button) findViewById(R.id.añadir);
+        añadir = (Button) findViewById(R.id.formulario_activity_añadir_button);
+        actualizar = findViewById(R.id.formulario_activity_actualizar_button);
+        eliminar = findViewById(R.id.formulario_activity_eliminar_button);
 
 
         contacto = (Contacto) ComunicadorContacto.getObjeto();
@@ -116,16 +118,20 @@ public class FormularioActivity extends AppCompatActivity {
                     oldSelectedImageUri = contacto.getFoto();
                     selectedImageUri = oldSelectedImageUri;
                     break;
+                case "añadirContacto":
+                    añadir.setEnabled(true);
+                    actualizar.setEnabled(false);
+                    eliminar.setEnabled(false);
+                    break;
                 default:
                     añadir.setEnabled(false);
-                    oldSelectedImageUri = contacto.getFoto();
-                    selectedImageUri = oldSelectedImageUri;
                     break;
             }
 
 
+
         } catch (NullPointerException e) {
-            imageUri = oldSelectedImageUri;
+           // imageUri = oldSelectedImageUri;
             añadir.setEnabled(true);
         }
 
@@ -161,6 +167,8 @@ public class FormularioActivity extends AppCompatActivity {
 
             }
         });
+
+
 
     }
 
@@ -301,58 +309,71 @@ public class FormularioActivity extends AppCompatActivity {
 
     public void añadir(View view) {
 
+        if(!comprobarAñadir()) {
+            //Con foto
+            try {
+                final ProgressDialog progressDialog = new ProgressDialog(this);
+                final StorageReference storageReference = FirebaseStorage.getInstance().getReference().child(selectedImageUri.getPath());
+                progressDialog.setTitle("Subiendo foto...");
+                progressDialog.show();
+                StorageTask<UploadTask.TaskSnapshot> foto_subida_con_éxito = storageReference.putFile(selectedImageUri)
+                        .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
 
-        //Con foto
-        try {
-            final ProgressDialog progressDialog = new ProgressDialog(this);
-            final StorageReference storageReference = FirebaseStorage.getInstance().getReference().child(selectedImageUri.getPath());
-            progressDialog.setTitle("Subiendo foto...");
-            progressDialog.show();
-            StorageTask<UploadTask.TaskSnapshot> foto_subida_con_éxito = storageReference.putFile(selectedImageUri)
-                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
 
+                            @Override
+                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                progressDialog.dismiss();
+                                Toast.makeText(FormularioActivity.this, "Foto subida con éxito", Toast.LENGTH_SHORT).show();
+                                fotoS = storageReference.getName();
+                                contactoS = new ContactoS(null, storageReference.getName(), mascota.getText().toString(), raza.getText().toString(), tamaño.getSelectedItem().toString(), telefono1.getText().toString(), telefono2.getText().toString(), propietario.getText().toString());
+                                añadirContacto1(contactoS);
+                                ;
+                                // Log.e("foto path",storageReference.getPath());
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                progressDialog.dismiss();
+                                Toast.makeText(FormularioActivity.this, "Fallo al subir la foto" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                            @Override
+                            public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                                double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot
+                                        .getTotalByteCount());
+                                progressDialog.setMessage("Subiendo foto... " + (int) progress + "%");
+                            }
+                        });
 
-                        @Override
-                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            progressDialog.dismiss();
-                            Toast.makeText(FormularioActivity.this, "Foto subida con éxito", Toast.LENGTH_SHORT).show();
-                            fotoS = storageReference.getName();
-                            contactoS = new ContactoS(null, storageReference.getName(), mascota.getText().toString(), raza.getText().toString(), tamaño.getSelectedItem().toString(), telefono1.getText().toString(), telefono2.getText().toString(), propietario.getText().toString());
-                            añadirContacto1(contactoS);
-                            ;
-                            // Log.e("foto path",storageReference.getPath());
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            progressDialog.dismiss();
-                            Toast.makeText(FormularioActivity.this, "Fallo al subir la foto" + e.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    })
-                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                            double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot
-                                    .getTotalByteCount());
-                            progressDialog.setMessage("Subiendo foto... " + (int) progress + "%");
-                        }
-                    });
-
-        } catch (NullPointerException e) {
-            //Sin Foto, le asignamos la foto de firebase que tenemos por defecto
-            ContactoS contactoS = new ContactoS(null, "46841", mascota.getText().toString(), raza.getText().toString(), tamaño.getSelectedItem().toString(), telefono1.getText().toString(), telefono2.getText().toString(), propietario.getText().toString());
-            añadirContacto1(contactoS);
+            } catch (NullPointerException e) {
+                /*//Sin Foto, le asignamos la foto de firebase que tenemos por defecto
+                ContactoS contactoS = new ContactoS(null, "46841", mascota.getText().toString(), raza.getText().toString(), tamaño.getSelectedItem().toString(), telefono1.getText().toString(), telefono2.getText().toString(), propietario.getText().toString());
+                añadirContacto1(contactoS);
+                */
+                e.getMessage();
+            }
         }
 
+    }
 
+    private boolean comprobarAñadir() {
+        boolean añadido = false;
+        for (Uri u : ComunicadorContacto.getUris()) {
+            if (selectedImageUri.compareTo(u) == 1) {
+                ContactoS contactoS = new ContactoS(null, "46841", mascota.getText().toString(), raza.getText().toString(), tamaño.getSelectedItem().toString(), telefono1.getText().toString(), telefono2.getText().toString(), propietario.getText().toString());
+                añadirContacto1(contactoS);
+                añadido = true;
+            }
+        }
+        return  añadido;
     }
 
 
     public void actualizar(View view) {
 
         try {
-
 
             if (!selectedImageUri.equals(oldSelectedImageUri)) {
                 final ProgressDialog progressDialog = new ProgressDialog(this);
@@ -421,6 +442,7 @@ public class FormularioActivity extends AppCompatActivity {
 //                        Intent intent = new Intent(getApplicationContext(), ContactosActivity.class);
 //                        startActivity(intent);
 
+                        //Recpgemos el contacto con su uri y lo añadimos al comunicador
                         docSnippets.getContactoConId(contactoRef.getId());
 
 
@@ -449,6 +471,7 @@ public class FormularioActivity extends AppCompatActivity {
                 doc.getString("propietario"));
         contacto = con;
         ComunicadorContacto.setObjeto(contacto);
+        ComunicadorContacto.addContacto(contacto);
 
     }
 
@@ -488,9 +511,16 @@ public class FormularioActivity extends AppCompatActivity {
         contactos = ComunicadorContacto.getObjects();
         for (Contacto con:contactos) {
             if(con.get_id().equalsIgnoreCase(contacto.get_id())){
-                con = contacto;
+                con.setFoto(contacto.getFoto());
+                con.setMascota(contacto.getMascota());
+                con.setPropietario(contacto.getPropietario());
+                con.setRaza(contacto.getRaza());
+                con.setTamaño(contacto.getTamaño());
+                con.setTelefono1(contacto.getTelefono1());
+                con.setTelefono2(contacto.getTelefono2());
             }
         }
+        ComunicadorContacto.setObjects(contactos);
     }
 
     public void eliminarContacto(View view) {
@@ -506,6 +536,7 @@ public class FormularioActivity extends AppCompatActivity {
                                     Toast.makeText(getApplicationContext(),
                                             "Contacto eliminado, con éxito", Toast.LENGTH_SHORT);
                             toast1.show();
+                            eliminaComunicadorContacto(contacto);
                         }
                     })
                             .addOnFailureListener(new OnFailureListener() {
@@ -533,6 +564,14 @@ public class FormularioActivity extends AppCompatActivity {
             Log.e("No se pudo eliminar ", "index=" + Integer.valueOf(contacto.get_id()));
 
         }
+    }
+
+    private void eliminaComunicadorContacto(Contacto contacto) {
+        contactos = ComunicadorContacto.getObjects();
+        for (Contacto con: contactos) {
+            if(con.get_id().equalsIgnoreCase(contacto.get_id())) contactos.remove(con);
+        }
+        ComunicadorContacto.setObjects(contactos);
     }
 
     public static Bitmap reducirImagen(Context c, Uri uri, final int requiredSize)

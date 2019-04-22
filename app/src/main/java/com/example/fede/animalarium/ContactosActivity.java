@@ -52,6 +52,8 @@ public class ContactosActivity extends AppCompatActivity {
 
     static SplashScreenActivity splashScreenActivity;
     static Activity context;
+    private static String foto;
+    private static int i;
     //Firebase
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     //Referencia del almacenamiento de archivos en Firebase
@@ -59,7 +61,7 @@ public class ContactosActivity extends AppCompatActivity {
     static FirebaseStorage storage = FirebaseStorage.getInstance();
     StorageReference storageRef;
     private static final int PERMISSION_REQUEST_EXTERNAL_STORAGE = 1;
-    ProgressDialog progressDialog;
+    static ProgressDialog progressDialog;
 
     //
     EditText buscador;
@@ -84,8 +86,8 @@ public class ContactosActivity extends AppCompatActivity {
     private static ListIterator<DocumentSnapshot> contactosLI;
     //FECHA
     DateFormat dfFecha = new SimpleDateFormat("dd-MM-yyyy");
-    static ArrayList<String> fotos = new ArrayList<>();
-    static ArrayList<Uri> uris = new ArrayList<>();
+    static List<String> fotos = new ArrayList<String>();
+    static List<Uri> uris = new ArrayList<Uri>();
 
 
     @Override
@@ -170,109 +172,58 @@ public class ContactosActivity extends AppCompatActivity {
     public static void setContactos(List<DocumentSnapshot> documents, Activity activity, String viene, ProgressDialog progressDialog) {
         context = activity;
         setViene(viene);
+        setProgressDialog(progressDialog);
         contactos.clear();
         contactosLI = documents.listIterator();
         contactoDS = contactosLI.next();
-        cargarFoto(progressDialog);
+        cargarFoto();
+
+
     }
 
-    public void buscar(View view) {
 
-        progressDialog.dismiss();
-        contactos.clear();
-        String mascota = buscador.getText().toString();
-        if (!mascota.equalsIgnoreCase("")) {
-            //mascota = String.valueOf(mascota.charAt(0));
-            docSnippets.getContactosParaNombre(mascota);
-           // progressDialog.show();
+    public static void cargarFoto() {
 
-        } else {
-            docSnippets.getContactos();
-          //  progressDialog.show();
-        }
-    }
-
-    private void recuperarFirebase() {
-
-        contactos.clear();
-        docSnippets.getContactos();
-        progressDialog.show();
-    }
-
-    public static Uri cargarFoto(final ProgressDialog progressDialog) {
         uri = null;
-        try {
-            final String foto = contactoDS.getString("foto");
-            StorageReference storageRef = storage.getReferenceFromUrl("gs://animalarium-android-6eb93.appspot.com/external/images/media").child(foto);
-            if (!fotos.contains(foto)) {
-                fotos.add(foto);
-                //  Log.e("foto",document.getString("foto"));
-                final File localFile = File.createTempFile("images", "jpg");
-                localFiles.add(localFile);
-                storageRef.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                        Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
-                        uri = getImageUri(bitmap);
-                        uris.add(uri);
-                        bindeaYAñadeContacto(uri,progressDialog);
+        foto = contactoDS.getString("foto");
 
-                    }
-
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception exception) {
-                        Log.e("FAllo_cargarFoto", exception.getMessage());
-
-                    }
-                });
-            } else {
-                uri = uris.get(uris.size() - 1);
-                bindeaYAñadeContacto(uri,progressDialog);
+        for (i = 0; i < fotos.size(); i++)
+            if (fotos.get(i).equalsIgnoreCase(foto)) {
+                uri = uris.get(i);
+                bindeaYAñadeContacto(uri);
             }
-        } catch (IOException e) {
-            Log.e("FAllo", "IOException");
-        }
-
-        return uri;
+        if (i == fotos.size()) if (uri == null) grabaFotoMobil();
 
     }
 
-  /*public Uri cargarFoto() {
-        uri = null;
-        try {
+    private static void grabaFotoMobil() {
 
-            //m++;
-            final String foto = contactoDS.getString("foto");
-            StorageReference storageRef = storage.getReferenceFromUrl("gs://animalarium-android-6eb93.appspot.com/external/images/media").child(foto);
-            fotos.add(foto);
-            //  Log.e("foto",document.getString("foto"));
+        try {
             final File localFile = File.createTempFile("images", "jpg");
             localFiles.add(localFile);
+            StorageReference storageRef = storage.getReferenceFromUrl("gs://animalarium-android-6eb93.appspot.com/external/images/media").child(foto);
             storageRef.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
                     Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
                     uri = getImageUri(bitmap);
+                    uris.add(uri);
+                    fotos.add(foto);
                     bindeaYAñadeContacto(uri);
-
                 }
 
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception exception) {
                     Log.e("FAllo_cargarFoto", exception.getMessage());
-
                 }
             });
         } catch (IOException e) {
-            Log.e("FAllo", "IOException");
+            e.printStackTrace();
         }
-
-        return uri;
-
     }
-*/
+
+
 
     private static Uri getImageUri(Bitmap bitmap) {
 
@@ -292,7 +243,7 @@ public class ContactosActivity extends AppCompatActivity {
     }
 
 
-    public static void bindeaYAñadeContacto(Uri uri,ProgressDialog progressDialog) {
+    public static void bindeaYAñadeContacto(Uri uri) {
 
         Contacto con = new Contacto(
                 contactoDS.getId(),
@@ -308,11 +259,12 @@ public class ContactosActivity extends AppCompatActivity {
         //Continuamos bucle paar siguienter contacto
         try {
             contactoDS = contactosLI.next();
-            cargarFoto(progressDialog);
+            cargarFoto();
         } catch (NoSuchElementException e) {
             ComunicadorContacto.setObjects(contactos);
+            ComunicadorContacto.setUris(uris);
             progressDialog.dismiss();
-            switch (viene){
+            switch (viene) {
                 case "splash_screen":
                     context.startActivity(new Intent().setClass(context, MainActivity.class));
 
@@ -336,9 +288,31 @@ public class ContactosActivity extends AppCompatActivity {
         listado.setAdapter(adaptador);
 
 
-
     }
 
+
+    public void buscar(View view) {
+
+        progressDialog.dismiss();
+        contactos.clear();
+        String mascota = buscador.getText().toString();
+        if (!mascota.equalsIgnoreCase("")) {
+            //mascota = String.valueOf(mascota.charAt(0));
+            docSnippets.getContactosParaNombre(mascota);
+            // progressDialog.show();
+
+        } else {
+            docSnippets.getContactos();
+            //  progressDialog.show();
+        }
+    }
+
+    private void recuperarFirebase() {
+
+        contactos.clear();
+        docSnippets.getContactos();
+        progressDialog.show();
+    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[],
@@ -355,11 +329,9 @@ public class ContactosActivity extends AppCompatActivity {
     public void añadirContacto(View view) {
         comunicadorContacto.setObjeto(null);
         Intent formulario = new Intent(getApplicationContext(), FormularioActivity.class);
+        formulario.putExtra("VIENE","añadirContacto");
         startActivity(formulario);
     }
-
-
-
 
 
     private void signInAnonymously() {
@@ -381,35 +353,19 @@ public class ContactosActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
 
-        File dir = new File(Environment.getExternalStorageDirectory() + "/Pictures");
-        borraRecursivamente(dir);
-
-
         Intent menu = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(menu);
 
     }
 
-    void borraRecursivamente(File archivoODirectorio) {
-        if (archivoODirectorio.isDirectory()) {
-            Log.e("diree", archivoODirectorio.getPath() + " Es directorio");
-            for (File hijos : archivoODirectorio.listFiles()) {
-                Log.e("hola", "hijos");
-                Log.e("existe?", String.valueOf(hijos.delete()));
-            }
-            // borraRecursivamente(hijos);
-        } else {
-            Log.e("diree", archivoODirectorio.getPath() + " NO Es directorio, es foto");
-            Log.e("borrado?", String.valueOf(archivoODirectorio.delete()));
-        }
 
-    }
-
-    public static String getViene() {
-        return viene;
+    public static void setProgressDialog(ProgressDialog progressDialog) {
+        ContactosActivity.progressDialog = progressDialog;
     }
 
     public static void setViene(String viene) {
         ContactosActivity.viene = viene;
     }
+
+
 }

@@ -212,7 +212,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/imageButtonFormulario" />
 
             <Button
-                android:id="@+id/actualizar"
+                android:id="@+id/formulario_activity_actualizar_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="20dp"
@@ -225,7 +225,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/imageButtonFormulario" />
 
             <Button
-                android:id="@+id/button_eliminar"
+                android:id="@+id/formulario_activity_eliminar_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"

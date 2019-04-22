@@ -1,8 +1,11 @@
 package com.example.fede.animalarium;
 
 
+import android.net.Uri;
+
 import com.google.firebase.firestore.DocumentSnapshot;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,24 +15,37 @@ import java.util.List;
 
 class ComunicadorContacto {
 
-    public static Object objeto = null;
-    public static List<Contacto> objects = null;
+     static Object objeto = null;
+     static List<Contacto> objects;
+     static List<Uri> uris;
 
 
 
-    public static void setObjeto(Object newObjeto) {
+     static void setObjeto(Object newObjeto) {
         objeto = newObjeto;
     }
 
-    public static Object getObjeto() {
+     static Object getObjeto() {
         return objeto;
     }
 
-    public static List<Contacto> getObjects() {
+     static List<Contacto> getObjects() {
         return objects;
     }
 
-    public static void setObjects(ArrayList<Contacto> objects) {
+     static void setObjects(List<Contacto> objects) {
         ComunicadorContacto.objects = objects;
+     }
+
+    public static List<Uri> getUris() {
+        return uris;
+    }
+
+    public static void setUris(List<Uri> uris) {
+        ComunicadorContacto.uris = uris;
+    }
+
+    public static void addContacto(Contacto contacto) {
+         objects.add(contacto);
     }
 }
