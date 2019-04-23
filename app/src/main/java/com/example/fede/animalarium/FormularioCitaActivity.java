@@ -43,6 +43,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class FormularioCitaActivity extends AppCompatActivity {
@@ -78,6 +79,7 @@ public class FormularioCitaActivity extends AppCompatActivity {
     Uri uri;
     DateFormat dfFecha = new SimpleDateFormat("dd-MM-yyyy");
     DateFormat dfHora = new SimpleDateFormat("HH:mm");
+    private List<CitaPeluqueria> citas;
 
 
     @Override
@@ -161,12 +163,13 @@ public class FormularioCitaActivity extends AppCompatActivity {
                     citaPeluqueria = (CitaPeluqueria) ComunicadorCita.getObjeto();
                     bindeaCita(citaPeluqueria);
                     break;
-                case "peluquerias_contacto":
+                case "peluquerias_contacto_activity":
                     añadir.setEnabled(false);
                     eliminar.setEnabled(true);
                     actualizar.setEnabled(true);
                     bindeaContacto(contacto);
                     citaPeluqueria = (CitaPeluqueria) ComunicadorCita.getObjeto();
+                    citas = ComunicadorCita.getSusCitas();
                     bindeaCita(citaPeluqueria);
                     break;
             }
@@ -434,12 +437,14 @@ public class FormularioCitaActivity extends AppCompatActivity {
                     switch (viene){
                         case "peluquerias_contacto_activity":
                             intent = new Intent(getApplicationContext(), PeluqueriasContactoActivity.class);
+                            citas.remove(citaPeluqueria);
+                            ComunicadorCita.setSusCitas(citas);
                             break;
                         case "peluquerias_activity":
                             intent = new Intent(getApplicationContext(), PeluqueriasActivity.class);
                             break;
                     }
-                    intent.putExtra("VIENE","formulario_cita");
+                    intent.putExtra("VIENE","formulario_cita_activity");
                     startActivity(intent);
                 }
             });
@@ -519,15 +524,6 @@ public class FormularioCitaActivity extends AppCompatActivity {
     }
 
 
-    @Override
-    public void onBackPressed() {
-        ComunicadorContacto.setObjeto(null);
-        ComunicadorCita.setObjeto(null);
-
-        Intent menu = new Intent(getApplicationContext(), PeluqueriasActivity.class);
-        startActivity(menu);
-
-    }
 
 
 }

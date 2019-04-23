@@ -38,6 +38,8 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -67,7 +69,7 @@ public class FormularioActivity extends AppCompatActivity {
     private static EditText mascota, raza, telefono1, telefono2, propietario;
     private Spinner tamaño;
     private static ImageButton foto;
-    Button añadir,actualizar,eliminar,citas,reservas;
+    Button añadir, actualizar, eliminar, citas, reservas;
     private static final int PICK_IMAGE = 1;
     private Uri selectedImageUri, oldSelectedImageUri, imageUri;
     Context context;
@@ -111,36 +113,24 @@ public class FormularioActivity extends AppCompatActivity {
         reservas = findViewById(R.id.formulario_susReservas_button);
 
 
-        contacto = (Contacto) ComunicadorContacto.getObjeto();
-        try {
-            viene = getIntent().getExtras().getString("VIENE");
-            switch (viene) {
-                case "main_activity":
-                    añadir.setEnabled(false);
-                    oldSelectedImageUri = contacto.getFoto();
-                    selectedImageUri = oldSelectedImageUri;
-                    break;
-                case "añadirContacto":
-                    añadir.setEnabled(true);
-                    actualizar.setEnabled(false);
-                    eliminar.setEnabled(false);
-                    citas.setEnabled(false);
-                    reservas.setEnabled(false);
-                    break;
-                default:
-                    añadir.setEnabled(false);
-                    break;
-            }
+        viene = getIntent().getExtras().getString("VIENE");
+        switch (viene) {
 
-
-
-        } catch (NullPointerException e) {
-           // imageUri = oldSelectedImageUri;
-            añadir.setEnabled(true);
+            case "contactos_activity_añadirContacto":
+                añadir.setEnabled(true);
+                actualizar.setEnabled(false);
+                eliminar.setEnabled(false);
+                citas.setEnabled(false);
+                reservas.setEnabled(false);
+                break;
+            default:
+                contacto = (Contacto) ComunicadorContacto.getObjeto();
+                bindeaContactoView(contacto);
+                añadir.setEnabled(false);
+                oldSelectedImageUri = contacto.getFoto();
+                selectedImageUri = oldSelectedImageUri;
+                break;
         }
-
-
-        bindeaContactoView(contacto);
 
 
         //Pulsación larga -> Eliminamos la foto
@@ -171,7 +161,6 @@ public class FormularioActivity extends AppCompatActivity {
 
             }
         });
-
 
 
     }
@@ -313,7 +302,7 @@ public class FormularioActivity extends AppCompatActivity {
 
     public void añadir(View view) {
 
-        if(!comprobarAñadir()) {
+        if (!comprobarAñadir()) {
             //Con foto
             try {
                 final ProgressDialog progressDialog = new ProgressDialog(this);
@@ -371,7 +360,7 @@ public class FormularioActivity extends AppCompatActivity {
                 añadido = true;
             }
         }
-        return  añadido;
+        return añadido;
     }
 
 
@@ -475,9 +464,13 @@ public class FormularioActivity extends AppCompatActivity {
                 doc.getString("propietario"));
         contacto = con;
         ComunicadorContacto.setObjeto(contacto);
-        ComunicadorContacto.addContacto(contacto);
+        añadimosContactoAlComunicador(contacto);
+
 
     }
+
+
+
 
     public void actualizarContacto1(final ContactoS contactoS) {
 
@@ -511,21 +504,6 @@ public class FormularioActivity extends AppCompatActivity {
 
     }
 
-    private void actualizaComunicadorContacto() {
-        contactos = ComunicadorContacto.getObjects();
-        for (Contacto con:contactos) {
-            if(con.get_id().equalsIgnoreCase(contacto.get_id())){
-                con.setFoto(contacto.getFoto());
-                con.setMascota(contacto.getMascota());
-                con.setPropietario(contacto.getPropietario());
-                con.setRaza(contacto.getRaza());
-                con.setTamaño(contacto.getTamaño());
-                con.setTelefono1(contacto.getTelefono1());
-                con.setTelefono2(contacto.getTelefono2());
-            }
-        }
-        ComunicadorContacto.setObjects(contactos);
-    }
 
     public void eliminarContacto(View view) {
         try {
@@ -540,7 +518,7 @@ public class FormularioActivity extends AppCompatActivity {
                                     Toast.makeText(getApplicationContext(),
                                             "Contacto eliminado, con éxito", Toast.LENGTH_SHORT);
                             toast1.show();
-                            eliminaComunicadorContacto(contacto);
+                            eliminaContactoDelComunicador(contacto);
                         }
                     })
                             .addOnFailureListener(new OnFailureListener() {
@@ -570,11 +548,38 @@ public class FormularioActivity extends AppCompatActivity {
         }
     }
 
-    private void eliminaComunicadorContacto(Contacto contacto) {
+    private void añadimosContactoAlComunicador(Contacto con) {
+        contactos.add(con);
+        //ordenamos los contactos
+        Collections.sort(contactos, new Comparator<Contacto>(){
+            @Override
+            public int compare(Contacto o1, Contacto o2) {
+                return o1.getMascota().compareToIgnoreCase(o2.getMascota());
+            }
+        });
+        ComunicadorContacto.setObjects(contactos);
+    }
+
+    private void actualizaComunicadorContacto() {
         contactos = ComunicadorContacto.getObjects();
-        for (Contacto con: contactos) {
-            if(con.get_id().equalsIgnoreCase(contacto.get_id())) contactos.remove(con);
+        for (Contacto con : contactos) {
+            if (con.get_id().equalsIgnoreCase(contacto.get_id())) {
+                con.setFoto(contacto.getFoto());
+                con.setMascota(contacto.getMascota());
+                con.setPropietario(contacto.getPropietario());
+                con.setRaza(contacto.getRaza());
+                con.setTamaño(contacto.getTamaño());
+                con.setTelefono1(contacto.getTelefono1());
+                con.setTelefono2(contacto.getTelefono2());
+            }
         }
+        ComunicadorContacto.setObjects(contactos);
+    }
+
+
+    private void eliminaContactoDelComunicador(Contacto contacto) {
+        contactos = ComunicadorContacto.getObjects();
+        contactos.remove(contacto);
         ComunicadorContacto.setObjects(contactos);
     }
 
@@ -622,6 +627,7 @@ public class FormularioActivity extends AppCompatActivity {
     public void onBackPressed() {
 
         Intent menu = new Intent(getApplicationContext(), ContactosActivity.class);
+        menu.putExtra("VIENE","formulario_activity");
         startActivity(menu);
 
     }

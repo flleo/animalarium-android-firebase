@@ -15,6 +15,7 @@ import com.google.firebase.storage.StorageReference;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 public class MisCitasAdapter extends BaseAdapter {
 
@@ -28,12 +29,12 @@ public class MisCitasAdapter extends BaseAdapter {
     DocSnippets docSnippets = new DocSnippets(db, this);
     //
 
-    private ArrayList<CitaPeluqueria> listItems;
+    private List<CitaPeluqueria> listItems;
     private Context context;
 
 
 
-    public MisCitasAdapter(Context context, ArrayList<CitaPeluqueria> listItems) {
+    public MisCitasAdapter(Context context, List<CitaPeluqueria> listItems) {
         this.context = context;
         this.listItems = listItems;
 

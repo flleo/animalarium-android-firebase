@@ -26,12 +26,13 @@ import com.google.firebase.storage.StorageReference;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 public class PeluqueriasContactoActivity extends AppCompatActivity {
 
 
     CalendarView calendarView;
-    private ArrayList<CitaPeluqueria> citas = new ArrayList<>();
+    private List<CitaPeluqueria> citas = new ArrayList<>();
     private MisCitasAdapter adaptador;
     private ListView listado;
     private Context context;
@@ -67,13 +68,18 @@ public class PeluqueriasContactoActivity extends AppCompatActivity {
             viene = getIntent().getExtras().getString("VIENE");
             switch (viene) {
                 case "formulario_activity":
+                    recuperarFirebase();
                     break;
                 case "formulario_cita_activity":
+                    citas = ComunicadorCita.getSusCitas();
+                    inicimosAdaptador();
                     break;
                 case "contactos":
+                    recuperarFirebase();
                     break;
                 case "peluquerias":
                     fecha = getIntent().getExtras().getString("FECHA");
+                    recuperarFirebase();
                     break;
 
             }
@@ -93,7 +99,7 @@ public class PeluqueriasContactoActivity extends AppCompatActivity {
                 .build();
         db.setFirestoreSettings(settings);
 
-        recuperarFirebase();
+
 
     }
 
@@ -169,6 +175,18 @@ public class PeluqueriasContactoActivity extends AppCompatActivity {
                     }
                 });
     }
+
+    @Override
+    public void onBackPressed() {
+
+        ComunicadorCita.setObjeto(null);
+
+        Intent menu = new Intent(getApplicationContext(), FormularioActivity.class);
+        menu.putExtra("VIENE","peluquerias_contacto_activity");
+        startActivity(menu);
+
+    }
+
 
 
 }

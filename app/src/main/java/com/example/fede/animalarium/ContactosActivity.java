@@ -99,17 +99,18 @@ public class ContactosActivity extends AppCompatActivity {
         docSnippets = new DocSnippets(db, this);
         progressDialog = docSnippets.progressDialog;
 
-        try {
-            viene = getIntent().getExtras().getString("VIENE");
-            //FECHA
-            fechaS = getIntent().getExtras().getString("FECHA");
-            Log.e("fechaS_ca", fechaS);
-            fecha = dfFecha.parse(fechaS);
-        } catch (NullPointerException e) {
-        } catch (NumberFormatException e1) {
-            Log.e("contactosActiviry", "No recogimos fechaS");
-        } catch (ParseException e2) {
-            Log.e("parseExceptionContactosActivity", e2.getMessage());
+        switch (viene) {
+            case "formulario_activity":
+                break;
+            default:
+                fechaS = getIntent().getExtras().getString("FECHA");
+                Log.e("fechaS_ca", fechaS);
+                try {
+                    fecha = dfFecha.parse(fechaS);
+                } catch (ParseException e) {
+                    Log.e("Error al parsear la fecha", e.getMessage());
+                }
+                break;
         }
 
         buscador = (EditText) findViewById(R.id.buscador);
@@ -128,6 +129,7 @@ public class ContactosActivity extends AppCompatActivity {
                     switch (viene) {
                         case "main_activity":
                             intent = new Intent(context, FormularioActivity.class);
+                            viene = "contactos_activity";
                             break;
                         case "contactos":
                             intent = new Intent(context, FormularioActivity.class);
@@ -163,8 +165,19 @@ public class ContactosActivity extends AppCompatActivity {
                 .setTimestampsInSnapshotsEnabled(true)
                 .build();
         db.setFirestoreSettings(settings);
+        //
 
         iniciamosAdaptador();
+
+
+    }
+
+    //LISTADO
+    private static void iniciamosAdaptador() {
+        // Inicializamos el adapter
+        adaptador = new ContactosAdapter(context, ComunicadorContacto.getObjects());
+
+        listado.setAdapter(adaptador);
 
 
     }
@@ -224,7 +237,6 @@ public class ContactosActivity extends AppCompatActivity {
     }
 
 
-
     private static Uri getImageUri(Bitmap bitmap) {
 
         if (splashScreenActivity != null) context = splashScreenActivity;
@@ -280,15 +292,7 @@ public class ContactosActivity extends AppCompatActivity {
     }
 
 
-    //LISTADO
-    private static void iniciamosAdaptador() {
-        // Inicializamos el adapter
-        adaptador = new ContactosAdapter(context, ComunicadorContacto.getObjects());
 
-        listado.setAdapter(adaptador);
-
-
-    }
 
 
     public void buscar(View view) {
@@ -329,7 +333,7 @@ public class ContactosActivity extends AppCompatActivity {
     public void añadirContacto(View view) {
         comunicadorContacto.setObjeto(null);
         Intent formulario = new Intent(getApplicationContext(), FormularioActivity.class);
-        formulario.putExtra("VIENE","añadirContacto");
+        formulario.putExtra("VIENE", "contactos_activity_añadirContacto");
         startActivity(formulario);
     }
 
