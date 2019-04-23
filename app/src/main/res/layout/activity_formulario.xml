@@ -46,7 +46,7 @@
                         android:scaleType="centerInside"
                         app:layout_constraintBottom_toTopOf="@+id/mascotaTV"
                         app:layout_constraintEnd_toEndOf="@+id/mascotaTV"
-                        app:layout_constraintEnd_toStartOf="@+id/button_peluquerias"
+                        app:layout_constraintEnd_toStartOf="@+id/formulario_susCitas_button"
                         app:layout_constraintStart_toEndOf="@+id/mascotaTV"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -59,7 +59,7 @@
                         android:orientation="vertical">
 
                         <Button
-                            android:id="@+id/button_peluquerias"
+                            android:id="@+id/formulario_susCitas_button"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="15dp"
@@ -71,7 +71,7 @@
                             android:paddingHorizontal="5dp"
                             android:text="citas pelu" />
                         <Button
-                            android:id="@+id/button_hotel"
+                            android:id="@+id/formulario_susReservas_button"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="30dp"

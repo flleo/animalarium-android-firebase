@@ -240,7 +240,7 @@ public class PeluqueriasActivity extends AppCompatActivity {
                 ComunicadorContacto.setObjeto(contactos.get(position));
 
                 Intent i = new Intent(getApplicationContext(), FormularioCitaActivity.class);
-                i.putExtra("VIENE","peluquerias_cita");
+                i.putExtra("VIENE","peluquerias_activity");
                 startActivity(i);
             }
         });

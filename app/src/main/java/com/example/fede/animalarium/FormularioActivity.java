@@ -67,7 +67,7 @@ public class FormularioActivity extends AppCompatActivity {
     private static EditText mascota, raza, telefono1, telefono2, propietario;
     private Spinner tamaño;
     private static ImageButton foto;
-    Button añadir,actualizar,eliminar;
+    Button añadir,actualizar,eliminar,citas,reservas;
     private static final int PICK_IMAGE = 1;
     private Uri selectedImageUri, oldSelectedImageUri, imageUri;
     Context context;
@@ -107,6 +107,8 @@ public class FormularioActivity extends AppCompatActivity {
         añadir = (Button) findViewById(R.id.formulario_activity_añadir_button);
         actualizar = findViewById(R.id.formulario_activity_actualizar_button);
         eliminar = findViewById(R.id.formulario_activity_eliminar_button);
+        citas = findViewById(R.id.formulario_susCitas_button);
+        reservas = findViewById(R.id.formulario_susReservas_button);
 
 
         contacto = (Contacto) ComunicadorContacto.getObjeto();
@@ -122,6 +124,8 @@ public class FormularioActivity extends AppCompatActivity {
                     añadir.setEnabled(true);
                     actualizar.setEnabled(false);
                     eliminar.setEnabled(false);
+                    citas.setEnabled(false);
+                    reservas.setEnabled(false);
                     break;
                 default:
                     añadir.setEnabled(false);
@@ -290,7 +294,7 @@ public class FormularioActivity extends AppCompatActivity {
 
         //ComunicadorContacto.setObjeto(contacto);
         Intent intent = new Intent(this, PeluqueriasContactoActivity.class);
-        intent.putExtra("VIENE", viene);
+        intent.putExtra("VIENE", "formulario_activity");
         startActivity(intent);
 
 

@@ -124,6 +124,7 @@ public class FormularioCitaActivity extends AppCompatActivity {
         try {
             viene = getIntent().getExtras().getString("VIENE");
             switch (viene) {
+
                 case "peluquerias":
                     añadir.setEnabled(true);
                     eliminar.setEnabled(false);
@@ -152,7 +153,7 @@ public class FormularioCitaActivity extends AppCompatActivity {
                         }
                         });
                     break;
-                case "peluquerias_cita":
+                case "peluquerias_activity":
                     añadir.setEnabled(false);
                     eliminar.setEnabled(true);
                     actualizar.setEnabled(true);
@@ -429,14 +430,16 @@ public class FormularioCitaActivity extends AppCompatActivity {
                                 }
                             });
 
-                    Intent intent;
-                    if (viene.equalsIgnoreCase("vienedeapeluqueriasactivity")) {
-                        ComunicadorContacto.setObjeto(null);
-                        intent = new Intent(getApplicationContext(), PeluqueriasActivity.class);
-                    } else {
-                        intent = new Intent(getApplicationContext(), PeluqueriasContactoActivity.class);
-                        intent.putExtra("_ID", contacto.get_id());
+                    Intent intent=null;
+                    switch (viene){
+                        case "peluquerias_contacto_activity":
+                            intent = new Intent(getApplicationContext(), PeluqueriasContactoActivity.class);
+                            break;
+                        case "peluquerias_activity":
+                            intent = new Intent(getApplicationContext(), PeluqueriasActivity.class);
+                            break;
                     }
+                    intent.putExtra("VIENE","formulario_cita");
                     startActivity(intent);
                 }
             });
