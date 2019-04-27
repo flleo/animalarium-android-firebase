@@ -99,10 +99,13 @@ public class ContactosActivity extends AppCompatActivity {
         docSnippets = new DocSnippets(db, this);
         progressDialog = docSnippets.progressDialog;
 
+        viene = getIntent().getExtras().getString("VIENE");
+
         switch (viene) {
             case "formulario_activity":
                 break;
-            default:
+            case "peluquerias_activity":
+
                 fechaS = getIntent().getExtras().getString("FECHA");
                 Log.e("fechaS_ca", fechaS);
                 try {
@@ -111,6 +114,7 @@ public class ContactosActivity extends AppCompatActivity {
                     Log.e("Error al parsear la fecha", e.getMessage());
                 }
                 break;
+
         }
 
         buscador = (EditText) findViewById(R.id.buscador);
@@ -156,9 +160,10 @@ public class ContactosActivity extends AppCompatActivity {
 
         //Autentificamos usuarios para firebase
         FirebaseUser user = mAuth.getCurrentUser();
-        if (user != null) {
-            // do your stuff
-        } else {
+        try {
+            if (user != null) {   }
+        }
+        catch (NullPointerException e) {
             signInAnonymously();
         }
         FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
