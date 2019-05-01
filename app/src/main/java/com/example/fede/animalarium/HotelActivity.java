@@ -137,8 +137,15 @@ public class HotelActivity extends AppCompatActivity {
 
     public void setReservas(List<DocumentSnapshot> documents) {
 
-        listIterator = documents.listIterator();
-        bindeaYAñadeReservaHotel(listIterator.next());
+        if (documents!=null){
+            listIterator = documents.listIterator();
+            bindeaYAñadeReservaHotel(listIterator.next());
+        } else{
+            reservas.clear();
+            contactos.clear();
+            inicimosAdaptador();
+        }
+
     }
 
     public void bindeaYAñadeReservaHotel(DocumentSnapshot doc) {

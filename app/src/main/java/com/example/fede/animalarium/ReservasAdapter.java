@@ -45,7 +45,7 @@ class ReservasAdapter extends BaseAdapter {
         TextView mascota =  convertView.findViewById(R.id.mascota_list_hotel);
         TextView raza = (TextView) convertView.findViewById(R.id.raza_list_hotel);
         TextView fechaInicio = convertView.findViewById(R.id.fecha_inicio_list_hotel);
-        TextView fechafin = convertView.findViewById(R.id.fecha_fin_list_hotel);
+        TextView fechaFin = convertView.findViewById(R.id.fecha_fin_list_hotel);
         TextView noches = convertView.findViewById(R.id.noches_list_hotel);
         TextView coste = convertView.findViewById(R.id.coste_list_hotel);
         TextView pagado = convertView.findViewById(R.id.pagado_list_hotel);
@@ -55,12 +55,8 @@ class ReservasAdapter extends BaseAdapter {
 
         mascota.setText(contacto.getMascota());
         raza.setText(contacto.getRaza());
-
-        fechaID = reservaHotel.getFechaInicio();
-        fechaFD = reservaHotel.getFechaFin();
-
-        fechaInicio.setText(fechaID.getDate()+"-"+(fechaID.getMonth()+1)+"-"+ fechaID.getYear());
-        fechafin.setText(fechaFD.getDate()+"-"+(fechaFD.getMonth()+1)+"-"+fechaFD.getYear());
+        fechaInicio.setText(new SimpleDateFormat("dd-MM-yyyy").format(reservaHotel.getFechaInicio()));
+        fechaFin.setText(new SimpleDateFormat("dd-MM-yyyy").format(reservaHotel.getFechaFin()));
         noches.setText(String.valueOf(reservaHotel.getNoches().intValue()));
         coste.setText(String.valueOf(reservaHotel.getCoste()));
         pagado.setText(String.valueOf(reservaHotel.getPagado()));

@@ -153,8 +153,6 @@ public class DocSnippets implements DocSnippetsInterface {
     }
 
 
-
-
     void runAll() {
         Log.d(TAG, "================= BEGIN RUN ALL ===============");
 
@@ -364,7 +362,6 @@ public class DocSnippets implements DocSnippetsInterface {
     }
 
 
-
     // [START city_class]
     public class City {
 
@@ -375,7 +372,8 @@ public class DocSnippets implements DocSnippetsInterface {
         private boolean capital;
         private long population;
 
-        public City() {}
+        public City() {
+        }
 
         public City(String name, String state, String country, boolean capital, long population) {
             // [START_EXCLUDE]
@@ -817,7 +815,7 @@ public class DocSnippets implements DocSnippetsInterface {
         // [END get_multiple]
     }
 
-    public void getFotos(){
+    public void getFotos() {
 
         // [START get_multiple_all]
         db.collection("contactos")
@@ -827,11 +825,11 @@ public class DocSnippets implements DocSnippetsInterface {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            if(splashScreenActivity!=null) {
-                                ContactosActivity.setContactos(task.getResult().getDocuments(),splashScreenActivity,"splash_screen",progressDialog);
+                            if (splashScreenActivity != null) {
+                                ContactosActivity.setContactos(task.getResult().getDocuments(), splashScreenActivity, "splash_screen", progressDialog);
 
-                            } else if (contactosActivity!=null){
-                                contactosActivity.setContactos(task.getResult().getDocuments(),contactosActivity,"contactos",progressDialog);
+                            } else if (contactosActivity != null) {
+                                contactosActivity.setContactos(task.getResult().getDocuments(), contactosActivity, "contactos", progressDialog);
                             }
                         } else {
                             Log.e(TAG, "Error getting documents: ", task.getException());
@@ -852,11 +850,11 @@ public class DocSnippets implements DocSnippetsInterface {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            if(splashScreenActivity!=null) {
-                                ContactosActivity.setContactos(task.getResult().getDocuments(),splashScreenActivity,"splash_screen",progressDialog);
+                            if (splashScreenActivity != null) {
+                                ContactosActivity.setContactos(task.getResult().getDocuments(), splashScreenActivity, "splash_screen", progressDialog);
 
-                            } else if (contactosActivity!=null){
-                                contactosActivity.setContactos(task.getResult().getDocuments(),contactosActivity,"contactos",progressDialog);
+                            } else if (contactosActivity != null) {
+                                contactosActivity.setContactos(task.getResult().getDocuments(), contactosActivity, "contactos", progressDialog);
                             }
                         } else {
                             Log.e(TAG, "Error getting documents: ", task.getException());
@@ -867,9 +865,8 @@ public class DocSnippets implements DocSnippetsInterface {
     }
 
 
-
     public void getContactoConId(String id) {
-        Log.e("id",id);
+        Log.e("id", id);
         final String idd = id;
         final DocumentReference docRef = db.collection("contactos").document(id);
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -878,8 +875,8 @@ public class DocSnippets implements DocSnippetsInterface {
                 if (task.isSuccessful()) {
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
-                        try{
-                            if(idd.equalsIgnoreCase(document.getId())) {
+                        try {
+                            if (idd.equalsIgnoreCase(document.getId())) {
                                 Log.e("contactoid", document.getId());
                                 if (formularioCitaActivity != null)
                                     formularioCitaActivity.cargarFoto(document);
@@ -890,7 +887,8 @@ public class DocSnippets implements DocSnippetsInterface {
                                 if (hotelActivity != null)
                                     hotelActivity.bindeaYAñadeContacto(document);
                             }
-                        } catch (NoSuchElementException e){}
+                        } catch (NoSuchElementException e) {
+                        }
                     } else {
                         Log.d(TAG, "No such document");
                     }
@@ -903,14 +901,85 @@ public class DocSnippets implements DocSnippetsInterface {
     }
 
 
-
     public void getContactosParaNombre(String mascota) {
 
         progressDialog.show();
-        String sig = "",mas = String.valueOf(mascota.charAt(0));
-        switch(mas)
-        {
-            case "a": sig = "b";break; case "b": sig = "c";break; case "c": sig = "d";break;case "e": sig = "f" ;break;case "f": sig = "g"; break;case "g": sig = "h";break;case "h": sig = "i";break; case "i": sig = "j";break;case"j":sig="k";break;case "k":sig="l";break;case "l":sig="m";break;case "m":sig="n";break;case "n":sig="ñ";break;case"ñ":sig="o";break;case "p":sig="q";break;case "o":sig="q";break;case "q":sig="r";break;case "r":sig="s";break;case "s": sig="t";break;case "t":sig="u";break;case "u":sig="v";break;case "v":sig="x";break;case "x":sig="y";break;case "y":sig="z";break;case "z": sig="a";
+        String sig = "", mas = String.valueOf(mascota.charAt(0));
+        switch (mas) {
+            case "a":
+                sig = "b";
+                break;
+            case "b":
+                sig = "c";
+                break;
+            case "c":
+                sig = "d";
+                break;
+            case "e":
+                sig = "f";
+                break;
+            case "f":
+                sig = "g";
+                break;
+            case "g":
+                sig = "h";
+                break;
+            case "h":
+                sig = "i";
+                break;
+            case "i":
+                sig = "j";
+                break;
+            case "j":
+                sig = "k";
+                break;
+            case "k":
+                sig = "l";
+                break;
+            case "l":
+                sig = "m";
+                break;
+            case "m":
+                sig = "n";
+                break;
+            case "n":
+                sig = "ñ";
+                break;
+            case "ñ":
+                sig = "o";
+                break;
+            case "p":
+                sig = "q";
+                break;
+            case "o":
+                sig = "q";
+                break;
+            case "q":
+                sig = "r";
+                break;
+            case "r":
+                sig = "s";
+                break;
+            case "s":
+                sig = "t";
+                break;
+            case "t":
+                sig = "u";
+                break;
+            case "u":
+                sig = "v";
+                break;
+            case "v":
+                sig = "x";
+                break;
+            case "x":
+                sig = "y";
+                break;
+            case "y":
+                sig = "z";
+                break;
+            case "z":
+                sig = "a";
         }
         db.collection("contactos")
                 .orderBy("mascota")
@@ -920,10 +989,10 @@ public class DocSnippets implements DocSnippetsInterface {
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful() && task.getResult().size()>0) {
-                            try{
-                                contactosActivity.setContactos(task.getResult().getDocuments(),contactosActivity,"contactos",progressDialog);
-                            } catch (NoSuchElementException e){
+                        if (task.isSuccessful() && task.getResult().size() > 0) {
+                            try {
+                                contactosActivity.setContactos(task.getResult().getDocuments(), contactosActivity, "contactos", progressDialog);
+                            } catch (NoSuchElementException e) {
                                 Toast.makeText(contactosActivity, "No existen mascotas :(", Toast.LENGTH_LONG).show();
                                 Intent intent = new Intent(contactosActivity, ContactosActivity.class);
                                 contactosActivity.startActivity(intent);
@@ -940,10 +1009,12 @@ public class DocSnippets implements DocSnippetsInterface {
     }
 
     public void getCita(Date fecha) {
-        fecha.setHours(00);fecha.setMinutes(00);fecha.setSeconds(00);
+        fecha.setHours(00);
+        fecha.setMinutes(00);
+        fecha.setSeconds(00);
         Log.e("finicio", (String.valueOf(fecha)));
         Date f = new Date();
-        f.setTime(fecha.getTime() + (3600000*24));
+        f.setTime(fecha.getTime() + (3600000 * 24));
         Log.e("ffin", (String.valueOf(f)));
         // [START get_multiple_all]
         db.collection("citas")
@@ -954,12 +1025,12 @@ public class DocSnippets implements DocSnippetsInterface {
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()){
+                        if (task.isSuccessful()) {
                                  /*  for (String id:idContactos) {
                                 Log.e("idcontactofor",id);
                                 getContactoConId(id);
                             }*/
-                            if (task.getResult().size()==0){
+                            if (task.getResult().size() == 0) {
                                 peluqueriasActivity.contactos.clear();
                                 peluqueriasActivity.citas.clear();
                                 peluqueriasActivity.inicimosAdaptador();
@@ -976,7 +1047,7 @@ public class DocSnippets implements DocSnippetsInterface {
     }
 
     public void getCitaConId(String id) {
-        Log.e("id",id);
+        Log.e("id", id);
         final String idd = id;
         final DocumentReference docRef = db.collection("citas").document(id);
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -985,12 +1056,13 @@ public class DocSnippets implements DocSnippetsInterface {
                 if (task.isSuccessful()) {
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
-                        try{
-                            if(idd.equalsIgnoreCase(document.getId())) {
+                        try {
+                            if (idd.equalsIgnoreCase(document.getId())) {
                                 Log.e("citaid", document.toString());
-                                Log.e("fechaCita",document.get("fecha").toString());
+                                Log.e("fechaCita", document.get("fecha").toString());
                             }
-                        } catch (NoSuchElementException e){}
+                        } catch (NoSuchElementException e) {
+                        }
                     } else {
                         Log.d(TAG, "No such document");
                     }
@@ -1004,7 +1076,9 @@ public class DocSnippets implements DocSnippetsInterface {
 
 
     public void getReservas(Date fecha) {
-        fecha.setHours(23);fecha.setMinutes(00);fecha.setSeconds(00);
+        fecha.setHours(23);
+        fecha.setMinutes(00);
+        fecha.setSeconds(00);
         final Date fechaFin = new Date();
         fechaFin.setTime(fecha.getTime());
         fechaFin.setHours(0);
@@ -1025,8 +1099,13 @@ public class DocSnippets implements DocSnippetsInterface {
                                     //hotelActivity.inicimosAdaptador();
                                     Log.e(TAG, "No hay reservas para esta fechaInicio");
                                 } else {
-                                    getReservasFechaFin(fechaFin);
-
+                                    int i = 0;
+                                    for (DocumentSnapshot doc : task.getResult().getDocuments()){
+                                        i++;
+                                        if (doc.getDate("fechaFin").compareTo(fechaFin) >= 0)
+                                            getReservasFechaFin(fechaFin);
+                                        else if (i==task.getResult().size())  hotelActivity.setReservas(null);
+                                    }
                                 }
                             } else {
                                 Log.e(TAG, "Error getting documents", task.getException());
@@ -1055,9 +1134,9 @@ public class DocSnippets implements DocSnippetsInterface {
                             if (task.isSuccessful()) {
 
                                 if (task.getResult().size() == 0) {
-                                   // hotelActivity.inicimosAdaptador();
+                                    // hotelActivity.inicimosAdaptador();
                                     Log.e(TAG, "No hay reservas para esta fechaFin");
-                                    hotelActivity.progressDialog.dismiss();
+                                    hotelActivity.setReservas(null);
                                 } else {
                                     hotelActivity.setReservas(task.getResult().getDocuments());
                                 }
@@ -1076,7 +1155,7 @@ public class DocSnippets implements DocSnippetsInterface {
     public void getTotalesDia(Date fecha) {
         Log.e("fechaDia", (String.valueOf(fecha)));
         Date fechaSig = new Date();
-        fechaSig.setTime(fecha.getTime() + (3600000*24));
+        fechaSig.setTime(fecha.getTime() + (3600000 * 24));
         // [START get_multiple_all]
         Log.e("fechaSig", (String.valueOf(fechaSig)));
         db.collection("citas")
@@ -1088,19 +1167,19 @@ public class DocSnippets implements DocSnippetsInterface {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            double total=0;
+                            double total = 0;
                             for (DocumentSnapshot document : task.getResult()) {
                                 total += (Double) document.get("tarifa");
 //                                Log.e("Total",String.valueOf(total));
 //                                Log.e("fechaS",String.valueOf(document.getDate("fechaS").getDate()));
                             }
-                            if (task.getResult().size()==0){
-                                Log.e("Resultado","No hay resultados");
+                            if (task.getResult().size() == 0) {
+                                Log.e("Resultado", "No hay resultados");
                             }
-                            Log.e("TotalesDia",String.valueOf(total));
+                            Log.e("TotalesDia", String.valueOf(total));
                             totalesActivity.total_dia.setText(String.valueOf(total));
                         } else {
-                            Log.e(TAG, "Error getting documents: "+ "No hay documentos");
+                            Log.e(TAG, "Error getting documents: " + "No hay documentos");
                         }
                     }
                 });
@@ -1109,21 +1188,34 @@ public class DocSnippets implements DocSnippetsInterface {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void getTotalesSemana(Date fecha) {
-        Date fecha1=new Date(fecha.getTime());//Si ponemos fechaS=fechaS->fechaS=fehca1 y altera valores  en gfetTotalesMes(fechaS)
+        Date fecha1 = new Date(fecha.getTime());//Si ponemos fechaS=fechaS->fechaS=fehca1 y altera valores  en gfetTotalesMes(fechaS)
         Log.e("fechaSemana", (String.valueOf(fecha1)));
         Date fechaSig = new Date();
-        fechaSig.setTime(fecha.getTime()+(3600000*24));
-        SimpleDateFormat sd=new SimpleDateFormat("EEEE");
-        String dayofweek=sd.format(fecha1.getTime());
-        Log.e("DiadelaSemana",dayofweek);
-        switch (dayofweek){
-            case "lunes": break;
-            case "martes": fecha1.setTime(fecha.getTime() - (3600000*24));break;
-            case "miércoles":fecha1.setTime(fecha.getTime() -  (3600000*24*2));break;
-            case "jueves":fecha1.setTime(fecha.getTime() -  (3600000*24*3));break;
-            case "viernes":fecha1.setTime(fecha.getTime() - (3600000*24*4));break;
-            case "sábado":fecha1.setTime(fecha.getTime() -  (3600000*24*5));break;
-            case "domingo":fecha1.setTime(fecha.getTime() -  (3600000*24*6));break;
+        fechaSig.setTime(fecha.getTime() + (3600000 * 24));
+        SimpleDateFormat sd = new SimpleDateFormat("EEEE");
+        String dayofweek = sd.format(fecha1.getTime());
+        Log.e("DiadelaSemana", dayofweek);
+        switch (dayofweek) {
+            case "lunes":
+                break;
+            case "martes":
+                fecha1.setTime(fecha.getTime() - (3600000 * 24));
+                break;
+            case "miércoles":
+                fecha1.setTime(fecha.getTime() - (3600000 * 24 * 2));
+                break;
+            case "jueves":
+                fecha1.setTime(fecha.getTime() - (3600000 * 24 * 3));
+                break;
+            case "viernes":
+                fecha1.setTime(fecha.getTime() - (3600000 * 24 * 4));
+                break;
+            case "sábado":
+                fecha1.setTime(fecha.getTime() - (3600000 * 24 * 5));
+                break;
+            case "domingo":
+                fecha1.setTime(fecha.getTime() - (3600000 * 24 * 6));
+                break;
         }
         Log.e("fechaSemana_fecha_del_lunes", (String.valueOf(fecha1)));
 
@@ -1139,19 +1231,19 @@ public class DocSnippets implements DocSnippetsInterface {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            double total=0;
+                            double total = 0;
                             for (DocumentSnapshot document : task.getResult()) {
                                 total += (Double) document.get("tarifa");
 //                                Log.e("Total",String.valueOf(total));
 //                                Log.e("fechaS",String.valueOf(document.getDate("fechaS").getDate()));
                             }
-                            if (task.getResult().size()==0){
-                                Log.e("Resultado","No hay resultados");
+                            if (task.getResult().size() == 0) {
+                                Log.e("Resultado", "No hay resultados");
                             }
-                            Log.e("TotalesSemana",String.valueOf(total));
+                            Log.e("TotalesSemana", String.valueOf(total));
                             totalesActivity.total_semana.setText(String.valueOf(total));
                         } else {
-                            Log.e(TAG, "Error getting documents: "+ "No hay documentos");
+                            Log.e(TAG, "Error getting documents: " + "No hay documentos");
                         }
                     }
                 });
@@ -1159,11 +1251,11 @@ public class DocSnippets implements DocSnippetsInterface {
     }
 
     public void getTotalesMes(Date fecha) {
-        Date fecha1 = new Date(fecha.getYear(),fecha.getMonth(),1);
+        Date fecha1 = new Date(fecha.getYear(), fecha.getMonth(), 1);
         Log.e("fechaMes", (String.valueOf(fecha1)));
         Date fechaSig;
-        if(fecha.getMonth()==11) fechaSig = new Date(fecha.getYear()+1,0,1);
-        else fechaSig = new Date(fecha.getYear(),fecha.getMonth()+1,1);
+        if (fecha.getMonth() == 11) fechaSig = new Date(fecha.getYear() + 1, 0, 1);
+        else fechaSig = new Date(fecha.getYear(), fecha.getMonth() + 1, 1);
         // [START get_multiple_all]
         Log.e("fechaMesSig", (String.valueOf(fechaSig)));
         db.collection("citas")
@@ -1175,19 +1267,19 @@ public class DocSnippets implements DocSnippetsInterface {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            double total=0;
+                            double total = 0;
                             for (DocumentSnapshot document : task.getResult()) {
                                 total += (Double) document.get("tarifa");
 //                                Log.e("fechaS",String.valueOf(document.getDate("fechaS").getDate()));
 //                                Log.e("SuTotal",String.valueOf(total));
                             }
-                            if (task.getResult().size()==0){
-                                Log.e("Resultado","No hay resultados");
+                            if (task.getResult().size() == 0) {
+                                Log.e("Resultado", "No hay resultados");
                             }
-                            Log.e("TotalesMes",String.valueOf(total));
+                            Log.e("TotalesMes", String.valueOf(total));
                             totalesActivity.total_mes.setText(String.valueOf(total));
                         } else {
-                            Log.e(TAG, "Error getting documents: "+ "No hay documentos");
+                            Log.e(TAG, "Error getting documents: " + "No hay documentos");
                         }
                     }
                 });
@@ -1201,7 +1293,7 @@ public class DocSnippets implements DocSnippetsInterface {
         Date fecha2 = new Date();
         fecha2.setDate(1);
         fecha2.setMonth(0);
-        fecha2.setYear(fecha.getYear()+1);
+        fecha2.setYear(fecha.getYear() + 1);
         Log.e("finicioAño", (String.valueOf(fecha)));
         Log.e("ffinAño", (String.valueOf(fecha2)));
         db.collection("citas")
@@ -1213,19 +1305,19 @@ public class DocSnippets implements DocSnippetsInterface {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            double total=0;
+                            double total = 0;
                             for (DocumentSnapshot document : task.getResult()) {
                                 total += (Double) document.get("tarifa");
 //                                Log.e("Total",String.valueOf(total));
 //                                Log.e("fechaS",String.valueOf(document.getDate("fechaS").getDate()));
                             }
-                            if (task.getResult().size()==0){
-                                Log.e("Resultado","No hay resultados");
+                            if (task.getResult().size() == 0) {
+                                Log.e("Resultado", "No hay resultados");
                             }
-                            Log.e("Totales",String.valueOf(total));
+                            Log.e("Totales", String.valueOf(total));
                             totalesActivity.total_año.setText(String.valueOf(total));
                         } else {
-                            Log.e(TAG, "Error getting documents: "+ "No hay documentos");
+                            Log.e(TAG, "Error getting documents: " + "No hay documentos");
                         }
                     }
                 });
@@ -1233,14 +1325,13 @@ public class DocSnippets implements DocSnippetsInterface {
     }
 
 
-
     public void getPeluqueriasPorContacto() {
         // [START get_multiple_all]
 
         Contacto contacto = (Contacto) ComunicadorContacto.getObjeto();
         db.collection("citas")
-               .whereEqualTo("idContacto", contacto.get_id())
-                .orderBy("fecha",Direction.DESCENDING)
+                .whereEqualTo("idContacto", contacto.get_id())
+                .orderBy("fecha", Direction.DESCENDING)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -1257,7 +1348,6 @@ public class DocSnippets implements DocSnippetsInterface {
                 });
         // [END get_multiple_all]
     }
-
 
 
     @Override
@@ -1569,7 +1659,7 @@ public class DocSnippets implements DocSnippetsInterface {
 
                         // Get the last visible document
                         DocumentSnapshot lastVisible = documentSnapshots.getDocuments()
-                                .get(documentSnapshots.size() -1);
+                                .get(documentSnapshots.size() - 1);
 
                         // Construct a new query starting at this document,
                         // get the next 25 cities.
@@ -1600,6 +1690,7 @@ public class DocSnippets implements DocSnippetsInterface {
     }
 
     // [START delete_collection]
+
     /**
      * Delete all documents in a collection. Uses an Executor to perform work on a background
      * thread. This does *not* automatically discover and delete subcollections.
@@ -1714,9 +1805,11 @@ public class DocSnippets implements DocSnippetsInterface {
     public class MyObject {
 
         public String name;
-        public @ServerTimestamp Date timestamp;
+        public @ServerTimestamp
+        Date timestamp;
 
-        public MyObject() {}
+        public MyObject() {
+        }
     }
     // [END server_timestamp_annotation]
 
@@ -1726,13 +1819,14 @@ public class DocSnippets implements DocSnippetsInterface {
         DocumentReference docRef = db.collection("objects").document("some-id");
 
         // Update the timestamp field with the value from the server
-        Map<String,Object> updates = new HashMap<>();
+        Map<String, Object> updates = new HashMap<>();
         updates.put("timestamp", FieldValue.serverTimestamp());
 
         docRef.update(updates).addOnCompleteListener(new OnCompleteListener<Void>() {
             // [START_EXCLUDE]
             @Override
-            public void onComplete(@NonNull Task<Void> task) {}
+            public void onComplete(@NonNull Task<Void> task) {
+            }
             // [START_EXCLUDE]
         });
         // [END update_with_server_timestamp]
@@ -1744,13 +1838,14 @@ public class DocSnippets implements DocSnippetsInterface {
         DocumentReference docRef = db.collection("cities").document("BJ");
 
         // Remove the 'capital' field from the document
-        Map<String,Object> updates = new HashMap<>();
+        Map<String, Object> updates = new HashMap<>();
         updates.put("capital", FieldValue.delete());
 
         docRef.update(updates).addOnCompleteListener(new OnCompleteListener<Void>() {
             // [START_EXCLUDE]
             @Override
-            public void onComplete(@NonNull Task<Void> task) {}
+            public void onComplete(@NonNull Task<Void> task) {
+            }
             // [START_EXCLUDE]
         });
         // [END update_delete_field]

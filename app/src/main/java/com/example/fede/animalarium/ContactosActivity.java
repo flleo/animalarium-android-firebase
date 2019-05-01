@@ -135,9 +135,9 @@ public class ContactosActivity extends AppCompatActivity {
                             intent = new Intent(context, FormularioActivity.class);
                             viene = "contactos_activity";
                             break;
-                        case "contactos":
+
+                        case "formulario_activity":
                             intent = new Intent(context, FormularioActivity.class);
-                            intent.putExtra("FECHA", fechaS);
                             break;
                         case "peluquerias":
                             intent = new Intent(context, FormularioCitaActivity.class);

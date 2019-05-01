@@ -63,7 +63,7 @@ public class FormularioActivity extends AppCompatActivity {
 
     //
 
-    public Contacto contacto;
+    public Contacto contacto = new Contacto();
     ContactoS contactoS;
 
     private static EditText mascota, raza, telefono1, telefono2, propietario;
@@ -78,7 +78,8 @@ public class FormularioActivity extends AppCompatActivity {
     int _id;
     private String fotoS = null;
     DocSnippets docSnippets;
-    private List<Contacto> contactos;
+    private List<Contacto> contactos = null;
+    private ProgressDialog progressDialog;
 
 
     @Override
@@ -113,6 +114,7 @@ public class FormularioActivity extends AppCompatActivity {
         reservas = findViewById(R.id.formulario_susReservas_button);
 
 
+        contactos = ComunicadorContacto.getObjects();
         viene = getIntent().getExtras().getString("VIENE");
         switch (viene) {
 
@@ -434,9 +436,10 @@ public class FormularioActivity extends AppCompatActivity {
                         Toast.makeText(FormularioActivity.this, "Contacto añadido", Toast.LENGTH_SHORT).show();
 //                        Intent intent = new Intent(getApplicationContext(), ContactosActivity.class);
 //                        startActivity(intent);
-
-                        //Recpgemos el contacto con su uri y lo añadimos al comunicador
-                        docSnippets.getContactoConId(contactoRef.getId());
+                        Log.e("ID",contactoRef.getId());
+                        contactoS.set_id(contactoRef.getId());
+                        bindeaContactoS(contactoS);
+                        añadimosContactoAlComunicador(contacto);
 
 
                     }
@@ -465,23 +468,26 @@ public class FormularioActivity extends AppCompatActivity {
         contacto = con;
         ComunicadorContacto.setObjeto(contacto);
         añadimosContactoAlComunicador(contacto);
-
+        Intent menu = new Intent(getApplicationContext(), ContactosActivity.class);
+        menu.putExtra("VIENE", "formulario_activity");
+        startActivity(menu);
 
     }
 
 
-
-
     public void actualizarContacto1(final ContactoS contactoS) {
-
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("...actualizando contacto...");
+        progressDialog.show();
         DocumentReference contact = db.collection("contactos").document(contactoS.get_id());
 
-        if (contactoS.getFoto() != null) {
-            contact.update(KEY_FOTO, contactoS.getFoto());
+        /*if (contactoS.getFoto() != null) {
+
             Log.e("contacto.getFoto()_actualizaContacto1!=null", contactoS.getFoto());
         } else {
             Log.e("contacto.getFoto()_actualizaContacto1==null", contactoS.getFoto());
-        }
+        }*/
+        contact.update(KEY_FOTO, contactoS.getFoto());
         contact.update(KEY_MASCOTA, contactoS.getMascota());
         contact.update(KEY_RAZA, contactoS.getRaza());
         contact.update(KEY_TAMAÑO, contactoS.getTamaño());
@@ -495,12 +501,15 @@ public class FormularioActivity extends AppCompatActivity {
 
                     public void onSuccess(Void aVoid) {
 
+                        Toast.makeText(getApplicationContext(), "Contacto actualizado, con éxito", Toast.LENGTH_SHORT).show();
                         Log.e("contacto_actualizado_ mascota:", contactoS.getMascota());
+
                         actualizaComunicadorContacto();
 
                     }
 
                 });
+
 
     }
 
@@ -514,10 +523,8 @@ public class FormularioActivity extends AppCompatActivity {
                     db.collection("contactos").document(contacto.get_id()).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
-                            Toast toast1 =
-                                    Toast.makeText(getApplicationContext(),
-                                            "Contacto eliminado, con éxito", Toast.LENGTH_SHORT);
-                            toast1.show();
+
+                            Toast.makeText(getApplicationContext(),"Contacto eliminado, con éxito", Toast.LENGTH_SHORT).show();
                             eliminaContactoDelComunicador(contacto);
                         }
                     })
@@ -530,8 +537,7 @@ public class FormularioActivity extends AppCompatActivity {
                                     toast1.show();
                                 }
                             });
-                    Intent intent = new Intent(getApplicationContext(), ContactosActivity.class);
-                    startActivity(intent);
+
                 }
             });
             builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
@@ -549,38 +555,52 @@ public class FormularioActivity extends AppCompatActivity {
     }
 
     private void añadimosContactoAlComunicador(Contacto con) {
+
         contactos.add(con);
         //ordenamos los contactos
-        Collections.sort(contactos, new Comparator<Contacto>(){
+        Collections.sort(contactos, new Comparator<Contacto>() {
             @Override
             public int compare(Contacto o1, Contacto o2) {
                 return o1.getMascota().compareToIgnoreCase(o2.getMascota());
             }
         });
         ComunicadorContacto.setObjects(contactos);
+        Log.e("ocntacto", contactos.get(0).getMascota());
+        Intent intent = new Intent(getApplicationContext(), ContactosActivity.class);
+        intent.putExtra("VIENE", "formulario_activity");
+        startActivity(intent);
+
     }
 
     private void actualizaComunicadorContacto() {
-        contactos = ComunicadorContacto.getObjects();
-        for (Contacto con : contactos) {
-            if (con.get_id().equalsIgnoreCase(contacto.get_id())) {
-                con.setFoto(contacto.getFoto());
-                con.setMascota(contacto.getMascota());
-                con.setPropietario(contacto.getPropietario());
-                con.setRaza(contacto.getRaza());
-                con.setTamaño(contacto.getTamaño());
-                con.setTelefono1(contacto.getTelefono1());
-                con.setTelefono2(contacto.getTelefono2());
-            }
-        }
-        ComunicadorContacto.setObjects(contactos);
+
+        bindeaContactoS(contactoS);
+        contactos.remove(contacto);
+        añadimosContactoAlComunicador(contacto);
+
+
+    }
+
+    private void bindeaContactoS(ContactoS con) {
+        contacto.set_id(con.get_id());
+        contacto.setTelefono2(con.getTelefono2());
+        contacto.setTelefono1(con.getTelefono1());
+        contacto.setTamaño(con.getTamaño());
+        contacto.setRaza(con.getRaza());
+        contacto.setPropietario(con.getPropietario());
+        contacto.setMascota(con.getMascota());
+        contacto.setFoto(selectedImageUri);
     }
 
 
     private void eliminaContactoDelComunicador(Contacto contacto) {
-        contactos = ComunicadorContacto.getObjects();
+
         contactos.remove(contacto);
         ComunicadorContacto.setObjects(contactos);
+        Intent intent = new Intent(getApplicationContext(), ContactosActivity.class);
+        intent.putExtra("VIENE","formulario_activity");
+        startActivity(intent);
+
     }
 
     public static Bitmap reducirImagen(Context c, Uri uri, final int requiredSize)
@@ -627,7 +647,7 @@ public class FormularioActivity extends AppCompatActivity {
     public void onBackPressed() {
 
         Intent menu = new Intent(getApplicationContext(), ContactosActivity.class);
-        menu.putExtra("VIENE","formulario_activity");
+        menu.putExtra("VIENE", "formulario_activity");
         startActivity(menu);
 
     }
