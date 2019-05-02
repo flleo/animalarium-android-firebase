@@ -72,7 +72,7 @@ public class ContactosActivity extends AppCompatActivity {
     private static final int PERMISSION_REQUEST_CODE = 1;
     Date fecha = new Date();
     static String fechaS = "";
-    static String viene = "contactos";
+    static String viene="";
     private static Uri uri;
     private int cantidadTotalContactos;
     private static Contacto contacto;
@@ -129,11 +129,13 @@ public class ContactosActivity extends AppCompatActivity {
                 ComunicadorContacto.setObjeto(contacto);
 
                 Intent intent = null;
-                if (!viene.equalsIgnoreCase("")) {
+
+                if(viene!="") {
+                    Log.e("viene134",viene);
                     switch (viene) {
                         case "main_activity":
                             intent = new Intent(context, FormularioActivity.class);
-                            viene = "contactos_activity";
+                            Log.e("viene137",viene);
                             break;
 
                         case "formulario_activity":
@@ -149,7 +151,7 @@ public class ContactosActivity extends AppCompatActivity {
                             break;
                     }
 
-                    intent.putExtra("VIENE", viene);
+                    intent.putExtra("VIENE", "contactos_activity");
 
                     startActivity(intent);
 
@@ -185,6 +187,22 @@ public class ContactosActivity extends AppCompatActivity {
         listado.setAdapter(adaptador);
 
 
+    }
+
+    public void buscar(View view) {
+
+        progressDialog.dismiss();
+        contactos.clear();
+        String mascota = buscador.getText().toString().toLowerCase();
+        if (!mascota.equalsIgnoreCase("")) {
+            //mascota = String.valueOf(mascota.charAt(0));
+            docSnippets.getContactosParaNombre(mascota);
+            // progressDialog.show();
+
+        } else {
+            docSnippets.getContactos();
+            //  progressDialog.show();
+        }
     }
 
     public static void setContactos(List<DocumentSnapshot> documents, Activity activity, String viene, ProgressDialog progressDialog) {
@@ -300,28 +318,14 @@ public class ContactosActivity extends AppCompatActivity {
 
 
 
-    public void buscar(View view) {
 
-        progressDialog.dismiss();
-        contactos.clear();
-        String mascota = buscador.getText().toString();
-        if (!mascota.equalsIgnoreCase("")) {
-            //mascota = String.valueOf(mascota.charAt(0));
-            docSnippets.getContactosParaNombre(mascota);
-            // progressDialog.show();
 
-        } else {
-            docSnippets.getContactos();
-            //  progressDialog.show();
-        }
-    }
-
-    private void recuperarFirebase() {
+  /*  private void recuperarFirebase() {
 
         contactos.clear();
         docSnippets.getContactos();
         progressDialog.show();
-    }
+    }*/
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[],

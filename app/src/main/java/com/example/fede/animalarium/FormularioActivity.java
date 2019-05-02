@@ -125,6 +125,8 @@ public class FormularioActivity extends AppCompatActivity {
                 citas.setEnabled(false);
                 reservas.setEnabled(false);
                 break;
+            case "contactos_activity":
+                break;
             default:
                 contacto = (Contacto) ComunicadorContacto.getObjeto();
                 bindeaContactoView(contacto);
@@ -565,10 +567,7 @@ public class FormularioActivity extends AppCompatActivity {
             }
         });
         ComunicadorContacto.setObjects(contactos);
-        Log.e("ocntacto", contactos.get(0).getMascota());
-        Intent intent = new Intent(getApplicationContext(), ContactosActivity.class);
-        intent.putExtra("VIENE", "formulario_activity");
-        startActivity(intent);
+
 
     }
 
