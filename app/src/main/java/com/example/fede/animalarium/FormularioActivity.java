@@ -566,9 +566,14 @@ public class FormularioActivity extends AppCompatActivity {
                 return o1.getMascota().compareToIgnoreCase(o2.getMascota());
             }
         });
+        //
         ComunicadorContacto.setObjects(contactos);
 
-
+        añadir.setEnabled(false);
+        actualizar.setEnabled(true);
+        eliminar.setEnabled(true);
+        citas.setEnabled(true);
+        reservas.setEnabled(true);
     }
 
     private void actualizaComunicadorContacto() {
