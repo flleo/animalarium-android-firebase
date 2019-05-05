@@ -9,7 +9,6 @@ import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.annotation.WorkerThread;
 import android.util.Log;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -17,6 +16,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
+import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentChange.Type;
@@ -38,6 +38,8 @@ import com.google.firebase.firestore.SetOptions;
 import com.google.firebase.firestore.Transaction;
 import com.google.firebase.firestore.WriteBatch;
 
+import java.sql.Time;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -76,7 +78,9 @@ public class DocSnippets implements DocSnippetsInterface {
     ReservasAdapter reservasAdapter;
     FormularioCitaActivity formularioCitaActivity;
     HotelActivity hotelActivity;
+    HotelContactoActivity hotelContactoActivity;
     FormularioHotelActivity formularioHotelActivity;
+    MisReservasAdapter misReservasAdapter;
     Activity context;
 
     ProgressDialog progressDialog = null;
@@ -100,6 +104,16 @@ public class DocSnippets implements DocSnippetsInterface {
     DocSnippets(FirebaseFirestore db, HotelActivity hotelActivity) {
         this.db = db;
         this.hotelActivity = hotelActivity;
+    }
+
+    DocSnippets(FirebaseFirestore db, MisReservasAdapter misReservasAdapter) {
+        this.db = db;
+        this.misReservasAdapter = misReservasAdapter;
+    }
+
+    DocSnippets(FirebaseFirestore db, HotelContactoActivity hotelContactoActivity) {
+        this.db = db;
+        this.hotelContactoActivity = hotelContactoActivity;
     }
 
     DocSnippets(FirebaseFirestore db, FormularioHotelActivity formularioHotelActivity) {
@@ -151,6 +165,8 @@ public class DocSnippets implements DocSnippetsInterface {
         this.db = db;
         this.mainActivity = mainActivity;
     }
+
+
 
 
     void runAll() {
@@ -1074,83 +1090,114 @@ public class DocSnippets implements DocSnippetsInterface {
         });
     }
 
+    public void getPeluqueriasPorContacto() {
+        // [START get_multiple_all]
+
+        Contacto contacto = (Contacto) ComunicadorContacto.getContacto();
+        db.collection("citas")
+                .whereEqualTo("idContacto", contacto.get_id())
+                .orderBy("fecha", Direction.DESCENDING)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (DocumentSnapshot document : task.getResult()) {
+                                peluqueriasContactoActivity.bindeaYAñadeCita(document);
+                            }
+                            peluqueriasContactoActivity.inicimosAdaptador();
+                        } else {
+                            Log.e(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+        // [END get_multiple_all]
+    }
+
+    public void getReservasPorContacto() {
+        // [START get_multiple_all]
+
+        Contacto contacto = (Contacto) ComunicadorContacto.getContacto();
+        db.collection("hoteles")
+                .whereEqualTo("idContacto", contacto.get_id())
+                .orderBy("fechaInicio", Direction.DESCENDING)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (DocumentSnapshot document : task.getResult()) {
+                                hotelContactoActivity.bindeaYAñadeReserva(document);
+                            }
+                            hotelContactoActivity.inicimosAdaptador();
+                        } else {
+                            Log.e(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+        // [END get_multiple_all]
+    }
+
+
 
     public void getReservas(Date fecha) {
-        fecha.setHours(23);
-        fecha.setMinutes(00);
-        fecha.setSeconds(00);
+        final Date fechaInicio = new Date();
+        fechaInicio.setTime(fecha.getTime());
+        fechaInicio.setHours(23);
+        fechaInicio.setMinutes(00);
+        fechaInicio.setSeconds(00);
         final Date fechaFin = new Date();
-        fechaFin.setTime(fecha.getTime());
+        fechaFin.setTime(fechaInicio.getTime());
         fechaFin.setHours(0);
-        Log.e("finicioReserva", (String.valueOf(fecha)));
+        Log.e("finicioReserva", (String.valueOf(fechaInicio)));
+        Log.e("finFinReserva", (String.valueOf(fechaFin)));
         // [START get_multiple_all]
         try {
-            db.collection("hoteles")
-                    .orderBy("fechaInicio")
-                    .whereLessThanOrEqualTo("fechaInicio", fecha)
-                    //.whereGreaterThanOrEqualTo("fechaFin", fechaFin)
-                    .get()
-                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                            if (task.isSuccessful()) {
+                db.collection("hoteles")
+                        .orderBy("fechaFin")
+                       // .endBefore(fecha)
+                        .whereGreaterThanOrEqualTo("fechaFin", fechaFin)
+                        .get()
+                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                if (task.isSuccessful()) {
+                                    if (task.getResult().size() == 0) {
+                                        hotelActivity.inicimosAdaptador();
+                                        Log.e(TAG, "No hay rReservas para esta fecha");
+                                    } else {
+                                        int i = 0,j=0;
+                                        for (DocumentSnapshot doc : task.getResult().getDocuments()){
+                                            i++;
+                                            if ((doc.getDate("fechaInicio").compareTo(fechaInicio) <= 0)&&(doc.getDate("fechaFin").compareTo(fechaFin) >= 0))
+                                            {
+                                                Log.e("lllll","ñññññññññññññ");
+                                               hotelActivity.bindeaYAñadeReservaHotel(doc,i,task.getResult().size());
+                                               j++;
 
-                                if (task.getResult().size() == 0) {
-                                    //hotelActivity.inicimosAdaptador();
-                                    Log.e(TAG, "No hay reservas para esta fechaInicio");
-                                } else {
-                                    int i = 0;
-                                    for (DocumentSnapshot doc : task.getResult().getDocuments()){
-                                        i++;
-                                        if (doc.getDate("fechaFin").compareTo(fechaFin) >= 0)
-                                            getReservasFechaFin(fechaFin);
-                                        else if (i==task.getResult().size())  hotelActivity.setReservas(null);
+
+                                            }
+                                            Log.e("finicioReserva", doc.getDate("fechaInicio").toString());
+                                            Log.e("finFinReserva", doc.getDate("fechaFin").toString());
+                                            if ((i==task.getResult().size()&&(j==0))) {
+                                                hotelActivity.inicimosAdaptador();
+                                                Log.e(TAG, "No hay rEeservas para esta fecha");
+                                            }
+                                        }
                                     }
-                                }
-                            } else {
-                                Log.e(TAG, "Error getting documents", task.getException());
-                            }
-                        }
-                    });
-        } catch (IllegalArgumentException e) {
-            Toast.makeText(hotelActivity, "No existen reservas en la base de datos", Toast.LENGTH_SHORT).show();
-            Log.e(TAG, e.toString());
-        }
-        // [END get_multiple_all]
-    }
-
-    public void getReservasFechaFin(Date fecha) {
-
-        Log.e("fFinReserva", (String.valueOf(fecha)));
-        // [START get_multiple_all]
-        try {
-            db.collection("hoteles")
-                    .orderBy("fechaFin")
-                    .whereGreaterThanOrEqualTo("fechaFin", fecha)
-                    .get()
-                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                            if (task.isSuccessful()) {
-
-                                if (task.getResult().size() == 0) {
-                                    // hotelActivity.inicimosAdaptador();
-                                    Log.e(TAG, "No hay reservas para esta fechaFin");
-                                    hotelActivity.setReservas(null);
                                 } else {
-                                    hotelActivity.setReservas(task.getResult().getDocuments());
+                                    Log.e(TAG, "Error getting documents", task.getException());
                                 }
-                            } else {
-                                Log.e(TAG, "Error getting documents", task.getException());
                             }
-                        }
-                    });
+                        });
+
         } catch (IllegalArgumentException e) {
             Toast.makeText(hotelActivity, "No existen reservas en la base de datos", Toast.LENGTH_SHORT).show();
             Log.e(TAG, e.toString());
         }
         // [END get_multiple_all]
     }
+
 
     public void getTotalesDia(Date fecha) {
         Log.e("fechaDia", (String.valueOf(fecha)));
@@ -1159,7 +1206,7 @@ public class DocSnippets implements DocSnippetsInterface {
         // [START get_multiple_all]
         Log.e("fechaSig", (String.valueOf(fechaSig)));
         db.collection("citas")
-                .orderBy("fechaS")
+                .orderBy("fecha")
                 .startAt(fecha)
                 .endAt(fechaSig)
                 .get()
@@ -1223,7 +1270,7 @@ public class DocSnippets implements DocSnippetsInterface {
         // [START get_multiple_all]
         Log.e("fechaSig", (String.valueOf(fechaSig)));
         db.collection("citas")
-                .orderBy("fechaS")
+                .orderBy("fecha")
                 .startAt(fecha1)
                 .endAt(fechaSig)
                 .get()
@@ -1259,7 +1306,7 @@ public class DocSnippets implements DocSnippetsInterface {
         // [START get_multiple_all]
         Log.e("fechaMesSig", (String.valueOf(fechaSig)));
         db.collection("citas")
-                .orderBy("fechaS")
+                .orderBy("fecha")
                 .startAt(fecha1)
                 .endAt(fechaSig)
                 .get()
@@ -1297,7 +1344,7 @@ public class DocSnippets implements DocSnippetsInterface {
         Log.e("finicioAño", (String.valueOf(fecha)));
         Log.e("ffinAño", (String.valueOf(fecha2)));
         db.collection("citas")
-                .orderBy("fechaS")
+                .orderBy("fecha")
                 .startAt(fecha)
                 .endAt(fecha2)
                 .get()
@@ -1325,29 +1372,179 @@ public class DocSnippets implements DocSnippetsInterface {
     }
 
 
-    public void getPeluqueriasPorContacto() {
+    public void getTotalesHotelDia(Date fecha) {
+        Log.e("fechaDia", (String.valueOf(fecha)));
+        Date fechaSig = new Date();
+        fechaSig.setTime(fecha.getTime() + (3600000 * 24));
         // [START get_multiple_all]
-
-        Contacto contacto = (Contacto) ComunicadorContacto.getObjeto();
-        db.collection("citas")
-                .whereEqualTo("idContacto", contacto.get_id())
-                .orderBy("fecha", Direction.DESCENDING)
+        Log.e("fechaSig", (String.valueOf(fechaSig)));
+        db.collection("hoteles")
+                .orderBy("fechaInicio")
+                .endBefore(fecha)
+                .startAt(fecha)
+                .endAt(fechaSig)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
+                            double total = 0;
                             for (DocumentSnapshot document : task.getResult()) {
-                                peluqueriasContactoActivity.bindeaYAñadeCita(document);
+                                total += (Double) document.get("tarifa");
+//                                Log.e("Total",String.valueOf(total));
+//                                Log.e("fechaS",String.valueOf(document.getDate("fechaS").getDate()));
                             }
-                            peluqueriasContactoActivity.inicimosAdaptador();
+                            if (task.getResult().size() == 0) {
+                                Log.e("Resultado", "No hay resultados");
+                            }
+                            Log.e("TotalesDia", String.valueOf(total));
+                            totalesActivity.total_dia.setText(String.valueOf(total));
                         } else {
-                            Log.e(TAG, "Error getting documents: ", task.getException());
+                            Log.e(TAG, "Error getting documents: " + "No hay documentos");
                         }
                     }
                 });
         // [END get_multiple_all]
     }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public void getTotalesHotelSemana(Date fecha) {
+        Date fecha1 = new Date(fecha.getTime());//Si ponemos fechaS=fechaS->fechaS=fehca1 y altera valores  en gfetTotalesMes(fechaS)
+        Log.e("fechaSemana", (String.valueOf(fecha1)));
+        Date fechaSig = new Date();
+        fechaSig.setTime(fecha.getTime() + (3600000 * 24));
+        SimpleDateFormat sd = new SimpleDateFormat("EEEE");
+        String dayofweek = sd.format(fecha1.getTime());
+        Log.e("DiadelaSemana", dayofweek);
+        switch (dayofweek) {
+            case "lunes":
+                break;
+            case "martes":
+                fecha1.setTime(fecha.getTime() - (3600000 * 24));
+                break;
+            case "miércoles":
+                fecha1.setTime(fecha.getTime() - (3600000 * 24 * 2));
+                break;
+            case "jueves":
+                fecha1.setTime(fecha.getTime() - (3600000 * 24 * 3));
+                break;
+            case "viernes":
+                fecha1.setTime(fecha.getTime() - (3600000 * 24 * 4));
+                break;
+            case "sábado":
+                fecha1.setTime(fecha.getTime() - (3600000 * 24 * 5));
+                break;
+            case "domingo":
+                fecha1.setTime(fecha.getTime() - (3600000 * 24 * 6));
+                break;
+        }
+        Log.e("fechaSemana_fecha_del_lunes", (String.valueOf(fecha1)));
+
+        //fechaSig.setTime(fechaS.getTime() + (3600000*24*7));
+        // [START get_multiple_all]
+        Log.e("fechaSig", (String.valueOf(fechaSig)));
+        db.collection("citas")
+                .orderBy("fechaS")
+                .startAt(fecha1)
+                .endAt(fechaSig)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            double total = 0;
+                            for (DocumentSnapshot document : task.getResult()) {
+                                total += (Double) document.get("tarifa");
+//                                Log.e("Total",String.valueOf(total));
+//                                Log.e("fechaS",String.valueOf(document.getDate("fechaS").getDate()));
+                            }
+                            if (task.getResult().size() == 0) {
+                                Log.e("Resultado", "No hay resultados");
+                            }
+                            Log.e("TotalesSemana", String.valueOf(total));
+                            totalesActivity.total_semana.setText(String.valueOf(total));
+                        } else {
+                            Log.e(TAG, "Error getting documents: " + "No hay documentos");
+                        }
+                    }
+                });
+        // [END get_multiple_all]
+    }
+
+    public void getTotalesHotelMes(Date fecha) {
+        Date fecha1 = new Date(fecha.getYear(), fecha.getMonth(), 1);
+        Log.e("fechaMes", (String.valueOf(fecha1)));
+        Date fechaSig;
+        if (fecha.getMonth() == 11) fechaSig = new Date(fecha.getYear() + 1, 0, 1);
+        else fechaSig = new Date(fecha.getYear(), fecha.getMonth() + 1, 1);
+        // [START get_multiple_all]
+        Log.e("fechaMesSig", (String.valueOf(fechaSig)));
+        db.collection("citas")
+                .orderBy("fechaS")
+                .startAt(fecha1)
+                .endAt(fechaSig)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            double total = 0;
+                            for (DocumentSnapshot document : task.getResult()) {
+                                total += (Double) document.get("tarifa");
+//                                Log.e("fechaS",String.valueOf(document.getDate("fechaS").getDate()));
+//                                Log.e("SuTotal",String.valueOf(total));
+                            }
+                            if (task.getResult().size() == 0) {
+                                Log.e("Resultado", "No hay resultados");
+                            }
+                            Log.e("TotalesMes", String.valueOf(total));
+                            totalesActivity.total_mes.setText(String.valueOf(total));
+                        } else {
+                            Log.e(TAG, "Error getting documents: " + "No hay documentos");
+                        }
+                    }
+                });
+        // [END get_multiple_all]
+    }
+
+    public void getTotalesHotelAño(Date fecha) {
+
+        fecha.setDate(1);
+        fecha.setMonth(0);
+        Date fecha2 = new Date();
+        fecha2.setDate(1);
+        fecha2.setMonth(0);
+        fecha2.setYear(fecha.getYear() + 1);
+        Log.e("finicioAño", (String.valueOf(fecha)));
+        Log.e("ffinAño", (String.valueOf(fecha2)));
+        db.collection("citas")
+                .orderBy("fechaS")
+                .startAt(fecha)
+                .endAt(fecha2)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            double total = 0;
+                            for (DocumentSnapshot document : task.getResult()) {
+                                total += (Double) document.get("tarifa");
+//                                Log.e("Total",String.valueOf(total));
+//                                Log.e("fechaS",String.valueOf(document.getDate("fechaS").getDate()));
+                            }
+                            if (task.getResult().size() == 0) {
+                                Log.e("Resultado", "No hay resultados");
+                            }
+                            Log.e("Totales", String.valueOf(total));
+                            totalesActivity.total_año.setText(String.valueOf(total));
+                        } else {
+                            Log.e(TAG, "Error getting documents: " + "No hay documentos");
+                        }
+                    }
+                });
+        // [END get_multiple_all]
+    }
+
 
 
     @Override
@@ -1816,7 +2013,7 @@ public class DocSnippets implements DocSnippetsInterface {
     @Override
     public void updateWithServerTimestamp() {
         // [START update_with_server_timestamp]
-        DocumentReference docRef = db.collection("objects").document("some-id");
+        DocumentReference docRef = db.collection("contactos").document("some-id");
 
         // Update the timestamp field with the value from the server
         Map<String, Object> updates = new HashMap<>();

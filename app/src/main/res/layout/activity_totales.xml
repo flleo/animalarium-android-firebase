@@ -21,7 +21,7 @@
 
 
         <CalendarView
-            android:id="@+id/calendarView_Peluquerias"
+            android:id="@+id/calendarView_totales"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
@@ -213,7 +213,7 @@
                         android:text="Total mes:" />
 
                     <EditText
-                        android:id="@+id/totalhotel__mes"
+                        android:id="@+id/total_hotel_mes"
                         android:layout_width="87dp"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="34dp"

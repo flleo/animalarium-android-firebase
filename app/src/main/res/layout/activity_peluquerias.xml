@@ -24,7 +24,7 @@
         android:orientation="vertical">
 
         <CalendarView
-            android:id="@+id/calendarView_Peluquerias"
+            android:id="@+id/calendarView_peluquerias"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"

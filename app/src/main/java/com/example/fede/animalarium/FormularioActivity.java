@@ -114,7 +114,7 @@ public class FormularioActivity extends AppCompatActivity {
         reservas = findViewById(R.id.formulario_susReservas_button);
 
 
-        contactos = ComunicadorContacto.getObjects();
+        contactos = ComunicadorContacto.getContactos();
         viene = getIntent().getExtras().getString("VIENE");
         switch (viene) {
 
@@ -126,9 +126,21 @@ public class FormularioActivity extends AppCompatActivity {
                 reservas.setEnabled(false);
                 break;
             case "contactos_activity":
+                contacto = (Contacto) ComunicadorContacto.getContacto();
+                bindeaContactoView(contacto);
+                añadir.setEnabled(false);
+                oldSelectedImageUri = contacto.getFoto();
+                selectedImageUri = oldSelectedImageUri;
+                break;
+            case "hotel_contacto_activity":
+                contacto = (Contacto) ComunicadorContacto.getContacto();
+                bindeaContactoView(contacto);
+                añadir.setEnabled(false);
+                oldSelectedImageUri = contacto.getFoto();
+                selectedImageUri = oldSelectedImageUri;
                 break;
             default:
-                contacto = (Contacto) ComunicadorContacto.getObjeto();
+                contacto = (Contacto) ComunicadorContacto.getContacto();
                 bindeaContactoView(contacto);
                 añadir.setEnabled(false);
                 oldSelectedImageUri = contacto.getFoto();
@@ -285,7 +297,7 @@ public class FormularioActivity extends AppCompatActivity {
 
     public void peluquerias(View view) {
 
-        //ComunicadorContacto.setObjeto(contacto);
+        //ComunicadorContacto.setReserva(contacto);
         Intent intent = new Intent(this, PeluqueriasContactoActivity.class);
         intent.putExtra("VIENE", "formulario_activity");
         startActivity(intent);
@@ -294,8 +306,9 @@ public class FormularioActivity extends AppCompatActivity {
     }
 
     public void hotel(View view) {
-        ComunicadorContacto.setObjeto(contacto);
+        ComunicadorContacto.setContacto(contacto);
         Intent intent = new Intent(this, HotelContactoActivity.class);
+        intent.putExtra("VIENE","formulario_activity");
         startActivity(intent);
     }
 
@@ -468,7 +481,7 @@ public class FormularioActivity extends AppCompatActivity {
                 doc.getString("telefono2"),
                 doc.getString("propietario"));
         contacto = con;
-        ComunicadorContacto.setObjeto(contacto);
+        ComunicadorContacto.setContacto(contacto);
         añadimosContactoAlComunicador(contacto);
         Intent menu = new Intent(getApplicationContext(), ContactosActivity.class);
         menu.putExtra("VIENE", "formulario_activity");
@@ -567,7 +580,7 @@ public class FormularioActivity extends AppCompatActivity {
             }
         });
         //
-        ComunicadorContacto.setObjects(contactos);
+        ComunicadorContacto.setContactos(contactos);
 
         añadir.setEnabled(false);
         actualizar.setEnabled(true);
@@ -600,7 +613,7 @@ public class FormularioActivity extends AppCompatActivity {
     private void eliminaContactoDelComunicador(Contacto contacto) {
 
         contactos.remove(contacto);
-        ComunicadorContacto.setObjects(contactos);
+        ComunicadorContacto.setContactos(contactos);
         Intent intent = new Intent(getApplicationContext(), ContactosActivity.class);
         intent.putExtra("VIENE","formulario_activity");
         startActivity(intent);

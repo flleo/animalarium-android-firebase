@@ -1,17 +1,28 @@
 package com.example.fede.animalarium;
 
+import java.util.List;
+
 public class ComunicadorReserva {
 
 
 
-    private  static Object objeto = null;
+    private  static ReservaHotel reserva = null;
+    static List<ReservaHotel> reservas;
 
-    public  static void setObjeto(Object newObjeto) {
-        objeto = newObjeto;
+
+    public static ReservaHotel getReserva() {
+        return reserva;
     }
 
-    public  static Object getObjeto() {
-        return objeto;
+    public static void setReserva(ReservaHotel reserva) {
+        ComunicadorReserva.reserva = reserva;
     }
 
+    public static List<ReservaHotel> getReservas() {
+        return reservas;
+    }
+
+    public static void setReservas(List<ReservaHotel> reservas) {
+        ComunicadorReserva.reservas = reservas;
+    }
 }

@@ -9,19 +9,16 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.widget.CircularProgressDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -126,7 +123,7 @@ public class ContactosActivity extends AppCompatActivity {
 
                 contacto = contactos.get(position);
 
-                ComunicadorContacto.setObjeto(contacto);
+                ComunicadorContacto.setContacto(contacto);
 
                 Intent intent = null;
 
@@ -182,7 +179,7 @@ public class ContactosActivity extends AppCompatActivity {
     //LISTADO
     private static void iniciamosAdaptador() {
         // Inicializamos el adapter
-        adaptador = new ContactosAdapter(context, ComunicadorContacto.getObjects());
+        adaptador = new ContactosAdapter(context, ComunicadorContacto.getContactos());
 
         listado.setAdapter(adaptador);
 
@@ -296,7 +293,7 @@ public class ContactosActivity extends AppCompatActivity {
             contactoDS = contactosLI.next();
             cargarFoto();
         } catch (NoSuchElementException e) {
-            ComunicadorContacto.setObjects(contactos);
+            ComunicadorContacto.setContactos(contactos);
             ComunicadorContacto.setUris(uris);
             progressDialog.dismiss();
             switch (viene) {
@@ -340,7 +337,7 @@ public class ContactosActivity extends AppCompatActivity {
     }
 
     public void añadirContacto(View view) {
-        comunicadorContacto.setObjeto(null);
+        comunicadorContacto.setContacto(null);
         Intent formulario = new Intent(getApplicationContext(), FormularioActivity.class);
         formulario.putExtra("VIENE", "contactos_activity_añadirContacto");
         startActivity(formulario);

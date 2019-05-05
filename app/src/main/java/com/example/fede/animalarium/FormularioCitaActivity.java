@@ -121,7 +121,7 @@ public class FormularioCitaActivity extends AppCompatActivity {
         actualizar = (Button) findViewById(R.id.formulario_activity_actualizar_button);
         eliminar = (Button) findViewById(R.id.formulario_activity_eliminar_button);
 
-        contacto = (Contacto) ComunicadorContacto.getObjeto();
+        contacto = (Contacto) ComunicadorContacto.getContacto();
 
         try {
             viene = getIntent().getExtras().getString("VIENE");
@@ -347,7 +347,7 @@ public class FormularioCitaActivity extends AppCompatActivity {
                             Toast.makeText(FormularioCitaActivity.this, "Cita añadida", Toast.LENGTH_LONG).show();
                             Intent intent = new Intent(getApplicationContext(), PeluqueriasActivity.class);
                             startActivity(intent);
-                            ComunicadorContacto.setObjeto(null);
+                            ComunicadorContacto.setContacto(null);
                             Log.e("cita__id_fca", contactoRef.getId());
                             docSnippets.getCitaConId(contactoRef.getId());
 
@@ -391,7 +391,7 @@ public class FormularioCitaActivity extends AppCompatActivity {
                         public void onSuccess(Void aVoid) {
 
                             Toast.makeText(FormularioCitaActivity.this, "Contacto actualizado ;)", Toast.LENGTH_SHORT).show();
-                            ComunicadorContacto.setObjeto(null);
+                            ComunicadorContacto.setContacto(null);
                             ComunicadorCita.setObjeto(null);
 
                         }

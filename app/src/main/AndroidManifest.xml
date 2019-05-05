@@ -23,11 +23,15 @@
         android:roundIcon="@drawable/image"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".HotelContactoActivity"
-            android:label="@string/hotel_contacto_activity" ></activity>
-        <activity android:name=".FormularioHotelActivity"
+        <activity android:name=".ListMiReservaActivity"></activity>
+        <activity
+            android:name=".HotelContactoActivity"
+            android:label="@string/hotel_contacto_activity" />
+        <activity
+            android:name=".FormularioHotelActivity"
             android:label="@string/formulario_hotel_activity" />
-        <activity android:name=".HotelActivity"
+        <activity
+            android:name=".HotelActivity"
             android:label="@string/hotel_activity" />
         <activity
             android:name=".SplashScreenActivity"
@@ -44,7 +48,8 @@
         <activity
             android:name=".ContactosActivity"
             android:label="@string/contactos_activity" />
-        <activity android:name=".FormularioActivity"
+        <activity
+            android:name=".FormularioActivity"
             android:label="@string/formulario_activity" />
         <activity android:name=".ListItemActivity" />
         <activity android:name=".AboutActivity" />

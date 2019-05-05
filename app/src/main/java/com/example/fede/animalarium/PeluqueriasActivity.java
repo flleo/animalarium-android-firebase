@@ -72,7 +72,7 @@ public class PeluqueriasActivity extends AppCompatActivity {
         db.setFirestoreSettings(settings);
         //
 
-        calendarView = (CalendarView) findViewById(R.id.calendarView_Peluquerias);
+        calendarView = (CalendarView) findViewById(R.id.calendarView_peluquerias);
         listado = (ListView) findViewById(R.id.citas);
 
         fecha.setTime(calendarView.getDate());
@@ -85,14 +85,14 @@ public class PeluqueriasActivity extends AppCompatActivity {
             switch(viene){
                 case "main_activity":break;
                 default:
-                    contacto = (Contacto) ComunicadorContacto.getObjeto();
+                    contacto = (Contacto) ComunicadorContacto.getContacto();
                     cita = (CitaPeluqueria) ComunicadorCita.getObjeto();
                     break;
 
             };
 
         } catch (NullPointerException e1){
-            contacto = (Contacto) ComunicadorContacto.getObjeto();
+            contacto = (Contacto) ComunicadorContacto.getContacto();
             cita = (CitaPeluqueria) ComunicadorCita.getObjeto();
             viene="";
         }
@@ -155,7 +155,7 @@ public class PeluqueriasActivity extends AppCompatActivity {
             default:
                 ComunicadorCita.setObjeto(null);
                 if (contacto != null) {
-                    ComunicadorContacto.setObjeto(contacto);
+                    ComunicadorContacto.setContacto(contacto);
                     formulario = new Intent(getApplicationContext(), FormularioCitaActivity.class);
                     formulario.putExtra("VIENE", "peluquerias");
                 } else {
@@ -237,7 +237,7 @@ public class PeluqueriasActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> ada, View v, int position, long arg3) {
 
                 ComunicadorCita.setObjeto(citas.get(position));
-                ComunicadorContacto.setObjeto(contactos.get(position));
+                ComunicadorContacto.setContacto(contactos.get(position));
 
                 Intent i = new Intent(getApplicationContext(), FormularioCitaActivity.class);
                 i.putExtra("VIENE","peluquerias_activity");

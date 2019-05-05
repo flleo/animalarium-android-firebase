@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.CalendarView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -62,7 +61,7 @@ public class PeluqueriasContactoActivity extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("...recuperando sus citas...");
 
-        contacto = (Contacto) ComunicadorContacto.getObjeto();
+        contacto = (Contacto) ComunicadorContacto.getContacto();
 
         try {
             viene = getIntent().getExtras().getString("VIENE");
@@ -155,7 +154,7 @@ public class PeluqueriasContactoActivity extends AppCompatActivity {
             formulario = new Intent(getApplicationContext(), FormularioCitaActivity.class);
             formulario.putExtra("FECHA", fecha);
         } else {
-            // ComunicadorContacto.setObjeto(contacto);
+            // ComunicadorContacto.setReserva(contacto);
             formulario = new Intent(getApplicationContext(), PeluqueriasActivity.class);
         }
         startActivity(formulario);

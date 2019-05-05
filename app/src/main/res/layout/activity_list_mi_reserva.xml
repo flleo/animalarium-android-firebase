@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ListMiReservaActivity">
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="wrap_content"
+        android:layout_height="162dp"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/activity_horizontal_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.08"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/activity_horizontal_margin"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/fecha_inicio_list_mi_reserva_enunciado"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/imageView"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@+id/imageButton_item"
+                    android:text="Fecha Inicio" />
+
+                <TextView
+                    android:id="@+id/fecha_inicio_list_mi_reserva"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/imageView"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@+id/imageButton_item"
+                    android:text="Fecha Inicio"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/fecha_fin_list_mi_reserva_enunciado"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/imageView"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@+id/imageButton_item"
+                    android:text="Fecha Fin" />
+
+                <TextView
+                    android:id="@+id/fecha_fin_list_mi_reserva"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/imageButton_item"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@+id/imageButton_item"
+                    android:layout_weight="1"
+                    android:text="Fecha Fin"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/noches_list_mi_reserva_enunciado"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/imageView"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@+id/imageButton_item"
+                    android:text="Noches" />
+
+                <TextView
+                    android:id="@+id/noches_list_mi_reserva"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/imageButton_item"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@+id/imageButton_item"
+                    android:layout_weight="1"
+                    android:text="Noches"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/coste_list_mi_reserva_enunciado"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/imageView"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@+id/imageButton_item"
+                    android:text="Coste" />
+
+                <TextView
+                    android:id="@+id/coste_list_mi_reserva"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/imageButton_item"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@+id/imageButton_item"
+                    android:layout_weight="1"
+                    android:text="Coste"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/pagado_list_mi_reserva_enunciado"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/imageView"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@+id/imageButton_item"
+                    android:text="Pagado" />
+
+                <TextView
+                    android:id="@+id/pagado_list_mi_reserva"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/imageButton_item"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@+id/imageButton_item"
+                    android:layout_weight="1"
+                    android:text="Pagado"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

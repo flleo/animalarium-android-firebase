@@ -38,6 +38,7 @@ public class TotalesActivity extends AppCompatActivity {
 
     Date fecha = new Date();
     EditText total_dia, total_semana,total_mes,total_año;
+    EditText total_hotel_dia, total_hotel_semana,total_hotel_mes,total_hotel_año;
     DateFormat formatFecha = new SimpleDateFormat("dd-MM-yyyy");
     CalendarView calendarView;
 
@@ -63,11 +64,19 @@ public class TotalesActivity extends AppCompatActivity {
         db.setFirestoreSettings(settings);
         //
 
-        calendarView = (CalendarView) findViewById(R.id.calendarView_Peluquerias);
+        calendarView = (CalendarView) findViewById(R.id.calendarView_totales);
+
+        //Peluquerias
         total_año = (EditText) findViewById(R.id.total_año);
         total_mes = (EditText) findViewById(R.id.total_mes);
         total_semana = (EditText) findViewById(R.id.total_semana);
         total_dia = (EditText) findViewById(R.id.total_dia);
+
+        //Hoteles
+        total_hotel_año = (EditText) findViewById(R.id.total_hotel_año);
+        total_hotel_mes = (EditText) findViewById(R.id.total_hotel_mes);
+        total_hotel_semana = (EditText) findViewById(R.id.total_hotel_semana);
+        total_hotel_dia = (EditText) findViewById(R.id.total_hotel_dia);
 
         fecha.setTime(calendarView.getDate());
         totales(fecha);
@@ -100,6 +109,11 @@ public class TotalesActivity extends AppCompatActivity {
         docSnippets.getTotalesSemana(date);
         docSnippets.getTotalesMes(date);
         docSnippets.getTotalesAño(date);
+
+        docSnippets.getTotalesHotelDia(date);
+        docSnippets.getTotalesHotelSemana(date);
+        docSnippets.getTotalesHotelMes(date);
+        docSnippets.getTotalesHotelAño(date);
     }
 
     private void signInAnonymously() {

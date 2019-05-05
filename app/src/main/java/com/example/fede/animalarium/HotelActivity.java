@@ -49,8 +49,10 @@ public class HotelActivity extends AppCompatActivity {
     ReservaHotel reservaHotel;
     Date fecha = new Date();
     DateFormat formatFecha = new SimpleDateFormat("dd-MM-yyyy");
-    private ListIterator<DocumentSnapshot> listIterator;
+    private ListIterator<DocumentSnapshot> listIterator = null;
     String fechaS;
+    private int reservasSize;
+    private int i;
 
 
     @Override
@@ -87,8 +89,8 @@ public class HotelActivity extends AppCompatActivity {
                 case "vienedemainactivity":
                     break;
                 default:
-                    contacto = (Contacto) ComunicadorContacto.getObjeto();
-                    reservaHotel = (ReservaHotel) ComunicadorReserva.getObjeto();
+                    contacto = (Contacto) ComunicadorContacto.getContacto();
+                    reservaHotel = (ReservaHotel) ComunicadorReserva.getReserva();
                     viene = "";
                     break;
             }
@@ -98,14 +100,17 @@ public class HotelActivity extends AppCompatActivity {
         }
         fecha.setTime(calendarView.getDate());
         fechaS = new SimpleDateFormat("dd-MM-yyyy").format(fecha);
-        recuperarFirebase(fecha);
-        inicimosAdaptador();
+        try {
+            fecha = formatFecha.parse(fechaS);
+            recuperarFirebase(fecha);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        //inicimosAdaptador();
 
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
-
-                reservas.clear();
-                contactos.clear();
 
                 //inicimosAdaptador();
                 String mes = String.valueOf(month + 1);
@@ -135,7 +140,7 @@ public class HotelActivity extends AppCompatActivity {
         progressDialog.show();
     }
 
-    public void setReservas(List<DocumentSnapshot> documents) {
+ /*   public void setReservas(List<DocumentSnapshot> documents) {
 
         if (documents!=null){
             listIterator = documents.listIterator();
@@ -146,10 +151,11 @@ public class HotelActivity extends AppCompatActivity {
             inicimosAdaptador();
         }
 
-    }
+    }*/
 
-    public void bindeaYAñadeReservaHotel(DocumentSnapshot doc) {
-
+    public void bindeaYAñadeReservaHotel(DocumentSnapshot doc,int i,int reservasSize) {
+        this.reservasSize = reservasSize;
+        this.i = i;
         ReservaHotel con = new ReservaHotel(
                 doc.getId(),
                 doc.getString("idContacto"),
@@ -181,11 +187,16 @@ public class HotelActivity extends AppCompatActivity {
         contactos.add(con);
         Log.e("contacto_ha",con.toString());
         //Para que se recarguen los datos sin necesidad de scrolling
-        if(reservas.size()==contactos.size() && !listIterator.hasNext()) {
+       // if(i==reservasSize) {
             inicimosAdaptador();
-        } else {
+       // }
+           /* if (listIterator!=null){
+                if (!listIterator.hasNext())  inicimosAdaptador();
+            } else inicimosAdaptador();
+
+        } /*else {
             bindeaYAñadeReservaHotel(listIterator.next());
-        }
+        }*/
     }
 
     public void inicimosAdaptador() {
@@ -203,8 +214,8 @@ public class HotelActivity extends AppCompatActivity {
                 Log.e("reserva.size_ha",String.valueOf(reservas.size()));
                 Log.e("position_ha",String.valueOf(position));
                 Log.e("reserva_position_ha",reservas.get(position).toString());
-                ComunicadorReserva.setObjeto(reservas.get(position));
-                ComunicadorContacto.setObjeto(contactos.get(position));
+                ComunicadorReserva.setReserva(reservas.get(position));
+                ComunicadorContacto.setContacto(contactos.get(position));
 
                 Intent i = new Intent(getApplicationContext(), FormularioHotelActivity.class);
                 i.putExtra("VIENE","HotelActivity");

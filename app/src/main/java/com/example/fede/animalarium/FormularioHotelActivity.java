@@ -81,8 +81,8 @@ public class FormularioHotelActivity extends AppCompatActivity {
         calendarView = findViewById(R.id.calendarView_formulario_hotel);
         fecha.setTime(calendarView.getDate());
 
-        contacto = (Contacto) ComunicadorContacto.getObjeto();
-        reservaHotel = (ReservaHotel) ComunicadorReserva.getObjeto();
+        contacto = (Contacto) ComunicadorContacto.getContacto();
+        reservaHotel = (ReservaHotel) ComunicadorReserva.getReserva();
 
         if (reservaHotel != null && contacto != null) {
             reserva = db.collection("hoteles").document(reservaHotel.getId());
@@ -252,6 +252,9 @@ public class FormularioHotelActivity extends AppCompatActivity {
 
                     public void onSuccess(Void aVoid) {
                         Toast.makeText(FormularioHotelActivity.this, "Reserva acutalizada con éxito", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getApplicationContext(), HotelActivity.class);
+                        intent.putExtra("VIENE","formulario_hotel_activity");
+                        startActivity(intent);
                     }
 
                 });
@@ -280,9 +283,10 @@ public class FormularioHotelActivity extends AppCompatActivity {
                     public void onSuccess(Void aVoid) {
                         Toast.makeText(FormularioHotelActivity.this, "Cita añadida", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(getApplicationContext(), HotelActivity.class);
+                        intent.putExtra("VIENE","formulario_hotel_activity");
                         startActivity(intent);
-                        ComunicadorContacto.setObjeto(null);
-                        ComunicadorReserva.setObjeto(null);
+                        ComunicadorContacto.setContacto(null);
+                        ComunicadorReserva.setReserva(null);
 
                     }
                 }).addOnFailureListener(new OnFailureListener() {
