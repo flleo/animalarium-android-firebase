@@ -56,7 +56,6 @@ public class ContactosActivity extends AppCompatActivity {
     //Referencia del almacenamiento de archivos en Firebase
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
     static FirebaseStorage storage = FirebaseStorage.getInstance();
-    StorageReference storageRef;
     private static final int PERMISSION_REQUEST_EXTERNAL_STORAGE = 1;
     static ProgressDialog progressDialog;
 
@@ -83,8 +82,8 @@ public class ContactosActivity extends AppCompatActivity {
     private static ListIterator<DocumentSnapshot> contactosLI;
     //FECHA
     DateFormat dfFecha = new SimpleDateFormat("dd-MM-yyyy");
-    static List<String> fotos = new ArrayList<String>();
-    static List<Uri> uris = new ArrayList<Uri>();
+    static ArrayList<String> fotos = new ArrayList<String>();
+    static ArrayList<Uri> uris = new ArrayList<Uri>();
 
 
     @Override
@@ -127,18 +126,17 @@ public class ContactosActivity extends AppCompatActivity {
 
                 Intent intent = null;
 
-                if(viene!="") {
-                    Log.e("viene134",viene);
+
+                    Log.e("viene131ContactosActivity",viene);
                     switch (viene) {
                         case "main_activity":
                             intent = new Intent(context, FormularioActivity.class);
-                            Log.e("viene137",viene);
                             break;
 
                         case "formulario_activity":
                             intent = new Intent(context, FormularioActivity.class);
                             break;
-                        case "peluquerias":
+                        case "peluquerias_activity":
                             intent = new Intent(context, FormularioCitaActivity.class);
                             intent.putExtra("FECHA", fechaS);
                             break;
@@ -152,7 +150,7 @@ public class ContactosActivity extends AppCompatActivity {
 
                     startActivity(intent);
 
-                }
+
 
             }
         });
@@ -228,7 +226,7 @@ public class ContactosActivity extends AppCompatActivity {
         if (i == fotos.size()) if (uri == null) grabaFotoMobil();
 
     }
-
+    //RECUPERAMOS FOTO DESDE FIREBASE
     private static void grabaFotoMobil() {
 
         try {
@@ -311,18 +309,6 @@ public class ContactosActivity extends AppCompatActivity {
         }
     }
 
-
-
-
-
-
-
-  /*  private void recuperarFirebase() {
-
-        contactos.clear();
-        docSnippets.getContactos();
-        progressDialog.show();
-    }*/
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[],

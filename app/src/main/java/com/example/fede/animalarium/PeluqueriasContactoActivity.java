@@ -31,7 +31,7 @@ public class PeluqueriasContactoActivity extends AppCompatActivity {
 
 
     CalendarView calendarView;
-    private List<CitaPeluqueria> citas = new ArrayList<>();
+    private ArrayList<CitaPeluqueria> citas = new ArrayList<>();
     private MisCitasAdapter adaptador;
     private ListView listado;
     private Context context;
@@ -73,13 +73,10 @@ public class PeluqueriasContactoActivity extends AppCompatActivity {
                     citas = ComunicadorCita.getSusCitas();
                     inicimosAdaptador();
                     break;
-                case "contactos":
+                case "contactos_activity":
                     recuperarFirebase();
                     break;
-                case "peluquerias":
-                    fecha = getIntent().getExtras().getString("FECHA");
-                    recuperarFirebase();
-                    break;
+
 
             }
         } catch (IllegalArgumentException e) {

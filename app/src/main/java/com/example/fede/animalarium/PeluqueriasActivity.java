@@ -1,10 +1,18 @@
 package com.example.fede.animalarium;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -20,10 +28,17 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreSettings;
+import com.google.firebase.storage.FileDownloadTask;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.AbstractSequentialList;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -31,11 +46,15 @@ import java.util.ListIterator;
 
 public class PeluqueriasActivity extends AppCompatActivity {
 
+    private static Activity context;
+    private static Uri uri;
     //Firebase
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     //Referencia del almacenamiento de archivos en Firebase
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
     DocSnippets docSnippets = new DocSnippets(db,this);
+    static FirebaseStorage storage = FirebaseStorage.getInstance();
+    private static final int PERMISSION_REQUEST_EXTERNAL_STORAGE = 1;
     ProgressDialog progressDialog;
     //
 
@@ -45,12 +64,16 @@ public class PeluqueriasActivity extends AppCompatActivity {
     private CitasAdapter adaptador;
     private ListView listado;
     String viene="";
-    Contacto contacto = null;
+    static Contacto contacto = null;
     CitaPeluqueria cita ;
     Date fecha = new Date();
     DateFormat formatFecha = new SimpleDateFormat("dd-MM-yyyy");
     private ListIterator<DocumentSnapshot> peluqueriasLI;
     String fecha1="";
+    static ArrayList<String> fotos = new ArrayList<String>();
+    static ArrayList<Uri> uris = new ArrayList<Uri>();
+    private ArrayList<String> fotosS = new ArrayList<>();
+    private static String fotoS="";
 
 
     @Override
@@ -58,6 +81,7 @@ public class PeluqueriasActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_peluquerias);
 
+        context = this;
         progressDialog= new ProgressDialog(this);
         progressDialog.setMessage("...recuperando citas...");
         //Autentificamos usuarios para firebase
@@ -78,24 +102,22 @@ public class PeluqueriasActivity extends AppCompatActivity {
         fecha.setTime(calendarView.getDate());
         fecha1 = fecha.getDate()+"-"+(fecha.getMonth()+1)+"-"+"20"+String.valueOf(fecha.getYear()).substring(1);
 
+        contacto = (Contacto) ComunicadorContacto.getContacto();
+        cita = (CitaPeluqueria) ComunicadorCita.getObjeto();
 
 
-        try{
+
             viene = getIntent().getExtras().getString("VIENE");
             switch(viene){
-                case "main_activity":break;
+                case "main_activity":
+                    break;
                 default:
-                    contacto = (Contacto) ComunicadorContacto.getContacto();
-                    cita = (CitaPeluqueria) ComunicadorCita.getObjeto();
+
                     break;
 
             };
 
-        } catch (NullPointerException e1){
-            contacto = (Contacto) ComunicadorContacto.getContacto();
-            cita = (CitaPeluqueria) ComunicadorCita.getObjeto();
-            viene="";
-        }
+
 
 
 
@@ -106,8 +128,8 @@ public class PeluqueriasActivity extends AppCompatActivity {
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener(){
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
 
-                citas = new ArrayList<>();
-                contactos = new ArrayList<>();
+                citas.clear();
+                contactos.clear();
 
                 //inicimosAdaptador();
                 String mes = String.valueOf(month+1);
@@ -157,11 +179,11 @@ public class PeluqueriasActivity extends AppCompatActivity {
                 if (contacto != null) {
                     ComunicadorContacto.setContacto(contacto);
                     formulario = new Intent(getApplicationContext(), FormularioCitaActivity.class);
-                    formulario.putExtra("VIENE", "peluquerias");
+                    formulario.putExtra("VIENE", "peluquerias_activity");
                 } else {
                     formulario = new Intent(getApplicationContext(), ContactosActivity.class);
                     ComunicadorCita.setObjeto(null);
-                    formulario.putExtra("VIENE", "peluquerias");
+                    formulario.putExtra("VIENE", "peluquerias_activity");
                 }
                 break;
         }
@@ -198,7 +220,7 @@ public class PeluqueriasActivity extends AppCompatActivity {
 
 
     public void bindeaYAñadeContacto(DocumentSnapshot doc) {
-
+        fotosS.add(doc.getString("foto"));
         Contacto con = new Contacto(
                 doc.getId(),
                 Uri.parse(doc.getString("foto")),
@@ -211,22 +233,14 @@ public class PeluqueriasActivity extends AppCompatActivity {
         contactos.add(con);
         Log.e("contacto",con.get_id()+con.getMascota());
         if(citas.size()==contactos.size() && !peluqueriasLI.hasNext()) {
-            Log.e("citas.size=",String.valueOf(citas.size()));
-            Log.e("contactos.size=",String.valueOf(contactos.size()));
-
             inicimosAdaptador();
-            //Para que se recarguen los datos sin necesidad de scrolling
-          //  inicimosAdaptador();
         } else {
-
             bindeaYAñadeCita(peluqueriasLI.next());
         }
-        //inicimosAdaptador();
 
     }
 
     public void inicimosAdaptador(){
-        // Inicializamos el adapter
         adaptador = new CitasAdapter(this,citas,contactos);
         listado.setAdapter(adaptador);
         progressDialog.dismiss();
@@ -237,17 +251,66 @@ public class PeluqueriasActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> ada, View v, int position, long arg3) {
 
                 ComunicadorCita.setObjeto(citas.get(position));
-                ComunicadorContacto.setContacto(contactos.get(position));
+                contacto = contactos.get(position);
 
-                Intent i = new Intent(getApplicationContext(), FormularioCitaActivity.class);
-                i.putExtra("VIENE","peluquerias_activity");
-                startActivity(i);
+                if(viene.equalsIgnoreCase("main_activity")){
+                    fotoS = fotosS.get(position);
+                    grabaFotoMobil();
+                } else {
+                    ComunicadorContacto.setContacto(contactos.get(position));
+                    Intent i = new Intent(context, FormularioCitaActivity.class);
+                    i.putExtra("VIENE","peluquerias_activity");
+                    startActivity(i);
+                }
             }
         });
-
     }
 
+    //RECUPERAMOS FOTO DESDE FIREBASE
+    private void grabaFotoMobil() {
 
+        try {
+            final File localFile = File.createTempFile("images", "jpg");
+            StorageReference storageRef = storage.getReferenceFromUrl("gs://animalarium-android-6eb93.appspot.com/external/images/media").child(fotoS);
+            storageRef.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                    Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
+                    uri = getImageUri(bitmap);
+                    contacto.setFoto(uri);
+                    ComunicadorContacto.setContacto(contacto);
+                    Intent i = new Intent(context, FormularioCitaActivity.class);
+                    i.putExtra("VIENE","peluquerias_activity");
+                    startActivity(i);
+                }
+
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) {
+                    Log.e("FAllo_cargarFoto", exception.getMessage());
+                }
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static Uri getImageUri(Bitmap bitmap) {
+
+
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        if (ContextCompat.checkSelfPermission(context, android.Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                ActivityCompat.requestPermissions(context, new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, PERMISSION_REQUEST_EXTERNAL_STORAGE);
+            }
+        } else {
+            String path = MediaStore.Images.Media.insertImage(context.getContentResolver(), bitmap, null, null);
+            uri = Uri.parse(path);
+            return uri;
+        }
+        return null;
+    }
 
     private void signInAnonymously() {
         mAuth.signInAnonymously().addOnSuccessListener(this, new  OnSuccessListener<AuthResult>() {

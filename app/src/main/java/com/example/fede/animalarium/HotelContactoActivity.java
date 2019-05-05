@@ -1,6 +1,7 @@
 package com.example.fede.animalarium;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -40,9 +41,10 @@ public class HotelContactoActivity extends AppCompatActivity {
 
     Contacto contacto;
     String viene;
-    private List<ReservaHotel> reservas;
+    private ArrayList<ReservaHotel> reservas = new ArrayList<>();
     private MisReservasAdapter adaptador;
     private ListView listado;
+    private Context context;
 
 
     @Override
@@ -50,9 +52,10 @@ public class HotelContactoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hotel_contacto);
 
+        context = this;
 
         progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("...recuperando sus citas...");
+        progressDialog.setMessage("...recuperando sus reservas...");
 
         contacto = (Contacto) ComunicadorContacto.getContacto();
 
@@ -87,22 +90,24 @@ public class HotelContactoActivity extends AppCompatActivity {
 
     public void añadir_hotel(View view) {
         Intent formulario = new Intent(getApplicationContext(), FormularioHotelActivity.class);
+        formulario.putExtra("VIENE","hotel_contacto_activity");
         startActivity(formulario);
     }
 
     private void recuperarFirebase() {
-
-        docSnippets.getReservasPorContacto();
         progressDialog.show();
+        docSnippets.getReservasPorContacto();
+
     }
 
-    public void bindeaYAñadeReserva(DocumentSnapshot doc) {
+    public void bindeaYAñadeReserva(DocumentSnapshot doc,int size) {
         System.out.println(contacto.get_id() + "*****************************");
         Log.e("idcontacto", contacto.get_id());
 
+        ArrayList<ReservaHotel> reservass = new ArrayList<>();
         ReservaHotel con = new ReservaHotel(
                 doc.getId(),
-                contacto.get_id(),
+                doc.getString("idContacto"),
                 doc.getDate("fechaInicio"),
                 doc.getDate("fechaFin"),
                 doc.getDouble("precio"),
@@ -112,7 +117,8 @@ public class HotelContactoActivity extends AppCompatActivity {
         );
         reservas.add(con);
 
-        inicimosAdaptador();
+        if(reservas.size()==size)
+            inicimosAdaptador();
 
     }
 
@@ -152,14 +158,26 @@ public class HotelContactoActivity extends AppCompatActivity {
                 });
     }
 
+    private void intent() {
+        Intent intent=null;
+        switch (viene){
+            case "formulario_activity":
+                intent = new Intent(context, FormularioActivity.class);
+                break;
+
+        }
+
+        intent.putExtra("VIENE","hotel_contacto_activity");
+        startActivity(intent);
+    }
+
     @Override
     public void onBackPressed() {
 
         ComunicadorReserva.setReserva(null);
 
-        Intent menu = new Intent(getApplicationContext(), FormularioActivity.class);
-        menu.putExtra("VIENE","hotel_contacto_activity");
-        startActivity(menu);
+
+       intent();
 
     }
 

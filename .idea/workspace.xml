@@ -87,22 +87,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="98263ed5-b604-46bb-a4fb-7415f948febf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ListMiReservaActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/MisReservasAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_list_mi_reserva.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ComunicadorCita.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ComunicadorCita.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ComunicadorContacto.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ComunicadorContacto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ComunicadorReserva.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ComunicadorReserva.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ContactosActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ContactosActivity.java" afterDir="false" />
@@ -112,139 +105,11 @@
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/FormularioHotelActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/FormularioHotelActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/HotelActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/HotelActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/HotelContactoActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/HotelContactoActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/MisCitasAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/MisCitasAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/MainActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/PeluqueriasActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/PeluqueriasActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/PeluqueriasContactoActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/PeluqueriasContactoActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/TotalesActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/TotalesActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_hotel_contacto.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_hotel_contacto.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_peluquerias.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_peluquerias.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_totales.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_totales.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/@firebase/database/dist/packages/database/src/core/PersistentConnection.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@firebase/database/dist/packages/database/src/core/PersistentConnection.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/@firebase/database/dist/packages/database/src/core/storage/DOMStorageWrapper.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@firebase/database/dist/packages/database/src/core/storage/DOMStorageWrapper.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/@firebase/database/dist/packages/database/src/core/util/ImmutableTree.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@firebase/database/dist/packages/database/src/core/util/ImmutableTree.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/@firebase/database/dist/src/core/PersistentConnection.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@firebase/database/dist/src/core/PersistentConnection.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/@firebase/database/dist/src/core/storage/DOMStorageWrapper.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@firebase/database/dist/src/core/storage/DOMStorageWrapper.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/@firebase/database/dist/src/core/util/ImmutableTree.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@firebase/database/dist/src/core/util/ImmutableTree.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/@google-cloud/projectify/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@google-cloud/projectify/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/@google-cloud/projectify/build/src/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@google-cloud/projectify/build/src/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/@google-cloud/storage/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@google-cloud/storage/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/@mrmlnc/readdir-enhanced/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@mrmlnc/readdir-enhanced/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/@mrmlnc/readdir-enhanced/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@mrmlnc/readdir-enhanced/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/@types/lodash/common/array.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@types/lodash/common/array.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/@types/lodash/common/collection.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@types/lodash/common/collection.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/@types/lodash/common/common.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@types/lodash/common/common.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/@types/lodash/common/lang.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@types/lodash/common/lang.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/@types/lodash/common/math.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@types/lodash/common/math.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/@types/lodash/common/object.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@types/lodash/common/object.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/@types/lodash/common/util.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@types/lodash/common/util.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/@types/node/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@types/node/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/@types/node/inspector.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@types/node/inspector.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/acorn/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/acorn/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/ajv/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/ajv/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/ajv/lib/ajv.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/ajv/lib/ajv.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/assign-symbols/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/assign-symbols/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/asynckit/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/asynckit/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/axios/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/axios/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/axios/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/axios/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/axios/dist/axios.map" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/axios/dist/axios.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/axios/dist/axios.min.map" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/axios/dist/axios.min.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/base/node_modules/define-property/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/base/node_modules/define-property/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/braces/node_modules/extend-shallow/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/braces/node_modules/extend-shallow/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/bun/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/bun/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/class-utils/node_modules/define-property/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/class-utils/node_modules/define-property/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/co/History.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/co/History.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/co/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/co/Readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/collection-visit/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/collection-visit/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/core-js/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/core-js/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/core-js/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/core-js/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/dashdash/CHANGES.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/dashdash/CHANGES.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/debug/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/debug/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/debug/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/debug/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/deep-equal/readme.markdown" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/deep-equal/readme.markdown" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/define-property/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/define-property/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/delayed-stream/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/delayed-stream/Readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/diff-match-patch/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/diff-match-patch/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/empower-core/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/empower-core/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/empower/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/empower/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/expand-brackets/node_modules/define-property/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expand-brackets/node_modules/define-property/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/expand-brackets/node_modules/extend-shallow/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/expand-brackets/node_modules/extend-shallow/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/extend-shallow/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/extend-shallow/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/extend-shallow/node_modules/is-extendable/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/extend-shallow/node_modules/is-extendable/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/extend/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/extend/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/extglob/node_modules/define-property/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/extglob/node_modules/define-property/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/extglob/node_modules/extend-shallow/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/extglob/node_modules/extend-shallow/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/fast-deep-equal/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/fast-deep-equal/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/faye-websocket/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/faye-websocket/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/faye-websocket/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/faye-websocket/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/fill-range/node_modules/extend-shallow/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/fill-range/node_modules/extend-shallow/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/firebase-admin/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/firebase-admin/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/follow-redirects/node_modules/debug/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/follow-redirects/node_modules/debug/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/follow-redirects/node_modules/debug/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/follow-redirects/node_modules/debug/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/glob/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/glob/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/has-values/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/has-values/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/has-values/node_modules/kind-of/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/has-values/node_modules/kind-of/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/http-signature/CHANGES.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/http-signature/CHANGES.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/imurmurhash/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/imurmurhash/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/is-accessor-descriptor/node_modules/kind-of/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/is-accessor-descriptor/node_modules/kind-of/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/is-data-descriptor/node_modules/kind-of/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/is-data-descriptor/node_modules/kind-of/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/is-descriptor/node_modules/kind-of/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/is-descriptor/node_modules/kind-of/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/is-extendable/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/is-extendable/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/is-number/node_modules/kind-of/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/is-number/node_modules/kind-of/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/is-obj/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/is-obj/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/is/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/is/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/isobject/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/isobject/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/isstream/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/isstream/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/json-schema-traverse/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/json-schema-traverse/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/json-schema/draft-zyp-json-schema-03.xml" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/json-schema/draft-zyp-json-schema-03.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/json-schema/draft-zyp-json-schema-04.xml" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/json-schema/draft-zyp-json-schema-04.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/json-stringify-safe/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/json-stringify-safe/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/jsonwebtoken/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/jsonwebtoken/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/jsprim/CHANGES.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/jsprim/CHANGES.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/jsprim/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/jsprim/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/kind-of/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/kind-of/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/lru-cache/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/lru-cache/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/map-visit/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/map-visit/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/minimatch/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/minimatch/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mixin-deep/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mixin-deep/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mixin-deep/node_modules/is-extendable/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mixin-deep/node_modules/is-extendable/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/modelo/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/modelo/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/node-forge/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/node-forge/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/object-copy/node_modules/define-property/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/object-copy/node_modules/define-property/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/object-copy/node_modules/kind-of/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/object-copy/node_modules/kind-of/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/object-keys/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/object-keys/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/object-visit/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/object-visit/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/object.pick/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/object.pick/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/power-assert/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/power-assert/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/pseudomap/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/pseudomap/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/qs/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/qs/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/qs/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/qs/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/request/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/request/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/request/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/request/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/safe-buffer/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/safe-buffer/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/safe-buffer/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/safe-buffer/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/set-value/node_modules/extend-shallow/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/set-value/node_modules/extend-shallow/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/snapdragon-node/node_modules/define-property/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/snapdragon-node/node_modules/define-property/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/snapdragon-util/node_modules/kind-of/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/snapdragon-util/node_modules/kind-of/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/snapdragon/node_modules/define-property/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/snapdragon/node_modules/define-property/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/snapdragon/node_modules/extend-shallow/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/snapdragon/node_modules/extend-shallow/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/source-map-resolve/changelog.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/source-map-resolve/changelog.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/source-map-resolve/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/source-map-resolve/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/source-map/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/source-map/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/source-map/dist/source-map.min.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/source-map/dist/source-map.min.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/sshpk/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/sshpk/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/static-extend/node_modules/define-property/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/static-extend/node_modules/define-property/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/to-object-path/node_modules/kind-of/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/to-object-path/node_modules/kind-of/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/tough-cookie/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/tough-cookie/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/traverse/readme.markdown" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/traverse/readme.markdown" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/tweetnacl/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/tweetnacl/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/union-value/node_modules/extend-shallow/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/union-value/node_modules/extend-shallow/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/unset-value/node_modules/has-value/node_modules/isobject/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/unset-value/node_modules/has-value/node_modules/isobject/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/unset-value/node_modules/has-values/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/unset-value/node_modules/has-values/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/verror/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/verror/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/websocket-extensions/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/websocket-extensions/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/websocket-extensions/lib/pipeline/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/websocket-extensions/lib/pipeline/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/xdg-basedir/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/xdg-basedir/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/npm-debug.log" beforeDir="false" afterPath="$PROJECT_DIR$/npm-debug.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/SplashScreenActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/SplashScreenActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_formulario_cita.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_formulario_cita.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -273,98 +138,118 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/TotalesActivity.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ContactosActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="107" column="25" selection-start-line="107" selection-start-column="25" selection-end-line="107" selection-end-column="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_totales.xml">
-          <provider editor-type-id="android-designer2" />
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="215" column="53" selection-start-line="215" selection-start-column="53" selection-end-line="215" selection-end-column="53" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/HotelActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="104" column="37" selection-start-line="104" selection-start-column="37" selection-end-line="104" selection-end-column="37" />
+            <state relative-caret-position="429">
+              <caret line="148" selection-start-line="148" selection-end-line="148" />
               <folding>
-                <element signature="e#6700#7424#0" expanded="true" />
-                <element signature="e#7423#7424#0" expanded="true" />
-                <element signature="e#7776#7951#0" expanded="true" />
-                <element signature="e#7950#7951#0" expanded="true" />
-                <element signature="e#7997#8260#0" expanded="true" />
-                <element signature="e#8259#8260#0" expanded="true" />
+                <element signature="e#3163#3171#0" expanded="true" />
+                <element signature="e#4227#5605#0" expanded="true" />
+                <element signature="e#5604#5605#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/DocSnippets.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/PeluqueriasActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-75">
-              <caret line="1200" selection-start-line="1200" selection-end-line="1200" />
+            <state relative-caret-position="2085">
+              <caret line="181" column="70" selection-start-line="181" selection-start-column="70" selection-end-line="181" selection-end-column="70" />
               <folding>
-                <element signature="e#41789#44010#0" expanded="true" />
-                <element signature="e#44009#44010#0" expanded="true" />
-                <element signature="e#45691#46815#0" expanded="true" />
-                <element signature="e#46814#46815#0" expanded="true" />
-                <element signature="e#48626#49756#0" expanded="true" />
-                <element signature="e#49755#49756#0" expanded="true" />
-                <element signature="e#50437#51563#0" expanded="true" />
-                <element signature="e#51562#51563#0" expanded="true" />
-                <element signature="e#52135#53256#0" expanded="true" />
-                <element signature="e#53255#53256#0" expanded="true" />
-                <element signature="e#53823#54947#0" expanded="true" />
-                <element signature="e#54946#54947#0" expanded="true" />
-                <element signature="e#56764#57894#0" expanded="true" />
-                <element signature="e#57893#57894#0" expanded="true" />
-                <element signature="e#58581#59707#0" expanded="true" />
-                <element signature="e#59706#59707#0" expanded="true" />
-                <element signature="e#60285#61406#0" expanded="true" />
-                <element signature="e#61405#61406#0" expanded="true" />
-                <element signature="e#61652#62459#0" expanded="true" />
-                <element signature="e#62458#62459#0" expanded="true" />
-                <element signature="e#62696#63862#0" expanded="true" />
-                <element signature="e#63861#63862#0" expanded="true" />
-                <element signature="e#64094#64968#0" expanded="true" />
-                <element signature="e#64967#64968#0" expanded="true" />
-                <element signature="e#65226#65596#0" expanded="true" />
-                <element signature="e#65595#65596#0" expanded="true" />
-                <element signature="e#65886#66601#0" expanded="true" />
-                <element signature="e#66600#66601#0" expanded="true" />
-                <element signature="e#71901#72396#0" expanded="true" />
-                <element signature="e#72395#72396#0" expanded="true" />
-                <element signature="e#72723#73588#0" expanded="true" />
-                <element signature="e#73587#73588#0" expanded="true" />
+                <element signature="e#1895#1903#0" expanded="true" />
+                <element signature="e#8211#8793#0" expanded="true" />
+                <element signature="e#8792#8793#0" expanded="true" />
+                <element signature="e#9275#9752#0" expanded="true" />
+                <element signature="e#9751#9752#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ReservasAdapter.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/FormularioActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="53" selection-start-line="53" selection-end-line="53" />
+            <state relative-caret-position="-778">
+              <caret line="324" column="47" selection-start-line="324" selection-start-column="47" selection-end-line="324" selection-end-column="47" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/PeluqueriasActivity.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ComunicadorContacto.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="74" column="80" selection-start-line="74" selection-start-column="80" selection-end-line="74" selection-end-column="80" />
+            <state relative-caret-position="390">
+              <caret line="28" column="54" selection-start-line="28" selection-start-column="54" selection-end-line="28" selection-end-column="54" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#313#314#0" expanded="true" />
+                <element signature="e#352#353#0" expanded="true" />
+                <element signature="e#587#588#0" expanded="true" />
+                <element signature="e#760#761#0" expanded="true" />
+                <element signature="e#787#788#0" expanded="true" />
+                <element signature="e#842#843#0" expanded="true" />
+                <element signature="e#889#890#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/SplashScreenActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="450">
+              <caret line="59" column="25" selection-start-line="59" selection-start-column="25" selection-end-line="59" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/FormularioCitaActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="264">
+              <caret line="446" column="61" selection-start-line="446" selection-start-column="61" selection-end-line="446" selection-end-column="61" />
+              <folding>
+                <element signature="e#20913#20914#0" expanded="true" />
+                <element signature="e#20993#20994#0" expanded="true" />
+                <element signature="e#21072#21073#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/DocSnippets.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="354">
+              <caret line="1059" column="58" selection-start-line="1059" selection-start-column="58" selection-end-line="1059" selection-end-column="58" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/PeluqueriasContactoActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="33" column="34" selection-start-line="33" selection-start-column="34" selection-end-line="33" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/CitasAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="32" column="11" selection-start-line="32" selection-start-column="11" selection-end-line="32" selection-end-column="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/FormularioHotelActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2556">
+              <caret line="112" column="44" selection-start-line="112" selection-start-column="44" selection-end-line="112" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -386,37 +271,38 @@
       <list>
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ContactoS.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ContactosAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/MainActivity.java" />
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_formulario.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ComunicadorCita.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/FormularioCitaActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/PeluqueriasContactoActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ReservasAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/SplashScreenActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ContactosActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ComunicadorContacto.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ComunicadorReserva.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/FormularioActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_hotel_contacto.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/MisCitasAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_list_mi_reserva.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/MisReservasAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/HotelContactoActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/FormularioHotelActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_peluquerias.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_totales.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/TotalesActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/PeluqueriasActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_formulario_cita.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ComunicadorReserva.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/HotelActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/HotelContactoActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ComunicadorCita.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/PeluqueriasContactoActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/FormularioHotelActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/SplashScreenActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ComunicadorContacto.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/FormularioActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ContactosActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/FormularioCitaActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/DocSnippets.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/PeluqueriasActivity.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="y" value="-1" />
-    <option name="width" value="1680" />
-    <option name="height" value="505" />
+    <option name="y" value="155" />
+    <option name="width" value="1670" />
+    <option name="height" value="503" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -424,8 +310,8 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="ProjectPane" />
       <pane id="PackagesPane" />
+      <pane id="ProjectPane" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -443,17 +329,6 @@
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="animalarium" type="cbb59c9e:AndroidPsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="animalarium-android-firebase" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-            </path>
-            <path>
-              <item name="animalarium-android-firebase" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-              <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
             </path>
           </expand>
           <select />
@@ -569,10 +444,36 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1" width="1680" height="1010" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
       <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.23439412" />
+      <window_info id="Structure" order="2" side_tool="true" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info id="Build Variants" order="4" side_tool="true" />
+      <window_info id="Image Layers" order="5" />
+      <window_info id="Designer" order="6" />
+      <window_info id="Resources Explorer" order="7" />
+      <window_info id="Capture Tool" order="8" />
+      <window_info active="true" anchor="bottom" id="Run" order="0" sideWeight="0.4973262" visible="true" weight="0.25282168" />
+      <window_info anchor="bottom" id="Logcat" order="1" weight="0.3295711" />
+      <window_info anchor="bottom" id="TODO" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" />
+      <window_info anchor="bottom" id="Terminal" order="4" weight="0.3295711" />
+      <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.5026738" side_tool="true" weight="0.5843072" />
+      <window_info anchor="bottom" id="Version Control" order="6" weight="0.32888147" />
+      <window_info anchor="bottom" id="Build" order="7" sideWeight="0.49961802" weight="0.32505643" />
+      <window_info anchor="bottom" id="Find" order="8" weight="0.3295711" />
+      <window_info anchor="bottom" id="Android Profiler" order="9" weight="0.3295711" />
+      <window_info anchor="right" id="Preview" order="0" weight="0.18176255" />
+      <window_info anchor="right" id="Device File Explorer" order="1" side_tool="true" weight="0.32925898" />
+      <window_info anchor="right" id="Capture Analysis" order="2" />
+      <window_info anchor="right" id="Gradle" order="3" weight="0.32925898" />
+      <window_info anchor="right" id="Theme Preview" order="4" />
+      <window_info anchor="right" id="Palette&#9;" order="5" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.23439412" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Build Variants" order="4" side_tool="true" />
@@ -587,67 +488,30 @@
       <window_info anchor="bottom" id="Terminal" order="4" weight="0.3295711" />
       <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.5026738" side_tool="true" weight="0.5843072" />
       <window_info anchor="bottom" id="Version Control" order="6" weight="0.32888147" />
-      <window_info anchor="bottom" id="Build" order="7" sideWeight="0.49961802" weight="0.32505643" />
+      <window_info anchor="bottom" id="Build" order="7" sideWeight="0.49961802" visible="true" weight="0.32505643" />
       <window_info anchor="bottom" id="Find" order="8" weight="0.3295711" />
       <window_info anchor="bottom" id="Android Profiler" order="9" weight="0.3295711" />
-      <window_info anchor="right" id="Preview" order="0" weight="0.2637699" />
+      <window_info anchor="right" id="Preview" order="0" weight="0.18176255" />
       <window_info anchor="right" id="Device File Explorer" order="1" side_tool="true" weight="0.32925898" />
       <window_info anchor="right" id="Capture Analysis" order="2" />
       <window_info anchor="right" id="Gradle" order="3" weight="0.32925898" />
       <window_info anchor="right" id="Theme Preview" order="4" />
       <window_info anchor="right" id="Palette&#9;" order="5" />
-    </layout>
-    <layout-to-restore>
-      <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.32986537" />
-      <window_info id="Structure" order="2" side_tool="true" />
-      <window_info id="Favorites" order="3" side_tool="true" />
-      <window_info id="Build Variants" order="4" side_tool="true" />
-      <window_info id="Image Layers" order="5" />
-      <window_info id="Designer" order="6" />
-      <window_info id="Resources Explorer" order="7" />
-      <window_info id="Capture Tool" order="8" />
-      <window_info anchor="bottom" id="Run" order="0" visible="true" weight="0.4604966" />
-      <window_info anchor="bottom" id="Logcat" order="1" />
-      <window_info anchor="bottom" id="TODO" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" />
-      <window_info anchor="bottom" id="Terminal" order="4" />
-      <window_info anchor="bottom" id="Event Log" order="5" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="6" />
-      <window_info anchor="bottom" id="Build" order="7" weight="0.3295711" />
-      <window_info anchor="bottom" id="Find" order="8" weight="0.3295711" />
-      <window_info anchor="bottom" id="Android Profiler" order="9" />
-      <window_info anchor="right" id="Preview" order="0" weight="0.32986537" />
-      <window_info anchor="right" id="Device File Explorer" order="1" side_tool="true" />
-      <window_info anchor="right" id="Capture Analysis" order="2" />
-      <window_info anchor="right" id="Gradle" order="3" />
-      <window_info anchor="right" id="Theme Preview" order="4" />
-      <window_info anchor="right" id="Palette&#9;" order="5" />
     </layout-to-restore>
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/PeluqueriasActivity.java</url>
+          <line>227</line>
+          <properties />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ContactoS.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/CitaPeluqueria.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="20" column="29" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="33" lean-forward="true" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_contactos.xml">
       <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
@@ -698,17 +562,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-qwerty/activity_formulario_qwerty.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ComunicadorCita.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
-          <folding>
-            <element signature="e#442#443#0" expanded="true" />
-            <element signature="e#473#474#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ContactosAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -723,13 +576,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/FormularioCitaActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2250">
-          <caret line="196" column="16" selection-start-line="196" selection-start-column="16" selection-end-line="196" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_formulario.xml">
       <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
@@ -738,72 +584,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ContactosActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1350">
-          <caret line="132" column="35" selection-start-line="132" selection-start-column="35" selection-end-line="132" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/SplashScreenActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="59" column="27" selection-start-line="59" selection-start-column="27" selection-end-line="59" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="66" selection-start-line="66" selection-end-line="66" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_peluquerias_contacto.xml">
       <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ComunicadorContacto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="41" lean-forward="true" selection-start-line="19" selection-start-column="41" selection-end-line="19" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#311#312#0" expanded="true" />
-            <element signature="e#352#353#0" expanded="true" />
-            <element signature="e#909#910#0" expanded="true" />
-            <element signature="e#947#948#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/PeluqueriasContactoActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="750">
-          <caret line="187" lean-forward="true" selection-start-line="162" selection-start-column="3" selection-end-line="187" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/FormularioActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-81">
-          <caret line="134" column="32" selection-start-line="134" selection-start-column="32" selection-end-line="134" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ComunicadorReserva.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="45" selection-start-line="12" selection-start-column="45" selection-end-line="12" selection-end-column="45" />
-          <folding>
-            <element signature="e#265#266#0" expanded="true" />
-            <element signature="e#324#325#0" expanded="true" />
-            <element signature="e#376#377#0" expanded="true" />
-            <element signature="e#430#431#0" expanded="true" />
-            <element signature="e#461#462#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ReservaHotel.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -869,36 +652,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/HotelContactoActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="130" column="79" selection-start-line="130" selection-start-column="79" selection-end-line="130" selection-end-column="79" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/MisReservasAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="48" column="69" selection-start-line="48" selection-start-column="69" selection-end-line="48" selection-end-column="69" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1174#1175#0" expanded="true" />
-            <element signature="e#1198#1199#0" expanded="true" />
-            <element signature="e#1255#1256#0" expanded="true" />
-            <element signature="e#1282#1283#0" expanded="true" />
-            <element signature="e#1339#1340#0" expanded="true" />
-            <element signature="e#1363#1364#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/FormularioHotelActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="285" column="77" selection-start-line="285" selection-start-column="77" selection-end-line="285" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/MisCitasAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -914,87 +667,224 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_totales.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="215" column="53" selection-start-line="215" selection-start-column="53" selection-end-line="215" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/TotalesActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
+        <state relative-caret-position="1260">
           <caret line="107" column="25" selection-start-line="107" selection-start-column="25" selection-end-line="107" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/PeluqueriasActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_totales.xml">
+      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="74" column="80" selection-start-line="74" selection-start-column="80" selection-end-line="74" selection-end-column="80" />
+        <state relative-caret-position="3225">
+          <caret line="215" column="53" selection-start-line="215" selection-start-column="53" selection-end-line="215" selection-end-column="53" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ReservasAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
+        <state relative-caret-position="570">
           <caret line="53" selection-start-line="53" selection-end-line="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../Sdk/sources/android-26/java/util/Collections.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="84" column="13" selection-start-line="84" selection-start-column="13" selection-end-line="84" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_formulario_cita.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="414" column="33" selection-start-line="414" selection-start-column="33" selection-end-line="414" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="118" column="44" selection-start-line="118" selection-start-column="44" selection-end-line="118" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ce19cef2c9032b41d5c8ff5f09f66298/jars/classes.jar!/com/google/firebase/firestore/DocumentReference.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="122" column="22" selection-start-line="122" selection-start-column="22" selection-end-line="122" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ComunicadorReserva.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#235#236#0" expanded="true" />
+            <element signature="e#265#266#0" expanded="true" />
+            <element signature="e#324#325#0" expanded="true" />
+            <element signature="e#376#377#0" expanded="true" />
+            <element signature="e#468#469#0" expanded="true" />
+            <element signature="e#499#500#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/MisReservasAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="482">
+          <caret line="50" column="49" selection-start-line="50" selection-start-column="49" selection-end-line="50" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_formulario_hotel.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="62" column="46" selection-start-line="62" selection-start-column="46" selection-end-line="62" selection-end-column="46" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/HotelActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="104" column="37" selection-start-line="104" selection-start-column="37" selection-end-line="104" selection-end-column="37" />
+        <state relative-caret-position="342">
+          <caret line="238" column="22" selection-start-line="238" selection-start-column="22" selection-end-line="238" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/CitaPeluqueria.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/HotelContactoActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="171" column="5" selection-start-line="160" selection-start-column="3" selection-end-line="171" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ComunicadorCita.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="6" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
           <folding>
-            <element signature="e#6700#7424#0" expanded="true" />
-            <element signature="e#7423#7424#0" expanded="true" />
-            <element signature="e#7776#7951#0" expanded="true" />
-            <element signature="e#7950#7951#0" expanded="true" />
-            <element signature="e#7997#8260#0" expanded="true" />
-            <element signature="e#8259#8260#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#493#494#0" expanded="true" />
+            <element signature="e#524#525#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/FormularioHotelActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2556">
+          <caret line="112" column="44" selection-start-line="112" selection-start-column="44" selection-end-line="112" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../Sdk/sources/android-26/android/widget/ImageView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="521" column="16" selection-start-line="521" selection-start-column="16" selection-end-line="521" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/PeluqueriasContactoActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="33" column="34" selection-start-line="33" selection-start-column="34" selection-end-line="33" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ComunicadorContacto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="28" column="54" selection-start-line="28" selection-start-column="54" selection-end-line="28" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#313#314#0" expanded="true" />
+            <element signature="e#352#353#0" expanded="true" />
+            <element signature="e#587#588#0" expanded="true" />
+            <element signature="e#760#761#0" expanded="true" />
+            <element signature="e#787#788#0" expanded="true" />
+            <element signature="e#842#843#0" expanded="true" />
+            <element signature="e#889#890#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/SplashScreenActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="59" column="25" selection-start-line="59" selection-start-column="25" selection-end-line="59" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/FormularioCitaActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="446" column="61" selection-start-line="446" selection-start-column="61" selection-end-line="446" selection-end-column="61" />
+          <folding>
+            <element signature="e#20913#20914#0" expanded="true" />
+            <element signature="e#20993#20994#0" expanded="true" />
+            <element signature="e#21072#21073#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/DocSnippets.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-75">
-          <caret line="1200" selection-start-line="1200" selection-end-line="1200" />
+        <state relative-caret-position="354">
+          <caret line="1059" column="58" selection-start-line="1059" selection-start-column="58" selection-end-line="1059" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/CitasAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="32" column="11" selection-start-line="32" selection-start-column="11" selection-end-line="32" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/FormularioActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-778">
+          <caret line="324" column="47" selection-start-line="324" selection-start-column="47" selection-end-line="324" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ContactosActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="429">
+          <caret line="148" selection-start-line="148" selection-end-line="148" />
           <folding>
-            <element signature="e#41789#44010#0" expanded="true" />
-            <element signature="e#44009#44010#0" expanded="true" />
-            <element signature="e#45691#46815#0" expanded="true" />
-            <element signature="e#46814#46815#0" expanded="true" />
-            <element signature="e#48626#49756#0" expanded="true" />
-            <element signature="e#49755#49756#0" expanded="true" />
-            <element signature="e#50437#51563#0" expanded="true" />
-            <element signature="e#51562#51563#0" expanded="true" />
-            <element signature="e#52135#53256#0" expanded="true" />
-            <element signature="e#53255#53256#0" expanded="true" />
-            <element signature="e#53823#54947#0" expanded="true" />
-            <element signature="e#54946#54947#0" expanded="true" />
-            <element signature="e#56764#57894#0" expanded="true" />
-            <element signature="e#57893#57894#0" expanded="true" />
-            <element signature="e#58581#59707#0" expanded="true" />
-            <element signature="e#59706#59707#0" expanded="true" />
-            <element signature="e#60285#61406#0" expanded="true" />
-            <element signature="e#61405#61406#0" expanded="true" />
-            <element signature="e#61652#62459#0" expanded="true" />
-            <element signature="e#62458#62459#0" expanded="true" />
-            <element signature="e#62696#63862#0" expanded="true" />
-            <element signature="e#63861#63862#0" expanded="true" />
-            <element signature="e#64094#64968#0" expanded="true" />
-            <element signature="e#64967#64968#0" expanded="true" />
-            <element signature="e#65226#65596#0" expanded="true" />
-            <element signature="e#65595#65596#0" expanded="true" />
-            <element signature="e#65886#66601#0" expanded="true" />
-            <element signature="e#66600#66601#0" expanded="true" />
-            <element signature="e#71901#72396#0" expanded="true" />
-            <element signature="e#72395#72396#0" expanded="true" />
-            <element signature="e#72723#73588#0" expanded="true" />
-            <element signature="e#73587#73588#0" expanded="true" />
+            <element signature="e#3163#3171#0" expanded="true" />
+            <element signature="e#4227#5605#0" expanded="true" />
+            <element signature="e#5604#5605#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/PeluqueriasActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2085">
+          <caret line="181" column="70" selection-start-line="181" selection-start-column="70" selection-end-line="181" selection-end-column="70" />
+          <folding>
+            <element signature="e#1895#1903#0" expanded="true" />
+            <element signature="e#8211#8793#0" expanded="true" />
+            <element signature="e#8792#8793#0" expanded="true" />
+            <element signature="e#9275#9752#0" expanded="true" />
+            <element signature="e#9751#9752#0" expanded="true" />
           </folding>
         </state>
       </provider>

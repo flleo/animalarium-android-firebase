@@ -1,5 +1,6 @@
 package com.example.fede.animalarium;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ComunicadorReserva {
@@ -7,7 +8,7 @@ public class ComunicadorReserva {
 
 
     private  static ReservaHotel reserva = null;
-    static List<ReservaHotel> reservas;
+    static ArrayList<ReservaHotel> reservas;
 
 
     public static ReservaHotel getReserva() {
@@ -18,11 +19,11 @@ public class ComunicadorReserva {
         ComunicadorReserva.reserva = reserva;
     }
 
-    public static List<ReservaHotel> getReservas() {
+    public static ArrayList<ReservaHotel> getReservas() {
         return reservas;
     }
 
-    public static void setReservas(List<ReservaHotel> reservas) {
+    public static void setReservas(ArrayList<ReservaHotel> reservas) {
         ComunicadorReserva.reservas = reservas;
     }
 }

@@ -38,6 +38,7 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -78,8 +79,8 @@ public class FormularioActivity extends AppCompatActivity {
     int _id;
     private String fotoS = null;
     DocSnippets docSnippets;
-    private List<Contacto> contactos = null;
-    private ProgressDialog progressDialog;
+    private ArrayList<Contacto> contactos = new ArrayList<>();
+    private ProgressDialog progressDialog = null;
 
 
     @Override
@@ -91,6 +92,7 @@ public class FormularioActivity extends AppCompatActivity {
         //
         context = this;
         docSnippets = new DocSnippets(db, (FormularioActivity) context);
+        progressDialog = new ProgressDialog(this);
         //Inicializamos
         Bitmap icon = BitmapFactory.decodeResource(context.getResources(), R.drawable.image);
         imageUri = getImageUri(icon);
@@ -320,7 +322,7 @@ public class FormularioActivity extends AppCompatActivity {
     public void añadir(View view) {
 
         if (!comprobarAñadir()) {
-            //Con foto
+            //Con foto  SUBIMOS FOTO A FIREBASE
             try {
                 final ProgressDialog progressDialog = new ProgressDialog(this);
                 final StorageReference storageReference = FirebaseStorage.getInstance().getReference().child(selectedImageUri.getPath());
@@ -491,7 +493,7 @@ public class FormularioActivity extends AppCompatActivity {
 
 
     public void actualizarContacto1(final ContactoS contactoS) {
-        progressDialog = new ProgressDialog(this);
+
         progressDialog.setTitle("...actualizando contacto...");
         progressDialog.show();
         DocumentReference contact = db.collection("contactos").document(contactoS.get_id());
@@ -587,6 +589,11 @@ public class FormularioActivity extends AppCompatActivity {
         eliminar.setEnabled(true);
         citas.setEnabled(true);
         reservas.setEnabled(true);
+
+        if(progressDialog!=null){
+            progressDialog.dismiss();
+            startActivity(new Intent(context,ContactosActivity.class).putExtra("VIENE","formulario_activity"));
+        }
     }
 
     private void actualizaComunicadorContacto() {
@@ -594,7 +601,6 @@ public class FormularioActivity extends AppCompatActivity {
         bindeaContactoS(contactoS);
         contactos.remove(contacto);
         añadimosContactoAlComunicador(contacto);
-
 
     }
 

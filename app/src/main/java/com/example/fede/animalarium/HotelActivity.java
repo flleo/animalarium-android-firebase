@@ -1,6 +1,7 @@
 package com.example.fede.animalarium;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
@@ -53,12 +54,15 @@ public class HotelActivity extends AppCompatActivity {
     String fechaS;
     private int reservasSize;
     private int i;
+    private Context context;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hotel);
+
+        context = this;
 
         listado = (ListView) findViewById(R.id.reservas);
 
@@ -80,13 +84,10 @@ public class HotelActivity extends AppCompatActivity {
 
 
 
-
-        try {
-            //Por si viene de MainActivity
             viene = getIntent().getExtras().getString("VIENE");
 
             switch (viene) {
-                case "vienedemainactivity":
+                case "main_activity":
                     break;
                 default:
                     contacto = (Contacto) ComunicadorContacto.getContacto();
@@ -95,9 +96,7 @@ public class HotelActivity extends AppCompatActivity {
                     break;
             }
 
-        } catch (NullPointerException e1) {
-            viene = "";
-        }
+
         fecha.setTime(calendarView.getDate());
         fechaS = new SimpleDateFormat("dd-MM-yyyy").format(fecha);
         try {
@@ -140,18 +139,7 @@ public class HotelActivity extends AppCompatActivity {
         progressDialog.show();
     }
 
- /*   public void setReservas(List<DocumentSnapshot> documents) {
 
-        if (documents!=null){
-            listIterator = documents.listIterator();
-            bindeaYAñadeReservaHotel(listIterator.next());
-        } else{
-            reservas.clear();
-            contactos.clear();
-            inicimosAdaptador();
-        }
-
-    }*/
 
     public void bindeaYAñadeReservaHotel(DocumentSnapshot doc,int i,int reservasSize) {
         this.reservasSize = reservasSize;
@@ -186,17 +174,8 @@ public class HotelActivity extends AppCompatActivity {
                 doc.getString("propietario"));
         contactos.add(con);
         Log.e("contacto_ha",con.toString());
-        //Para que se recarguen los datos sin necesidad de scrolling
-       // if(i==reservasSize) {
-            inicimosAdaptador();
-       // }
-           /* if (listIterator!=null){
-                if (!listIterator.hasNext())  inicimosAdaptador();
-            } else inicimosAdaptador();
+        inicimosAdaptador();
 
-        } /*else {
-            bindeaYAñadeReservaHotel(listIterator.next());
-        }*/
     }
 
     public void inicimosAdaptador() {
@@ -211,14 +190,12 @@ public class HotelActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> ada, View v, int position, long arg3) {
 
-                Log.e("reserva.size_ha",String.valueOf(reservas.size()));
-                Log.e("position_ha",String.valueOf(position));
-                Log.e("reserva_position_ha",reservas.get(position).toString());
+                ComunicadorReserva.setReservas(reservas);
                 ComunicadorReserva.setReserva(reservas.get(position));
                 ComunicadorContacto.setContacto(contactos.get(position));
 
                 Intent i = new Intent(getApplicationContext(), FormularioHotelActivity.class);
-                i.putExtra("VIENE","HotelActivity");
+                i.putExtra("VIENE","hotel_activity");
                 startActivity(i);
 
             }
@@ -250,6 +227,28 @@ public class HotelActivity extends AppCompatActivity {
                 });
     }
 
+    private void intent() {
+        Intent intent=null;
+        switch (viene){
+
+            case "main_activity":
+                intent = new Intent(context, MainActivity.class);
+                break;
+            case "formulario_hotel_activity":
+                intent = new Intent(context,FormularioHotelActivity.class);
+                break;
+
+        }
+        Log.e("vine233",viene);
+        intent.putExtra("VIENE","hotel_activity");
+        startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        intent();
 
 
+    }
 }

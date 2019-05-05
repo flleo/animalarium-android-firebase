@@ -1,6 +1,7 @@
 package com.example.fede.animalarium;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -23,6 +24,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -49,7 +51,7 @@ public class FormularioHotelActivity extends AppCompatActivity {
     TextView fechainicio, fechafin, costestancia, numNoches;
     Button selFechaInicio, selFechaFin, añadir, actualizar, eliminar;
     Spinner precio, pagado;
-    String fechaS = "", viene = "", precioS = "";
+    String viene = "", precioS = "";
     Boolean pagadoB = false;
     Date fecha = new Date(), dateInicio = new Date(), dateFin = new Date();
     int noches, costeEstancia, precioInt;
@@ -59,13 +61,15 @@ public class FormularioHotelActivity extends AppCompatActivity {
     DateFormat formatFecha = new SimpleDateFormat("dd-MM-yyyy");
     Intent intent = null;
     private HashMap<String, Object> map;
-    DocumentReference reserva;
+    private Context context;
+    private ArrayList<ReservaHotel> reservas = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_formulario_hotel);
 
+        context = this;
 
         docSnippets = new DocSnippets(db, this);
         añadir = findViewById(R.id.button_hotel_añadir);
@@ -84,17 +88,38 @@ public class FormularioHotelActivity extends AppCompatActivity {
         contacto = (Contacto) ComunicadorContacto.getContacto();
         reservaHotel = (ReservaHotel) ComunicadorReserva.getReserva();
 
-        if (reservaHotel != null && contacto != null) {
-            reserva = db.collection("hoteles").document(reservaHotel.getId());
-            bindeaReserva(reservaHotel);
-        } else if (contacto == null) {
-            añadir.setEnabled(false);
-            intent = new Intent(getApplicationContext(), ContactosActivity.class);
-            startActivity(intent);
-        } else {
-            actualizar.setEnabled(false);
-            eliminar.setEnabled(false);
-            añadir.setEnabled(false);
+        viene = getIntent().getExtras().getString("VIENE");
+
+        switch (viene) {
+            case "hotel_activity":
+                reservaHotel = ComunicadorReserva.getReserva();
+                contacto = ComunicadorContacto.getContacto();
+                bindeaReserva();
+                actualizar.setEnabled(false);
+                eliminar.setEnabled(true);
+                añadir.setEnabled(false);
+                break;
+            case "hotel_contacto_activity":
+                reservaHotel = ComunicadorReserva.getReserva();
+                contacto = ComunicadorContacto.getContacto();
+                if (reservaHotel!=null){
+                    bindeaReserva();
+                    actualizar.setEnabled(false);
+                    eliminar.setEnabled(true);
+                    añadir.setEnabled(false);
+                } else {
+                    actualizar.setEnabled(false);
+                    eliminar.setEnabled(false);
+                    añadir.setEnabled(true);
+                }
+
+                break;
+            default:
+                añadir.setEnabled(false);
+                intent = new Intent(getApplicationContext(), ContactosActivity.class);
+                intent.putExtra("VIENE", "formulario_hotel_activity");
+                startActivity(intent);
+                break;
         }
 
 
@@ -102,9 +127,9 @@ public class FormularioHotelActivity extends AppCompatActivity {
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
                 String mes = String.valueOf(month + 1);
 
-                fechaS = dayOfMonth + "-" + mes + "-" + year;
                 try {
-                    fecha = formatFecha.parse(fechaS);
+                    fecha = formatFecha.parse(dayOfMonth + "-" + mes + "-" + year);
+
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
@@ -119,7 +144,7 @@ public class FormularioHotelActivity extends AppCompatActivity {
 
     }
 
-    private void bindeaReserva(ReservaHotel reservaHotel) {
+    private void bindeaReserva() {
 
         fechainicio.setText(formatFecha.format(reservaHotel.getFechaInicio()));
         fechafin.setText(formatFecha.format(reservaHotel.getFechaFin()));
@@ -150,7 +175,7 @@ public class FormularioHotelActivity extends AppCompatActivity {
 
     public void bindeaFechaInicio(View view) {
 
-        fechainicio.setText(fechaS);
+        fechainicio.setText(new SimpleDateFormat("dd-MM-yyyy").format(fecha));
         dateInicio.setTime(fecha.getTime());
         noches();
     }
@@ -158,7 +183,7 @@ public class FormularioHotelActivity extends AppCompatActivity {
 
     public void bindeaFechaFin(View view) {
 
-        fechafin.setText(fechaS);
+        fechafin.setText(new SimpleDateFormat("dd-MM-yyyy").format(fecha));
         dateFin.setTime(fecha.getTime());
         noches();
 
@@ -179,19 +204,12 @@ public class FormularioHotelActivity extends AppCompatActivity {
         costestancia.setText(String.valueOf(costeEstancia));
         if (reservaHotel == null)
             añadir.setEnabled(true);
+        else{
+            actualizar.setEnabled(true);
+        }
     }
 
     public void eliminarHotel(View view) {
-
-       reserva.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-
-           @Override
-
-           public void onSuccess(Void aVoid) {
-               Toast.makeText(FormularioHotelActivity.this, "Reserva eliminada", Toast.LENGTH_SHORT).show();
-           }
-
-       });
 
 
         try {
@@ -206,6 +224,8 @@ public class FormularioHotelActivity extends AppCompatActivity {
                                     Toast.makeText(getApplicationContext(),
                                             "Reserva eliminada, con éxito", Toast.LENGTH_SHORT);
                             toast1.show();
+
+
                         }
                     })
                             .addOnFailureListener(new OnFailureListener() {
@@ -217,8 +237,8 @@ public class FormularioHotelActivity extends AppCompatActivity {
                                     toast1.show();
                                 }
                             });
-                    Intent intent = new Intent(getApplicationContext(), HotelActivity.class);
-                    startActivity(intent);
+                    intent();
+
                 }
             });
             builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
@@ -236,9 +256,24 @@ public class FormularioHotelActivity extends AppCompatActivity {
 
     }
 
+    private void intent() {
+        Intent intent=null;
+        switch (viene){
+            case "hotel_activity":
+                intent = new Intent(context, HotelActivity.class);
+                break;
+            case "hotel_contacto_activity":
+                intent = new Intent(context, HotelContactoActivity.class);
+        }
+
+        intent.putExtra("VIENE","formulario_hotel_activity");
+        startActivity(intent);
+    }
+
+
     public void actualizarHotel(View view) {
         recogeReserva();
-        mapeaReserva();
+        DocumentReference reserva = db.collection("hoteles").document(reservaHotel.getId());
 
         reserva.update(KEY_FECHA_INICIO, reservaHotel.getFechaInicio());
         reserva.update(KEY_FECHA_FIN, reservaHotel.getFechaFin());
@@ -252,12 +287,23 @@ public class FormularioHotelActivity extends AppCompatActivity {
 
                     public void onSuccess(Void aVoid) {
                         Toast.makeText(FormularioHotelActivity.this, "Reserva acutalizada con éxito", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(getApplicationContext(), HotelActivity.class);
-                        intent.putExtra("VIENE","formulario_hotel_activity");
-                        startActivity(intent);
+                        actualizaComunicador();
+
                     }
 
                 });
+    }
+
+    private void actualizaComunicador() {
+        reservas = ComunicadorReserva.getReservas();
+        if(reservas.remove(reservaHotel)) {
+            reservas.add(reservaHotel);
+            ComunicadorReserva.setReserva(reservaHotel);
+            ComunicadorReserva.setReservas(reservas);
+            intent();
+        }
+
+
     }
 
 
@@ -283,7 +329,7 @@ public class FormularioHotelActivity extends AppCompatActivity {
                     public void onSuccess(Void aVoid) {
                         Toast.makeText(FormularioHotelActivity.this, "Cita añadida", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(getApplicationContext(), HotelActivity.class);
-                        intent.putExtra("VIENE","formulario_hotel_activity");
+                        intent.putExtra("VIENE", "formulario_hotel_activity");
                         startActivity(intent);
                         ComunicadorContacto.setContacto(null);
                         ComunicadorReserva.setReserva(null);

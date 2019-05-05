@@ -2,6 +2,7 @@ package com.example.fede.animalarium;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.NonNull;
@@ -81,7 +82,7 @@ public class DocSnippets implements DocSnippetsInterface {
     HotelContactoActivity hotelContactoActivity;
     FormularioHotelActivity formularioHotelActivity;
     MisReservasAdapter misReservasAdapter;
-    Activity context;
+    Context context;
 
     ProgressDialog progressDialog = null;
 
@@ -104,36 +105,43 @@ public class DocSnippets implements DocSnippetsInterface {
     DocSnippets(FirebaseFirestore db, HotelActivity hotelActivity) {
         this.db = db;
         this.hotelActivity = hotelActivity;
+        context = hotelActivity;
     }
 
     DocSnippets(FirebaseFirestore db, MisReservasAdapter misReservasAdapter) {
         this.db = db;
         this.misReservasAdapter = misReservasAdapter;
+
     }
 
     DocSnippets(FirebaseFirestore db, HotelContactoActivity hotelContactoActivity) {
         this.db = db;
         this.hotelContactoActivity = hotelContactoActivity;
+        context = hotelContactoActivity;
     }
 
     DocSnippets(FirebaseFirestore db, FormularioHotelActivity formularioHotelActivity) {
         this.db = db;
         this.formularioHotelActivity = formularioHotelActivity;
+        context = formularioHotelActivity;
     }
 
     DocSnippets(FirebaseFirestore db, PeluqueriasContactoActivity peluqueriasContactoActivity) {
         this.db = db;
         this.peluqueriasContactoActivity = peluqueriasContactoActivity;
+        context = peluqueriasContactoActivity;
     }
 
     DocSnippets(FirebaseFirestore db, PeluqueriasActivity peluqueriasActivity) {
         this.db = db;
         this.peluqueriasActivity = peluqueriasActivity;
+        context = peluqueriasActivity;
     }
 
     DocSnippets(FirebaseFirestore db, CitasAdapter citasAdapter) {
         this.db = db;
         this.citasAdapter = citasAdapter;
+
     }
 
     DocSnippets(FirebaseFirestore db, ReservasAdapter reservasAdapter) {
@@ -149,21 +157,25 @@ public class DocSnippets implements DocSnippetsInterface {
     DocSnippets(FirebaseFirestore db, FormularioActivity fca) {
         this.db = db;
         this.formularioActivity = fca;
+        context = fca;
     }
 
     DocSnippets(FirebaseFirestore db, FormularioCitaActivity fca) {
         this.db = db;
         this.formularioCitaActivity = fca;
+        context = fca;
     }
 
     DocSnippets(FirebaseFirestore db, TotalesActivity fca) {
         this.db = db;
         this.totalesActivity = fca;
+        context = fca;
     }
 
     public DocSnippets(FirebaseFirestore db, MainActivity mainActivity) {
         this.db = db;
         this.mainActivity = mainActivity;
+        context = mainActivity;
     }
 
 
@@ -1042,20 +1054,17 @@ public class DocSnippets implements DocSnippetsInterface {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                                 /*  for (String id:idContactos) {
-                                Log.e("idcontactofor",id);
-                                getContactoConId(id);
-                            }*/
                             if (task.getResult().size() == 0) {
-                                peluqueriasActivity.contactos.clear();
-                                peluqueriasActivity.citas.clear();
+                                Log.e(TAG, "No hay peluquerias para esa fecha");
+                                Toast.makeText(context,"No hay peluquerias para esa fecha", Toast.LENGTH_SHORT).show();
                                 peluqueriasActivity.inicimosAdaptador();
-                                Log.e(TAG, "No hay peluquerias para esa fechaS");
+
                             } else
                                 peluqueriasActivity.setPeluquerias(task.getResult().getDocuments());
 
                         } else {
                             Log.e(TAG, "Error getting documents", task.getException());
+                            Toast.makeText(context,"No existen peluquerias para esa fecha", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -1127,7 +1136,7 @@ public class DocSnippets implements DocSnippetsInterface {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (DocumentSnapshot document : task.getResult()) {
-                                hotelContactoActivity.bindeaYAñadeReserva(document);
+                                hotelContactoActivity.bindeaYAñadeReserva(document,task.getResult().size());
                             }
                             hotelContactoActivity.inicimosAdaptador();
                         } else {

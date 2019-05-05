@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         } else if (id == R.id.nav_hotel) {
             Intent hoteles = new Intent(getApplicationContext(), HotelActivity.class);
-            hoteles.putExtra("VIENE", "vienedemainactivity");
+            hoteles.putExtra("VIENE", "main_activity");
             startActivity(hoteles);
 
         } else if (id == R.id.nav_totales) {

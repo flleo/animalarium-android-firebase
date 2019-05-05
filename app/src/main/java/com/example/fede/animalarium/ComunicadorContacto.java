@@ -3,6 +3,7 @@ package com.example.fede.animalarium;
 
 import android.net.Uri;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,8 +13,8 @@ import java.util.List;
 class ComunicadorContacto {
 
      static Contacto contacto = null;
-     static List<Contacto> contactos;
-     static List<Uri> uris;
+     static ArrayList<Contacto> contactos = new ArrayList<>();
+     static ArrayList<Uri> uris = new ArrayList<>();
 
 
 
@@ -25,23 +26,19 @@ class ComunicadorContacto {
         return contacto;
     }
 
-     static List<Contacto> getContactos() {
+    public static ArrayList<Contacto> getContactos() {
         return contactos;
     }
 
-     static void setContactos(List<Contacto> contactos) {
+    public static void setContactos(ArrayList<Contacto> contactos) {
         ComunicadorContacto.contactos = contactos;
-     }
+    }
 
-    public static List<Uri> getUris() {
+    public static ArrayList<Uri> getUris() {
         return uris;
     }
 
-    public static void setUris(List<Uri> uris) {
+    public static void setUris(ArrayList<Uri> uris) {
         ComunicadorContacto.uris = uris;
-    }
-
-    public static void addContacto(Contacto contacto) {
-         contactos.add(contacto);
     }
 }
