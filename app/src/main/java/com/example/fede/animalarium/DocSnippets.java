@@ -85,6 +85,9 @@ public class DocSnippets implements DocSnippetsInterface {
     Context context;
 
     ProgressDialog progressDialog = null;
+    private double totalHotelSemana;
+    private int diaSemana=0;
+
 
     public DocSnippets(FirebaseFirestore db, SplashScreenActivity splashScreenActivity) {
         this.db = db;
@@ -1180,11 +1183,8 @@ public class DocSnippets implements DocSnippetsInterface {
                                             i++;
                                             if ((doc.getDate("fechaInicio").compareTo(fechaInicio) <= 0)&&(doc.getDate("fechaFin").compareTo(fechaFin) >= 0))
                                             {
-                                                Log.e("lllll","ñññññññññññññ");
                                                hotelActivity.bindeaYAñadeReservaHotel(doc,i,task.getResult().size());
                                                j++;
-
-
                                             }
                                             Log.e("finicioReserva", doc.getDate("fechaInicio").toString());
                                             Log.e("finFinReserva", doc.getDate("fechaFin").toString());
@@ -1275,7 +1275,7 @@ public class DocSnippets implements DocSnippetsInterface {
         }
         Log.e("fechaSemana_fecha_del_lunes", (String.valueOf(fecha1)));
 
-        //fechaSig.setTime(fechaS.getTime() + (3600000*24*7));
+        fechaSig.setTime(fecha1.getTime() + (3600000*24*7));
         // [START get_multiple_all]
         Log.e("fechaSig", (String.valueOf(fechaSig)));
         db.collection("citas")
@@ -1382,49 +1382,59 @@ public class DocSnippets implements DocSnippetsInterface {
 
 
     public void getTotalesHotelDia(Date fecha) {
-        Log.e("fechaDia", (String.valueOf(fecha)));
-        Date fechaSig = new Date();
-        fechaSig.setTime(fecha.getTime() + (3600000 * 24));
+        final Date fechaInicio = new Date();
+        fechaInicio.setTime(fecha.getTime());
+        fechaInicio.setHours(23);
+        fechaInicio.setMinutes(00);
+        fechaInicio.setSeconds(00);
+        final Date fechaFin = new Date();
+        fechaFin.setTime(fechaInicio.getTime());
+        fechaFin.setHours(0);
+
         // [START get_multiple_all]
-        Log.e("fechaSig", (String.valueOf(fechaSig)));
-        db.collection("hoteles")
-                .orderBy("fechaInicio")
-                .endBefore(fecha)
-                .startAt(fecha)
-                .endAt(fechaSig)
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            double total = 0;
-                            for (DocumentSnapshot document : task.getResult()) {
-                                total += (Double) document.get("tarifa");
-//                                Log.e("Total",String.valueOf(total));
-//                                Log.e("fechaS",String.valueOf(document.getDate("fechaS").getDate()));
+        try {
+            db.collection("hoteles")
+                    .orderBy("fechaFin")
+                    // .endBefore(fecha)
+                    .whereGreaterThanOrEqualTo("fechaFin", fechaFin)
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if (task.isSuccessful()) {
+                                if (task.getResult().size() == 0) {
+                                } else {
+                                    double total=0,i=0;
+                                    for (DocumentSnapshot doc : task.getResult().getDocuments()){
+                                        if ((doc.getDate("fechaInicio").compareTo(fechaInicio) <= 0)&&(doc.getDate("fechaFin").compareTo(fechaFin) >= 0))
+                                        {
+                                           total+=doc.getDouble("precio");
+                                           i++;
+                                        }
+                                        if (i==task.getResult().size()) {
+                                            totalesActivity.total_hotel_dia.setText(String.valueOf(total));
+                                        }
+                                    }
+                                }
+                            } else {
+                                Log.e(TAG, "Error getting documents", task.getException());
                             }
-                            if (task.getResult().size() == 0) {
-                                Log.e("Resultado", "No hay resultados");
-                            }
-                            Log.e("TotalesDia", String.valueOf(total));
-                            totalesActivity.total_dia.setText(String.valueOf(total));
-                        } else {
-                            Log.e(TAG, "Error getting documents: " + "No hay documentos");
                         }
-                    }
-                });
-        // [END get_multiple_all]
+                    });
+        } catch (IllegalArgumentException e) {
+            Log.e(TAG, e.toString());
+        }
+
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void getTotalesHotelSemana(Date fecha) {
+        fecha.setHours(23);
         Date fecha1 = new Date(fecha.getTime());//Si ponemos fechaS=fechaS->fechaS=fehca1 y altera valores  en gfetTotalesMes(fechaS)
-        Log.e("fechaSemana", (String.valueOf(fecha1)));
         Date fechaSig = new Date();
         fechaSig.setTime(fecha.getTime() + (3600000 * 24));
         SimpleDateFormat sd = new SimpleDateFormat("EEEE");
         String dayofweek = sd.format(fecha1.getTime());
-        Log.e("DiadelaSemana", dayofweek);
         switch (dayofweek) {
             case "lunes":
                 break;
@@ -1447,111 +1457,175 @@ public class DocSnippets implements DocSnippetsInterface {
                 fecha1.setTime(fecha.getTime() - (3600000 * 24 * 6));
                 break;
         }
-        Log.e("fechaSemana_fecha_del_lunes", (String.valueOf(fecha1)));
 
-        //fechaSig.setTime(fechaS.getTime() + (3600000*24*7));
+        calcula(fecha1);
+        Date fecha2 = new Date(fecha1.getTime()+(3600000 * 24));
+        calcula(fecha2);
+        Date fecha3 = new Date(fecha2.getTime()+(3600000 * 24));
+        calcula(fecha3);
+        Date fecha4 = new Date(fecha3.getTime()+(3600000 * 24));
+        calcula(fecha4);
+        Date fecha5 = new Date(fecha3.getTime()+(3600000 * 24));
+        calcula(fecha5);
+        Date fecha6 = new Date(fecha4.getTime()+(3600000 * 24));
+        calcula(fecha6);
+        Date fecha7 = new Date(fecha5.getTime()+(3600000 * 24));
+        calcula(fecha7);
+
+
+    }
+
+    private void calcula(Date fecha) {
+        final Date fechaInicio = new Date();
+        fechaInicio.setTime(fecha.getTime());
+        fechaInicio.setHours(23);
+        fechaInicio.setMinutes(00);
+        fechaInicio.setSeconds(00);
+        final Date fechaFin = new Date();
+        fechaFin.setTime(fechaInicio.getTime());
+        fechaFin.setHours(0);
+
         // [START get_multiple_all]
-        Log.e("fechaSig", (String.valueOf(fechaSig)));
-        db.collection("citas")
-                .orderBy("fechaS")
-                .startAt(fecha1)
-                .endAt(fechaSig)
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            double total = 0;
-                            for (DocumentSnapshot document : task.getResult()) {
-                                total += (Double) document.get("tarifa");
-//                                Log.e("Total",String.valueOf(total));
-//                                Log.e("fechaS",String.valueOf(document.getDate("fechaS").getDate()));
+        try {
+            db.collection("hoteles")
+                    .orderBy("fechaFin")
+                    // .endBefore(fecha)
+                    .whereGreaterThanOrEqualTo("fechaFin", fechaFin)
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if (task.isSuccessful()) {
+                                if (task.getResult().size() == 0) {
+                                    Log.e(TAG, "No hay rReservas para esta fecha");
+                                } else {
+                                    double total=0,i=0;
+                                    for (DocumentSnapshot doc : task.getResult().getDocuments()){
+                                        if ((doc.getDate("fechaInicio").compareTo(fechaInicio) <= 0)&&(doc.getDate("fechaFin").compareTo(fechaFin) >= 0))
+                                        {
+                                            total+=doc.getDouble("precio");
+                                            i++;
+                                        }
+                                        if (i==task.getResult().size()) {
+                                            totalHotelSemana += total;
+                                            diaSemana++;
+                                            if(diaSemana==7) totalesActivity.total_hotel_semana.setText(String.valueOf(totalHotelSemana));
+                                        }
+                                    }
+                                }
+                            } else {
+                                Log.e(TAG, "Error getting documents", task.getException());
                             }
-                            if (task.getResult().size() == 0) {
-                                Log.e("Resultado", "No hay resultados");
-                            }
-                            Log.e("TotalesSemana", String.valueOf(total));
-                            totalesActivity.total_semana.setText(String.valueOf(total));
-                        } else {
-                            Log.e(TAG, "Error getting documents: " + "No hay documentos");
                         }
-                    }
-                });
-        // [END get_multiple_all]
+                    });
+        } catch (IllegalArgumentException e) {
+            Log.e(TAG, e.toString());
+        }
     }
 
     public void getTotalesHotelMes(Date fecha) {
-        Date fecha1 = new Date(fecha.getYear(), fecha.getMonth(), 1);
-        Log.e("fechaMes", (String.valueOf(fecha1)));
-        Date fechaSig;
-        if (fecha.getMonth() == 11) fechaSig = new Date(fecha.getYear() + 1, 0, 1);
-        else fechaSig = new Date(fecha.getYear(), fecha.getMonth() + 1, 1);
-        // [START get_multiple_all]
-        Log.e("fechaMesSig", (String.valueOf(fechaSig)));
-        db.collection("citas")
-                .orderBy("fechaS")
-                .startAt(fecha1)
-                .endAt(fechaSig)
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            double total = 0;
-                            for (DocumentSnapshot document : task.getResult()) {
-                                total += (Double) document.get("tarifa");
-//                                Log.e("fechaS",String.valueOf(document.getDate("fechaS").getDate()));
-//                                Log.e("SuTotal",String.valueOf(total));
+        final Date fechaInicio = new Date();
+        fechaInicio.setTime(fecha.getTime());
+        fechaInicio.setDate(1);
+        fechaInicio.setHours(23);
+        fechaInicio.setMinutes(00);
+        fechaInicio.setSeconds(00);
+        final Date fechaFin = new Date();
+        fechaFin.setTime(fechaInicio.getTime());
+        switch (fechaFin.getMonth()){
+            case 0: fechaFin.setDate(31);break;
+            case 1: fechaFin.setDate(28);break;
+            case 2: fechaFin.setDate(31);break;
+            case 3: fechaFin.setDate(30);break;
+            case 4: fechaFin.setDate(31);break;
+            case 5: fechaFin.setDate(30);break;
+            case 6: fechaFin.setDate(31);break;
+            case 7: fechaFin.setDate(31);break;
+            case 8: fechaFin.setDate(30);break;
+            case 9: fechaFin.setDate(31);break;
+            case 10:fechaFin.setDate(30);break;
+            case 11:fechaFin.setDate(31);break;
+        }
+        fechaFin.setHours(0);
+        try {
+            db.collection("hoteles")
+                    .orderBy("fechaFin")
+                    // .endBefore(fecha)
+                    .whereLessThanOrEqualTo("fechaFin", fechaFin)
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if (task.isSuccessful()) {
+                                if (task.getResult().size() == 0) {
+                                } else {
+                                    double total=0,i=0;
+                                    for (DocumentSnapshot doc : task.getResult().getDocuments()){
+                                        if ((doc.getDate("fechaInicio").compareTo(fechaInicio) >= 0)&&(doc.getDate("fechaFin").compareTo(fechaFin) <= 0))
+                                        {
+                                            total+=doc.getDouble("coste");
+                                            i++;
+                                        }
+                                        if (i==task.getResult().size()) {
+                                            totalesActivity.total_hotel_mes.setText(String.valueOf(total));
+                                        }
+                                    }
+                                }
+                            } else {
+                                Log.e(TAG, "Error getting documents", task.getException());
                             }
-                            if (task.getResult().size() == 0) {
-                                Log.e("Resultado", "No hay resultados");
-                            }
-                            Log.e("TotalesMes", String.valueOf(total));
-                            totalesActivity.total_mes.setText(String.valueOf(total));
-                        } else {
-                            Log.e(TAG, "Error getting documents: " + "No hay documentos");
                         }
-                    }
-                });
-        // [END get_multiple_all]
+                    });
+        } catch (IllegalArgumentException e) {
+            Log.e(TAG, e.toString());
+        }
     }
 
     public void getTotalesHotelAño(Date fecha) {
 
-        fecha.setDate(1);
-        fecha.setMonth(0);
-        Date fecha2 = new Date();
-        fecha2.setDate(1);
-        fecha2.setMonth(0);
-        fecha2.setYear(fecha.getYear() + 1);
-        Log.e("finicioAño", (String.valueOf(fecha)));
-        Log.e("ffinAño", (String.valueOf(fecha2)));
-        db.collection("citas")
-                .orderBy("fechaS")
-                .startAt(fecha)
-                .endAt(fecha2)
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            double total = 0;
-                            for (DocumentSnapshot document : task.getResult()) {
-                                total += (Double) document.get("tarifa");
-//                                Log.e("Total",String.valueOf(total));
-//                                Log.e("fechaS",String.valueOf(document.getDate("fechaS").getDate()));
+        final Date fechaInicio = new Date();
+        fechaInicio.setTime(fecha.getTime());
+        fechaInicio.setDate(1);
+        fechaInicio.setMonth(0);
+        fechaInicio.setHours(23);
+        fechaInicio.setMinutes(00);
+        fechaInicio.setSeconds(00);
+        final Date fechaFin = new Date();
+        fechaFin.setTime(fechaInicio.getTime());
+        fechaFin.setMonth(11);
+        fechaFin.setHours(0);
+        try {
+            db.collection("hoteles")
+                    .orderBy("fechaFin")
+                    // .endBefore(fecha)
+                    .whereLessThanOrEqualTo("fechaFin", fechaFin)
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if (task.isSuccessful()) {
+                                if (task.getResult().size() == 0) {
+                                } else {
+                                    double total=0,i=0;
+                                    for (DocumentSnapshot doc : task.getResult().getDocuments()){
+                                        if ((doc.getDate("fechaInicio").compareTo(fechaInicio) >= 0)&&(doc.getDate("fechaFin").compareTo(fechaFin) <= 0))
+                                        {
+                                            total+=doc.getDouble("coste");
+                                            i++;
+                                        }
+                                        if (i==task.getResult().size()) {
+                                            totalesActivity.total_hotel_año.setText(String.valueOf(total));
+                                        }
+                                    }
+                                }
+                            } else {
+                                Log.e(TAG, "Error getting documents", task.getException());
                             }
-                            if (task.getResult().size() == 0) {
-                                Log.e("Resultado", "No hay resultados");
-                            }
-                            Log.e("Totales", String.valueOf(total));
-                            totalesActivity.total_año.setText(String.valueOf(total));
-                        } else {
-                            Log.e(TAG, "Error getting documents: " + "No hay documentos");
                         }
-                    }
-                });
-        // [END get_multiple_all]
+                    });
+        } catch (IllegalArgumentException e) {
+            Log.e(TAG, e.toString());
+        }
     }
 
 
