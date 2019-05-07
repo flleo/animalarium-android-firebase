@@ -95,7 +95,7 @@ public class FormularioHotelActivity extends AppCompatActivity {
                 reservaHotel = ComunicadorReserva.getReserva();
                 contacto = ComunicadorContacto.getContacto();
                 bindeaReserva();
-                actualizar.setEnabled(false);
+                actualizar.setEnabled(true);
                 eliminar.setEnabled(true);
                 añadir.setEnabled(false);
                 break;
@@ -104,7 +104,7 @@ public class FormularioHotelActivity extends AppCompatActivity {
                 contacto = ComunicadorContacto.getContacto();
                 if (reservaHotel!=null){
                     bindeaReserva();
-                    actualizar.setEnabled(false);
+                    actualizar.setEnabled(true);
                     eliminar.setEnabled(true);
                     añadir.setEnabled(false);
                 } else {
@@ -157,6 +157,7 @@ public class FormularioHotelActivity extends AppCompatActivity {
                 precio.setSelection(1);
                 break;
         }
+        Log.e("coste",String.valueOf(reservaHotel.getCoste()));
         costestancia.setText(String.valueOf(reservaHotel.getCoste().intValue()));
         numNoches.setText(String.valueOf(reservaHotel.getNoches().intValue()));
         pagadoB = reservaHotel.getPagado();
@@ -357,5 +358,9 @@ public class FormularioHotelActivity extends AppCompatActivity {
         map.put(KEY_PRECIO, reservaHotel.getPrecio());
         map.put(KEY_PAGADO, reservaHotel.getPagado());
 
+    }
+
+    public void precioOnClick(View view){
+        actualizar.setEnabled(false);
     }
 }

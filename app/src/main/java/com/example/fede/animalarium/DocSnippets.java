@@ -1434,6 +1434,7 @@ public class DocSnippets implements DocSnippetsInterface {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void getTotalesHotelSemana(Date fecha) {
+        diaSemana=0;totalHotelSemana=0;diaSemana=0;
         Date fecha1 = new Date(fecha.getTime());//Si ponemos fechaS=fechaS->fechaS=fehca1 y altera valores  en gfetTotalesMes(fechaS)
         fecha1.setHours(23);
         Date fechaSig = new Date();
@@ -1470,11 +1471,11 @@ public class DocSnippets implements DocSnippetsInterface {
         calcula(fecha3);
         Date fecha4 = new Date(fecha3.getTime()+(3600000 * 24));
         calcula(fecha4);
-        Date fecha5 = new Date(fecha3.getTime()+(3600000 * 24));
+        Date fecha5 = new Date(fecha4.getTime()+(3600000 * 24));
         calcula(fecha5);
-        Date fecha6 = new Date(fecha4.getTime()+(3600000 * 24));
+        Date fecha6 = new Date(fecha5.getTime()+(3600000 * 24));
         calcula(fecha6);
-        Date fecha7 = new Date(fecha5.getTime()+(3600000 * 24));
+        Date fecha7 = new Date(fecha6.getTime()+(3600000 * 24));
         calcula(fecha7);
 
 
@@ -1511,11 +1512,12 @@ public class DocSnippets implements DocSnippetsInterface {
                                             total+=doc.getDouble("precio");
                                         }
                                         i++;
-                                        if (i==task.getResult().size()) {
-                                            totalHotelSemana += total;
-                                            diaSemana++;
-                                            if(diaSemana==7) totalesActivity.total_hotel_semana.setText(String.valueOf(totalHotelSemana));
-                                        }
+                                    }
+                                    if (i==task.getResult().size()) {
+                                        totalHotelSemana += total;
+                                        diaSemana++;
+                                        Log.e("totalhotelsemana:",diaSemana+":"+totalHotelSemana);
+                                        if(diaSemana==7) totalesActivity.total_hotel_semana.setText(String.valueOf(totalHotelSemana));
                                     }
                                 }
                             } else {
