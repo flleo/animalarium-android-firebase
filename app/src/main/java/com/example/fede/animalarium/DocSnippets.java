@@ -1344,17 +1344,18 @@ public class DocSnippets implements DocSnippetsInterface {
 
     public void getTotalesAño(Date fecha) {
 
-        fecha.setDate(1);
-        fecha.setMonth(0);
+        Date fecha1 = new Date(fecha.getTime());
+        fecha1.setDate(1);
+        fecha1.setMonth(0);
         Date fecha2 = new Date();
         fecha2.setDate(1);
         fecha2.setMonth(0);
         fecha2.setYear(fecha.getYear() + 1);
-        Log.e("finicioAño", (String.valueOf(fecha)));
+        Log.e("finicioAño", (String.valueOf(fecha1)));
         Log.e("ffinAño", (String.valueOf(fecha2)));
         db.collection("citas")
                 .orderBy("fecha")
-                .startAt(fecha)
+                .startAt(fecha1)
                 .endAt(fecha2)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -1391,6 +1392,7 @@ public class DocSnippets implements DocSnippetsInterface {
         fechaFin.setTime(fechaInicio.getTime());
         fechaFin.setHours(0);
 
+        Log.e("fecha1394",fechaFin.toString());
         // [START get_multiple_all]
         try {
             db.collection("hoteles")
@@ -1403,16 +1405,19 @@ public class DocSnippets implements DocSnippetsInterface {
                         public void onComplete(@NonNull Task<QuerySnapshot> task) {
                             if (task.isSuccessful()) {
                                 if (task.getResult().size() == 0) {
+                                    Log.e("No hay valores totaleshotel dia ","0");
                                 } else {
-                                    double total=0,i=0;
+                                    double total=0,j=0;
                                     for (DocumentSnapshot doc : task.getResult().getDocuments()){
                                         if ((doc.getDate("fechaInicio").compareTo(fechaInicio) <= 0)&&(doc.getDate("fechaFin").compareTo(fechaFin) >= 0))
                                         {
                                            total+=doc.getDouble("precio");
-                                           i++;
+                                           Log.e("totalDia",String.valueOf(doc.getDouble("precio")));
                                         }
-                                        if (i==task.getResult().size()) {
+                                        j++;
+                                        if (j==task.getResult().size()) {
                                             totalesActivity.total_hotel_dia.setText(String.valueOf(total));
+                                            Log.e("totalDiaTotal",String.valueOf(total));
                                         }
                                     }
                                 }
@@ -1429,8 +1434,8 @@ public class DocSnippets implements DocSnippetsInterface {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void getTotalesHotelSemana(Date fecha) {
-        fecha.setHours(23);
         Date fecha1 = new Date(fecha.getTime());//Si ponemos fechaS=fechaS->fechaS=fehca1 y altera valores  en gfetTotalesMes(fechaS)
+        fecha1.setHours(23);
         Date fechaSig = new Date();
         fechaSig.setTime(fecha.getTime() + (3600000 * 24));
         SimpleDateFormat sd = new SimpleDateFormat("EEEE");
@@ -1504,8 +1509,8 @@ public class DocSnippets implements DocSnippetsInterface {
                                         if ((doc.getDate("fechaInicio").compareTo(fechaInicio) <= 0)&&(doc.getDate("fechaFin").compareTo(fechaFin) >= 0))
                                         {
                                             total+=doc.getDouble("precio");
-                                            i++;
                                         }
+                                        i++;
                                         if (i==task.getResult().size()) {
                                             totalHotelSemana += total;
                                             diaSemana++;
@@ -1564,8 +1569,8 @@ public class DocSnippets implements DocSnippetsInterface {
                                         if ((doc.getDate("fechaInicio").compareTo(fechaInicio) >= 0)&&(doc.getDate("fechaFin").compareTo(fechaFin) <= 0))
                                         {
                                             total+=doc.getDouble("coste");
-                                            i++;
                                         }
+                                        i++;
                                         if (i==task.getResult().size()) {
                                             totalesActivity.total_hotel_mes.setText(String.valueOf(total));
                                         }
@@ -1583,8 +1588,7 @@ public class DocSnippets implements DocSnippetsInterface {
 
     public void getTotalesHotelAño(Date fecha) {
 
-        final Date fechaInicio = new Date();
-        fechaInicio.setTime(fecha.getTime());
+        final Date fechaInicio = new Date(fecha.getTime());
         fechaInicio.setDate(1);
         fechaInicio.setMonth(0);
         fechaInicio.setHours(23);
@@ -1611,8 +1615,8 @@ public class DocSnippets implements DocSnippetsInterface {
                                         if ((doc.getDate("fechaInicio").compareTo(fechaInicio) >= 0)&&(doc.getDate("fechaFin").compareTo(fechaFin) <= 0))
                                         {
                                             total+=doc.getDouble("coste");
-                                            i++;
                                         }
+                                        i++;
                                         if (i==task.getResult().size()) {
                                             totalesActivity.total_hotel_año.setText(String.valueOf(total));
                                         }

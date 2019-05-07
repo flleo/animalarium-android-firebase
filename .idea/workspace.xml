@@ -126,8 +126,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/TotalesActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="112" column="22" selection-start-line="112" selection-start-column="22" selection-end-line="112" selection-end-column="22" />
+            <state relative-caret-position="342">
+              <caret line="110" column="29" selection-start-line="110" selection-start-column="29" selection-end-line="110" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -135,8 +135,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/DocSnippets.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="1625" column="46" selection-start-line="1625" selection-start-column="46" selection-end-line="1625" selection-end-column="46" />
+            <state relative-caret-position="1845">
+              <caret line="1618" column="44" selection-start-line="1618" selection-start-column="44" selection-end-line="1618" selection-end-column="44" />
               <folding>
                 <element signature="e#65413#66220#0" expanded="true" />
                 <element signature="e#66219#66220#0" expanded="true" />
@@ -778,13 +778,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/TotalesActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="112" column="22" selection-start-line="112" selection-start-column="22" selection-end-line="112" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ReservaHotel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -792,10 +785,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/TotalesActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="110" column="29" selection-start-line="110" selection-start-column="29" selection-end-line="110" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/DocSnippets.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="1625" column="46" selection-start-line="1625" selection-start-column="46" selection-end-line="1625" selection-end-column="46" />
+        <state relative-caret-position="1845">
+          <caret line="1618" column="44" selection-start-line="1618" selection-start-column="44" selection-end-line="1618" selection-end-column="44" />
           <folding>
             <element signature="e#65413#66220#0" expanded="true" />
             <element signature="e#66219#66220#0" expanded="true" />
