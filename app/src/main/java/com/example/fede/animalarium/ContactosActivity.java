@@ -68,7 +68,7 @@ public class ContactosActivity extends AppCompatActivity {
     private static final int PERMISSION_REQUEST_CODE = 1;
     Date fecha = new Date();
     static String fechaS = "";
-    static String viene="";
+    static String viene = "";
     private static Uri uri;
     private int cantidadTotalContactos;
     private static Contacto contacto;
@@ -98,8 +98,7 @@ public class ContactosActivity extends AppCompatActivity {
         viene = getIntent().getExtras().getString("VIENE");
 
         switch (viene) {
-            case "formulario_activity":
-                break;
+
             case "peluquerias_activity":
 
                 fechaS = getIntent().getExtras().getString("FECHA");
@@ -126,41 +125,31 @@ public class ContactosActivity extends AppCompatActivity {
 
                 Intent intent = null;
 
-
-                    Log.e("viene131ContactosActivity",viene);
-                    switch (viene) {
-                        case "main_activity":
-                            intent = new Intent(context, FormularioActivity.class);
-                            break;
-
-                        case "formulario_activity":
-                            intent = new Intent(context, FormularioActivity.class);
-                            break;
-                        case "peluquerias_activity":
-                            intent = new Intent(context, FormularioCitaActivity.class);
-                            intent.putExtra("FECHA", fechaS);
-                            break;
-                        case "hotel_activity":
-                            intent = new Intent(context, FormularioHotelActivity.class);
-                            intent.putExtra("FECHA", fechaS);
-                            break;
-                    }
-
-                    intent.putExtra("VIENE", "contactos_activity");
-
-                    startActivity(intent);
-
-
-
+                Log.e("viene131ContactosActivity", viene);
+                switch (viene) {
+                    case "peluquerias_activity":
+                        intent = new Intent(context, FormularioCitaActivity.class);
+                        intent.putExtra("FECHA", fechaS);
+                        break;
+                    case "hotel_activity":
+                        intent = new Intent(context, FormularioHotelActivity.class);
+                        intent.putExtra("FECHA", fechaS);
+                        break;
+                    default:
+                        intent = new Intent(context, FormularioActivity.class);
+                        break;
+                }
+                intent.putExtra("VIENE", "contactos_activity");
+                startActivity(intent);
             }
         });
 
         //Autentificamos usuarios para firebase
         FirebaseUser user = mAuth.getCurrentUser();
         try {
-            if (user != null) {   }
-        }
-        catch (NullPointerException e) {
+            if (user != null) {
+            }
+        } catch (NullPointerException e) {
             signInAnonymously();
         }
         FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
@@ -226,6 +215,7 @@ public class ContactosActivity extends AppCompatActivity {
         if (i == fotos.size()) if (uri == null) grabaFotoMobil();
 
     }
+
     //RECUPERAMOS FOTO DESDE FIREBASE
     private static void grabaFotoMobil() {
 

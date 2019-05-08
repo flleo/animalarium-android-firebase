@@ -1022,10 +1022,11 @@ public class DocSnippets implements DocSnippetsInterface {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful() && task.getResult().size() > 0) {
                             try {
-                                contactosActivity.setContactos(task.getResult().getDocuments(), contactosActivity, "contactos", progressDialog);
+                                contactosActivity.setContactos(task.getResult().getDocuments(), contactosActivity, "contactos_activity", progressDialog);
                             } catch (NoSuchElementException e) {
                                 Toast.makeText(contactosActivity, "No existen mascotas :(", Toast.LENGTH_LONG).show();
                                 Intent intent = new Intent(contactosActivity, ContactosActivity.class);
+                                intent.putExtra("VIENE","docSnippets");
                                 contactosActivity.startActivity(intent);
                             }
 
@@ -1086,8 +1087,7 @@ public class DocSnippets implements DocSnippetsInterface {
                     if (document.exists()) {
                         try {
                             if (idd.equalsIgnoreCase(document.getId())) {
-                                Log.e("citaid", document.toString());
-                                Log.e("fechaCita", document.get("fecha").toString());
+                               formularioCitaActivity.bindeaCitaPeluqueria(document);
                             }
                         } catch (NoSuchElementException e) {
                         }

@@ -96,7 +96,6 @@ public class PeluqueriasContactoActivity extends AppCompatActivity {
         db.setFirestoreSettings(settings);
 
 
-
     }
 
     private void recuperarFirebase() {
@@ -137,7 +136,6 @@ public class PeluqueriasContactoActivity extends AppCompatActivity {
                 ComunicadorCita.setObjeto(citas.get(position));
                 Intent i = new Intent(getApplicationContext(), FormularioCitaActivity.class);
                 i.putExtra("VIENE", "peluquerias_contacto_activity");
-
                 startActivity(i);
             }
         });
@@ -147,13 +145,20 @@ public class PeluqueriasContactoActivity extends AppCompatActivity {
 
     public void añadirCita(View view) {
         Intent formulario;
-        if (viene.equalsIgnoreCase("peluquerias")) {
-            formulario = new Intent(getApplicationContext(), FormularioCitaActivity.class);
-            formulario.putExtra("FECHA", fecha);
-        } else {
-            // ComunicadorContacto.setReserva(contacto);
-            formulario = new Intent(getApplicationContext(), PeluqueriasActivity.class);
+        switch (viene) {
+            case "peluquerias_activity":
+                formulario = new Intent(getApplicationContext(), FormularioCitaActivity.class);
+                formulario.putExtra("FECHA", fecha);
+                break;
+            case "formulario_cita_activity":
+                formulario = new Intent(context,FormularioCitaActivity.class);
+                break;
+            default:
+                formulario = new Intent(getApplicationContext(), PeluqueriasActivity.class);
+                break;
         }
+
+        formulario.putExtra("VIENE","peluquerias_contacto_activity");
         startActivity(formulario);
     }
 
@@ -178,11 +183,10 @@ public class PeluqueriasContactoActivity extends AppCompatActivity {
         ComunicadorCita.setObjeto(null);
 
         Intent menu = new Intent(getApplicationContext(), FormularioActivity.class);
-        menu.putExtra("VIENE","peluquerias_contacto_activity");
+        menu.putExtra("VIENE", "peluquerias_contacto_activity");
         startActivity(menu);
 
     }
-
 
 
 }

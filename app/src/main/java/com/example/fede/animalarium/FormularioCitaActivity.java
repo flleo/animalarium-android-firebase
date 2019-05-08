@@ -44,6 +44,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
@@ -366,10 +367,6 @@ public class FormularioCitaActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(Void aVoid) {
                             Toast.makeText(FormularioCitaActivity.this, "Cita añadida", Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(getApplicationContext(), PeluqueriasActivity.class);
-                            startActivity(intent);
-                            ComunicadorContacto.setContacto(null);
-                            Log.e("cita__id_fca", contactoRef.getId());
                             docSnippets.getCitaConId(contactoRef.getId());
 
                         }
@@ -471,6 +468,18 @@ public class FormularioCitaActivity extends AppCompatActivity {
     }
 
     private void actualizaComunicadorCita() {
+
+        if (citas.remove(citaPeluqueria)){
+            citas.add(citaPeluqueria);
+            Collections.sort(citas, new Comparator<CitaPeluqueria>() {
+                @Override
+                public int compare(CitaPeluqueria o1, CitaPeluqueria o2) {
+                    return o1.fecha.compareTo(o2.fecha);
+                }
+            });
+            ComunicadorCita.setSusCitas(citas);
+            intent();
+        }
 
         for (int i=0;i<citas.size();i++) {
             if (citas.get(i).get_id().equalsIgnoreCase(citaPeluqueria.get_id())) {
@@ -577,4 +586,15 @@ public class FormularioCitaActivity extends AppCompatActivity {
     }
 
 
+    public void bindeaCitaPeluqueria(DocumentSnapshot document) {
+        citaPeluqueria = new CitaPeluqueria(
+                document.getId(),
+                document.getString("idContacto"),
+                document.getDate("fecha"),
+                document.getString("trabajo"),
+                document.getDouble("tarifa")
+        );
+        actualizaComunicadorCita();
+
+    }
 }
