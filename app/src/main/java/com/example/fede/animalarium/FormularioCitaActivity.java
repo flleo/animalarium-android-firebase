@@ -469,7 +469,7 @@ public class FormularioCitaActivity extends AppCompatActivity {
 
     private void actualizaComunicadorCita() {
 
-        if (citas.remove(citaPeluqueria)){
+        if (citas.remove(citaPeluqueria)) {
             citas.add(citaPeluqueria);
             Collections.sort(citas, new Comparator<CitaPeluqueria>() {
                 @Override
@@ -479,20 +479,19 @@ public class FormularioCitaActivity extends AppCompatActivity {
             });
             ComunicadorCita.setSusCitas(citas);
             intent();
-        }
 
-        for (int i=0;i<citas.size();i++) {
-            if (citas.get(i).get_id().equalsIgnoreCase(citaPeluqueria.get_id())) {
-                citas.set(i,citaPeluqueria);
-                progressDialog.dismiss();
-                intent();
-                break;
+            for (int i = 0; i < citas.size(); i++) {
+                if (citas.get(i).get_id().equalsIgnoreCase(citaPeluqueria.get_id())) {
+                    citas.set(i, citaPeluqueria);
+                    progressDialog.dismiss();
+                    break;
+                }
             }
+        } else {
+            citas.add(citaPeluqueria);
+            ComunicadorCita.setSusCitas(citas);
+            intent();
         }
-
-
-
-
     }
 
     private ArrayList<CitaPeluqueria> añadimosCitaAlComunicador() {
@@ -579,6 +578,7 @@ public class FormularioCitaActivity extends AppCompatActivity {
                 break;
             case "peluquerias_activity":
                 intent = new Intent(getApplicationContext(), PeluqueriasActivity.class);
+                ComunicadorContacto.setContacto(null);
                 break;
         }
         intent.putExtra("VIENE", "formulario_cita_activity");
@@ -595,6 +595,13 @@ public class FormularioCitaActivity extends AppCompatActivity {
                 document.getDouble("tarifa")
         );
         actualizaComunicadorCita();
+
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        intent();
 
     }
 }

@@ -81,6 +81,7 @@ public class FormularioActivity extends AppCompatActivity {
     DocSnippets docSnippets;
     private ArrayList<Contacto> contactos = new ArrayList<>();
     private ProgressDialog progressDialog = null;
+    private ArrayList<Uri> uris;
 
 
     @Override
@@ -93,10 +94,11 @@ public class FormularioActivity extends AppCompatActivity {
         context = this;
         docSnippets = new DocSnippets(db, (FormularioActivity) context);
         progressDialog = new ProgressDialog(this);
+        contactos = ComunicadorContacto.getContactos();
+        uris = ComunicadorContacto.getUris();
+        imageUri = uris.get(0);             //definimos la por defecto
+        selectedImageUri = uris.get(0);     //recogemos la como por defecto
         //Inicializamos
-        Bitmap icon = BitmapFactory.decodeResource(context.getResources(), R.drawable.image);
-        imageUri = getImageUri(icon);
-        selectedImageUri = imageUri;
         foto = (ImageButton) findViewById(R.id.imageButtonFormulario);
         mascota = (EditText) findViewById(R.id.mascota);
         raza = (EditText) findViewById(R.id.raza);
@@ -106,17 +108,12 @@ public class FormularioActivity extends AppCompatActivity {
 
         //Inicializamos el spinner de tamaños
         tamaño = (Spinner) findViewById(R.id.spinner);
-        /*ArrayAdapter spinner_adapter = ArrayAdapter.createFromResource(this, R.array.tamaños, android.R.layout.simple_spinner_item);
-        spinner_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        tamaño.setAdapter(spinner_adapter);*/
         añadir = (Button) findViewById(R.id.formulario_activity_añadir_button);
         actualizar = findViewById(R.id.formulario_activity_actualizar_button);
         eliminar = findViewById(R.id.formulario_activity_eliminar_button);
         citas = findViewById(R.id.formulario_susCitas_button);
         reservas = findViewById(R.id.formulario_susReservas_button);
 
-
-        contactos = ComunicadorContacto.getContactos();
         viene = getIntent().getExtras().getString("VIENE");
         switch (viene) {
 
@@ -161,9 +158,6 @@ public class FormularioActivity extends AppCompatActivity {
                 builder.setPositiveButton(R.string.seguro, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         foto.setImageURI(imageUri);
-                        selectedImageUri = imageUri;
-
-
                     }
                 });
                 builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
@@ -184,6 +178,7 @@ public class FormularioActivity extends AppCompatActivity {
     }
 
     public void seleccionaImagen(View view) {
+
 
         openGallery();
     }
@@ -310,7 +305,7 @@ public class FormularioActivity extends AppCompatActivity {
     public void hotel(View view) {
         ComunicadorContacto.setContacto(contacto);
         Intent intent = new Intent(this, HotelContactoActivity.class);
-        intent.putExtra("VIENE","formulario_activity");
+        intent.putExtra("VIENE", "formulario_activity");
         startActivity(intent);
     }
 
@@ -372,13 +367,12 @@ public class FormularioActivity extends AppCompatActivity {
 
     private boolean comprobarAñadir() {
         boolean añadido = false;
-        for (Uri u : ComunicadorContacto.getUris()) {
-            if (selectedImageUri.compareTo(u) == 1) {
-                ContactoS contactoS = new ContactoS(null, "46841", mascota.getText().toString(), raza.getText().toString(), tamaño.getSelectedItem().toString(), telefono1.getText().toString(), telefono2.getText().toString(), propietario.getText().toString());
-                añadirContacto1(contactoS);
-                añadido = true;
-            }
+        if (selectedImageUri.compareTo(imageUri) == 0) {
+            ContactoS contactoS = new ContactoS(null, "46841", mascota.getText().toString(), raza.getText().toString(), tamaño.getSelectedItem().toString(), telefono1.getText().toString(), telefono2.getText().toString(), propietario.getText().toString());
+            añadirContacto1(contactoS);
+            añadido = true;
         }
+
         return añadido;
     }
 
@@ -451,14 +445,10 @@ public class FormularioActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Toast.makeText(FormularioActivity.this, "Contacto añadido", Toast.LENGTH_SHORT).show();
-//                        Intent intent = new Intent(getApplicationContext(), ContactosActivity.class);
-//                        startActivity(intent);
-                        Log.e("ID",contactoRef.getId());
+                        Log.e("ID", contactoRef.getId());
                         contactoS.set_id(contactoRef.getId());
                         bindeaContactoS(contactoS);
                         añadimosContactoAlComunicador(contacto);
-
-
                     }
                 }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -467,7 +457,6 @@ public class FormularioActivity extends AppCompatActivity {
                 Log.e(TAG, e.toString());
             }
         });
-
 
     }
 
@@ -541,7 +530,7 @@ public class FormularioActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(Void aVoid) {
 
-                            Toast.makeText(getApplicationContext(),"Contacto eliminado, con éxito", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Contacto eliminado, con éxito", Toast.LENGTH_SHORT).show();
                             eliminaContactoDelComunicador(contacto);
                         }
                     })
@@ -590,9 +579,8 @@ public class FormularioActivity extends AppCompatActivity {
         citas.setEnabled(true);
         reservas.setEnabled(true);
 
-        if(progressDialog!=null){
+        if (progressDialog != null) {
             progressDialog.dismiss();
-            startActivity(new Intent(context,ContactosActivity.class).putExtra("VIENE","formulario_activity"));
         }
     }
 
@@ -621,7 +609,7 @@ public class FormularioActivity extends AppCompatActivity {
         contactos.remove(contacto);
         ComunicadorContacto.setContactos(contactos);
         Intent intent = new Intent(getApplicationContext(), ContactosActivity.class);
-        intent.putExtra("VIENE","formulario_activity");
+        intent.putExtra("VIENE", "formulario_activity");
         startActivity(intent);
 
     }

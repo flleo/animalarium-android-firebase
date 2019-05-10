@@ -38,6 +38,7 @@ import com.google.firebase.firestore.ServerTimestamp;
 import com.google.firebase.firestore.SetOptions;
 import com.google.firebase.firestore.Transaction;
 import com.google.firebase.firestore.WriteBatch;
+import com.google.firebase.storage.StorageException;
 
 import java.sql.Time;
 import java.text.DateFormat;
@@ -870,7 +871,7 @@ public class DocSnippets implements DocSnippetsInterface {
     }
 
 
-    public void getContactos() {
+    public void getContactos()  {
 
         progressDialog.show();
         // [START get_multiple_all]
@@ -880,6 +881,7 @@ public class DocSnippets implements DocSnippetsInterface {
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
+
                         if (task.isSuccessful()) {
                             if (splashScreenActivity != null) {
                                 ContactosActivity.setContactos(task.getResult().getDocuments(), splashScreenActivity, "splash_screen", progressDialog);
@@ -892,6 +894,7 @@ public class DocSnippets implements DocSnippetsInterface {
                         }
                     }
                 });
+
         // [END get_multiple_all]
     }
 

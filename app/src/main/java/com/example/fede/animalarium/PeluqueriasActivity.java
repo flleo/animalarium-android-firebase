@@ -105,22 +105,7 @@ public class PeluqueriasActivity extends AppCompatActivity {
         contacto = (Contacto) ComunicadorContacto.getContacto();
         cita = (CitaPeluqueria) ComunicadorCita.getObjeto();
 
-
-
-            viene = getIntent().getExtras().getString("VIENE");
-            switch(viene){
-                case "main_activity":
-                    break;
-                default:
-
-                    break;
-
-            };
-
-
-
-
-
+        viene = getIntent().getExtras().getString("VIENE");
 
         recuperarFirebase(fecha);
         inicimosAdaptador();
@@ -155,11 +140,6 @@ public class PeluqueriasActivity extends AppCompatActivity {
         docSnippets.getCita(fecha);
         progressDialog.show();
     }
-
-
-
-
-
 
     public void añadirCita(View view) {
         Intent formulario;

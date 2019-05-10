@@ -89,6 +89,7 @@ public class HotelContactoActivity extends AppCompatActivity {
 
 
     public void añadir_hotel(View view) {
+        ComunicadorReserva.setReserva(null);
         Intent formulario = new Intent(getApplicationContext(), FormularioHotelActivity.class);
         formulario.putExtra("VIENE","hotel_contacto_activity");
         startActivity(formulario);
@@ -104,7 +105,6 @@ public class HotelContactoActivity extends AppCompatActivity {
         System.out.println(contacto.get_id() + "*****************************");
         Log.e("idcontacto", contacto.get_id());
 
-        ArrayList<ReservaHotel> reservass = new ArrayList<>();
         ReservaHotel con = new ReservaHotel(
                 doc.getId(),
                 doc.getString("idContacto"),

@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.Spinner;
@@ -27,6 +28,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+
+import javax.xml.datatype.Duration;
 
 public class FormularioHotelActivity extends AppCompatActivity {
 
@@ -63,6 +66,7 @@ public class FormularioHotelActivity extends AppCompatActivity {
     private HashMap<String, Object> map;
     private Context context;
     private ArrayList<ReservaHotel> reservas = new ArrayList<>();
+    private int precioPosition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +92,7 @@ public class FormularioHotelActivity extends AppCompatActivity {
         contacto = (Contacto) ComunicadorContacto.getContacto();
         reservaHotel = (ReservaHotel) ComunicadorReserva.getReserva();
 
+        añadir.setEnabled(false);
         viene = getIntent().getExtras().getString("VIENE");
 
         switch (viene) {
@@ -97,7 +102,7 @@ public class FormularioHotelActivity extends AppCompatActivity {
                 bindeaReserva();
                 actualizar.setEnabled(true);
                 eliminar.setEnabled(true);
-                añadir.setEnabled(false);
+
                 break;
             case "hotel_contacto_activity":
                 reservaHotel = ComunicadorReserva.getReserva();
@@ -106,16 +111,13 @@ public class FormularioHotelActivity extends AppCompatActivity {
                     bindeaReserva();
                     actualizar.setEnabled(true);
                     eliminar.setEnabled(true);
-                    añadir.setEnabled(false);
                 } else {
                     actualizar.setEnabled(false);
                     eliminar.setEnabled(false);
-                    añadir.setEnabled(true);
                 }
 
                 break;
             default:
-                añadir.setEnabled(false);
                 intent = new Intent(getApplicationContext(), ContactosActivity.class);
                 intent.putExtra("VIENE", "formulario_hotel_activity");
                 startActivity(intent);
@@ -141,6 +143,8 @@ public class FormularioHotelActivity extends AppCompatActivity {
         Log.e("fecha formulaHotelActiv", fecha.toString());
         dateInicio.setTime(fecha.getTime());
         dateFin.setTime(fecha.getTime());
+
+        precioPosition = precio.getSelectedItemPosition();
 
     }
 
@@ -200,6 +204,7 @@ public class FormularioHotelActivity extends AppCompatActivity {
     }
 
     public void calcular(View view) {
+        precioPosition = precio.getSelectedItemPosition();
         precioInt = Integer.valueOf(precio.getSelectedItem().toString());
         costeEstancia = precioInt * noches;
         costestancia.setText(String.valueOf(costeEstancia));
@@ -273,26 +278,31 @@ public class FormularioHotelActivity extends AppCompatActivity {
 
 
     public void actualizarHotel(View view) {
-        recogeReserva();
-        DocumentReference reserva = db.collection("hoteles").document(reservaHotel.getId());
+        if (precioPosition!=precio.getSelectedItemPosition()) {
+            actualizar.setEnabled(false);
+            Toast.makeText(context,"Debes recalcular coste", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            recogeReserva();
+            DocumentReference reserva = db.collection("hoteles").document(reservaHotel.getId());
 
-        reserva.update(KEY_FECHA_INICIO, reservaHotel.getFechaInicio());
-        reserva.update(KEY_FECHA_FIN, reservaHotel.getFechaFin());
-        reserva.update(KEY_PRECIO, reservaHotel.getPrecio());
-        reserva.update(KEY_COSTE, reservaHotel.getCoste());
-        reserva.update(KEY_NOCHES, reservaHotel.getNoches());
-        reserva.update(KEY_PAGADO, reservaHotel.getPagado())
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
+            reserva.update(KEY_FECHA_INICIO, reservaHotel.getFechaInicio());
+            reserva.update(KEY_FECHA_FIN, reservaHotel.getFechaFin());
+            reserva.update(KEY_PRECIO, reservaHotel.getPrecio());
+            reserva.update(KEY_COSTE, reservaHotel.getCoste());
+            reserva.update(KEY_NOCHES, reservaHotel.getNoches());
+            reserva.update(KEY_PAGADO, reservaHotel.getPagado())
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
 
-                    @Override
+                        @Override
 
-                    public void onSuccess(Void aVoid) {
-                        Toast.makeText(FormularioHotelActivity.this, "Reserva acutalizada con éxito", Toast.LENGTH_SHORT).show();
-                        actualizaComunicador();
+                        public void onSuccess(Void aVoid) {
+                            Toast.makeText(FormularioHotelActivity.this, "Reserva acutalizada con éxito", Toast.LENGTH_SHORT).show();
+                            actualizaComunicador();
+                        }
 
-                    }
-
-                });
+                    });
+        }
     }
 
     private void actualizaComunicador() {
@@ -329,11 +339,10 @@ public class FormularioHotelActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Toast.makeText(FormularioHotelActivity.this, "Cita añadida", Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(getApplicationContext(), HotelActivity.class);
-                        intent.putExtra("VIENE", "formulario_hotel_activity");
-                        startActivity(intent);
-                        ComunicadorContacto.setContacto(null);
-                        ComunicadorReserva.setReserva(null);
+                        actualizaComunicador();
+                        intent();
+
+
 
                     }
                 }).addOnFailureListener(new OnFailureListener() {
@@ -360,7 +369,4 @@ public class FormularioHotelActivity extends AppCompatActivity {
 
     }
 
-    public void precioOnClick(View view){
-        actualizar.setEnabled(false);
-    }
 }

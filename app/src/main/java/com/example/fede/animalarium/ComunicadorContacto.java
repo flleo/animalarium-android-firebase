@@ -18,6 +18,7 @@ class ComunicadorContacto {
 
 
 
+
      static void setContacto(Contacto newObjeto) {
          contacto =  newObjeto;
      }

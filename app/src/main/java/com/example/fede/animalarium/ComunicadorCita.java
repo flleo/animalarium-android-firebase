@@ -14,6 +14,7 @@ class ComunicadorCita {
     private static ArrayList<CitaPeluqueria> susCitas = new ArrayList<>();
 
 
+
     public  static void setObjeto(Object newObjeto) {
         objeto = newObjeto;
     }

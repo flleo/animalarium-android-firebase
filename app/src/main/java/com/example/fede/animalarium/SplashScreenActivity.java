@@ -17,6 +17,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreSettings;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageException;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.Timer;
@@ -57,7 +58,9 @@ public class SplashScreenActivity extends Activity {
                 .build();
         db.setFirestoreSettings(settings);
         //Recogemos datos de Firestore
-        docSnippets.getContactos();
+
+            docSnippets.getContactos();
+
         // Set portrait orientation
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         // Hide title bar

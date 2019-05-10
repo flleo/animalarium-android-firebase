@@ -125,7 +125,6 @@ public class ContactosActivity extends AppCompatActivity {
 
                 Intent intent = null;
 
-                Log.e("viene131ContactosActivity", viene);
                 switch (viene) {
                     case "peluquerias_activity":
                         intent = new Intent(context, FormularioCitaActivity.class);
