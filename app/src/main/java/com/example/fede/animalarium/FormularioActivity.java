@@ -572,6 +572,7 @@ public class FormularioActivity extends AppCompatActivity {
         });
         //
         ComunicadorContacto.setContactos(contactos);
+        ComunicadorContacto.setContacto(con);
 
         añadir.setEnabled(false);
         actualizar.setEnabled(true);
