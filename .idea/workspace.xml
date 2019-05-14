@@ -86,7 +86,17 @@
     <last-search-timestamp>1556046817912</last-search-timestamp>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="98263ed5-b604-46bb-a4fb-7415f948febf" name="Default Changelist" comment="" />
+    <list default="true" id="98263ed5-b604-46bb-a4fb-7415f948febf" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/fileContent/fileContent.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/DocSnippets.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/DocSnippets.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,55 +128,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/DocSnippets.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="13312">
-              <caret line="1092" column="59" selection-start-line="1092" selection-start-column="59" selection-end-line="1092" selection-end-column="59" />
+            <state relative-caret-position="178">
+              <caret line="1010" column="22" selection-start-line="1010" selection-start-column="22" selection-end-line="1010" selection-end-column="22" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/FormularioActivity.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ContactosActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="7007">
-              <caret line="582" column="37" selection-start-line="582" selection-start-column="37" selection-end-line="582" selection-end-column="37" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/HotelContactoActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2054">
-              <caret line="181" column="5" selection-start-line="173" selection-start-column="2" selection-end-line="181" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/FormularioHotelActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="13">
-              <caret line="94" column="31" selection-start-line="94" selection-start-column="31" selection-end-line="94" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/FormularioCitaActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5395">
-              <caret line="467" column="5" selection-start-line="467" selection-start-column="5" selection-end-line="467" selection-end-column="5" />
-              <folding>
-                <element signature="e#21170#21171#0" expanded="true" />
-                <element signature="e#21202#21203#0" expanded="true" />
-                <element signature="e#21247#21248#0" expanded="true" />
-                <element signature="e#21282#21283#0" expanded="true" />
-                <element signature="e#21327#21328#0" expanded="true" />
-                <element signature="e#21361#21362#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="195">
+              <caret line="181" column="31" lean-forward="true" selection-start-line="181" selection-start-column="31" selection-end-line="181" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -197,15 +172,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="520">
               <caret line="61" column="30" selection-start-line="61" selection-start-column="30" selection-end-line="61" selection-end-column="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ContactosActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3549">
-              <caret line="315" column="66" selection-start-line="315" selection-start-column="66" selection-end-line="315" selection-end-column="66" />
             </state>
           </provider>
         </entry>
@@ -257,14 +223,14 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ComunicadorContacto.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ContactosActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/SplashScreenActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/DocSnippets.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/HotelContactoActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_formulario_hotel.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/FormularioActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/FormularioHotelActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/PeluqueriasActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/FormularioCitaActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ComunicadorCita.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/FormularioActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/DocSnippets.java" />
       </list>
     </option>
   </component>
@@ -278,9 +244,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="AndroidView" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane" />
     </panes>
   </component>
@@ -772,24 +738,17 @@
       </provider>
       <provider editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/DocSnippets.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="13312">
-          <caret line="1092" column="59" selection-start-line="1092" selection-start-column="59" selection-end-line="1092" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/FormularioActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7007">
-          <caret line="582" column="37" selection-start-line="582" selection-start-column="37" selection-end-line="582" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/HotelContactoActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2054">
           <caret line="181" column="5" selection-start-line="173" selection-start-column="2" selection-end-line="181" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/FormularioHotelActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="845">
+          <caret line="94" column="31" selection-start-line="94" selection-start-column="31" selection-end-line="94" selection-end-column="31" />
         </state>
       </provider>
     </entry>
@@ -832,13 +791,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ContactosActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3549">
-          <caret line="315" column="66" selection-start-line="315" selection-start-column="66" selection-end-line="315" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ComunicadorContacto.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="182">
@@ -849,10 +801,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/FormularioHotelActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/FormularioActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="13">
-          <caret line="94" column="31" selection-start-line="94" selection-start-column="31" selection-end-line="94" selection-end-column="31" />
+        <state relative-caret-position="152">
+          <caret line="569" column="70" selection-start-line="569" selection-start-column="70" selection-end-line="569" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ContactosActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="181" column="31" lean-forward="true" selection-start-line="181" selection-start-column="31" selection-end-line="181" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/DocSnippets.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="1010" column="22" selection-start-line="1010" selection-start-column="22" selection-end-line="1010" selection-end-column="22" />
         </state>
       </provider>
     </entry>

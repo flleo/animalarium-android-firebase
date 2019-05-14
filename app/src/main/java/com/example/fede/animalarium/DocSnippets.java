@@ -1006,6 +1006,9 @@ public class DocSnippets implements DocSnippetsInterface {
             case "v":
                 sig = "x";
                 break;
+            case "w":
+                sig = "x";
+                break;
             case "x":
                 sig = "y";
                 break;
