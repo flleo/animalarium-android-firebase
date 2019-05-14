@@ -411,7 +411,9 @@ public class FormularioCitaActivity extends AppCompatActivity {
 
                             Toast.makeText(context, "Cita actualizada ;)", Toast.LENGTH_SHORT).show();
                             ComunicadorCita.setObjeto(citaPeluqueria);
-                            actualizaComunicadorCita();
+                            eliminarCitaP(citaPeluqueria);
+                            intent();
+                           // actualizaComunicadorCita();
                         }
 
                     });
@@ -422,6 +424,18 @@ public class FormularioCitaActivity extends AppCompatActivity {
 
             );
 
+        }
+    }
+
+    private void eliminarCitaP(CitaPeluqueria citaPeluqueria) {
+        ArrayList<CitaPeluqueria> cs = new ArrayList<>();
+        cs.addAll(citas);
+        for (CitaPeluqueria cita:citas) {
+            if (cita.get_id().equalsIgnoreCase(citaPeluqueria.get_id())) {
+                cs.remove(cita);
+                citas.clear();
+                citas.addAll(cs);
+            }
         }
     }
 
@@ -466,10 +480,10 @@ public class FormularioCitaActivity extends AppCompatActivity {
 
         }
     }
-
+/*
     private void actualizaComunicadorCita() {
 
-        if (citas.remove(citaPeluqueria)) {
+       /* if (citas.remove(citaPeluqueria)) {
             citas.add(citaPeluqueria);
             Collections.sort(citas, new Comparator<CitaPeluqueria>() {
                 @Override
@@ -488,11 +502,9 @@ public class FormularioCitaActivity extends AppCompatActivity {
                 }
             }
         } else {
-            citas.add(citaPeluqueria);
-            ComunicadorCita.setSusCitas(citas);
             intent();
         }
-    }
+    }*/
 
     private ArrayList<CitaPeluqueria> añadimosCitaAlComunicador() {
         citas.add(citaPeluqueria);
@@ -594,8 +606,8 @@ public class FormularioCitaActivity extends AppCompatActivity {
                 document.getString("trabajo"),
                 document.getDouble("tarifa")
         );
-        actualizaComunicadorCita();
-
+       // actualizaComunicadorCita();
+        intent();
     }
 
     @Override
