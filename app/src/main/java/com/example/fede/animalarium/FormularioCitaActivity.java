@@ -151,6 +151,7 @@ public class FormularioCitaActivity extends AppCompatActivity {
                         fechaS = getIntent().getExtras().getString("FECHA");
                         try {
                             fecha = dfFecha.parse(fechaS);
+                            Log.e("FECHA_formula.cita.activi",fecha.toString());
                         } catch (ParseException e) {
                             Log.e("fallo fechaS formulario cita", fechaS);
                             e.printStackTrace();
@@ -347,8 +348,12 @@ public class FormularioCitaActivity extends AppCompatActivity {
     public void añadirCita() throws ParseException {
         try {
 
-            fecha.setHours(Integer.valueOf(hora.getText().toString()));
-            fecha.setMinutes(Integer.valueOf(minutos.getText().toString()));
+            Log.e("FECHA_ANTES DE SET HORA", fecha.toString());
+            String horaS = hora.getText().toString();
+            String minuS = minutos.getText().toString();
+
+            fecha.setHours(Integer.valueOf(horaS.substring(horaS.length()-2,horaS.length())));
+            fecha.setMinutes(Integer.valueOf(minuS.substring(minuS.length()-2,minuS.length())));
 
             Log.e("fecha_aññadircita", fecha.toString());
             citaPeluqueria = new CitaPeluqueria(null, contacto.get_id(), fecha, trabajo.getSelectedItem().toString(), Double.valueOf(tarifa.getText().toString()));
@@ -380,6 +385,9 @@ public class FormularioCitaActivity extends AppCompatActivity {
         } catch (StringIndexOutOfBoundsException e) {
             Toast.makeText(FormularioCitaActivity.this, "Debes introducir la hora de la cita", Toast.LENGTH_SHORT).show();
             Log.e(TAG, e.toString());
+        } catch (NumberFormatException e1){
+            Toast.makeText(FormularioCitaActivity.this, "Debes introducir la hora de la cita", Toast.LENGTH_SHORT).show();
+            Log.e(TAG, e1.toString());
         }
 
 
@@ -411,7 +419,7 @@ public class FormularioCitaActivity extends AppCompatActivity {
 
                             Toast.makeText(context, "Cita actualizada ;)", Toast.LENGTH_SHORT).show();
                             ComunicadorCita.setObjeto(citaPeluqueria);
-                            eliminarCitaP(citaPeluqueria);
+                            actualizarCitaPeluqueria();
                             intent();
                            // actualizaComunicadorCita();
                         }
@@ -427,15 +435,12 @@ public class FormularioCitaActivity extends AppCompatActivity {
         }
     }
 
-    private void eliminarCitaP(CitaPeluqueria citaPeluqueria) {
-        ArrayList<CitaPeluqueria> cs = new ArrayList<>();
-        cs.addAll(citas);
+    private void actualizarCitaPeluqueria() {
         for (CitaPeluqueria cita:citas) {
-            if (cita.get_id().equalsIgnoreCase(citaPeluqueria.get_id())) {
-                cs.remove(cita);
-                citas.clear();
-                citas.addAll(cs);
-            }
+            if (cita.get_id().equalsIgnoreCase(citaPeluqueria.get_id()))
+                cita.setTarifa(citaPeluqueria.getTarifa());
+                cita.setTrabajo(citaPeluqueria.getTrabajo());
+                cita.setFecha(citaPeluqueria.getFecha());
         }
     }
 
@@ -551,18 +556,15 @@ public class FormularioCitaActivity extends AppCompatActivity {
     private void requestForCallPermission() {
         if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CALL_PHONE)) {
         } else {
-
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE}, PERMISSION_REQUEST_CODE);
         }
     }
 
     public void peluquerias(View view) {
 
-
         Intent intent = new Intent(this, PeluqueriasContactoActivity.class);
         intent.putExtra("VIENE","formulario_cita_activity");
         startActivity(intent);
-
 
     }
 
@@ -587,11 +589,13 @@ public class FormularioCitaActivity extends AppCompatActivity {
         switch (viene) {
             case "peluquerias_contacto_activity":
                 intent = new Intent(getApplicationContext(), PeluqueriasContactoActivity.class);
-                ComunicadorCita.setSusCitas(añadimosCitaAlComunicador());
                 break;
             case "peluquerias_activity":
                 intent = new Intent(getApplicationContext(), PeluqueriasActivity.class);
                 ComunicadorContacto.setContacto(null);
+                break;
+            case "contactos_activity":
+                intent = new Intent(context,ContactosActivity.class);
                 break;
         }
         intent.putExtra("VIENE", "formulario_cita_activity");
@@ -608,6 +612,7 @@ public class FormularioCitaActivity extends AppCompatActivity {
                 document.getDouble("tarifa")
         );
        // actualizaComunicadorCita();
+        añadimosCitaAlComunicador();
         intent();
     }
 

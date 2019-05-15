@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="Gradle: sun.bob:mcalendarview:1.0.0@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/01781ef8c77fe0595c94bbded9ec1f08/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/01781ef8c77fe0595c94bbded9ec1f08/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3344520d619f5843dcb591f5f30f9aa9/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3344520d619f5843dcb591f5f30f9aa9/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
