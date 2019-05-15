@@ -560,6 +560,7 @@ public class FormularioCitaActivity extends AppCompatActivity {
 
 
         Intent intent = new Intent(this, PeluqueriasContactoActivity.class);
+        intent.putExtra("VIENE","formulario_cita_activity");
         startActivity(intent);
 
 

@@ -131,24 +131,23 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/DocSnippets.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="217">
+            <state relative-caret-position="13351">
               <caret line="1095" column="63" selection-start-line="1095" selection-start-column="63" selection-end-line="1095" selection-end-column="63" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/FormularioCitaActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="583" column="17" selection-start-line="583" selection-start-column="17" selection-end-line="583" selection-end-column="17" />
+            <state relative-caret-position="178">
+              <caret line="562" column="60" selection-start-line="562" selection-start-column="60" selection-end-line="562" selection-end-column="60" />
               <folding>
-                <element signature="e#16121#16656#0" expanded="true" />
-                <element signature="e#16655#16656#0" expanded="true" />
-                <element signature="e#19570#19784#0" expanded="true" />
-                <element signature="e#19783#19784#0" expanded="true" />
+                <element signature="e#21582#21583#0" expanded="true" />
                 <element signature="e#21614#21615#0" expanded="true" />
+                <element signature="e#21659#21660#0" expanded="true" />
                 <element signature="e#21694#21695#0" expanded="true" />
+                <element signature="e#21739#21740#0" expanded="true" />
                 <element signature="e#21773#21774#0" expanded="true" />
               </folding>
             </state>
@@ -156,9 +155,37 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/FormularioActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="297" column="46" selection-start-line="297" selection-start-column="46" selection-end-line="297" selection-end-column="46" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/PeluqueriasContactoActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-260">
+              <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_formulario.xml">
+          <provider editor-type-id="android-designer2" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="234">
+              <caret line="69" column="51" selection-start-line="69" selection-start-column="51" selection-end-line="69" selection-end-column="51" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ComunicadorCita.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
+            <state relative-caret-position="286">
               <caret line="29" column="23" selection-start-line="29" selection-start-column="23" selection-end-line="29" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -223,8 +250,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane" />
-      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane>
@@ -248,6 +273,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="ProjectPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -358,6 +385,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1366" height="748" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
       <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.23376623" />
@@ -368,14 +396,14 @@
       <window_info id="Designer" order="6" />
       <window_info id="Resources Explorer" order="7" />
       <window_info id="Capture Tool" order="8" />
-      <window_info anchor="bottom" id="Run" order="0" sideWeight="0.4973262" weight="0.18196996" />
+      <window_info active="true" anchor="bottom" id="Run" order="0" sideWeight="0.4973262" visible="true" weight="0.18196996" />
       <window_info anchor="bottom" id="Logcat" order="1" weight="0.3295711" />
       <window_info anchor="bottom" id="TODO" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" />
       <window_info anchor="bottom" id="Terminal" order="4" weight="0.3295711" />
       <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.5026738" side_tool="true" weight="0.5843072" />
       <window_info anchor="bottom" id="Version Control" order="6" weight="0.32888147" />
-      <window_info active="true" anchor="bottom" id="Build" order="7" sideWeight="0.49961802" visible="true" weight="0.28046745" />
+      <window_info anchor="bottom" id="Build" order="7" sideWeight="0.49961802" weight="0.28046745" />
       <window_info anchor="bottom" id="Find" order="8" weight="0.3295711" />
       <window_info anchor="bottom" id="Android Profiler" order="9" weight="0.3295711" />
       <window_info anchor="right" id="Preview" order="0" weight="0.28342247" />
@@ -518,14 +546,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_formulario.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="284" column="60" lean-forward="true" selection-start-line="284" selection-start-column="60" selection-end-line="284" selection-end-column="60" />
         </state>
       </provider>
     </entry>
@@ -684,13 +704,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/PeluqueriasContactoActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1456">
-          <caret line="137" column="69" selection-start-line="137" selection-start-column="69" selection-end-line="137" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/CitaPeluqueria.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="52">
@@ -752,13 +765,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/FormularioActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="569" column="70" selection-start-line="569" selection-start-column="70" selection-end-line="569" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ContactosActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1807">
@@ -792,14 +798,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/DocSnippets.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
+        <state relative-caret-position="13351">
           <caret line="1095" column="63" selection-start-line="1095" selection-start-column="63" selection-end-line="1095" selection-end-column="63" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ComunicadorCita.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
+        <state relative-caret-position="286">
           <caret line="29" column="23" selection-start-line="29" selection-start-column="23" selection-end-line="29" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -807,19 +813,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_formulario.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="69" column="51" selection-start-line="69" selection-start-column="51" selection-end-line="69" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/FormularioCitaActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="583" column="17" selection-start-line="583" selection-start-column="17" selection-end-line="583" selection-end-column="17" />
+        <state relative-caret-position="178">
+          <caret line="562" column="60" selection-start-line="562" selection-start-column="60" selection-end-line="562" selection-end-column="60" />
           <folding>
-            <element signature="e#16121#16656#0" expanded="true" />
-            <element signature="e#16655#16656#0" expanded="true" />
-            <element signature="e#19570#19784#0" expanded="true" />
-            <element signature="e#19783#19784#0" expanded="true" />
+            <element signature="e#21582#21583#0" expanded="true" />
             <element signature="e#21614#21615#0" expanded="true" />
+            <element signature="e#21659#21660#0" expanded="true" />
             <element signature="e#21694#21695#0" expanded="true" />
+            <element signature="e#21739#21740#0" expanded="true" />
             <element signature="e#21773#21774#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/FormularioActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="297" column="46" selection-start-line="297" selection-start-column="46" selection-end-line="297" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/PeluqueriasContactoActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-260">
+          <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
         </state>
       </provider>
     </entry>
