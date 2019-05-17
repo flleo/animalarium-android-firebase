@@ -10,7 +10,7 @@ import java.io.Serializable;
 
 public class Contacto  implements Serializable {
 
-    private String  _id,mascota,raza, tamaño,telefono1,telefono2,propietario;
+    private String  _id,id_propietario,mascota,raza, tamaño,telefono1,telefono2,propietario;
     private Uri foto;
     private ContactoS contactoS;
 

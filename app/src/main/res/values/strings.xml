@@ -3,6 +3,7 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="animalarium">Animalarium</string>
+    <string name="animalarium_propietarios">Animalarium - Propietarios</string>
     <string name="animalarium_peluquerias">Animalarium - Peluquerias</string>
     <string name="animalarium_peluqueria">Animalarium - Cita de Peluqueria</string>
     <string name="peluqueria_canina">Peluqueria Canina</string>
