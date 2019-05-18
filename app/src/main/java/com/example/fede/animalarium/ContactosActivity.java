@@ -61,7 +61,6 @@ public class ContactosActivity extends AppCompatActivity {
 
     //
     EditText buscador;
-    ArrayList<String> mascotas = new ArrayList<>();
     private static ContactosAdapter adaptador;
     private static ListView listado;
     // private Context context;
@@ -70,7 +69,6 @@ public class ContactosActivity extends AppCompatActivity {
     static String fechaS = "";
     static String viene = "";
     private static Uri uri;
-    private int cantidadTotalContactos;
     private static Contacto contacto;
     static ArrayList<Contacto> contactos = new ArrayList<>();
     private ComunicadorContacto comunicadorContacto = new ComunicadorContacto();

@@ -99,6 +99,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
+        if (id == R.id.nav_propietarios) {
+            //Nuevo hilo paa no sobrecargarla po la peticion : demasiados frames ejecutandose
+            new Thread(new Runnable() {
+                public void run() {
+                    Intent propietarios = new Intent(getApplicationContext(), PropietariosActivity.class);
+                    propietarios.putExtra("VIENE","main_activity");
+                    startActivity(propietarios);
+                }
+            }).start();
+
+        } else
         if (id == R.id.nav_contactos) {
             //Nuevo hilo paa no sobrecargarla po la peticion : demasiados frames ejecutandose
             new Thread(new Runnable() {

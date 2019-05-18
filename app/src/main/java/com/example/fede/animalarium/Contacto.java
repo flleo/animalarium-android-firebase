@@ -14,6 +14,9 @@ public class Contacto  implements Serializable {
     private Uri foto;
     private ContactoS contactoS;
 
+    public  Contacto(){
+
+    }
 
     public Contacto(String _id,Uri foto,String mascota, String raza, String tamaño, String telefono1,String telefono2, String propietario) {
         this._id = _id;
@@ -26,8 +29,16 @@ public class Contacto  implements Serializable {
         this.propietario = propietario;
     }
 
-    public  Contacto(){
-
+    public Contacto(String _id, Uri foto,String mascota, String raza, String tamaño, String telefono1, String telefono2, String propietario ,String id_propietario) {
+        this._id = _id;
+        this.id_propietario = id_propietario;
+        this.mascota = mascota;
+        this.raza = raza;
+        this.tamaño = tamaño;
+        this.telefono1 = telefono1;
+        this.telefono2 = telefono2;
+        this.propietario = propietario;
+        this.foto = foto;
     }
 
     public ContactoS getContacto1(Contacto contacto, String foto){
@@ -110,10 +121,19 @@ public class Contacto  implements Serializable {
         this.propietario = propietario;
     }
 
+    public String getId_propietario() {
+        return id_propietario;
+    }
 
+    public void setId_propietario(String id_propietario) {
+        this.id_propietario = id_propietario;
+    }
+
+    @Override
     public String toString() {
         return "Contacto{" +
                 "_id='" + _id + '\'' +
+                ", id_propietario='" + id_propietario + '\'' +
                 ", mascota='" + mascota + '\'' +
                 ", raza='" + raza + '\'' +
                 ", tamaño='" + tamaño + '\'' +

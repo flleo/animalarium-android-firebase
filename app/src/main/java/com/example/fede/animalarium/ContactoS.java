@@ -11,10 +11,12 @@ import java.io.Serializable;
 
 public class ContactoS implements Serializable {
 
-    private String  _id,foto, mascota,raza, tamaño,telefono1,telefono2,propietario;
+    private String  _id,foto, mascota,raza, tamaño,telefono1,telefono2,propietario,_idPropietario;
     private Contacto contacto;
 
+    public ContactoS(){
 
+    }
 
     public ContactoS(String _id, String foto, String mascota, String raza, String tamaño, String telefono1, String telefono2, String propietario) {
         this._id = _id;
@@ -27,8 +29,17 @@ public class ContactoS implements Serializable {
         this.propietario = propietario;
     }
 
-    public ContactoS(){
 
+    public ContactoS(String _id, String foto, String mascota, String raza, String tamaño, String telefono1, String telefono2, String propietario, String _idPropietario) {
+        this._id = _id;
+        this.foto = foto;
+        this.mascota = mascota;
+        this.raza = raza;
+        this.tamaño = tamaño;
+        this.telefono1 = telefono1;
+        this.telefono2 = telefono2;
+        this.propietario = propietario;
+        this._idPropietario = _idPropietario;
     }
 
     public Contacto getContacto(ContactoS contactoS, Uri foto){
@@ -42,7 +53,8 @@ public class ContactoS implements Serializable {
                 contactoS.getTamaño(),
                 contactoS.getTelefono1(),
                 contactoS.getTelefono2(),
-                contactoS.getPropietario()
+                contactoS.getPropietario(),
+                contactoS.get_idPropietario()
         );
 
         return contacto;
@@ -112,18 +124,26 @@ public class ContactoS implements Serializable {
         this.propietario = propietario;
     }
 
+    public String get_idPropietario() {
+        return _idPropietario;
+    }
+
+    public void set_idPropietario(String _idPropietario) {
+        this._idPropietario = _idPropietario;
+    }
+
     @Override
     public String toString() {
-        return "Contacto{" +
+        return "ContactoS{" +
                 "_id='" + _id + '\'' +
-                ", foto=" + foto +'\'' +
+                ", foto='" + foto + '\'' +
                 ", mascota='" + mascota + '\'' +
                 ", raza='" + raza + '\'' +
                 ", tamaño='" + tamaño + '\'' +
                 ", telefono1='" + telefono1 + '\'' +
                 ", telefono2='" + telefono2 + '\'' +
                 ", propietario='" + propietario + '\'' +
-
+                ", _idPropietario='" + _idPropietario + '\'' +
                 '}';
     }
 }
