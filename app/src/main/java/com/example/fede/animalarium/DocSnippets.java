@@ -68,6 +68,7 @@ public class DocSnippets implements DocSnippetsInterface {
             60, TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>());
 
     private final FirebaseFirestore db;
+    PropietariosActivity propietariosActivity;
     SplashScreenActivity splashScreenActivity;
     MainActivity mainActivity;
     FormularioActivity formularioActivity;
@@ -182,7 +183,11 @@ public class DocSnippets implements DocSnippetsInterface {
         context = mainActivity;
     }
 
-
+    public DocSnippets(FirebaseFirestore db, PropietariosActivity propietariosActivity) {
+        this.db = db;
+        this.propietariosActivity = propietariosActivity;
+        context = propietariosActivity;
+    }
 
 
     void runAll() {
@@ -870,6 +875,32 @@ public class DocSnippets implements DocSnippetsInterface {
                 });
     }
 
+    public void getPropietarios()  {
+
+        progressDialog.show();
+        // [START get_multiple_all]
+        db.collection("contactos")
+                .orderBy("mascota")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+
+                        if (task.isSuccessful()) {
+                            if (splashScreenActivity != null) {
+                                ContactosActivity.setContactos(task.getResult().getDocuments(), splashScreenActivity, "splash_screen", progressDialog);
+
+                            } else if (contactosActivity != null) {
+                                contactosActivity.setContactos(task.getResult().getDocuments(), contactosActivity, "contactos", progressDialog);
+                            }
+                        } else {
+                            Log.e(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+
+        // [END get_multiple_all]
+    }
 
     public void getContactos()  {
 

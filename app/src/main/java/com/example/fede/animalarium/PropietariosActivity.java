@@ -2,20 +2,31 @@ package com.example.fede.animalarium;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreSettings;
 import com.google.firebase.storage.FirebaseStorage;
 
 import java.io.File;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -25,7 +36,7 @@ import java.util.ListIterator;
 public class PropietariosActivity extends AppCompatActivity {
 
     static SplashScreenActivity splashScreenActivity;
-    static Activity context;
+    static Context context;
     private static String foto;
     private static int i;
     //Firebase
@@ -69,13 +80,94 @@ public class PropietariosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_propietarios);
 
+        context = this;
+        docSnippets = new DocSnippets(db, this);
+        progressDialog = docSnippets.progressDialog;
+
+        viene = getIntent().getExtras().getString("VIENE");
 
 
+        buscador = (EditText) findViewById(R.id.buscador_propietarios);
+        listado = (ListView) findViewById(R.id.listado_propietarios);
+        listado.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> ada, View v, int position, long arg3) {
+
+
+
+                Intent intent = null;
+
+                switch (viene) {
+
+                    case "main_activity":
+                        intent = new Intent(context, FormularioPropietarioActivity.class);
+                        break;
+
+                }
+                intent.putExtra("VIENE", "contactos_activity");
+                startActivity(intent);
+            }
+        });
+
+        //Autentificamos usuarios para firebase
+        FirebaseUser user = mAuth.getCurrentUser();
+        try {
+            if (user != null) {
+            }
+        } catch (NullPointerException e) {
+            signInAnonymously();
+        }
+        FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
+                .setTimestampsInSnapshotsEnabled(true)
+                .build();
+        db.setFirestoreSettings(settings);
+        //
+
+        iniciamosAdaptador();
+
+    }
+
+    //LISTADO
+    private static void iniciamosAdaptador() {
+        // Inicializamos el adapter
+        adaptador = new ContactosAdapter(context, ComunicadorContacto.getContactos());
+
+        listado.setAdapter(adaptador);
+
+
+    }
+
+    public void buscarPropietarios(View view) {
+        docSnippets.getPropietarios();
     }
 
     public void añadirPropietario(View view) {
     }
 
-    public void buscar(View view) {
+    private void signInAnonymously() {
+        mAuth.signInAnonymously().addOnSuccessListener(this, new OnSuccessListener<AuthResult>() {
+            @Override
+            public void onSuccess(AuthResult authResult) {
+                // do your stuff
+            }
+        })
+                .addOnFailureListener(this, new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception exception) {
+                        Log.e("ContactosActivity", "signInAnonymously:FAILURE", exception);
+                    }
+                });
     }
+
+
+    @Override
+    public void onBackPressed() {
+
+        Intent menu = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(menu);
+
+    }
+
+
 }

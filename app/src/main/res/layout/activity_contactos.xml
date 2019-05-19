@@ -47,7 +47,6 @@
                 android:layout_margin="@dimen/fab_margin"
                 android:layout_weight="1"
                 android:onClick="buscar"
-                app:backgroundTint="@color/common_google_signin_btn_text_light_disabled"
                 app:srcCompat="@android:drawable/ic_menu_search" />
 
         </LinearLayout>
