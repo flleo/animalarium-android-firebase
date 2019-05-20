@@ -25,8 +25,7 @@ public class CitasAdapter extends BaseAdapter {
     private ArrayList<CitaPeluqueria> listItems;
     private ArrayList<Contacto> contactos;
     private Context context;
-    String fecha = "";
-    public TextView mascota, raza, tamaño;
+    public TextView mascota, raza, tamaño,fecha,hora;
 
 
 
@@ -43,8 +42,8 @@ public class CitasAdapter extends BaseAdapter {
         if (convertView == null)
             convertView = LayoutInflater.from(context).inflate(R.layout.activity_list_cita, null);
 
-        TextView fecha = (TextView) convertView.findViewById(R.id.fecha);
-        TextView hora = (TextView) convertView.findViewById(R.id.hora);
+        fecha = (TextView) convertView.findViewById(R.id.fecha);
+        hora = (TextView) convertView.findViewById(R.id.hora);
         mascota = (TextView) convertView.findViewById(R.id.mascota);
         raza = (TextView) convertView.findViewById(R.id.raza);
         tamaño = (TextView) convertView.findViewById(R.id.tamaño);

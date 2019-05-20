@@ -95,7 +95,6 @@ public class PropietariosActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> ada, View v, int position, long arg3) {
 
 
-
                 Intent intent = null;
 
                 switch (viene) {
@@ -131,7 +130,7 @@ public class PropietariosActivity extends AppCompatActivity {
     //LISTADO
     private static void iniciamosAdaptador() {
         // Inicializamos el adapter
-        adaptador = new ContactosAdapter(context, ComunicadorContacto.getContactos());
+        propietariosAdapter = new PropietariosAdapter(context, ComunicadorPropietario.getPropietarios());
 
         listado.setAdapter(adaptador);
 

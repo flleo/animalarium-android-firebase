@@ -34,7 +34,6 @@ public class PeluqueriasContactoActivity extends AppCompatActivity {
     private ArrayList<CitaPeluqueria> citas = new ArrayList<>();
     private MisCitasAdapter adaptador;
     private ListView listado;
-    private Context context;
     SimpleDateFormat sdf;
     String _id;
     String fecha, viene;
@@ -57,6 +56,8 @@ public class PeluqueriasContactoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_peluquerias_contacto);
+
+
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("...recuperando sus citas...");
@@ -173,7 +174,7 @@ public class PeluqueriasContactoActivity extends AppCompatActivity {
                 ComunicadorContacto.setContacto(null);
                 break;
             case "contactos_activity":
-                intent = new Intent(context,ContactosActivity.class);
+                intent = new Intent(getApplicationContext(),ContactosActivity.class);
                 break;
         }
         intent.putExtra("VIENE", "peluquerias_contacto_activity");
