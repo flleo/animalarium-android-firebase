@@ -151,7 +151,7 @@ public class PeluqueriasContactoActivity extends AppCompatActivity {
                 formulario.putExtra("FECHA", fecha);
                 break;
             case "formulario_cita_activity":
-                formulario = new Intent(context,FormularioCitaActivity.class);
+                formulario = new Intent(getApplicationContext(),FormularioCitaActivity.class);
                 break;
             default:
                 formulario = new Intent(getApplicationContext(), PeluqueriasActivity.class);
@@ -160,6 +160,24 @@ public class PeluqueriasContactoActivity extends AppCompatActivity {
 
         formulario.putExtra("VIENE","peluquerias_contacto_activity");
         startActivity(formulario);
+    }
+
+    private void intent() {
+        Intent intent = null;
+        switch (viene) {
+            case "formulario_cita_activity":
+                intent = new Intent(getApplicationContext(), MainActivity.class);
+                break;
+            case "peluquerias_activity":
+                intent = new Intent(getApplicationContext(), PeluqueriasActivity.class);
+                ComunicadorContacto.setContacto(null);
+                break;
+            case "contactos_activity":
+                intent = new Intent(context,ContactosActivity.class);
+                break;
+        }
+        intent.putExtra("VIENE", "peluquerias_contacto_activity");
+        startActivity(intent);
     }
 
     private void signInAnonymously() {
@@ -180,11 +198,7 @@ public class PeluqueriasContactoActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
 
-        ComunicadorCita.setObjeto(null);
-
-        Intent menu = new Intent(getApplicationContext(), FormularioActivity.class);
-        menu.putExtra("VIENE", "peluquerias_contacto_activity");
-        startActivity(menu);
+        intent();
 
     }
 

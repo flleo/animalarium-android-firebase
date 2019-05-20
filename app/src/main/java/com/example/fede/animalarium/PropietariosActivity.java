@@ -101,11 +101,11 @@ public class PropietariosActivity extends AppCompatActivity {
                 switch (viene) {
 
                     case "main_activity":
-                        intent = new Intent(context, FormularioPropietarioActivity.class);
+                        intent = new Intent(getApplicationContext(), FormularioPropietarioActivity.class);
                         break;
 
                 }
-                intent.putExtra("VIENE", "contactos_activity");
+                intent.putExtra("VIENE", "propietarios_activity");
                 startActivity(intent);
             }
         });

@@ -485,31 +485,7 @@ public class FormularioCitaActivity extends AppCompatActivity {
 
         }
     }
-/*
-    private void actualizaComunicadorCita() {
 
-       /* if (citas.remove(citaPeluqueria)) {
-            citas.add(citaPeluqueria);
-            Collections.sort(citas, new Comparator<CitaPeluqueria>() {
-                @Override
-                public int compare(CitaPeluqueria o1, CitaPeluqueria o2) {
-                    return o1.fecha.compareTo(o2.fecha);
-                }
-            });
-            ComunicadorCita.setSusCitas(citas);
-            intent();
-
-            for (int i = 0; i < citas.size(); i++) {
-                if (citas.get(i).get_id().equalsIgnoreCase(citaPeluqueria.get_id())) {
-                    citas.set(i, citaPeluqueria);
-                    progressDialog.dismiss();
-                    break;
-                }
-            }
-        } else {
-            intent();
-        }
-    }*/
 
     private ArrayList<CitaPeluqueria> añadimosCitaAlComunicador() {
         citas.add(citaPeluqueria);
