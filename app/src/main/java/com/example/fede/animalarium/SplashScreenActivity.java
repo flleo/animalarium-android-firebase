@@ -37,7 +37,7 @@ public class SplashScreenActivity extends Activity {
     StorageReference storageRef;
     private static final int PERMISSION_REQUEST_EXTERNAL_STORAGE = 1;
     public ProgressDialog progressDialog;
-    DocSnippets docSnippets ;
+    DocSnippets docSnippets;
 
     //public static final long SPLASH_SCREEN_DELAY = 1000;
 
@@ -57,9 +57,9 @@ public class SplashScreenActivity extends Activity {
                 .setTimestampsInSnapshotsEnabled(true)
                 .build();
         db.setFirestoreSettings(settings);
-        //Recogemos datos de Firestore
-
-            docSnippets.getContactos();
+        //Recogemos datos de Firestor
+        docSnippets.getContactos();
+       // docSnippets.getPropietarios();
 
         // Set portrait orientation
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);

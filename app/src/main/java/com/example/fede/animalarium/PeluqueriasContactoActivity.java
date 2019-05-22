@@ -58,7 +58,6 @@ public class PeluqueriasContactoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_peluquerias_contacto);
 
 
-
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("...recuperando sus citas...");
 
@@ -152,14 +151,14 @@ public class PeluqueriasContactoActivity extends AppCompatActivity {
                 formulario.putExtra("FECHA", fecha);
                 break;
             case "formulario_cita_activity":
-                formulario = new Intent(getApplicationContext(),FormularioCitaActivity.class);
+                formulario = new Intent(getApplicationContext(), FormularioCitaActivity.class);
                 break;
             default:
                 formulario = new Intent(getApplicationContext(), PeluqueriasActivity.class);
                 break;
         }
 
-        formulario.putExtra("VIENE","peluquerias_contacto_activity");
+        formulario.putExtra("VIENE", "peluquerias_contacto_activity");
         startActivity(formulario);
     }
 
@@ -174,7 +173,10 @@ public class PeluqueriasContactoActivity extends AppCompatActivity {
                 ComunicadorContacto.setContacto(null);
                 break;
             case "contactos_activity":
-                intent = new Intent(getApplicationContext(),ContactosActivity.class);
+                intent = new Intent(getApplicationContext(), ContactosActivity.class);
+                break;
+            default:
+                intent = new Intent(getApplicationContext(), ContactosActivity.class);
                 break;
         }
         intent.putExtra("VIENE", "peluquerias_contacto_activity");

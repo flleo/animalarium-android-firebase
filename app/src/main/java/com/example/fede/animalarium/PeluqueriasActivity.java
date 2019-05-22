@@ -272,7 +272,7 @@ public class PeluqueriasActivity extends AppCompatActivity {
             });
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        } catch (NullPointerException e){}
     }
 
     private static Uri getImageUri(Bitmap bitmap) {

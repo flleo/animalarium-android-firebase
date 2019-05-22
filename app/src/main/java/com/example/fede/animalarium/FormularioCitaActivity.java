@@ -19,6 +19,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -80,6 +81,7 @@ public class FormularioCitaActivity extends AppCompatActivity {
     private Uri imageUri;
     private int PICK_IMAGE;
     String viene = "", fechaS = "";
+    Number suTarifaCompleto=0,suTarifaRetoque=0,suTarifaBaño=0;
     Date fecha = new Date();
     String fotoS;
     Uri uri;
@@ -126,6 +128,7 @@ public class FormularioCitaActivity extends AppCompatActivity {
         trabajo = (Spinner) findViewById(R.id.trabajo);
         ArrayAdapter spinner_adapter1 = ArrayAdapter.createFromResource(this, R.array.trabajos, android.R.layout.simple_spinner_item);
         trabajo.setAdapter(spinner_adapter1);
+
         tarifa = (EditText) findViewById(R.id.tarifa);
         añadir = (Button) findViewById(R.id.formulario_activity_añadir_button);
         actualizar = (Button) findViewById(R.id.formulario_activity_actualizar_button);
@@ -135,6 +138,34 @@ public class FormularioCitaActivity extends AppCompatActivity {
         citaPeluqueria = (CitaPeluqueria) ComunicadorCita.getObjeto();
         citas = ComunicadorCita.getSusCitas();
 
+        if(citas.size()>0) {
+            for (CitaPeluqueria cita:citas){
+                switch (cita.getTrabajo()){
+                    case "Completo" : suTarifaCompleto = cita.getTarifa();break;
+                    case "Retoque": suTarifaRetoque = cita.getTarifa();break;
+                    case "Baño": suTarifaBaño = cita.getTarifa();break;
+                }
+                if(suTarifaBaño.doubleValue()>0 && suTarifaRetoque.doubleValue()>0 && suTarifaCompleto.doubleValue()>0) break;
+            }
+            trabajo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+                @Override
+                public void onItemSelected(AdapterView<?> arg0, View arg1,
+                                           int arg2, long arg3) {
+                    switch (trabajo.getSelectedItem().toString()) {
+                        case "Completo": tarifa.setText(String.valueOf(suTarifaCompleto));break;
+                        case "Retoque": tarifa.setText(String.valueOf(suTarifaRetoque));
+                        case "Baño": tarifa.setText(String.valueOf(suTarifaBaño));break;
+                    }
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> arg0) {
+                    // TODO Auto-generated method stub
+
+                }
+            });
+        }
         if (contacto!=null) bindeaContacto(contacto);
         if (citaPeluqueria!=null) bindeaCita(citaPeluqueria);
 
@@ -347,6 +378,7 @@ public class FormularioCitaActivity extends AppCompatActivity {
 
     public void añadirCita() throws ParseException {
         try {
+
 
             Log.e("FECHA_ANTES DE SET HORA", fecha.toString());
             String horaS = hora.getText().toString();

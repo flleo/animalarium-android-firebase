@@ -879,8 +879,8 @@ public class DocSnippets implements DocSnippetsInterface {
 
         progressDialog.show();
         // [START get_multiple_all]
-        db.collection("contactos")
-                .orderBy("mascota")
+        db.collection("propietarios")
+                .orderBy("nombre")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
