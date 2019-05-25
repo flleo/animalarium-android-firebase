@@ -58,6 +58,7 @@ public class FormularioCitaActivity extends AppCompatActivity {
     //Firesbase
     private static final String TAG = "FormularioCitaActivity";
     private static final String KEY_ID_CONTACTO = "idContacto";
+    DocumentReference documentReference;
     private static final String KEY_FECHA = "fecha";
     private static final String KEY_TRABAJO = "trabajo";
     private static final String KEY_TARIFA = "tarifa";
@@ -81,7 +82,7 @@ public class FormularioCitaActivity extends AppCompatActivity {
     private Uri imageUri;
     private int PICK_IMAGE;
     String viene = "", fechaS = "";
-    Number suTarifaCompleto=0,suTarifaRetoque=0,suTarifaBaño=0;
+    Number suTarifaCompleto = 0, suTarifaRetoque = 0, suTarifaBaño = 0;
     Date fecha = new Date();
     String fotoS;
     Uri uri;
@@ -135,17 +136,27 @@ public class FormularioCitaActivity extends AppCompatActivity {
         eliminar = (Button) findViewById(R.id.formulario_activity_eliminar_button);
 
         contacto = (Contacto) ComunicadorContacto.getContacto();
+        documentReference = db.collection("contactos").document(contacto.get_id());
+
+
         citaPeluqueria = (CitaPeluqueria) ComunicadorCita.getObjeto();
         citas = ComunicadorCita.getSusCitas();
 
-        if(citas.size()>0) {
-            for (CitaPeluqueria cita:citas){
-                switch (cita.getTrabajo()){
-                    case "Completo" : suTarifaCompleto = cita.getTarifa();break;
-                    case "Retoque": suTarifaRetoque = cita.getTarifa();break;
-                    case "Baño": suTarifaBaño = cita.getTarifa();break;
+        if (citas.size() > 0) {
+            for (CitaPeluqueria cita : citas) {
+                switch (cita.getTrabajo()) {
+                    case "Completo":
+                        suTarifaCompleto = cita.getTarifa();
+                        break;
+                    case "Retoque":
+                        suTarifaRetoque = cita.getTarifa();
+                        break;
+                    case "Baño":
+                        suTarifaBaño = cita.getTarifa();
+                        break;
                 }
-                if(suTarifaBaño.doubleValue()>0 && suTarifaRetoque.doubleValue()>0 && suTarifaCompleto.doubleValue()>0) break;
+                if (suTarifaBaño.doubleValue() > 0 && suTarifaRetoque.doubleValue() > 0 && suTarifaCompleto.doubleValue() > 0)
+                    break;
             }
             trabajo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
@@ -153,9 +164,14 @@ public class FormularioCitaActivity extends AppCompatActivity {
                 public void onItemSelected(AdapterView<?> arg0, View arg1,
                                            int arg2, long arg3) {
                     switch (trabajo.getSelectedItem().toString()) {
-                        case "Completo": tarifa.setText(String.valueOf(suTarifaCompleto));break;
-                        case "Retoque": tarifa.setText(String.valueOf(suTarifaRetoque));
-                        case "Baño": tarifa.setText(String.valueOf(suTarifaBaño));break;
+                        case "Completo":
+                            tarifa.setText(String.valueOf(suTarifaCompleto));
+                            break;
+                        case "Retoque":
+                            tarifa.setText(String.valueOf(suTarifaRetoque));
+                        case "Baño":
+                            tarifa.setText(String.valueOf(suTarifaBaño));
+                            break;
                     }
                 }
 
@@ -166,8 +182,8 @@ public class FormularioCitaActivity extends AppCompatActivity {
                 }
             });
         }
-        if (contacto!=null) bindeaContacto(contacto);
-        if (citaPeluqueria!=null) bindeaCita(citaPeluqueria);
+        if (contacto != null) bindeaContacto(contacto);
+        if (citaPeluqueria != null) bindeaCita(citaPeluqueria);
 
 
         try {
@@ -175,14 +191,14 @@ public class FormularioCitaActivity extends AppCompatActivity {
             switch (viene) {
 
                 case "peluquerias_activity":
-                    if(citaPeluqueria==null){
+                    if (citaPeluqueria == null) {
                         añadir.setEnabled(true);
                         eliminar.setEnabled(false);
                         actualizar.setEnabled(false);
                         fechaS = getIntent().getExtras().getString("FECHA");
                         try {
                             fecha = dfFecha.parse(fechaS);
-                            Log.e("FECHA_formula.cita.activi",fecha.toString());
+                            Log.e("FECHA_formula.cita.activi", fecha.toString());
                         } catch (ParseException e) {
                             Log.e("fallo fechaS formulario cita", fechaS);
                             e.printStackTrace();
@@ -379,21 +395,21 @@ public class FormularioCitaActivity extends AppCompatActivity {
     public void añadirCita() throws ParseException {
         try {
 
-
             Log.e("FECHA_ANTES DE SET HORA", fecha.toString());
             String horaS = hora.getText().toString();
             String minuS = minutos.getText().toString();
 
-            fecha.setHours(Integer.valueOf(horaS.substring(horaS.length()-2,horaS.length())));
-            fecha.setMinutes(Integer.valueOf(minuS.substring(minuS.length()-2,minuS.length())));
+            fecha.setHours(Integer.valueOf(horaS.substring(horaS.length() - 2, horaS.length())));
+            fecha.setMinutes(Integer.valueOf(minuS.substring(minuS.length() - 2, minuS.length())));
 
             Log.e("fecha_aññadircita", fecha.toString());
-            citaPeluqueria = new CitaPeluqueria(null, contacto.get_id(), fecha, trabajo.getSelectedItem().toString(), Double.valueOf(tarifa.getText().toString()));
+
+            citaPeluqueria = new CitaPeluqueria(null, documentReference, fecha, trabajo.getSelectedItem().toString(), Double.valueOf(tarifa.getText().toString()));
 
             Log.e("citanueva_formulario_cita_activity", citaPeluqueria.toString());
             Map<String, Object> map = new HashMap<>();
 
-            map.put(KEY_ID_CONTACTO, citaPeluqueria.get_idContacto());
+            map.put(KEY_ID_CONTACTO, documentReference);
             map.put(KEY_FECHA, citaPeluqueria.getFecha());
             map.put(KEY_TRABAJO, citaPeluqueria.getTrabajo());
             map.put(KEY_TARIFA, citaPeluqueria.getTarifa());
@@ -406,6 +422,7 @@ public class FormularioCitaActivity extends AppCompatActivity {
                             Toast.makeText(FormularioCitaActivity.this, "Cita añadida", Toast.LENGTH_LONG).show();
                             docSnippets.getCitaConId(contactoRef.getId());
 
+
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                 @Override
@@ -417,7 +434,7 @@ public class FormularioCitaActivity extends AppCompatActivity {
         } catch (StringIndexOutOfBoundsException e) {
             Toast.makeText(FormularioCitaActivity.this, "Debes introducir la hora de la cita", Toast.LENGTH_SHORT).show();
             Log.e(TAG, e.toString());
-        } catch (NumberFormatException e1){
+        } catch (NumberFormatException e1) {
             Toast.makeText(FormularioCitaActivity.this, "Debes introducir la hora de la cita", Toast.LENGTH_SHORT).show();
             Log.e(TAG, e1.toString());
         }
@@ -435,7 +452,9 @@ public class FormularioCitaActivity extends AppCompatActivity {
             fecha.setHours(Integer.parseInt(hora.getText().toString()));
             fecha.setMinutes(Integer.parseInt(minutos.getText().toString()));
 
-            citaPeluqueria = new CitaPeluqueria(citaPeluqueria.get_id(), citaPeluqueria.get_idContacto(), fecha, trabajo.getSelectedItem().toString(), Double.valueOf(tarifa.getText().toString()));
+            if (citaPeluqueria.get_idContacto()!=null)
+                citaPeluqueria = new CitaPeluqueria(citaPeluqueria.get_id(),citaPeluqueria.get_idContacto(), fecha, trabajo.getSelectedItem().toString(), Double.valueOf(tarifa.getText().toString()));
+            else  citaPeluqueria = new CitaPeluqueria(citaPeluqueria.get_id(),citaPeluqueria.getIdContacto(), fecha, trabajo.getSelectedItem().toString(), Double.valueOf(tarifa.getText().toString()));
 
             DocumentReference contact = db.collection("citas").document(citaPeluqueria.get_id());
 
@@ -453,7 +472,7 @@ public class FormularioCitaActivity extends AppCompatActivity {
                             ComunicadorCita.setObjeto(citaPeluqueria);
                             actualizarCitaPeluqueria();
                             intent();
-                           // actualizaComunicadorCita();
+                            // actualizaComunicadorCita();
                         }
 
                     });
@@ -468,11 +487,11 @@ public class FormularioCitaActivity extends AppCompatActivity {
     }
 
     private void actualizarCitaPeluqueria() {
-        for (CitaPeluqueria cita:citas) {
+        for (CitaPeluqueria cita : citas) {
             if (cita.get_id().equalsIgnoreCase(citaPeluqueria.get_id()))
                 cita.setTarifa(citaPeluqueria.getTarifa());
-                cita.setTrabajo(citaPeluqueria.getTrabajo());
-                cita.setFecha(citaPeluqueria.getFecha());
+            cita.setTrabajo(citaPeluqueria.getTrabajo());
+            cita.setFecha(citaPeluqueria.getFecha());
         }
     }
 
@@ -571,7 +590,7 @@ public class FormularioCitaActivity extends AppCompatActivity {
     public void peluquerias(View view) {
 
         Intent intent = new Intent(this, PeluqueriasContactoActivity.class);
-        intent.putExtra("VIENE","formulario_cita_activity");
+        intent.putExtra("VIENE", "formulario_cita_activity");
         startActivity(intent);
 
     }
@@ -603,7 +622,7 @@ public class FormularioCitaActivity extends AppCompatActivity {
                 ComunicadorContacto.setContacto(null);
                 break;
             case "contactos_activity":
-                intent = new Intent(context,ContactosActivity.class);
+                intent = new Intent(context, ContactosActivity.class);
                 break;
         }
         intent.putExtra("VIENE", "formulario_cita_activity");
@@ -612,14 +631,19 @@ public class FormularioCitaActivity extends AppCompatActivity {
 
 
     public void bindeaCitaPeluqueria(DocumentSnapshot document) {
-        citaPeluqueria = new CitaPeluqueria(
-                document.getId(),
-                document.getString("idContacto"),
-                document.getDate("fecha"),
-                document.getString("trabajo"),
-                document.getDouble("tarifa")
-        );
-       // actualizaComunicadorCita();
+        documentReference = document.getDocumentReference("idContact");
+        citaPeluqueria = new CitaPeluqueria();
+        citaPeluqueria.set_id(document.getId());
+        try {
+            citaPeluqueria.setIdContacto(documentReference);
+        } catch (RuntimeException e) {
+            citaPeluqueria.set_idContacto(document.getString("idContacto"));
+        }
+        citaPeluqueria.setFecha(document.getDate("fecha"));
+        citaPeluqueria.setTrabajo(document.getString("trabajo"));
+        citaPeluqueria.setTarifa(document.getDouble("tarifa"));
+
+        // actualizaComunicadorCita();
         añadimosCitaAlComunicador();
         intent();
     }

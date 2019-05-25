@@ -25,6 +25,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreSettings;
@@ -38,7 +39,6 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.AbstractSequentialList;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -137,7 +137,7 @@ public class PeluqueriasActivity extends AppCompatActivity {
     }
 
     private void recuperarFirebase(Date fecha) {
-        docSnippets.getCita(fecha);
+        docSnippets.getCitas(fecha);
         progressDialog.show();
     }
 
@@ -181,15 +181,20 @@ public class PeluqueriasActivity extends AppCompatActivity {
     }
 
     public void bindeaYAñadeCita(DocumentSnapshot doc) {
+        CitaPeluqueria con = new CitaPeluqueria();
+        con.set_id(doc.getId());
+        try{
+            con.set_idContacto(doc.getString("idContacto"));
+        } catch (RuntimeException e){
+            con.set_idContacto(doc.getDocumentReference("idContacto").getId());
+            Log.e("dcorevere-idcontacot",doc.getDocumentReference("idContacto").getId());
+        }
 
-        CitaPeluqueria con = new CitaPeluqueria(
-                doc.getId(),
-                doc.getString("idContacto"),
-                doc.getDate("fecha"),
-                doc.getString("trabajo"),
-                doc.getDouble("tarifa")
-        );
-        Log.e("idcita",doc.getId());
+        con.setFecha(doc.getDate("fecha"));
+        con.setTarifa(doc.getDouble("tarifa"));
+        con.setTrabajo(doc.getString("trabajo"));
+
+        Log.e("cita",con.toString());
         citas.add(con);
         docSnippets.getContactoConId(con.get_idContacto());
 

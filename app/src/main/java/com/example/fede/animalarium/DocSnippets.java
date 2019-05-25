@@ -399,6 +399,8 @@ public class DocSnippets implements DocSnippetsInterface {
     }
 
 
+
+
     // [START city_class]
     public class City {
 
@@ -1077,7 +1079,7 @@ public class DocSnippets implements DocSnippetsInterface {
         contactosActivity.buscador.setCursorVisible(true);
     }
 
-    public void getCita(Date fecha) {
+    public void getCitas(Date fecha) {
         fecha.setHours(00);
         fecha.setMinutes(00);
         fecha.setSeconds(00);
@@ -1151,10 +1153,13 @@ public class DocSnippets implements DocSnippetsInterface {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            for (DocumentSnapshot document : task.getResult()) {
-                                peluqueriasContactoActivity.bindeaYAñadeCita(document);
-                            }
-                            peluqueriasContactoActivity.inicimosAdaptador();
+                            if (peluqueriasContactoActivity!=null){
+                                for (DocumentSnapshot document : task.getResult()) {
+                                    peluqueriasContactoActivity.bindeaYAñadeCita(document);
+                                }
+                                peluqueriasContactoActivity.inicimosAdaptador();
+                            } else if (formularioActivity!=null) formularioActivity.bindeaCitas(task.getResult());
+
                         } else {
                             Log.e(TAG, "Error getting documents: ", task.getException());
                         }
@@ -1162,6 +1167,8 @@ public class DocSnippets implements DocSnippetsInterface {
                 });
         // [END get_multiple_all]
     }
+
+
 
     public void getReservasPorContacto() {
         // [START get_multiple_all]
@@ -1175,10 +1182,13 @@ public class DocSnippets implements DocSnippetsInterface {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            for (DocumentSnapshot document : task.getResult()) {
-                                hotelContactoActivity.bindeaYAñadeReserva(document,task.getResult().size());
-                            }
-                            hotelContactoActivity.inicimosAdaptador();
+                            if (hotelContactoActivity!=null){
+                                for (DocumentSnapshot document : task.getResult()) {
+                                    hotelContactoActivity.bindeaYAñadeReserva(document,task.getResult().size());
+                                }
+                                hotelContactoActivity.inicimosAdaptador();
+                            } else if (formularioActivity!=null) formularioActivity.bindeaReservas(task.getResult());
+
                         } else {
                             Log.e(TAG, "Error getting documents: ", task.getException());
                         }

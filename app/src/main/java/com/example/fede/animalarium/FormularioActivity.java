@@ -30,6 +30,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -42,7 +43,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class FormularioActivity extends AppCompatActivity {
@@ -57,7 +57,9 @@ public class FormularioActivity extends AppCompatActivity {
     private static final String KEY_TELEFONO2 = "telefono2";
     private static final String KEY_PROPIETARIO = "propietario";
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    DocumentReference contactoRef = db.collection("contactos").document();
+    DocumentReference contactosRef = db.collection("contactos").document();
+    DocumentReference citasRef = db.collection("citas").document();
+    DocumentReference reservasRef = db.collection("hoteles").document();
     //Referencia del almacenamiento de archivos en Firebase
     FirebaseStorage storage = FirebaseStorage.getInstance();
     private static final int PERMISSION_REQUEST_EXTERNAL_STORAGE = 1;
@@ -82,6 +84,8 @@ public class FormularioActivity extends AppCompatActivity {
     private ArrayList<Contacto> contactos = new ArrayList<>();
     private ProgressDialog progressDialog = null;
     private ArrayList<Uri> uris;
+    ArrayList<CitaPeluqueria> citass = new ArrayList<>();
+    private ArrayList<ReservaHotel> reservass = new ArrayList<>();
 
 
     @Override
@@ -114,6 +118,8 @@ public class FormularioActivity extends AppCompatActivity {
         citas = findViewById(R.id.formulario_susCitas_button);
         reservas = findViewById(R.id.formulario_susReservas_button);
 
+
+
         viene = getIntent().getExtras().getString("VIENE");
         switch (viene) {
 
@@ -124,22 +130,11 @@ public class FormularioActivity extends AppCompatActivity {
                 citas.setEnabled(false);
                 reservas.setEnabled(false);
                 break;
-            case "contactos_activity":
-                contacto = (Contacto) ComunicadorContacto.getContacto();
-                bindeaContactoView(contacto);
-                añadir.setEnabled(false);
-                oldSelectedImageUri = contacto.getFoto();
-                selectedImageUri = oldSelectedImageUri;
-                break;
-            case "hotel_contacto_activity":
-                contacto = (Contacto) ComunicadorContacto.getContacto();
-                bindeaContactoView(contacto);
-                añadir.setEnabled(false);
-                oldSelectedImageUri = contacto.getFoto();
-                selectedImageUri = oldSelectedImageUri;
-                break;
+
             default:
                 contacto = (Contacto) ComunicadorContacto.getContacto();
+                docSnippets.getPeluqueriasPorContacto();
+                docSnippets.getReservasPorContacto();
                 bindeaContactoView(contacto);
                 añadir.setEnabled(false);
                 oldSelectedImageUri = contacto.getFoto();
@@ -440,13 +435,13 @@ public class FormularioActivity extends AppCompatActivity {
         map.put(KEY_PROPIETARIO, contactoS.getPropietario());
 
         //Firebase
-        contactoRef.set(map)
+        contactosRef.set(map)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Toast.makeText(FormularioActivity.this, "Contacto añadido", Toast.LENGTH_SHORT).show();
-                        Log.e("ID", contactoRef.getId());
-                        contactoS.set_id(contactoRef.getId());
+                        Log.e("ID", contactosRef.getId());
+                        contactoS.set_id(contactosRef.getId());
                         bindeaContactoS(contactoS);
                         añadimosContactoAlComunicador(contacto);
                     }
@@ -521,6 +516,7 @@ public class FormularioActivity extends AppCompatActivity {
 
 
     public void eliminarContacto(View view) {
+
         try {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage(R.string.dialog_seguro_eliminar_contacto);
@@ -529,8 +525,9 @@ public class FormularioActivity extends AppCompatActivity {
                     db.collection("contactos").document(contacto.get_id()).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
-
-                            Toast.makeText(getApplicationContext(), "Contacto eliminado, con éxito", Toast.LENGTH_SHORT).show();
+                            eliminaSusCitas();
+                            eliminaSusReservas();
+                            Toast.makeText(getApplicationContext(), "Mascota eliminada, con éxito", Toast.LENGTH_SHORT).show();
                             eliminaContactoDelComunicador(contacto);
                         }
                     })
@@ -557,6 +554,18 @@ public class FormularioActivity extends AppCompatActivity {
         } catch (NullPointerException e) {
             Log.e("No se pudo eliminar ", "index=" + Integer.valueOf(contacto.get_id()));
 
+        }
+    }
+
+    private void eliminaSusCitas(){
+       for (CitaPeluqueria cita:citass){
+           db.collection("citas").document(cita.get_id()).delete();
+       }
+    }
+
+    private void eliminaSusReservas() {
+        for (ReservaHotel res: reservass){
+            db.collection("hoteles").document(res.getId()).delete();
         }
     }
 
@@ -654,6 +663,35 @@ public class FormularioActivity extends AppCompatActivity {
         return null;
     }
 
+    public void bindeaCitas(QuerySnapshot result) {
+        CitaPeluqueria cita = new CitaPeluqueria();
+
+        for (DocumentSnapshot doc: result){
+            cita.set_id(doc.getId());
+            cita.set_idContacto(doc.getString("idContacto"));
+            cita.setFecha(doc.getDate("fecha"));
+            cita.setTrabajo(doc.getString("trabajo"));
+            cita.setTarifa(doc.getDouble("tarifa"));
+            citass.add(cita);
+        }
+
+        ComunicadorCita.setSusCitas(citass);
+    }
+
+    public void bindeaReservas(QuerySnapshot result) {
+        ReservaHotel res = new ReservaHotel();
+        for (DocumentSnapshot doc: result){
+            res.setId(doc.getId());
+            res.setId_contacto(doc.getString("idContacto"));
+            res.setFechaInicio(doc.getDate("fechaInicio"));
+            res.setFechaFin(doc.getDate("fechaFin"));
+            res.setPrecio(doc.getDouble("precio"));
+            res.setNoches(doc.getDouble("noches"));
+            res.setCoste(doc.getDouble("coste"));
+            res.setPagado(doc.getBoolean("pagado"));
+            reservass.add(res);
+        }
+    }
 
     @Override
     public void onBackPressed() {
@@ -663,6 +701,7 @@ public class FormularioActivity extends AppCompatActivity {
         startActivity(menu);
 
     }
+
 
 
 }

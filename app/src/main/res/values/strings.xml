@@ -18,7 +18,7 @@
     <string name="about">About</string>
     <string name="descripcion">Aplicación para almacenar registros de una peluqueria canina</string>
     <string name="distribucion">Aplicación realizada por, fedelleos@yahoo.es</string>
-    <string name="dialog_seguro_eliminar_contacto">¿Seguro que quiere eliminar el contacto?</string>
+    <string name="dialog_seguro_eliminar_contacto">¿Seguro que quiere eliminar el contacto con sus citas y reservas?</string>
     <string name="dialog_seguro_eliminar_cita">¿Seguro que quiere eliminar la cita?</string>
     <string name="dialog_seguro_eliminar_reserva">¿Seguro que quiere eliminar la reserva?</string>
     <string name="mascota">Mascota</string>

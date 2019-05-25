@@ -142,6 +142,9 @@ public class PropietariosActivity extends AppCompatActivity {
     }
 
     public void añadirPropietario(View view) {
+        Intent intent = new Intent(this,FormularioPropietarioActivity.class);
+        intent.putExtra("VIENE","propietarios_activity");
+        startActivity(intent);
     }
 
     private void signInAnonymously() {

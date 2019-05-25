@@ -3,6 +3,8 @@ package com.example.fede.animalarium;
 import android.net.Uri;
 import android.util.Log;
 
+import com.google.firebase.firestore.DocumentReference;
+
 import java.io.Serializable;
 
 /**
@@ -11,8 +13,9 @@ import java.io.Serializable;
 
 public class ContactoS implements Serializable {
 
-    private String  _id,foto, mascota,raza, tamaño,telefono1,telefono2,propietario,_idPropietario;
-    private Contacto contacto;
+    private String  _id,foto, mascota,raza, tamaño,telefono1,telefono2,propietario;
+    DocumentReference _idPropietario;
+
 
     public ContactoS(){
 
@@ -30,8 +33,9 @@ public class ContactoS implements Serializable {
     }
 
 
-    public ContactoS(String _id, String foto, String mascota, String raza, String tamaño, String telefono1, String telefono2, String propietario, String _idPropietario) {
+    public ContactoS(String _id, DocumentReference _idPropietario, String foto, String mascota, String raza, String tamaño, String telefono1, String telefono2, String propietario) {
         this._id = _id;
+        this._idPropietario = _idPropietario;
         this.foto = foto;
         this.mascota = mascota;
         this.raza = raza;
@@ -39,26 +43,10 @@ public class ContactoS implements Serializable {
         this.telefono1 = telefono1;
         this.telefono2 = telefono2;
         this.propietario = propietario;
-        this._idPropietario = _idPropietario;
+
     }
 
-    public Contacto getContacto(ContactoS contactoS, Uri foto){
-        Log.e("id", contactoS.get_id().toString());
-        Log.e("uri",foto.toString());
-        contacto = new Contacto(
-                contactoS.get_id(),
-                foto,
-                contactoS.getMascota(),
-                contactoS.getRaza(),
-                contactoS.getTamaño(),
-                contactoS.getTelefono1(),
-                contactoS.getTelefono2(),
-                contactoS.getPropietario(),
-                contactoS.get_idPropietario()
-        );
 
-        return contacto;
-    }
 
     public String get_id() {
         return _id;
@@ -124,11 +112,11 @@ public class ContactoS implements Serializable {
         this.propietario = propietario;
     }
 
-    public String get_idPropietario() {
+    public DocumentReference get_idPropietario() {
         return _idPropietario;
     }
 
-    public void set_idPropietario(String _idPropietario) {
+    public void set_idPropietario(DocumentReference _idPropietario) {
         this._idPropietario = _idPropietario;
     }
 
@@ -143,7 +131,7 @@ public class ContactoS implements Serializable {
                 ", telefono1='" + telefono1 + '\'' +
                 ", telefono2='" + telefono2 + '\'' +
                 ", propietario='" + propietario + '\'' +
-                ", _idPropietario='" + _idPropietario + '\'' +
+                ", _idPropietario=" + _idPropietario +
                 '}';
     }
 }

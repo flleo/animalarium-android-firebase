@@ -2,6 +2,8 @@ package com.example.fede.animalarium;
 
 import android.net.Uri;
 
+import com.google.firebase.firestore.DocumentReference;
+
 import java.io.Serializable;
 
 /**
@@ -10,12 +12,27 @@ import java.io.Serializable;
 
 public class Contacto  implements Serializable {
 
-    private String  _id,id_propietario,mascota,raza, tamaño,telefono1,telefono2,propietario;
+    private String  _id,mascota,raza, tamaño,telefono1,telefono2,propietario;
+    DocumentReference id_propietario;
     private Uri foto;
     private ContactoS contactoS;
 
     public  Contacto(){
 
+    }
+
+
+
+    public Contacto(String _id,DocumentReference id_propietario, Uri foto,String mascota, String raza, String tamaño, String telefono1, String telefono2, String propietario ) {
+        this._id = _id;
+        this.id_propietario = id_propietario;
+        this.mascota = mascota;
+        this.raza = raza;
+        this.tamaño = tamaño;
+        this.telefono1 = telefono1;
+        this.telefono2 = telefono2;
+        this.propietario = propietario;
+        this.foto = foto;
     }
 
     public Contacto(String _id,Uri foto,String mascota, String raza, String tamaño, String telefono1,String telefono2, String propietario) {
@@ -29,21 +46,26 @@ public class Contacto  implements Serializable {
         this.propietario = propietario;
     }
 
-    public Contacto(String _id, Uri foto,String mascota, String raza, String tamaño, String telefono1, String telefono2, String propietario ,String id_propietario) {
-        this._id = _id;
-        this.id_propietario = id_propietario;
-        this.mascota = mascota;
-        this.raza = raza;
-        this.tamaño = tamaño;
-        this.telefono1 = telefono1;
-        this.telefono2 = telefono2;
-        this.propietario = propietario;
-        this.foto = foto;
-    }
-
     public ContactoS getContacto1(Contacto contacto, String foto){
         contactoS = new ContactoS(
                 contacto.get_id(),
+                foto,
+                contacto.getMascota(),
+                contacto.getRaza(),
+                contacto.getTamaño(),
+                contacto.getTelefono1(),
+                contacto.getTelefono2(),
+                contacto.getPropietario()
+
+        );
+
+        return contactoS;
+    }
+
+    public ContactoS getContacto1P(Contacto contacto, String foto){
+        contactoS = new ContactoS(
+                contacto.get_id(),
+                contacto.getId_propietario(),
                 foto,
                 contacto.getMascota(),
                 contacto.getRaza(),
@@ -121,11 +143,12 @@ public class Contacto  implements Serializable {
         this.propietario = propietario;
     }
 
-    public String getId_propietario() {
+
+    public DocumentReference getId_propietario() {
         return id_propietario;
     }
 
-    public void setId_propietario(String id_propietario) {
+    public void setId_propietario(DocumentReference id_propietario) {
         this.id_propietario = id_propietario;
     }
 
@@ -133,13 +156,13 @@ public class Contacto  implements Serializable {
     public String toString() {
         return "Contacto{" +
                 "_id='" + _id + '\'' +
-                ", id_propietario='" + id_propietario + '\'' +
                 ", mascota='" + mascota + '\'' +
                 ", raza='" + raza + '\'' +
                 ", tamaño='" + tamaño + '\'' +
                 ", telefono1='" + telefono1 + '\'' +
                 ", telefono2='" + telefono2 + '\'' +
                 ", propietario='" + propietario + '\'' +
+                ", id_propietario=" + id_propietario +
                 ", foto=" + foto +
                 '}';
     }
