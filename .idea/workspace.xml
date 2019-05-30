@@ -93,23 +93,16 @@
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ComunicadorPropietario.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ComunicadorPropietario.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/DocSnippets.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/DocSnippets.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/FormularioActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/FormularioActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/FormularioPropietarioActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/FormularioPropietarioActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/Propietario.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/Propietario.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/PropietariosActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/PropietariosActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/SplashScreenActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/SplashScreenActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_formulario.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_formulario.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/propietario.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_formulario_propietario.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_formulario_propietario.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/activity_main_drawer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/activity_main_drawer.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -145,43 +138,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/FormularioPropietarioActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="220" column="51" selection-start-line="220" selection-start-column="51" selection-end-line="220" selection-end-column="51" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/PropietarioS.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="990">
-              <caret line="66" column="18" selection-start-line="66" selection-start-column="18" selection-end-line="66" selection-end-column="18" />
-              <folding>
-                <element signature="e#502#503#0" expanded="true" />
-                <element signature="e#527#528#0" expanded="true" />
-                <element signature="e#563#564#0" expanded="true" />
-                <element signature="e#591#592#0" expanded="true" />
-                <element signature="e#622#623#0" expanded="true" />
-                <element signature="e#649#650#0" expanded="true" />
-                <element signature="e#689#690#0" expanded="true" />
-                <element signature="e#721#722#0" expanded="true" />
-                <element signature="e#759#760#0" expanded="true" />
-                <element signature="e#793#794#0" expanded="true" />
-                <element signature="e#847#848#0" expanded="true" />
-                <element signature="e#893#894#0" expanded="true" />
-                <element signature="e#929#930#0" expanded="true" />
-                <element signature="e#961#962#0" expanded="true" />
-                <element signature="e#1011#1012#0" expanded="true" />
-                <element signature="e#1053#1054#0" expanded="true" />
-                <element signature="e#1089#1090#0" expanded="true" />
-                <element signature="e#1121#1122#0" expanded="true" />
-                <element signature="e#1171#1172#0" expanded="true" />
-                <element signature="e#1213#1214#0" expanded="true" />
-                <element signature="e#1245#1246#0" expanded="true" />
-                <element signature="e#1273#1274#0" expanded="true" />
-                <element signature="e#1315#1316#0" expanded="true" />
-                <element signature="e#1349#1350#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="227">
+              <caret line="227" lean-forward="true" selection-start-line="227" selection-end-line="227" />
             </state>
           </provider>
         </entry>
@@ -189,8 +147,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/FormularioActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
-              <caret line="600" column="17" selection-start-line="600" selection-start-column="17" selection-end-line="600" selection-end-column="17" />
+            <state>
+              <caret lean-forward="true" />
             </state>
           </provider>
         </entry>
@@ -198,8 +156,46 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/DocSnippets.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="895" column="57" selection-start-line="895" selection-start-column="57" selection-end-line="895" selection-end-column="57" />
+            <state relative-caret-position="347">
+              <caret line="899" column="64" selection-start-line="899" selection-start-column="64" selection-end-line="899" selection-end-column="64" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable-v24/ic_launcher_foreground.xml">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/image.jpeg">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ComunicadorPropietario.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="338">
+              <caret line="37" column="48" selection-start-line="37" selection-start-column="48" selection-end-line="37" selection-end-column="48" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#781#782#0" expanded="true" />
+                <element signature="e#808#809#0" expanded="true" />
+                <element signature="e#863#864#0" expanded="true" />
+                <element signature="e#913#914#0" expanded="true" />
+                <element signature="e#1047#1048#0" expanded="true" />
+                <element signature="e#1107#1108#0" expanded="true" />
+                <element signature="e#1159#1160#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/SplashScreenActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="295">
+              <caret line="61" column="26" selection-start-line="61" selection-start-column="26" selection-end-line="61" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -207,37 +203,25 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/PropietariosActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="551">
-              <caret line="295" column="28" selection-start-line="295" selection-start-column="28" selection-end-line="295" selection-end-column="28" />
+            <state relative-caret-position="332">
+              <caret line="201" column="5" lean-forward="true" selection-start-line="189" selection-start-column="3" selection-end-line="201" selection-end-column="5" />
               <folding>
-                <element signature="e#6172#6173#0" expanded="true" />
-                <element signature="e#6201#6202#0" expanded="true" />
+                <element signature="e#3112#3120#0" expanded="true" />
+                <element signature="e#10408#10409#0" expanded="true" />
+                <element signature="e#10458#10459#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ContactosActivity.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ComunicadorContacto.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="672">
-              <caret line="349" column="26" selection-start-line="349" selection-start-column="26" selection-end-line="349" selection-end-column="26" />
+            <state relative-caret-position="227">
+              <caret line="17" selection-start-line="17" selection-end-line="17" />
               <folding>
-                <element signature="e#4052#5115#0" expanded="true" />
-                <element signature="e#5114#5115#0" expanded="true" />
-                <element signature="e#12028#12029#0" expanded="true" />
-                <element signature="e#12075#12076#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_formulario.xml">
-          <provider editor-type-id="android-designer2" />
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="335">
-              <caret line="44" column="60" selection-start-line="44" selection-start-column="60" selection-end-line="44" selection-end-column="60" />
             </state>
           </provider>
         </entry>
@@ -294,22 +278,24 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/Contacto.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ContactoS.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/activity_main_drawer.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/FormularioActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_formulario.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_formulario_propietario.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/SplashScreenActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/DocSnippets.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/Propietario.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/PropietarioS.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/DocSnippets.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_formulario_propietario.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/FormularioActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ComunicadorPropietario.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/PropietariosActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/PropietarioS.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/FormularioPropietarioActivity.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="width" value="1366" />
-    <option name="height" value="748" />
+    <option name="x" value="267" />
+    <option name="y" value="240" />
+    <option name="width" value="1356" />
+    <option name="height" value="746" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
@@ -319,7 +305,17 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="animalarium-android-firebase" type="b2602c69:ProjectViewProjectNode" />
+              <item name="animalarium-android-firebase" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -347,13 +343,7 @@
               <item name="animalarium-android-firebase" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="res" type="d4f16f75:AndroidResFolderNode" />
-              <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
-            </path>
-            <path>
-              <item name="animalarium-android-firebase" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-              <item name="menu" type="ddeffd01:AndroidResFolderTypeNode" />
+              <item name="drawable" type="ddeffd01:AndroidResFolderTypeNode" />
             </path>
           </expand>
           <select />
@@ -386,17 +376,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="animalarium-android-firebase" type="b2602c69:ProjectViewProjectNode" />
-              <item name="animalarium-android-firebase" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -411,8 +391,9 @@
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.example.fede.animalarium" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable-v24" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
     </key>
     <key name="android.template.packageName">
       <recent name="com.example.fede.animalarium" />
@@ -420,8 +401,8 @@
     <key name="android.template.parentActivityClass">
       <recent name="" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.example.fede.animalarium" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -514,7 +495,7 @@
   <component name="ToolWindowManager">
     <frame x="0" y="-1" width="1680" height="1010" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4935484" visible="true" weight="0.25275397" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4935484" visible="true" weight="0.25275397" />
       <window_info id="Structure" order="1" sideWeight="0.5064516" side_tool="true" weight="0.25397795" />
       <window_info id="Captures" order="2" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -523,17 +504,17 @@
       <window_info id="Designer" order="6" />
       <window_info id="Resources Explorer" order="7" />
       <window_info id="Capture Tool" order="8" />
-      <window_info anchor="bottom" id="Run" order="0" sideWeight="0.4973262" weight="0.32505643" />
+      <window_info anchor="bottom" id="Run" order="0" sideWeight="0.4973262" visible="true" weight="0.32505643" />
       <window_info anchor="bottom" id="Logcat" order="1" weight="0.3295711" />
       <window_info anchor="bottom" id="Debug" order="2" />
       <window_info anchor="bottom" id="Terminal" order="3" weight="0.3295711" />
       <window_info anchor="bottom" id="Event Log" order="4" sideWeight="0.5026738" side_tool="true" weight="0.5843072" />
       <window_info anchor="bottom" id="TODO" order="5" />
       <window_info anchor="bottom" id="Version Control" order="6" weight="0.32888147" />
-      <window_info active="true" anchor="bottom" id="Build" order="7" sideWeight="0.49961802" visible="true" weight="0.29909706" />
+      <window_info anchor="bottom" id="Build" order="7" sideWeight="0.49961802" weight="0.29909706" />
       <window_info anchor="bottom" id="Find" order="8" weight="0.3295711" />
       <window_info anchor="bottom" id="Android Profiler" order="9" weight="0.3295711" />
-      <window_info anchor="right" id="Preview" order="0" weight="0.25581396" />
+      <window_info anchor="right" id="Preview" order="0" weight="0.23929009" />
       <window_info anchor="right" id="Device File Explorer" order="1" side_tool="true" weight="0.32925898" />
       <window_info anchor="right" id="Capture Analysis" order="2" />
       <window_info anchor="right" id="Gradle" order="3" weight="0.32925898" />
@@ -610,33 +591,6 @@
     </option>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ce19cef2c9032b41d5c8ff5f09f66298/jars/classes.jar!/com/google/firebase/firestore/DocumentReference.class" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ComunicadorReserva.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#235#236#0" expanded="true" />
-            <element signature="e#265#266#0" expanded="true" />
-            <element signature="e#324#325#0" expanded="true" />
-            <element signature="e#376#377#0" expanded="true" />
-            <element signature="e#468#469#0" expanded="true" />
-            <element signature="e#499#500#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/MisReservasAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="482">
-          <caret line="50" column="49" selection-start-line="50" selection-start-column="49" selection-end-line="50" selection-end-column="49" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../Sdk/sources/android-26/android/widget/ImageView.java" />
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/TotalesActivity.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -683,21 +637,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ComunicadorContacto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/contacts-icon.png" />
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/euro.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/propietario.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ListItemActivity.java">
@@ -849,13 +790,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="107" column="46" selection-start-line="107" selection-start-column="46" selection-end-line="107" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/CitaPeluqueria.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="915">
@@ -877,12 +811,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider editor-type-id="android-manifest" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="9" column="24" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
         </state>
       </provider>
+      <provider editor-type-id="android-manifest" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_peluquerias.xml">
       <provider editor-type-id="android-designer2" />
@@ -896,26 +830,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_formulario.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="44" column="60" selection-start-line="44" selection-start-column="60" selection-end-line="44" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_contactos.xml">
       <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="338">
           <caret line="48" column="34" selection-start-line="48" selection-start-column="34" selection-end-line="48" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/SplashScreenActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="61" column="31" selection-start-line="61" selection-start-column="31" selection-end-line="61" selection-end-column="31" />
         </state>
       </provider>
     </entry>
@@ -927,14 +846,6 @@
             <element signature="e#3466#3467#0" expanded="true" />
             <element signature="e#3503#3504#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_formulario_propietario.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="128" column="20" selection-start-line="128" selection-start-column="20" selection-end-line="128" selection-end-column="20" />
         </state>
       </provider>
     </entry>
@@ -971,53 +882,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/DocSnippets.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="895" column="57" selection-start-line="895" selection-start-column="57" selection-end-line="895" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ComunicadorPropietario.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="28" column="44" selection-start-line="28" selection-start-column="44" selection-end-line="28" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#808#809#0" expanded="true" />
-            <element signature="e#863#864#0" expanded="true" />
-            <element signature="e#913#914#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ContactosActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="672">
-          <caret line="349" column="26" selection-start-line="349" selection-start-column="26" selection-end-line="349" selection-end-column="26" />
-          <folding>
-            <element signature="e#4052#5115#0" expanded="true" />
-            <element signature="e#5114#5115#0" expanded="true" />
-            <element signature="e#12028#12029#0" expanded="true" />
-            <element signature="e#12075#12076#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/PropietariosActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="551">
-          <caret line="295" column="28" selection-start-line="295" selection-start-column="28" selection-end-line="295" selection-end-column="28" />
-          <folding>
-            <element signature="e#6172#6173#0" expanded="true" />
-            <element signature="e#6201#6202#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/PropietarioS.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="990">
+        <state relative-caret-position="630">
           <caret line="66" column="18" selection-start-line="66" selection-start-column="18" selection-end-line="66" selection-end-column="18" />
           <folding>
             <element signature="e#502#503#0" expanded="true" />
@@ -1048,17 +915,116 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ContactosActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4590">
+          <caret line="349" column="26" selection-start-line="349" selection-start-column="26" selection-end-line="349" selection-end-column="26" />
+          <folding>
+            <element signature="e#12028#12029#0" expanded="true" />
+            <element signature="e#12075#12076#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_formulario.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="44" column="60" selection-start-line="44" selection-start-column="60" selection-end-line="44" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="107" selection-start-line="107" selection-end-line="107" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/image.jpeg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/propietario.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable-v24/propietario.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable-v24/ic_launcher_foreground.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ComunicadorContacto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_formulario_propietario.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="38" column="58" selection-start-line="38" selection-start-column="58" selection-end-line="38" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/SplashScreenActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="295">
+          <caret line="61" column="26" selection-start-line="61" selection-start-column="26" selection-end-line="61" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/ComunicadorPropietario.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="37" column="48" selection-start-line="37" selection-start-column="48" selection-end-line="37" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#781#782#0" expanded="true" />
+            <element signature="e#808#809#0" expanded="true" />
+            <element signature="e#863#864#0" expanded="true" />
+            <element signature="e#913#914#0" expanded="true" />
+            <element signature="e#1047#1048#0" expanded="true" />
+            <element signature="e#1107#1108#0" expanded="true" />
+            <element signature="e#1159#1160#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/DocSnippets.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="347">
+          <caret line="899" column="64" selection-start-line="899" selection-start-column="64" selection-end-line="899" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/PropietariosActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="332">
+          <caret line="201" column="5" lean-forward="true" selection-start-line="189" selection-start-column="3" selection-end-line="201" selection-end-column="5" />
+          <folding>
+            <element signature="e#3112#3120#0" expanded="true" />
+            <element signature="e#10408#10409#0" expanded="true" />
+            <element signature="e#10458#10459#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/FormularioActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="600" column="17" selection-start-line="600" selection-start-column="17" selection-end-line="600" selection-end-column="17" />
+        <state>
+          <caret lean-forward="true" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/fede/animalarium/FormularioPropietarioActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="220" column="51" selection-start-line="220" selection-start-column="51" selection-end-line="220" selection-end-column="51" />
+        <state relative-caret-position="227">
+          <caret line="227" lean-forward="true" selection-start-line="227" selection-end-line="227" />
         </state>
       </provider>
     </entry>

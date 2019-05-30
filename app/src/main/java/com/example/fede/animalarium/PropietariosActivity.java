@@ -46,7 +46,6 @@ import java.util.NoSuchElementException;
 public class PropietariosActivity extends AppCompatActivity {
 
 
-
     //Firebase
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     //Referencia del almacenamiento de archivos en Firebase
@@ -243,7 +242,9 @@ public class PropietariosActivity extends AppCompatActivity {
         } catch (NoSuchElementException e) {
             ComunicadorPropietario.setPropietarios(propietarios);
             ComunicadorPropietario.setUris(uris);
-            progressDialog.dismiss();
+            ComunicadorPropietario.setFotos(fotos);
+            if(progressDialog!=null)
+             progressDialog.dismiss();
             switch (viene) {
                 case "splash_screen":
                     context.startActivity(new Intent().setClass(context, MainActivity.class));

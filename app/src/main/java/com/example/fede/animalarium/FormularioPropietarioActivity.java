@@ -35,7 +35,6 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -50,7 +49,7 @@ public class FormularioPropietarioActivity extends AppCompatActivity {
     private static final String KEY_EMAIL = "email";
     private static final int PICK_IMAGE = 1;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    DocumentReference contactosRef = db.collection("contactos").document();
+    DocumentReference propietariosRef = db.collection("propietarios").document();
     DocumentReference citasRef = db.collection("citas").document();
     DocumentReference reservasRef = db.collection("hoteles").document();
     //Referencia del almacenamiento de archivos en Firebase
@@ -70,6 +69,7 @@ public class FormularioPropietarioActivity extends AppCompatActivity {
     private DocSnippets docSnippets;
     ProgressDialog progressDialog;
     private String fotoS;
+    ArrayList<String>fotos = new ArrayList<>();
     private PropietarioS propietarioS;
 
 
@@ -79,13 +79,21 @@ public class FormularioPropietarioActivity extends AppCompatActivity {
         setContentView(R.layout.activity_formulario_propietario);
 
         context = this;
-        docSnippets = new DocSnippets(db, (FormularioActivity) context);
+        docSnippets = new DocSnippets(db, this);
         progressDialog = new ProgressDialog(this);
         propietarios = ComunicadorPropietario.getPropietarios();
-        uris = ComunicadorContacto.getUris();
-        imageUri = uris.get(0);             //definimos la por defecto
-        selectedImageUri = uris.get(0);
-
+        uris = ComunicadorPropietario.getUris();
+        fotos = ComunicadorPropietario.getFotos();
+        if (uris.size()==0){
+            Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(),R.drawable.propietario);
+            Uri uri = getImageUri(bitmap);
+            imageUri = uri;
+            selectedImageUri = uri;
+        } else
+        if (uris.size()!=0){
+            imageUri = uris.get(0);             //definimos la por defecto
+            selectedImageUri = uris.get(0);
+        }
         imageButton = findViewById(R.id.formulario_propietario_imageButtonFormulario);
         mascotas = findViewById(R.id.formulario_propietario_susMascotas_button);
         nombre = findViewById(R.id.formulario_propietario_nombre);
@@ -96,6 +104,7 @@ public class FormularioPropietarioActivity extends AppCompatActivity {
         phone1 = findViewById(R.id.formulario_propietario_phone1);
         phone2 = findViewById(R.id.formulario_propietario_phone2);
 
+        //imageButton.setImageURI(imageUri);
         //Pulsación larga -> Eliminamos la foto
         imageButton.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
@@ -127,7 +136,7 @@ public class FormularioPropietarioActivity extends AppCompatActivity {
     public void añadir(View view) {
 
         bindeaPropietario();
-        if (!comprobarAñadir()) {
+        if (!cargarFoto()) {
             //Con foto  SUBIMOS FOTO A FIREBASE
             try {
                 final ProgressDialog progressDialog = new ProgressDialog(this);
@@ -143,7 +152,7 @@ public class FormularioPropietarioActivity extends AppCompatActivity {
                                 progressDialog.dismiss();
                                 Toast.makeText(FormularioPropietarioActivity.this, "Foto subida con éxito", Toast.LENGTH_SHORT).show();
                                 fotoS  = storageReference.getName();
-                                propietarioS = new PropietarioS(null, storageReference.getName(),nombre.getText().toString(), telefono1.getText().toString(),telefono2.getText().toString(), email.getText().toString());
+                                propietarioS = new PropietarioS(null, fotoS,nombre.getText().toString(), telefono1.getText().toString(),telefono2.getText().toString(), email.getText().toString());
                                 añadirPropietario1();
 
                                 // Log.e("foto path",storageReference.getPath());
@@ -166,10 +175,7 @@ public class FormularioPropietarioActivity extends AppCompatActivity {
                         });
 
             } catch (NullPointerException e) {
-                /*//Sin Foto, le asignamos la foto de firebase que tenemos por defecto
-                ContactoS contactoS = new ContactoS(null, "46841", mascota.getText().toString(), raza.getText().toString(), tamaño.getSelectedItem().toString(), telefono1.getText().toString(), telefono2.getText().toString(), propietario.getText().toString());
-                añadirContacto1(contactoS);
-                */
+
                 e.getMessage();
             }
         }
@@ -178,13 +184,13 @@ public class FormularioPropietarioActivity extends AppCompatActivity {
     private void añadirPropietario1() {
 
         //Firebase
-        contactosRef.set(mapeaPropietarioS())
+        propietariosRef.set(mapeaPropietarioS())
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Toast.makeText(context, "Contacto añadido", Toast.LENGTH_SHORT).show();
-                        Log.e("ID", contactosRef.getId());
-                        propietarioS.setId(contactosRef.getId());
+                        Toast.makeText(context, "Propietario añadido", Toast.LENGTH_SHORT).show();
+                        Log.e("ID", propietariosRef.getId());
+                        propietarioS.setId(propietariosRef.getId());
                         bindeaPropietarioS(propietarioS);
                         ComunicadorPropietario.setPropietario(propietario);
                     }
@@ -223,16 +229,32 @@ public class FormularioPropietarioActivity extends AppCompatActivity {
         return map;
     }
 
-    private boolean comprobarAñadir() {
-        boolean añadido = false;
-        if (selectedImageUri.compareTo(imageUri) == 0) {
-           propietarioS = new PropietarioS(null, "46841", nombre.getText().toString(), telefono1.getText().toString(), telefono2.getText().toString(), email.getText().toString());
-           añadirPropietario1();
-           añadido = true;
-        }
 
-        return añadido;
+    public boolean cargarFoto() {
+
+        boolean cargada = false;
+        fotoS = null;
+        int i;
+        for (i = 0; i < uris.size(); i++)
+            if (uris.get(i) == selectedImageUri) {
+                fotoS = fotos.get(i);
+                propietarioS.setFoto(fotoS);
+                añadirPropietario1();
+                cargada = true;
+            }
+        return cargada;
+
     }
+//    private boolean comprobarAñadir() {
+//        boolean añadido = false;
+//        if (selectedImageUri.compareTo(imageUri) == 0) {
+//           propietarioS = new PropietarioS(null,   , nombre.getText().toString(), telefono1.getText().toString(), telefono2.getText().toString(), email.getText().toString());
+//           añadirPropietario1();
+//           añadido = true;
+//        }
+//
+//        return añadido;
+//    }
 
     public void actualizar(View view) {
     }

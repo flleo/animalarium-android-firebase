@@ -68,6 +68,7 @@ public class DocSnippets implements DocSnippetsInterface {
             60, TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>());
 
     private final FirebaseFirestore db;
+    private  FormularioPropietarioActivity formularioPropietarioActivity;
     PropietariosActivity propietariosActivity;
     SplashScreenActivity splashScreenActivity;
     MainActivity mainActivity;
@@ -187,6 +188,12 @@ public class DocSnippets implements DocSnippetsInterface {
         this.db = db;
         this.propietariosActivity = propietariosActivity;
         context = propietariosActivity;
+    }
+
+    public DocSnippets(FirebaseFirestore db, FormularioPropietarioActivity application) {
+        this.db = db;
+        this.formularioPropietarioActivity = application;
+        context = application;
     }
 
 

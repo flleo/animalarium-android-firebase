@@ -100,8 +100,16 @@ public class FormularioActivity extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
         contactos = ComunicadorContacto.getContactos();
         uris = ComunicadorContacto.getUris();
-        imageUri = uris.get(0);             //definimos la por defecto
-        selectedImageUri = uris.get(0);     //recogemos la como por defecto
+        if (uris.size()==0){
+            Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(),R.drawable.image);
+            Uri uri = getImageUri(bitmap);
+            imageUri = uri;
+            selectedImageUri = uri;
+        } else
+        if (uris.size()!=0){
+            imageUri = uris.get(0);             //definimos la por defecto
+            selectedImageUri = uris.get(0);
+        }
         //Inicializamos
         foto = (ImageButton) findViewById(R.id.imageButtonFormulario);
         mascota = (EditText) findViewById(R.id.mascota);
