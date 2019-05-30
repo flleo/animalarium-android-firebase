@@ -7,7 +7,7 @@
         <item
             android:id="@+id/nav_propietarios"
             android:icon="@drawable/propietario"
-            android:title="@string/contactos" />
+            android:title="@string/propietario" />
         <item
             android:id="@+id/nav_contactos"
             android:icon="@drawable/perro"

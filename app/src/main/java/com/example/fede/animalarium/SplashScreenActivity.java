@@ -59,6 +59,7 @@ public class SplashScreenActivity extends Activity {
         db.setFirestoreSettings(settings);
         //Recogemos datos de Firestor
         docSnippets.getContactos();
+        docSnippets.getPropietarios();
        // docSnippets.getPropietarios();
 
         // Set portrait orientation

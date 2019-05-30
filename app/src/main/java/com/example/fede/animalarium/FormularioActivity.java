@@ -172,14 +172,10 @@ public class FormularioActivity extends AppCompatActivity {
 
     }
 
-    public void seleccionaImagen(View view) {
 
 
-        openGallery();
-    }
 
-
-    private void openGallery() {
+    private void openGalleryContacto(View view) {
         //ACTION_OPEN_DOCUMENT paar poder recuperar la foto luego
         Intent gallery = new Intent(Intent.ACTION_OPEN_DOCUMENT, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
         gallery.setType("image/*");

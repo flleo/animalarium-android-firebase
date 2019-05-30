@@ -1,11 +1,14 @@
 package com.example.fede.animalarium;
 
+import android.net.Uri;
+
 import java.util.ArrayList;
 
 class ComunicadorPropietario {
 
     static Propietario propietario;
     static ArrayList<Propietario> propietarios = new ArrayList<>();
+    static ArrayList<Uri> uris = new ArrayList<>();
 
     public static Propietario getPropietario() {
         return propietario;
@@ -21,5 +24,13 @@ class ComunicadorPropietario {
 
     public static void setPropietarios(ArrayList<Propietario> propietarios) {
         ComunicadorPropietario.propietarios = propietarios;
+    }
+
+    public static ArrayList<Uri> getUris() {
+        return uris;
+    }
+
+    public static void setUris(ArrayList<Uri> uris) {
+        ComunicadorPropietario.uris = uris;
     }
 }

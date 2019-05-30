@@ -882,7 +882,7 @@ public class DocSnippets implements DocSnippetsInterface {
         progressDialog.show();
         // [START get_multiple_all]
         db.collection("propietarios")
-                .orderBy("nombre")
+                .orderBy("propietario")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -890,7 +890,7 @@ public class DocSnippets implements DocSnippetsInterface {
 
                         if (task.isSuccessful()) {
                             if (splashScreenActivity != null) {
-                                ContactosActivity.setContactos(task.getResult().getDocuments(), splashScreenActivity, "splash_screen", progressDialog);
+                                PropietariosActivity.setPropietarios(task.getResult().getDocuments(), splashScreenActivity, "splash_screen", progressDialog);
 
                             } else if (contactosActivity != null) {
                                 contactosActivity.setContactos(task.getResult().getDocuments(), contactosActivity, "contactos", progressDialog);
