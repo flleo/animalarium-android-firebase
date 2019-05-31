@@ -1,5 +1,6 @@
 package com.example.fede.animalarium;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -8,12 +9,12 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -36,6 +37,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -82,7 +84,7 @@ public class PropietariosActivity extends AppCompatActivity {
     DateFormat dfFecha = new SimpleDateFormat("dd-MM-yyyy");
     static ArrayList<String> fotos = new ArrayList<String>();
     static ArrayList<Uri> uris = new ArrayList<Uri>();
-    private static PropietariosActivity application;
+    private static Activity application;
 
 
     @Override
@@ -277,15 +279,15 @@ public class PropietariosActivity extends AppCompatActivity {
 
     private static Uri getImageUri(Bitmap bitmap) {
 
-        if (splashScreenActivity != null) context = splashScreenActivity;
+        if (splashScreenActivity != null) application = splashScreenActivity;
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
-        if (ContextCompat.checkSelfPermission(context, android.Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+        if (ContextCompat.checkSelfPermission(application, android.Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 ActivityCompat.requestPermissions(application, new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, PERMISSION_REQUEST_EXTERNAL_STORAGE);
             }
         } else {
-            String path = MediaStore.Images.Media.insertImage(context.getContentResolver(), bitmap, null, null);
+            String path = MediaStore.Images.Media.insertImage(application.getContentResolver(), bitmap, null, null);
             uri = Uri.parse(path);
             return uri;
         }

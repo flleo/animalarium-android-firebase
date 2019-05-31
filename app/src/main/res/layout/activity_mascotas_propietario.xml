@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MascotasPropietarioActivity">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/colorMascota"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_volver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/fab_margin"
+            android:layout_weight="1"
+            app:backgroundTint="@android:color/holo_orange_light"
+            app:srcCompat="@android:drawable/ic_media_rew" />
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fab_contacto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="@dimen/fab_margin"
+                android:layout_weight="1"
+                android:onClick="añadirMascota"
+                app:backgroundTint="#b22234"
+                app:srcCompat="@android:drawable/ic_input_add"
+                />
+
+
+        </LinearLayout>
+
+        <ListView
+
+            android:id="@+id/peluquerias_contacto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true" />
+
+
+    </LinearLayout>
+
+
+</android.support.design.widget.CoordinatorLayout>

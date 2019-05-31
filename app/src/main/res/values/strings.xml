@@ -60,6 +60,7 @@
         <item>@drawable/ic_launcher_background</item>
         <item>@drawable/ic_launcher_background</item>
     </array>
+    <string name="title_activity_sus_mascotas">SusMascotasActivity</string>
 
     <!--Status-->
 

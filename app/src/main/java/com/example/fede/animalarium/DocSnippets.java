@@ -68,7 +68,8 @@ public class DocSnippets implements DocSnippetsInterface {
             60, TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>());
 
     private final FirebaseFirestore db;
-    private  FormularioPropietarioActivity formularioPropietarioActivity;
+    MascotasPropietarioActivity mascotasPropietarioActivity;
+    FormularioPropietarioActivity formularioPropietarioActivity;
     PropietariosActivity propietariosActivity;
     SplashScreenActivity splashScreenActivity;
     MainActivity mainActivity;
@@ -194,6 +195,12 @@ public class DocSnippets implements DocSnippetsInterface {
         this.db = db;
         this.formularioPropietarioActivity = application;
         context = application;
+    }
+
+    public DocSnippets(FirebaseFirestore db, MascotasPropietarioActivity mascotasPropietarioActivity) {
+        this.db = db;
+        this.mascotasPropietarioActivity = mascotasPropietarioActivity;
+        context = mascotasPropietarioActivity;
     }
 
 
@@ -1175,7 +1182,32 @@ public class DocSnippets implements DocSnippetsInterface {
         // [END get_multiple_all]
     }
 
+    public void getMascotasPorPropietario() {
+        // [START get_multiple_all]
 
+        Propietario propietario = ComunicadorPropietario.getPropietario();
+        db.collection("mascotas")
+                .whereEqualTo("idPropietario", propietario.getId())
+                .orderBy("mascota", Direction.DESCENDING)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            if (mascotasPropietarioActivity!=null){
+                                for (DocumentSnapshot document : task.getResult()) {
+                                    mascotasPropietarioActivity.bindeaYAñadeMascota(document);
+                                }
+                                peluqueriasContactoActivity.inicimosAdaptador();
+                            } else if (formularioActivity!=null) formularioActivity.bindeaCitas(task.getResult());
+
+                        } else {
+                            Log.e(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+        // [END get_multiple_all]
+    }
 
     public void getReservasPorContacto() {
         // [START get_multiple_all]

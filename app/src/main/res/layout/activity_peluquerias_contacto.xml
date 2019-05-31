@@ -29,7 +29,7 @@
                 android:layout_gravity="bottom|end"
                 android:layout_margin="@dimen/fab_margin"
                 android:layout_weight="1"
-                app:backgroundTint="@android:color/holo_orange_light"
+            android:background="@color/colorPelu"
                 app:srcCompat="@android:drawable/ic_media_rew" />
 
             <android.support.design.widget.FloatingActionButton
@@ -40,7 +40,7 @@
                 android:layout_margin="@dimen/fab_margin"
                 android:layout_weight="1"
                 android:onClick="añadirCita"
-                app:backgroundTint="@android:color/holo_green_light"
+                android:background="@color/colorPelu"
                 app:srcCompat="@android:drawable/ic_input_add" />
 
 

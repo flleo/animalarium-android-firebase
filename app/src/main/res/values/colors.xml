@@ -9,4 +9,6 @@
     <color name="foreground_material_light">#040000</color>
     <color name="colorHotelcalcular">#009900</color>
     <color name="colorPropietario">#00FFB0</color>
+    <color name="colorMascota">#d2672f</color>
+    <color name="colorMasMascota">#b22234</color>
 </resources>

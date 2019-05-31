@@ -1,6 +1,7 @@
 package com.example.fede.animalarium;
 
 import android.app.AlertDialog;
+import android.app.Application;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -245,16 +246,7 @@ public class FormularioPropietarioActivity extends AppCompatActivity {
         return cargada;
 
     }
-//    private boolean comprobarAñadir() {
-//        boolean añadido = false;
-//        if (selectedImageUri.compareTo(imageUri) == 0) {
-//           propietarioS = new PropietarioS(null,   , nombre.getText().toString(), telefono1.getText().toString(), telefono2.getText().toString(), email.getText().toString());
-//           añadirPropietario1();
-//           añadido = true;
-//        }
-//
-//        return añadido;
-//    }
+
 
     public void actualizar(View view) {
     }
@@ -345,6 +337,9 @@ public class FormularioPropietarioActivity extends AppCompatActivity {
 
     public void susMascotas(View view) {
 
+        Intent intent = new Intent(context,MascotasPropietarioActivity.class);
+        intent.putExtra("VIENE","formulario_propietario_activity");
+        startActivity(intent);
     }
 
     public void llamada1(View view) {

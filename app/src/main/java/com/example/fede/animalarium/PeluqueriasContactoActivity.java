@@ -30,7 +30,6 @@ import java.util.List;
 public class PeluqueriasContactoActivity extends AppCompatActivity {
 
 
-    CalendarView calendarView;
     private ArrayList<CitaPeluqueria> citas = new ArrayList<>();
     private MisCitasAdapter adaptador;
     private ListView listado;
