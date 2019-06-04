@@ -177,6 +177,7 @@ public class PropietariosActivity extends AppCompatActivity {
 
     public static void setPropietarios(List<DocumentSnapshot> documents, SplashScreenActivity splashScreenActivity, String splash_screen, ProgressDialog progressDialog) {
         context = splashScreenActivity;
+        PropietariosActivity.splashScreenActivity = splashScreenActivity;
         setViene(splash_screen);
         setProgressDialog(progressDialog);
         propietarios.clear();
@@ -294,7 +295,7 @@ public class PropietariosActivity extends AppCompatActivity {
         return null;
     }
     private static void setProgressDialog(ProgressDialog progressDialog) {
-        progressDialog = progressDialog;
+        PropietariosActivity.progressDialog = progressDialog;
     }
 
     private static void setViene(String viene) {

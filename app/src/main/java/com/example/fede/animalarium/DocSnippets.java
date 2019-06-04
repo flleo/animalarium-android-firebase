@@ -68,6 +68,7 @@ public class DocSnippets implements DocSnippetsInterface {
             60, TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>());
 
     private final FirebaseFirestore db;
+    PropietariosAdapter propietariosAdapter;
     MascotasPropietarioActivity mascotasPropietarioActivity;
     FormularioPropietarioActivity formularioPropietarioActivity;
     PropietariosActivity propietariosActivity;
@@ -107,6 +108,14 @@ public class DocSnippets implements DocSnippetsInterface {
         context = contactosActivity;
         progressDialog = new ProgressDialog(context);
         progressDialog.setMessage("...actualizando perritos...");
+    }
+
+    public DocSnippets(FirebaseFirestore db, PropietariosActivity propietariosActivity) {
+        this.db = db;
+        this.propietariosActivity = propietariosActivity;
+        context = propietariosActivity;
+        progressDialog = new ProgressDialog(context);
+        progressDialog.setMessage("...actualizando propietarios...");
     }
 
     DocSnippets(FirebaseFirestore db, HotelActivity hotelActivity) {
@@ -185,11 +194,7 @@ public class DocSnippets implements DocSnippetsInterface {
         context = mainActivity;
     }
 
-    public DocSnippets(FirebaseFirestore db, PropietariosActivity propietariosActivity) {
-        this.db = db;
-        this.propietariosActivity = propietariosActivity;
-        context = propietariosActivity;
-    }
+
 
     public DocSnippets(FirebaseFirestore db, FormularioPropietarioActivity application) {
         this.db = db;
@@ -201,6 +206,11 @@ public class DocSnippets implements DocSnippetsInterface {
         this.db = db;
         this.mascotasPropietarioActivity = mascotasPropietarioActivity;
         context = mascotasPropietarioActivity;
+    }
+
+    public DocSnippets(FirebaseFirestore db, PropietariosAdapter propietariosAdapter) {
+        this.db = db;
+        this.propietariosAdapter = propietariosAdapter;
     }
 
 
@@ -906,8 +916,8 @@ public class DocSnippets implements DocSnippetsInterface {
                             if (splashScreenActivity != null) {
                                 PropietariosActivity.setPropietarios(task.getResult().getDocuments(), splashScreenActivity, "splash_screen", progressDialog);
 
-                            } else if (contactosActivity != null) {
-                                contactosActivity.setContactos(task.getResult().getDocuments(), contactosActivity, "contactos", progressDialog);
+                            } else if (propietariosActivity != null) {
+                                //propietariosActivity.setContactos(task.getResult().getDocuments(), contactosActivity, "contactos", progressDialog);
                             }
                         } else {
                             Log.e(TAG, "Error getting documents: ", task.getException());
@@ -1182,10 +1192,8 @@ public class DocSnippets implements DocSnippetsInterface {
         // [END get_multiple_all]
     }
 
-    public void getMascotasPorPropietario() {
-        // [START get_multiple_all]
+    public void getMascotasPorPropietario(Propietario propietario) {
 
-        Propietario propietario = ComunicadorPropietario.getPropietario();
         db.collection("mascotas")
                 .whereEqualTo("idPropietario", propietario.getId())
                 .orderBy("mascota", Direction.DESCENDING)
@@ -1199,7 +1207,7 @@ public class DocSnippets implements DocSnippetsInterface {
                                     mascotasPropietarioActivity.bindeaYAñadeMascota(document);
                                 }
                                 peluqueriasContactoActivity.inicimosAdaptador();
-                            } else if (formularioActivity!=null) formularioActivity.bindeaCitas(task.getResult());
+                            } else if (propietariosAdapter!=null) propietariosAdapter.setMascotas(task.getResult());
 
                         } else {
                             Log.e(TAG, "Error getting documents: ", task.getException());

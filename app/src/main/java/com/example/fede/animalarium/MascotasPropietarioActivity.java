@@ -107,7 +107,7 @@ public class MascotasPropietarioActivity extends AppCompatActivity {
 
     private void recuperarFirebase() {
 
-        docSnippets.getMascotasPorPropietario();
+        docSnippets.getMascotasPorPropietario(propietario);
         progressDialog.show();
     }
 
