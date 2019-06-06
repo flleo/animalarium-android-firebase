@@ -37,7 +37,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -59,9 +58,8 @@ public class PropietariosActivity extends AppCompatActivity {
     //
     EditText buscador;
     private static PropietariosAdapter propietariosAdapter;
-    private static ContactosAdapter adaptador;
     private static ListView listado;
-    // private Context context;
+    // private Context activity;
     private static final int PERMISSION_REQUEST_CODE = 1;
     Date fecha = new Date();
     static String fechaS = "";
@@ -69,22 +67,20 @@ public class PropietariosActivity extends AppCompatActivity {
     private static Uri uri;
     private static Propietario propietario;
     static ArrayList<Propietario> propietarios = new ArrayList<>();
-    private ComunicadorPropietario comunicadorPropietario = new ComunicadorPropietario();
-    private int n = 1;
+    int n = 1;
     private static List<File> localFiles = new ArrayList<>();
     DocSnippets docSnippets;
     static DocumentSnapshot propietarioDS;
     private int m = -1;
     static Context context;
+    static Activity activity;
     private static String foto;
     private static int i;
     private static ListIterator<DocumentSnapshot> propietariosLI;
-    private static SplashScreenActivity splashScreenActivity;
     //FECHA
     DateFormat dfFecha = new SimpleDateFormat("dd-MM-yyyy");
     static ArrayList<String> fotos = new ArrayList<String>();
     static ArrayList<Uri> uris = new ArrayList<Uri>();
-    private static Activity application;
 
 
     @Override
@@ -93,7 +89,7 @@ public class PropietariosActivity extends AppCompatActivity {
         setContentView(R.layout.activity_propietarios);
 
         context = this;
-        application = this;
+        activity = this;
         docSnippets = new DocSnippets(db, this);
         progressDialog = docSnippets.progressDialog;
 
@@ -145,7 +141,8 @@ public class PropietariosActivity extends AppCompatActivity {
         // Inicializamos el adapter
         propietariosAdapter = new PropietariosAdapter(context, ComunicadorPropietario.getPropietarios());
 
-        listado.setAdapter(adaptador);
+        Log.e("propietarios",String.valueOf(ComunicadorPropietario.getPropietarios().size()));
+        listado.setAdapter(propietariosAdapter);
 
 
     }
@@ -175,9 +172,9 @@ public class PropietariosActivity extends AppCompatActivity {
                 });
     }
 
-    public static void setPropietarios(List<DocumentSnapshot> documents, SplashScreenActivity splashScreenActivity, String splash_screen, ProgressDialog progressDialog) {
-        context = splashScreenActivity;
-        PropietariosActivity.splashScreenActivity = splashScreenActivity;
+    public static void setPropietarios(List<DocumentSnapshot> documents, Activity activity, String splash_screen,ProgressDialog progressDialog) {
+        context = activity;
+        PropietariosActivity.activity = activity;
         setViene(splash_screen);
         setProgressDialog(progressDialog);
         propietarios.clear();
@@ -200,12 +197,12 @@ public class PropietariosActivity extends AppCompatActivity {
                 uri = uris.get(i);
                 bindeaYAñadePropietario(uri);
             }
-        if (i == fotos.size()) if (uri == null) grabaFotoMobil();
+        if (i == fotos.size()) if (uri == null) recuperarFotoFirebase();
 
     }
 
     //RECUPERAMOS FOTO DESDE FIREBASE
-    private static void grabaFotoMobil() {
+    private static void recuperarFotoFirebase() {
 
         try {
             final File localFile = File.createTempFile("images", "jpg");
@@ -246,6 +243,7 @@ public class PropietariosActivity extends AppCompatActivity {
             ComunicadorPropietario.setPropietarios(propietarios);
             ComunicadorPropietario.setUris(uris);
             ComunicadorPropietario.setFotos(fotos);
+            Log.e("propietarios_bindeayañadepropietario",String.valueOf(ComunicadorPropietario.getPropietarios().size()));
             if(progressDialog!=null)
              progressDialog.dismiss();
             switch (viene) {
@@ -280,15 +278,15 @@ public class PropietariosActivity extends AppCompatActivity {
 
     private static Uri getImageUri(Bitmap bitmap) {
 
-        if (splashScreenActivity != null) application = splashScreenActivity;
+
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
-        if (ContextCompat.checkSelfPermission(application, android.Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+        if (ContextCompat.checkSelfPermission(context, android.Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                ActivityCompat.requestPermissions(application, new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, PERMISSION_REQUEST_EXTERNAL_STORAGE);
+                ActivityCompat.requestPermissions(activity, new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, PERMISSION_REQUEST_EXTERNAL_STORAGE);
             }
         } else {
-            String path = MediaStore.Images.Media.insertImage(application.getContentResolver(), bitmap, null, null);
+            String path = MediaStore.Images.Media.insertImage(activity.getContentResolver(), bitmap, null, null);
             uri = Uri.parse(path);
             return uri;
         }

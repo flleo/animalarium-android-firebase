@@ -914,10 +914,13 @@ public class DocSnippets implements DocSnippetsInterface {
 
                         if (task.isSuccessful()) {
                             if (splashScreenActivity != null) {
-                                PropietariosActivity.setPropietarios(task.getResult().getDocuments(), splashScreenActivity, "splash_screen", progressDialog);
+                                PropietariosActivity.setPropietarios(task.getResult().getDocuments(), splashScreenActivity, "splash_screen",progressDialog);
+                                Log.e("splash_docSnippets_propietarios",String.valueOf(task.getResult().size()));
 
                             } else if (propietariosActivity != null) {
-                                //propietariosActivity.setContactos(task.getResult().getDocuments(), contactosActivity, "contactos", progressDialog);
+                                propietariosActivity.setPropietarios(task.getResult().getDocuments(), propietariosActivity, "contactos", progressDialog);
+                                Log.e("propietarios_docSnippets_propietarios",String.valueOf(task.getResult().size()));
+
                             }
                         } else {
                             Log.e(TAG, "Error getting documents: ", task.getException());
@@ -1194,27 +1197,32 @@ public class DocSnippets implements DocSnippetsInterface {
 
     public void getMascotasPorPropietario(Propietario propietario) {
 
-        db.collection("mascotas")
-                .whereEqualTo("idPropietario", propietario.getId())
-                .orderBy("mascota", Direction.DESCENDING)
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            if (mascotasPropietarioActivity!=null){
-                                for (DocumentSnapshot document : task.getResult()) {
-                                    mascotasPropietarioActivity.bindeaYAñadeMascota(document);
-                                }
-                                peluqueriasContactoActivity.inicimosAdaptador();
-                            } else if (propietariosAdapter!=null) propietariosAdapter.setMascotas(task.getResult());
+        try{
+            db.collection("mascotas")
+                    .whereEqualTo("idPropietario", propietario.getId())
+                    .orderBy("mascota", Direction.DESCENDING)
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if (task.isSuccessful()) {
+                                if (mascotasPropietarioActivity!=null){
+                                    for (DocumentSnapshot document : task.getResult()) {
+                                        mascotasPropietarioActivity.bindeaYAñadeMascota(document);
+                                    }
+                                    peluqueriasContactoActivity.inicimosAdaptador();
+                                } else if (propietariosAdapter!=null) propietariosAdapter.setMascotas(task.getResult());
 
-                        } else {
-                            Log.e(TAG, "Error getting documents: ", task.getException());
+                            } else {
+                                Log.e(TAG, "Error getting documents: ", task.getException());
+                            }
                         }
-                    }
-                });
-        // [END get_multiple_all]
+                    });
+            // [END get_multiple_all]
+        } catch (NullPointerException e){
+            Log.e(TAG,  "Usuario sin mascotas");
+        }
+
     }
 
     public void getReservasPorContacto() {

@@ -48,7 +48,7 @@ public class ContactosActivity extends AppCompatActivity {
 
 
     static SplashScreenActivity splashScreenActivity;
-    static Activity context;
+    static Activity activity;
     private static String foto;
     private static int i;
     //Firebase
@@ -63,7 +63,7 @@ public class ContactosActivity extends AppCompatActivity {
     EditText buscador;
     private static ContactosAdapter adaptador;
     private static ListView listado;
-    // private Context context;
+    // private Context activity;
     private static final int PERMISSION_REQUEST_CODE = 1;
     Date fecha = new Date();
     static String fechaS = "";
@@ -89,7 +89,7 @@ public class ContactosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contactos);
 
-        context = this;
+        activity = this;
         docSnippets = new DocSnippets(db, this);
         progressDialog = docSnippets.progressDialog;
 
@@ -125,15 +125,15 @@ public class ContactosActivity extends AppCompatActivity {
 
                 switch (viene) {
                     case "peluquerias_activity":
-                        intent = new Intent(context, FormularioCitaActivity.class);
+                        intent = new Intent(activity, FormularioCitaActivity.class);
                         intent.putExtra("FECHA", fechaS);
                         break;
                     case "hotel_activity":
-                        intent = new Intent(context, FormularioHotelActivity.class);
+                        intent = new Intent(activity, FormularioHotelActivity.class);
                         intent.putExtra("FECHA", fechaS);
                         break;
                     default:
-                        intent = new Intent(context, FormularioActivity.class);
+                        intent = new Intent(activity, FormularioActivity.class);
                         break;
                 }
                 intent.putExtra("VIENE", "contactos_activity");
@@ -163,7 +163,7 @@ public class ContactosActivity extends AppCompatActivity {
     //LISTADO
     private static void iniciamosAdaptador() {
         // Inicializamos el adapter
-        adaptador = new ContactosAdapter(context, ComunicadorContacto.getContactos());
+        adaptador = new ContactosAdapter(activity, ComunicadorContacto.getContactos());
 
         listado.setAdapter(adaptador);
 
@@ -187,7 +187,7 @@ public class ContactosActivity extends AppCompatActivity {
     }
 
     public static void setContactos(List<DocumentSnapshot> documents, Activity activity, String viene, ProgressDialog progressDialog) {
-        context = activity;
+        ContactosActivity.activity = activity;
         setViene(viene);
         setProgressDialog(progressDialog);
         contactos.clear();
@@ -244,15 +244,15 @@ public class ContactosActivity extends AppCompatActivity {
 
     private static Uri getImageUri(Bitmap bitmap) {
 
-        if (splashScreenActivity != null) context = splashScreenActivity;
+        if (splashScreenActivity != null) activity = splashScreenActivity;
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
-        if (ContextCompat.checkSelfPermission(context, android.Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+        if (ContextCompat.checkSelfPermission(activity, android.Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                ActivityCompat.requestPermissions(context, new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, PERMISSION_REQUEST_EXTERNAL_STORAGE);
+                ActivityCompat.requestPermissions(activity, new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, PERMISSION_REQUEST_EXTERNAL_STORAGE);
             }
         } else {
-            String path = MediaStore.Images.Media.insertImage(context.getContentResolver(), bitmap, null, null);
+            String path = MediaStore.Images.Media.insertImage(activity.getContentResolver(), bitmap, null, null);
             uri = Uri.parse(path);
             return uri;
         }
@@ -283,7 +283,7 @@ public class ContactosActivity extends AppCompatActivity {
             progressDialog.dismiss();
             switch (viene) {
                 case "splash_screen":
-                    context.startActivity(new Intent().setClass(context, MainActivity.class));
+                    activity.startActivity(new Intent().setClass(activity, MainActivity.class));
 
                     break;
                 default:
