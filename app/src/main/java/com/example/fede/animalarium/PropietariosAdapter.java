@@ -99,5 +99,8 @@ class PropietariosAdapter extends BaseAdapter {
             mascotas.add(doc.getString("propietario"));
         }
         if (mascotas.size()==result.size()) mascotasTV.setText(mascotas.toString());
+        Log.e("mascotas",mascotas.toString());
     }
+
+
 }

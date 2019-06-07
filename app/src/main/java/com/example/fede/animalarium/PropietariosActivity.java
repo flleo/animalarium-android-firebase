@@ -248,7 +248,7 @@ public class PropietariosActivity extends AppCompatActivity {
              progressDialog.dismiss();
             switch (viene) {
                 case "splash_screen":
-                    context.startActivity(new Intent().setClass(context, MainActivity.class));
+                    //context.startActivity(new Intent().setClass(context, MainActivity.class));
 
                     break;
                 default:
@@ -272,7 +272,7 @@ public class PropietariosActivity extends AppCompatActivity {
                 propietarioDS.getString("email")
         );
 
-        return propietario;
+        return pro;
     }
 
 

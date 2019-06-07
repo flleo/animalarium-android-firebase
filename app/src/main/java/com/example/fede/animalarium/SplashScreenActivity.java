@@ -58,7 +58,7 @@ public class SplashScreenActivity extends Activity {
                 .build();
         db.setFirestoreSettings(settings);
         //Recogemos datos de Firestor
-       // docSnippets.getContactos();
+        docSnippets.getContactos();
         docSnippets.getPropietarios();
        // docSnippets.getPropietarios();
 
