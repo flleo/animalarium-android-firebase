@@ -56,8 +56,6 @@ class PropietariosAdapter extends BaseAdapter {
         TextView telefono2 = (TextView) convertView.findViewById(R.id.telefono2_list_propietario);
         mascotasTV = (TextView) convertView.findViewById(R.id.mascotas_list_propietario);
 
-
-
         Propietario pro = (Propietario) getItem(position);
         docSnippets.getMascotasPorPropietario(pro);
 
@@ -81,9 +79,7 @@ class PropietariosAdapter extends BaseAdapter {
     public Object getItem(int position) {
         try {
             return listItems.get(position);
-        }catch (IndexOutOfBoundsException e){
-
-            return null;}
+        }catch (IndexOutOfBoundsException e){return null;}
     }
 
     @Override

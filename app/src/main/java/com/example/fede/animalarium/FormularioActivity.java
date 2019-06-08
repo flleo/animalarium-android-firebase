@@ -410,6 +410,7 @@ public class FormularioActivity extends AppCompatActivity {
                                 double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot
                                         .getTotalByteCount());
                                 progressDialog.setMessage("Subiendo foto... " + (int) progress + "%");
+
                             }
                         });
             } else {

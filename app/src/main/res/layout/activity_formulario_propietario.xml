@@ -244,7 +244,7 @@
                         android:layout_marginRight="20dp"
                         android:layout_weight="1"
                         android:background="@android:color/holo_orange_light"
-                        android:onClick="actualizar"
+                        android:onClick="actualizarPropietario"
                         android:paddingHorizontal="5dp"
                         android:text="ACTUALIZAR"
                         app:layout_constraintBottom_toBottomOf="parent"

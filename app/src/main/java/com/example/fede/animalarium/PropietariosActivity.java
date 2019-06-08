@@ -105,6 +105,7 @@ public class PropietariosActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> ada, View v, int position, long arg3) {
 
                 Intent intent = null;
+                ComunicadorPropietario.setPropietario(propietarios.get(position));
 
                 switch (viene) {
 
