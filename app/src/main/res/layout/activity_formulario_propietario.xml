@@ -35,7 +35,7 @@
                     android:orientation="horizontal">
 
                     <ImageButton
-                        android:id="@+id/formulario_propietario_imageButtonFormulario"
+                        android:id="@+id/formulario_propietario_imageButton"
                         android:layout_width="wrap_content"
                         android:layout_height="120dp"
                         android:layout_marginStart="19dp"

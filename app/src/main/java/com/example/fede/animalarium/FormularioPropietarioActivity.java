@@ -36,6 +36,8 @@ import com.google.firebase.storage.UploadTask;
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -83,7 +85,7 @@ public class FormularioPropietarioActivity extends AppCompatActivity {
         propietarios = ComunicadorPropietario.getPropietarios();
 
         //view
-        imageButton = findViewById(R.id.formulario_propietario_imageButtonFormulario);
+        imageButton = findViewById(R.id.formulario_propietario_imageButton);
         mascotas = findViewById(R.id.formulario_propietario_susMascotas_button);
         nombre = findViewById(R.id.formulario_propietario_nombre);
         telefono1 = findViewById(R.id.formulario_propietario_telefono1);
@@ -123,6 +125,7 @@ public class FormularioPropietarioActivity extends AppCompatActivity {
         if (uris.size()!=0){
             imageUri = uris.get(0);             //definimos la por defecto
             selectedImageUri = uris.get(0);
+            fotoS = fotos.get(0);
         }
 
         //imageButton.setImageURI(imageUri);
@@ -158,7 +161,7 @@ public class FormularioPropietarioActivity extends AppCompatActivity {
 
     public void añadir(View view) {
 
-        bindeaPropietarioAPropietario();
+        bindeaVistaAPropietario();
         if (!cargarFoto()) {
             //Con foto  SUBIMOS FOTO A FIREBASE
             try {
@@ -256,7 +259,7 @@ public class FormularioPropietarioActivity extends AppCompatActivity {
     public boolean cargarFoto() {
 
         boolean cargada = false;
-        fotoS = null;
+        //fotoS = null;
         int i;
         for (i = 0; i < uris.size(); i++)
             if (uris.get(i) == selectedImageUri) {
@@ -272,9 +275,9 @@ public class FormularioPropietarioActivity extends AppCompatActivity {
 
     public void actualizarPropietario(View view) {
 
-        bindeaPropietarioAPropietario();
+        bindeaVistaAPropietario();
 
-      /*  try {
+        try {
 
             if (!selectedImageUri.equals(oldSelectedImageUri)) {
                 final ProgressDialog progressDialog = new ProgressDialog(this);
@@ -286,18 +289,17 @@ public class FormularioPropietarioActivity extends AppCompatActivity {
                             @Override
                             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                                 progressDialog.dismiss();
-                                Toast.makeText(FormularioActivity.this, "Foto subida con éxito", Toast.LENGTH_SHORT).show();
-                                contactoS = new ContactoS(contacto.get_id(), storageReference.getName(), mascota.getText().toString(), raza.getText().toString(), tamaño.getSelectedItem().toString(), telefono1.getText().toString(), telefono2.getText().toString(), propietario.getText().toString());
-                                actualizarContacto1(contactoS);
+                                Toast.makeText(FormularioPropietarioActivity.this, "Foto subida con éxito", Toast.LENGTH_SHORT).show();
+                                fotoS = storageReference.getName();
+                                actualizarPropietarioFirebasse();
                                 oldSelectedImageUri = selectedImageUri;
-                                // Log.e("foto path",storageReference.getPath());
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
                                 progressDialog.dismiss();
-                                Toast.makeText(FormularioActivity.this, "Fallo al subir la foto" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, "Fallo al subir la foto" + e.getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         })
                         .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
@@ -309,32 +311,81 @@ public class FormularioPropietarioActivity extends AppCompatActivity {
                             }
                         });
             } else {
-                contactoS = new ContactoS(contacto.get_id(), "46841", mascota.getText().toString(), raza.getText().toString(), tamaño.getSelectedItem().toString(), telefono1.getText().toString(), telefono2.getText().toString(), propietario.getText().toString());
-                actualizarContacto1(contactoS);
+                actualizarPropietarioFirebasse();
             }
         } catch (NullPointerException e) {
 
-            ContactoS contactoS = new ContactoS(contacto.get_id(), null, mascota.getText().toString(), raza.getText().toString(), tamaño.getSelectedItem().toString(), telefono1.getText().toString(), telefono2.getText().toString(), propietario.getText().toString());
-
-            actualizarContacto1(contactoS);
+            actualizarPropietarioFirebasse();
         }
-*/
 
+
+    }
+
+    private void actualizarPropietarioFirebasse() {
+        progressDialog.setTitle("...actualizando contacto...");
+        progressDialog.show();
+        DocumentReference contact = db.collection("propietarios").document(propietario.getId());
+        contact.update(KEY_FOTO, fotoS);
+        contact.update(KEY_PROPIETARIO, propietario.getPropietario());
+        contact.update(KEY_TELEFONO1, propietario.getTelefono1());
+        contact.update(KEY_TELEFONO2, propietario.getTelefono2());
+        contact.update(KEY_EMAIL,propietario.getEmail())
+
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+
+                    @Override
+
+                    public void onSuccess(Void aVoid) {
+
+                        Toast.makeText(getApplicationContext(), "Propietarios actualizado, con éxito", Toast.LENGTH_SHORT).show();
+
+                        actualizaComunicadorPropietario();
+
+                    }
+
+                });
+    }
+
+    private void actualizaComunicadorPropietario() {
+        propietarios.remove(propietario);
+        añadimosPropietarioAlComunicador();
+    }
+
+    private void añadimosPropietarioAlComunicador() {
+
+        propietarios.add(propietario);
+        //ordenamos los contactos
+        Collections.sort(propietarios, new Comparator<Propietario>() {
+            @Override
+            public int compare(Propietario o1, Propietario o2) {
+                return o1.getPropietario().compareToIgnoreCase(o2.getPropietario());
+            }
+
+        });
+        //
+        ComunicadorPropietario.setPropietarios(propietarios);
+        ComunicadorPropietario.setPropietario(propietario);
+
+        añadir.setEnabled(false);
+        actualizar.setEnabled(true);
+        eliminar.setEnabled(true);
+        mascotas.setEnabled(true);
+
+        if (progressDialog != null) {
+            progressDialog.dismiss();
+        }
     }
 
     public void eliminarContacto(View view) {
     }
 
-    private void bindeaPropietarioAPropietario() {
-        propietario = new Propietario(
-                null,
-                imageUri,
-                nombre.getText().toString(),
-                telefono1.getText().toString(),
-                telefono2.getText().toString(),
-                email.getText().toString()
+    private void bindeaVistaAPropietario() {
 
-        );
+        propietario.setPropietario(nombre.getText().toString());
+        propietario.setTelefono1(telefono1.getText().toString());
+        propietario.setTelefono2(telefono2.getText().toString());
+        propietario.setEmail(email.getText().toString());
+
     }
 
     private void bindeaPropietarioAVista() {
@@ -346,7 +397,7 @@ public class FormularioPropietarioActivity extends AppCompatActivity {
         email.setText(propietario.getEmail());
     }
 
-    private void openGalleryPropietario(View view) {
+    public void openGalleryPropietario(View view) {
         //ACTION_OPEN_DOCUMENT paar poder recuperar la foto luego
         Intent gallery = new Intent(Intent.ACTION_OPEN_DOCUMENT, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
         gallery.setType("image/*");
@@ -361,13 +412,14 @@ public class FormularioPropietarioActivity extends AppCompatActivity {
         switch (requestCode) {
             case PICK_IMAGE:
                 if (resultCode == FormularioActivity.RESULT_OK) {
-                    //selectedImageUri = imageReturnedIntent.getData();
                     try {
                         selectedImageUri = getImageUri(reducirImagen(context, imageReturnedIntent.getData(), 104));
+                        imageButton.setImageURI(selectedImageUri);
+                        propietario.setFoto(selectedImageUri);
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     }
-                    imageButton.setImageURI(selectedImageUri);
+
 
                 }
                 break;

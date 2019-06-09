@@ -486,13 +486,6 @@ public class FormularioActivity extends AppCompatActivity {
         progressDialog.setTitle("...actualizando contacto...");
         progressDialog.show();
         DocumentReference contact = db.collection("contactos").document(contactoS.get_id());
-
-        /*if (contactoS.getFoto() != null) {
-
-            Log.e("contacto.getFoto()_actualizaContacto1!=null", contactoS.getFoto());
-        } else {
-            Log.e("contacto.getFoto()_actualizaContacto1==null", contactoS.getFoto());
-        }*/
         contact.update(KEY_FOTO, contactoS.getFoto());
         contact.update(KEY_MASCOTA, contactoS.getMascota());
         contact.update(KEY_RAZA, contactoS.getRaza());
