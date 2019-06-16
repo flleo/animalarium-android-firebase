@@ -1,23 +1,14 @@
 package com.example.fede.animalarium;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class CitasAdapter extends BaseAdapter {
 
@@ -43,7 +34,7 @@ public class CitasAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(context).inflate(R.layout.activity_list_cita, null);
 
         fecha = (TextView) convertView.findViewById(R.id.fecha);
-        hora = (TextView) convertView.findViewById(R.id.hora);
+        hora = (TextView) convertView.findViewById(R.id.telefono1);
         mascota = (TextView) convertView.findViewById(R.id.mascota);
         raza = (TextView) convertView.findViewById(R.id.raza);
         tamaño = (TextView) convertView.findViewById(R.id.tamaño);

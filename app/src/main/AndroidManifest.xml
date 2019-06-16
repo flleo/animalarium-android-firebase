@@ -23,10 +23,11 @@
         android:roundIcon="@drawable/image"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ListMiMascota"></activity>
         <activity
             android:name=".MascotasPropietarioActivity"
             android:label="@string/title_activity_sus_mascotas"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".FormularioPropietarioActivity"
             android:label="Animalarium - Formulario Propietario" />

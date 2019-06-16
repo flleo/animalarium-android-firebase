@@ -8,13 +8,11 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.List;
 
 public class MisCitasAdapter extends BaseAdapter {
@@ -50,7 +48,7 @@ public class MisCitasAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(context).inflate(R.layout.activity_list_mi_cita, null);
 
         TextView fecha = (TextView) convertView.findViewById(R.id.fecha);
-        TextView hora = (TextView) convertView.findViewById(R.id.hora);
+        TextView hora = (TextView) convertView.findViewById(R.id.telefono1);
         TextView mitrabajo = (TextView) convertView.findViewById(R.id.mitrabajo);
         TextView mitarifa = (TextView) convertView.findViewById(R.id.mitarifa);
 

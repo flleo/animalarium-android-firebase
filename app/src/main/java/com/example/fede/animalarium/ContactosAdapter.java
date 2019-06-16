@@ -1,7 +1,6 @@
 package com.example.fede.animalarium;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +8,6 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -42,7 +40,7 @@ public class ContactosAdapter extends BaseAdapter {
         TextView mascota = (TextView) convertView.findViewById(R.id.mascota);
         TextView raza = (TextView) convertView.findViewById(R.id.raza);
         TextView tamaño = (TextView) convertView.findViewById(R.id.tamaño);
-        TextView telefono1 = (TextView) convertView.findViewById(R.id.hora);
+        TextView telefono1 = (TextView) convertView.findViewById(R.id.telefono1);
         TextView telefono2 = (TextView) convertView.findViewById(R.id.telefono2);
         TextView propietario = (TextView) convertView.findViewById(R.id.propietario);
 

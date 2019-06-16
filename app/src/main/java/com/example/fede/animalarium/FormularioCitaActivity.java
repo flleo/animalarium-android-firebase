@@ -24,7 +24,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -45,12 +44,10 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class FormularioCitaActivity extends AppCompatActivity {
@@ -107,7 +104,7 @@ public class FormularioCitaActivity extends AppCompatActivity {
         telefono1 = (EditText) findViewById(R.id.telefono1);
         telefono2 = (EditText) findViewById(R.id.telefono2);
         propietario = (EditText) findViewById(R.id.propietario);
-        hora = (EditText) findViewById(R.id.hora);
+        hora = (EditText) findViewById(R.id.telefono1);
         hora.addTextChangedListener(new TextWatcher() {
 
             public void afterTextChanged(Editable s) {

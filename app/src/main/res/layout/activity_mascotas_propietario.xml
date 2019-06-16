@@ -49,7 +49,7 @@
 
         <ListView
 
-            android:id="@+id/peluquerias_contacto"
+            android:id="@+id/activity_mascotas_propietario_listado"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clickable="true" />

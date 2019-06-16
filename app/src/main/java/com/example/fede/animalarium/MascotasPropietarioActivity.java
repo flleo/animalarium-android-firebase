@@ -1,6 +1,7 @@
 package com.example.fede.animalarium;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -9,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,8 +26,8 @@ import java.util.ArrayList;
 
 public class MascotasPropietarioActivity extends AppCompatActivity {
 
-    private ArrayList<CitaPeluqueria> mascotas = new ArrayList<>();
-    private MisCitasAdapter adaptador;
+    private ArrayList<Mascota> mascotas = new ArrayList<>();
+    private MisMascotasAdapter adaptador;
     private ListView listado;
     SimpleDateFormat sdf;
     String _id;
@@ -144,6 +146,25 @@ public class MascotasPropietarioActivity extends AppCompatActivity {
         inicimosAdaptador();*/
     }
 
+    public void inicimosAdaptador() {
+        adaptador = new MisMascotasAdapter(this, mascotas);
+        listado = (ListView) findViewById(R.id.activity_mascotas_propietario_listado);
+        listado.setAdapter(adaptador);
+        progressDialog.dismiss();
+        ComunicadorPropietario.setMascotas(mascotas);
+        listado.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> ada, View v, int position, long arg3) {
+                ComunicadorMascota.setMascota(mascotas.get(position));
+                Intent i = new Intent(getApplicationContext(), FormularioActivity.class);
+                i.putExtra("VIENE", "peluquerias_contacto_activity");
+                startActivity(i);
+            }
+        });
+
+    }
+
     public Uri bindeaFotoS() {
 
         uri = null;
@@ -156,5 +177,6 @@ public class MascotasPropietarioActivity extends AppCompatActivity {
         return uri;
 
     }
+
 
 }

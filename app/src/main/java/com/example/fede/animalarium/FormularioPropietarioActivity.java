@@ -1,5 +1,6 @@
 package com.example.fede.animalarium;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -57,6 +58,7 @@ public class FormularioPropietarioActivity extends AppCompatActivity {
     //Referencia del almacenamiento de archivos en Firebase
     FirebaseStorage storage = FirebaseStorage.getInstance();
     private static final int PERMISSION_REQUEST_EXTERNAL_STORAGE = 1;
+    private static final int PERMISSION_REQUEST_CODE = 1;
 
     //
 
@@ -73,6 +75,7 @@ public class FormularioPropietarioActivity extends AppCompatActivity {
     private String fotoS;
     ArrayList<String>fotos = new ArrayList<>();
     private PropietarioS propietarioS;
+    private String num_llamar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,6 +112,7 @@ public class FormularioPropietarioActivity extends AppCompatActivity {
             actualizar.setEnabled(false);
             eliminar.setEnabled(false);
             mascotas.setEnabled(false);
+            propietario = new Propietario();
 
         }
         uris = ComunicadorPropietario.getUris();
@@ -180,7 +184,10 @@ public class FormularioPropietarioActivity extends AppCompatActivity {
                                 fotoS  = storageReference.getName();
                                 propietarioS = new PropietarioS(null, fotoS,nombre.getText().toString(), telefono1.getText().toString(),telefono2.getText().toString(), email.getText().toString());
                                 añadirPropietario1();
-
+                                añadir.setEnabled(false);
+                                actualizar.setEnabled(true);
+                                eliminar.setEnabled(true);
+                                mascotas.setEnabled(true);
                                 // Log.e("foto path",storageReference.getPath());
                             }
                         })
@@ -377,6 +384,49 @@ public class FormularioPropietarioActivity extends AppCompatActivity {
     }
 
     public void eliminarContacto(View view) {
+        try {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage(R.string.dialog_seguro_eliminar_propietario);
+            builder.setPositiveButton(R.string.seguro, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    db.collection("propietarios").document(propietario.getId()).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+
+                            Toast.makeText(getApplicationContext(), "Propietario eliminado, con éxito", Toast.LENGTH_SHORT).show();
+                            eliminaPropietarioDelComunicador();
+                            intent();
+                        }
+                    })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast toast1 =
+                                            Toast.makeText(getApplicationContext(),
+                                                    "El propietario no se pudo eliminar", Toast.LENGTH_SHORT);
+                                    toast1.show();
+                                }
+                            });
+
+                }
+            });
+            builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    // User cancelled the dialog
+                }
+            });
+            builder.create();
+            builder.show();
+
+        } catch (NullPointerException e) {
+            Log.e("No se pudo eliminar ", "index=" + Integer.valueOf(propietario.getId()));
+
+        }
+    }
+
+
+    private void eliminaPropietarioDelComunicador() {
+        propietarios.remove(propietario);
     }
 
     private void bindeaVistaAPropietario() {
@@ -415,6 +465,7 @@ public class FormularioPropietarioActivity extends AppCompatActivity {
                     try {
                         selectedImageUri = getImageUri(reducirImagen(context, imageReturnedIntent.getData(), 104));
                         imageButton.setImageURI(selectedImageUri);
+                        if (selectedImageUri!=null&&propietario!=null);
                         propietario.setFoto(selectedImageUri);
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
@@ -475,10 +526,51 @@ public class FormularioPropietarioActivity extends AppCompatActivity {
     }
 
     public void llamada1(View view) {
+        num_llamar = "tel:" + telefono1.getText();
+        llama();
+
     }
 
     public void llamada2(View view) {
+        num_llamar = "tel:" + telefono2.getText();
+        llama();
+
     }
 
+    private void llama() {
+        Intent llamada1 = new Intent(Intent.ACTION_CALL);
+        llamada1.setData(Uri.parse(num_llamar));
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+
+            requestForCallPermission();
+
+        } else {
+            startActivity(llamada1);
+        }
+    }
+
+    private void requestForCallPermission() {
+        if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CALL_PHONE)) {
+        } else {
+
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE}, PERMISSION_REQUEST_CODE);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case PERMISSION_REQUEST_CODE:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    llama();
+                }
+                break;
+        }
+    }
+    private void intent() {
+        Intent intent = new Intent(this,PropietariosActivity.class);
+        intent.putExtra("VIENE","formulario_propietario_activity");
+        startActivity(intent);
+    }
 
 }

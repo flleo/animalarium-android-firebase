@@ -69,7 +69,7 @@
                         android:padding="5dp">
 
                         <EditText
-                            android:id="@+id/hora"
+                            android:id="@+id/telefono1"
                             android:layout_width="40dp"
                             android:layout_height="51dp"
                             android:ems="10"

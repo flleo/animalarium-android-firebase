@@ -68,6 +68,7 @@ public class DocSnippets implements DocSnippetsInterface {
             60, TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>());
 
     private final FirebaseFirestore db;
+    MisMascotasAdapter misMascotasAdapter;
     PropietariosAdapter propietariosAdapter;
     MascotasPropietarioActivity mascotasPropietarioActivity;
     FormularioPropietarioActivity formularioPropietarioActivity;
@@ -211,6 +212,11 @@ public class DocSnippets implements DocSnippetsInterface {
     public DocSnippets(FirebaseFirestore db, PropietariosAdapter propietariosAdapter) {
         this.db = db;
         this.propietariosAdapter = propietariosAdapter;
+    }
+
+    public DocSnippets(FirebaseFirestore db, MisMascotasAdapter misMascotasAdapter) {
+        this.db = db;
+        this.misMascotasAdapter = misMascotasAdapter;
     }
 
 
@@ -922,6 +928,7 @@ public class DocSnippets implements DocSnippetsInterface {
                                 Log.e("propietarios_docSnippets_propietarios",String.valueOf(task.getResult().size()));
 
                             }
+
                         } else {
                             Log.e(TAG, "Error getting documents: ", task.getException());
                         }
@@ -1210,7 +1217,7 @@ public class DocSnippets implements DocSnippetsInterface {
                                     for (DocumentSnapshot document : task.getResult()) {
                                         mascotasPropietarioActivity.bindeaYAñadeMascota(document);
                                     }
-                                    peluqueriasContactoActivity.inicimosAdaptador();
+                                    mascotasPropietarioActivity.inicimosAdaptador();
                                 } else if (propietariosAdapter!=null) propietariosAdapter.setMascotas(task.getResult());
 
                             } else {

@@ -10,6 +10,7 @@ class ComunicadorPropietario {
     static ArrayList<Propietario> propietarios = new ArrayList<>();
     static ArrayList<Uri> uris = new ArrayList<>();
     static ArrayList<String> fotos = new ArrayList<>();
+    static ArrayList<Mascota> mascotas = new ArrayList<>();
 
     public static Propietario getPropietario() {
         return propietario;
@@ -41,5 +42,13 @@ class ComunicadorPropietario {
 
     public static void setFotos(ArrayList<String> fotos) {
         ComunicadorPropietario.fotos = fotos;
+    }
+
+    public static ArrayList<Mascota> getMascotas() {
+        return mascotas;
+    }
+
+    public static void setMascotas(ArrayList<Mascota> mascotas) {
+        ComunicadorPropietario.mascotas = mascotas;
     }
 }
