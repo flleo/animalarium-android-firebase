@@ -60,7 +60,7 @@
         <item>@drawable/ic_launcher_background</item>
         <item>@drawable/ic_launcher_background</item>
     </array>
-    <string name="title_activity_sus_mascotas">SusMascotasActivity</string>
+    <string name="title_activity_sus_mascotas">Animalarium - Sus Mascotas</string>
     <string name="dialog_seguro_eliminar_propietario">¿Seguro que desea eliminar el propietario?</string>
 
     <!--Status-->

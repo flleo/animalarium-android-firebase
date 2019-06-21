@@ -55,8 +55,8 @@ public class MascotasPropietarioActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mascotas_propietario);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+
+
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("...recuperando sus citas...");
@@ -104,7 +104,9 @@ public class MascotasPropietarioActivity extends AppCompatActivity {
 
     public void añadirMascota(View view) {
 
-
+        Intent intent = new Intent(this,FormularioActivity .class);
+        intent.putExtra("VIENE","mascotas_propietario_activity_añadir" );
+        startActivity(intent);
     }
 
     private void recuperarFirebase() {

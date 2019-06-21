@@ -55,7 +55,7 @@ public class FormularioActivity extends AppCompatActivity {
     private static final String KEY_TAMAÑO = "tamaño";
     private static final String KEY_TELEFONO1 = "telefono1";
     private static final String KEY_TELEFONO2 = "telefono2";
-    private static final String KEY_PROPIETARIO = "propietario";
+    private static final String KEY_PROPIETARIO = "propietarioNombre";
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     DocumentReference contactosRef = db.collection("contactos").document();
     DocumentReference citasRef = db.collection("citas").document();
@@ -69,7 +69,7 @@ public class FormularioActivity extends AppCompatActivity {
     public Contacto contacto = new Contacto();
     ContactoS contactoS;
 
-    private static EditText mascota, raza, telefono1, telefono2, propietario;
+    private static EditText mascota, raza, telefono1, telefono2, propietarioNombre;
     private Spinner tamaño;
     private static ImageButton foto;
     Button añadir, actualizar, eliminar, citas, reservas;
@@ -86,6 +86,10 @@ public class FormularioActivity extends AppCompatActivity {
     private ArrayList<Uri> uris;
     ArrayList<CitaPeluqueria> citass = new ArrayList<>();
     private ArrayList<ReservaHotel> reservass = new ArrayList<>();
+    ArrayList<Mascota> mascotas = new ArrayList<>();
+    Propietario propietario = new Propietario();
+
+
 
 
     @Override
@@ -100,6 +104,12 @@ public class FormularioActivity extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
         contactos = ComunicadorContacto.getContactos();
         uris = ComunicadorContacto.getUris();
+        propietario = ComunicadorPropietario.getPropietario();
+        if (propietario!=null){
+            mascotas = ComunicadorPropietario.getMascotas();
+            propietario = ComunicadorPropietario.getPropietario();
+
+        }
         if (uris.size()==0){
             Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(),R.drawable.image);
             Uri uri = getImageUri(bitmap);
@@ -116,7 +126,7 @@ public class FormularioActivity extends AppCompatActivity {
         raza = (EditText) findViewById(R.id.raza);
         telefono1 = (EditText) findViewById(R.id.telefon1);
         telefono2 = (EditText) findViewById(R.id.telefon2);
-        propietario = (EditText) findViewById(R.id.propietario);
+        propietarioNombre = (EditText) findViewById(R.id.propietario);
 
         //Inicializamos el spinner de tamaños
         tamaño = (Spinner) findViewById(R.id.spinner);
@@ -130,6 +140,23 @@ public class FormularioActivity extends AppCompatActivity {
 
         viene = getIntent().getExtras().getString("VIENE");
         switch (viene) {
+
+            case "mascotas_propietario_activity_añadir":
+                añadir.setEnabled(true);
+                actualizar.setEnabled(false);
+                eliminar.setEnabled(false);
+                citas.setEnabled(false);
+                reservas.setEnabled(false);
+                break;
+
+            case "mascotas_propietario_activity":
+                docSnippets.getPeluqueriasPorContacto();
+                docSnippets.getReservasPorContacto();
+                bindeaContactoView(contacto);
+                añadir.setEnabled(false);
+                oldSelectedImageUri = contacto.getFoto();
+                selectedImageUri = oldSelectedImageUri;
+                break;
 
             case "contactos_activity_añadirContacto":
                 añadir.setEnabled(true);
@@ -223,7 +250,7 @@ public class FormularioActivity extends AppCompatActivity {
             raza.setText(contacto.getRaza());
             telefono1.setText(contacto.getTelefono1());
             telefono2.setText(contacto.getTelefono2());
-            propietario.setText(contacto.getPropietario());
+            propietarioNombre.setText(contacto.getPropietario());
             try {
                 switch (contacto.getTamaño()) {
                     case "Pequeño":
@@ -331,7 +358,7 @@ public class FormularioActivity extends AppCompatActivity {
                                 progressDialog.dismiss();
                                 Toast.makeText(FormularioActivity.this, "Foto subida con éxito", Toast.LENGTH_SHORT).show();
                                 fotoS = storageReference.getName();
-                                contactoS = new ContactoS(null, storageReference.getName(), mascota.getText().toString(), raza.getText().toString(), tamaño.getSelectedItem().toString(), telefono1.getText().toString(), telefono2.getText().toString(), propietario.getText().toString());
+                                contactoS = new ContactoS(null, storageReference.getName(), mascota.getText().toString(), raza.getText().toString(), tamaño.getSelectedItem().toString(), telefono1.getText().toString(), telefono2.getText().toString(), propietarioNombre.getText().toString());
                                 añadirContacto1(contactoS);
                                 ;
                                 // Log.e("foto path",storageReference.getPath());
@@ -355,7 +382,7 @@ public class FormularioActivity extends AppCompatActivity {
 
             } catch (NullPointerException e) {
                 /*//Sin Foto, le asignamos la foto de firebase que tenemos por defecto
-                ContactoS contactoS = new ContactoS(null, "46841", mascota.getText().toString(), raza.getText().toString(), tamaño.getSelectedItem().toString(), telefono1.getText().toString(), telefono2.getText().toString(), propietario.getText().toString());
+                ContactoS contactoS = new ContactoS(null, "46841", mascota.getText().toString(), raza.getText().toString(), tamaño.getSelectedItem().toString(), telefono1.getText().toString(), telefono2.getText().toString(), propietarioNombre.getText().toString());
                 añadirContacto1(contactoS);
                 */
                 e.getMessage();
@@ -367,7 +394,7 @@ public class FormularioActivity extends AppCompatActivity {
     private boolean comprobarAñadir() {
         boolean añadido = false;
         if (selectedImageUri.compareTo(imageUri) == 0) {
-            ContactoS contactoS = new ContactoS(null, "46841", mascota.getText().toString(), raza.getText().toString(), tamaño.getSelectedItem().toString(), telefono1.getText().toString(), telefono2.getText().toString(), propietario.getText().toString());
+            ContactoS contactoS = new ContactoS(null, "46841", mascota.getText().toString(), raza.getText().toString(), tamaño.getSelectedItem().toString(), telefono1.getText().toString(), telefono2.getText().toString(), propietarioNombre.getText().toString());
             añadirContacto1(contactoS);
             añadido = true;
         }
@@ -391,7 +418,7 @@ public class FormularioActivity extends AppCompatActivity {
                             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                                 progressDialog.dismiss();
                                 Toast.makeText(FormularioActivity.this, "Foto subida con éxito", Toast.LENGTH_SHORT).show();
-                                contactoS = new ContactoS(contacto.get_id(), storageReference.getName(), mascota.getText().toString(), raza.getText().toString(), tamaño.getSelectedItem().toString(), telefono1.getText().toString(), telefono2.getText().toString(), propietario.getText().toString());
+                                contactoS = new ContactoS(contacto.get_id(), storageReference.getName(), mascota.getText().toString(), raza.getText().toString(), tamaño.getSelectedItem().toString(), telefono1.getText().toString(), telefono2.getText().toString(), propietarioNombre.getText().toString());
                                 actualizarContacto1(contactoS);
                                 oldSelectedImageUri = selectedImageUri;
                                 // Log.e("foto path",storageReference.getPath());
@@ -414,12 +441,12 @@ public class FormularioActivity extends AppCompatActivity {
                             }
                         });
             } else {
-                contactoS = new ContactoS(contacto.get_id(), "46841", mascota.getText().toString(), raza.getText().toString(), tamaño.getSelectedItem().toString(), telefono1.getText().toString(), telefono2.getText().toString(), propietario.getText().toString());
+                contactoS = new ContactoS(contacto.get_id(), "46841", mascota.getText().toString(), raza.getText().toString(), tamaño.getSelectedItem().toString(), telefono1.getText().toString(), telefono2.getText().toString(), propietarioNombre.getText().toString());
                 actualizarContacto1(contactoS);
             }
         } catch (NullPointerException e) {
 
-            ContactoS contactoS = new ContactoS(contacto.get_id(), null, mascota.getText().toString(), raza.getText().toString(), tamaño.getSelectedItem().toString(), telefono1.getText().toString(), telefono2.getText().toString(), propietario.getText().toString());
+            ContactoS contactoS = new ContactoS(contacto.get_id(), null, mascota.getText().toString(), raza.getText().toString(), tamaño.getSelectedItem().toString(), telefono1.getText().toString(), telefono2.getText().toString(), propietarioNombre.getText().toString());
 
             actualizarContacto1(contactoS);
         }
@@ -470,7 +497,7 @@ public class FormularioActivity extends AppCompatActivity {
                 doc.getString("tamaño"),
                 doc.getString("telefono1"),
                 doc.getString("telefono2"),
-                doc.getString("propietario"));
+                doc.getString("propietarioNombre"));
         contacto = con;
         ComunicadorContacto.setContacto(contacto);
         añadimosContactoAlComunicador(contacto);

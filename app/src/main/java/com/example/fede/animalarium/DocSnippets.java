@@ -940,6 +940,7 @@ public class DocSnippets implements DocSnippetsInterface {
 
     public void getContactos()  {
 
+        if (!progressDialog.isShowing())
         progressDialog.show();
         // [START get_multiple_all]
         db.collection("contactos")

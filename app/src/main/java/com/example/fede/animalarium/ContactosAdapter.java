@@ -47,13 +47,16 @@ public class ContactosAdapter extends BaseAdapter {
 
             Contacto contacto = (Contacto) getItem(position);
 
-            image.setImageURI(contacto.getFoto());
-            mascota.setText(contacto.getMascota());
-            raza.setText(contacto.getRaza());
-            tamaño.setText(contacto.getTamaño());
-            telefono1.setText(contacto.getTelefono1());
-            telefono2.setText(contacto.getTelefono2());
-            propietario.setText(contacto.getPropietario());
+            try{
+                image.setImageURI(contacto.getFoto());
+                mascota.setText(contacto.getMascota());
+                raza.setText(contacto.getRaza());
+                tamaño.setText(contacto.getTamaño());
+                telefono1.setText(contacto.getTelefono1());
+                telefono2.setText(contacto.getTelefono2());
+                propietario.setText(contacto.getPropietario());
+            } catch (NullPointerException e){}
+
 
 
         //Log.e("contactosAdptaer_contacto",contacto.toString());

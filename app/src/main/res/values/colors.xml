@@ -3,7 +3,7 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="colorPelu">#7FB3D5</color>
+    <color name="colorMascotas">#7FB3D5</color>
     <color name="colorHotel">#f8c471</color>
     <color name="colorBotonHotel">#f39c12 </color>
     <color name="foreground_material_light">#040000</color>
