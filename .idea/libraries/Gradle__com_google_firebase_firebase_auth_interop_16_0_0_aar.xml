@@ -3,6 +3,10 @@
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6d4d9c1a4c9974a9daa9711a461f3c45/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6d4d9c1a4c9974a9daa9711a461f3c45/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c880ae71e2164baa879cb1ce610a78bf/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/9ad81f451a8fdc827461494bff0987ff/firebase-auth-interop-16.0.0/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/9ad81f451a8fdc827461494bff0987ff/firebase-auth-interop-16.0.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/9ad81f451a8fdc827461494bff0987ff/firebase-auth-interop-16.0.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

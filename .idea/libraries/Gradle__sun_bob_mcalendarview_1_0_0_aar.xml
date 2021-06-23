@@ -3,8 +3,13 @@
     <CLASSES>
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3344520d619f5843dcb591f5f30f9aa9/res" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3344520d619f5843dcb591f5f30f9aa9/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c3a909ab2dfd09ce4c23b801afa56229/mcalendarview-1.0.0/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c3a909ab2dfd09ce4c23b801afa56229/mcalendarview-1.0.0/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c3a909ab2dfd09ce4c23b801afa56229/mcalendarview-1.0.0/jars/classes.jar!/" />
     </CLASSES>
-    <JAVADOC />
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/sun.bob/mcalendarview/1.0.0/7f4245b5ed1f86c7518593a3273721349804f6b6/mcalendarview-1.0.0-javadoc.jar!/" />
+    </JAVADOC>
     <SOURCES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/sun.bob/mcalendarview/1.0.0/a0930cc9d57d69fad81ed22ff65c078fce0b5e3f/mcalendarview-1.0.0-sources.jar!/" />
     </SOURCES>

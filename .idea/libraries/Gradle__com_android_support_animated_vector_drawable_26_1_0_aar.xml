@@ -3,6 +3,10 @@
     <CLASSES>
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b2e60d0eb71c0f933894b8f6106ba86a/res" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b2e60d0eb71c0f933894b8f6106ba86a/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/631fd3d6bea64ab18d4de871df44cff9/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/54c1093a61b2bbd20c99a62febaf26dc/animated-vector-drawable-26.1.0/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/54c1093a61b2bbd20c99a62febaf26dc/animated-vector-drawable-26.1.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/54c1093a61b2bbd20c99a62febaf26dc/animated-vector-drawable-26.1.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

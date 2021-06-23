@@ -3,6 +3,10 @@
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/0e53c31d8c1ba8f991ac9651a1d0ca60/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/0e53c31d8c1ba8f991ac9651a1d0ca60/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c3a3993903a3e3394f3213fcd6d4021e/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ebe6f8f4ef4c3cca3320f766d888ab93/protolite-well-known-types-16.0.0/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ebe6f8f4ef4c3cca3320f766d888ab93/protolite-well-known-types-16.0.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ebe6f8f4ef4c3cca3320f766d888ab93/protolite-well-known-types-16.0.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
