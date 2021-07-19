@@ -1,5 +1,5 @@
 # animalarium-android-sqlite-firebase
-<img src="images/-1.jpg" width=250>
+<img src="images/-1.jpg" width=500>
 <img src="images/0.jpg">
 <img src="images/1.jpg">
 <img src="images/2.jpg">
